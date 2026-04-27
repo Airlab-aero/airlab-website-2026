@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Join Us" description="Join AIR Lab and help shape the future of air traffic management through open technologies and collaboration.">
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Careers</div>
+      <h1>Join<br><strong>AIR Lab</strong></h1>
+      <p>Be part of a groundbreaking initiative that is revolutionising air traffic management through open technologies and collaboration.</p>
+    </div>
+  </div>
+
+  <section style="background: var(--off-white);">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div>
+        <div class="section-label">Our mission</div>
+        <h2 class="section-title" style="margin-bottom: 24px;">Advancing global aviation<br><strong>efficiency</strong></h2>
+        <p style="font-size: 17px; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 32px;">
+          AIR Lab is dedicated to advancing global aviation efficiency and sustainability by creating innovative Air Traffic Management solutions through open technologies and collaboration.
+        </p>
+        <p style="font-size: 17px; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 40px;">
+          We leverage artificial intelligence, machine learning, and open data standards to solve aviation's most complex challenges — alongside a world-class team of engineers, ATM specialists, and researchers.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {[
+            { label: '56+', desc: 'Team members across operations, engineering & research' },
+            { label: '10+', desc: 'Partner organisations across industry and academia' },
+            { label: '2019', desc: 'Founded in Singapore as a CAAS × Thales joint lab' },
+          ].map(stat => (
+            <div style="display: flex; gap: 24px; align-items: flex-start; padding: 20px; background: #fff; border: 1px solid var(--border); border-radius: 8px;">
+              <div style="font-size: 32px; font-weight: 300; color: var(--navy); letter-spacing: -0.03em; line-height: 1; min-width: 60px;">{stat.label}</div>
+              <div style="font-size: 14px; color: var(--muted); line-height: 1.6; padding-top: 6px;">{stat.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Open positions</div>
+        <h2 class="section-title" style="margin-bottom: 32px;">Explore<br><strong>opportunities</strong></h2>
+        <div style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 20px;">
+          <p style="font-size: 16px; line-height: 1.7; color: var(--muted); font-weight: 300;">
+            AIR Lab positions are posted on the Thales careers portal. Browse current openings in software engineering, ATM operations, data science, and more.
+          </p>
+          <a
+            href="https://www.thalesgroup.com/en/careers"
+            target="_blank"
+            rel="noopener"
+            class="btn-airlab"
+            style="align-self: flex-start;"
+          >
+            View open positions →
+          </a>
+        </div>
+        <div style="margin-top: 32px; background: var(--navy); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-size: 15px; font-weight: 600; color: #fff;">Based in Singapore</div>
+          <div style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 300;">
+            AIR Lab @ WeWork<br>
+            Suntec Tower 5, Temasek Boulevard<br>
+            Singapore 038985
+          </div>
+          <a href="/contact" style="font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-top: 8px; transition: color 0.2s;">
+            Questions? Contact us →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

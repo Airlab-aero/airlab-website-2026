@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'AIR Lab — Advancing global aviation efficiency through innovative ATM solutions.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | AIR Lab</title>
+    <link rel="icon" type="image/png" href="/airlab-logo.png" />
+  </head>
+  <body>
+    <slot name="nav" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

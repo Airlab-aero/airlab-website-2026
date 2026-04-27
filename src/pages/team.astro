@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { client, teamQuery } from '../lib/sanity';
+
+const allMembers = await client.fetch(teamQuery);
+
+const categories = ['Leadership', 'Operations', 'Engineering'];
+const grouped: Record<string, typeof allMembers> = {};
+for (const cat of categories) {
+  grouped[cat] = allMembers.filter((m: any) => m.category === cat);
+}
+---
+
+<Base title="Team" description="Meet the AIR Lab team — experts in air traffic management, aviation technology, and regional collaboration.">
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Our People</div>
+      <h1>Meet the<br><strong>team</strong></h1>
+      <p>56 experts across ATM operations, software engineering, research, and partnerships — united by a shared mission to advance aviation.</p>
+    </div>
+  </div>
+
+  {categories.map(cat => grouped[cat]?.length > 0 && (
+    <section style="background: var(--off-white); padding: 80px 80px 0;">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <div class="section-label">{cat}</div>
+        <h2 class="section-title"><strong>{cat === 'Leadership' ? 'Directors & Leaders' : cat === 'Operations' ? 'Operations & Partnerships' : 'Engineering & Research'}</strong></h2>
+      </div>
+      <div class="team-grid" style={cat === 'Leadership' ? 'grid-template-columns: repeat(3, 1fr);' : ''}>
+        {grouped[cat].map((member: any) => (
+          <div class="team-card" style="border-radius: 8px; background: #fff; border: 1px solid var(--border); overflow: hidden;">
+            <div style="padding: 28px 24px 20px; display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-size: 15px; font-weight: 600; color: var(--navy);">{member.name}</div>
+              <div style="font-size: 13px; color: var(--muted); font-weight: 300;">{member.role}</div>
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noopener" style="font-size: 11px; color: var(--teal); text-decoration: none; margin-top: 6px; letter-spacing: 0.05em;">
+                  LinkedIn →
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section style="padding: 80px 80px 100px; background: var(--off-white);">
+    <div style="background: #067181; border-radius: 12px; padding: 60px; display: flex; justify-content: space-between; align-items: center; gap: 48px; flex-wrap: wrap;">
+      <div>
+        <div class="section-label" style="color: rgba(255,255,255,0.6);">Join us</div>
+        <h2 class="section-title" style="color: #fff;">Want to be part<br>of the <strong>team?</strong></h2>
+      </div>
+      <a href="/join-us" class="btn-white">See open positions →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

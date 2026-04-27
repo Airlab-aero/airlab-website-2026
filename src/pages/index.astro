@@ -1,0 +1,304 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { client, newsListQuery, teamQuery } from '../lib/sanity';
+
+const news = await client.fetch(newsListQuery);
+const latestNews = news.slice(0, 3);
+const team = await client.fetch(teamQuery);
+const featuredTeam = team.slice(0, 8);
+---
+
+<Base title="AIR Lab — Regional Collaboration Platform" description="A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management.">
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <video id="hero-video" muted loop playsinline preload="auto">
+        <source src="https://airlab.aero/wp-content/uploads/2025/05/vid-rcp.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">By AIR Lab</div>
+      <h1>The <strong>Regional Collaboration<br>Platform</strong></h1>
+      <p class="hero-sub">A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management. Together.</p>
+      <div class="hero-actions">
+        <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" class="btn-primary" target="_blank">Access the Platform</a>
+        <a href="#platform" class="btn-ghost">Explore the RCP ↓</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll to explore</div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="about-strip">
+    <div class="about-stat">
+      <div class="about-stat-num">2019<span>–</span></div>
+      <div class="about-stat-label">Founded by Thales &amp; CAAS<br>Singapore — building since day one</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">10<span>+</span></div>
+      <div class="about-stat-label">APAC ANSPs actively<br>engaged on the platform</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">100<span>%</span></div>
+      <div class="about-stat-label">Free access for regional ANSPs —<br>cloud-based, open-source stack</div>
+    </div>
+  </div>
+
+  <!-- PLATFORM CAPABILITIES -->
+  <section class="capabilities" id="platform">
+    <div class="section-header" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;">
+      <div>
+        <div class="section-label">Regional Collaboration Platform</div>
+        <h2 class="section-title">An open sandbox for<br><strong>ATM innovation</strong></h2>
+      </div>
+      <p class="section-intro">Cloud-based and built on open-source technologies, the RCP integrates live, historical, and simulated data to support realistic experimentation and co-development across APAC.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v9l5 3"></path></svg>
+        </div>
+        <h3>4D Trajectory Prediction</h3>
+        <p>Real-time flight data enriched with global flight plans and surveillance fusion for accurate situational awareness across the entire APAC region.</p>
+        <span class="cap-tag">Live Data</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        </div>
+        <h3>FF-ICE Services Suite</h3>
+        <p>Full FF-ICE/R1 stack enabling collaborative flight planning between airlines and ANSPs, from trajectory negotiation to pre-departure agreement.</p>
+        <span class="cap-tag">ICAO Standard</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 17h7M17 14v7"></path></svg>
+        </div>
+        <h3>Open ATM Architecture</h3>
+        <p>Integrates data from airlines, airports, and service providers to make the ecosystem smarter, safer, and more connected.</p>
+        <span class="cap-tag">Open Source</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+        </div>
+        <h3>Fast-Time Simulation</h3>
+        <p>Accelerated simulation environment enabling ANSPs to test ATM concepts and procedures at scale, running scenarios faster than real-time to validate performance before deployment.</p>
+        <span class="cap-tag">Research</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+        </div>
+        <h3>Weather Data Integration</h3>
+        <p>Integration of meteorological data into ATM workflows, enabling weather-aware trajectory planning and safety-critical decision support.</p>
+        <span class="cap-tag">Innovation</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4001a" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
+        </div>
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Embedding AI capabilities across the platform to enhance prediction, automation, and collaborative decision-making for ANSPs and airlines.</p>
+        <span class="cap-tag">AI-Powered</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY TIMELINE -->
+  <section class="journey" id="journey">
+    <div class="section-header">
+      <div class="section-label">Platform Journey</div>
+      <h2 class="section-title">Gradually unlocking new capabilities,<br><strong>year by year</strong></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2019–23</div>
+        <div class="timeline-heading">Initializing Capabilities</div>
+        <div class="timeline-body">Foundational platform built on open technologies. Cloud-native architecture. Regional data pipelines established.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024</div>
+        <div class="timeline-heading">Regional Awareness</div>
+        <div class="timeline-body">Live &amp; historical data integration. 4D trajectory prediction. Real-time situational awareness for APAC airspace.</div>
+      </div>
+      <div class="timeline-item active">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2025</div>
+        <div class="timeline-heading">FF-ICE Onboarding</div>
+        <div class="timeline-body">Progressive ANSP onboarding. Full FF-ICE/R1 stack deployed. Hybrid "what-if" analysis mode introduced.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" style="font-weight:600;color:#fff;">2026</div>
+        <div class="timeline-heading">Structured Collaboration</div>
+        <div class="timeline-body">City-pair optimization. Advanced weather forecasting. High-impact use cases co-developed with ANSP partners.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="use-cases" id="use-cases" style="padding:0;">
+    <div style="padding:100px 80px 48px;">
+      <div class="section-label">Use Cases</div>
+      <h2 class="section-title">What you can do<br><strong>on the platform</strong></h2>
+    </div>
+    <div class="uc-grid">
+      <div class="uc-item">
+        <div class="uc-item-text">
+          <div class="uc-num">01</div>
+          <div class="uc-title">Regional Situational Awareness</div>
+          <div class="uc-body">Common 4D picture of airspace powered by live, historical, and simulated data. Global source connections, surveillance data fusion, estimated boundary crossings, and traffic hotspot detection.</div>
+          <div class="uc-arrow">→</div>
+        </div>
+        <img class="uc-image" src="/uc-rsa.jpg" alt="Regional Situational Awareness" loading="lazy" />
+      </div>
+      <div class="uc-item">
+        <div class="uc-item-text">
+          <div class="uc-num">02</div>
+          <div class="uc-title">FF-ICE Flight Planning</div>
+          <div class="uc-body">Full ICAO FF-ICE/R1 services suite enabling real-time collaborative flight planning between airlines and ANSPs. Trajectory negotiation, pre-departure agreement, and live status visibility.</div>
+          <div class="uc-arrow">→</div>
+        </div>
+        <img class="uc-image" src="https://airlab.aero/wp-content/uploads/2025/05/65c15a6fded83a34089b002c39f1a54ab0d10156-1024x579.png" alt="FF-ICE Flight Planning" loading="lazy" />
+      </div>
+      <div class="uc-item">
+        <div class="uc-item-text">
+          <div class="uc-num">03</div>
+          <div class="uc-title">Fast-Time Simulation</div>
+          <div class="uc-body">Accelerated simulation environment to test ATM concepts and procedures at scale, running scenarios faster than real-time. Includes continuous descent optimization developed with ATMRI to reduce fuel burn and CO₂ emissions.</div>
+          <div class="uc-arrow">→</div>
+        </div>
+        <img class="uc-image" src="/uc-fts.jpg" alt="Fast-Time Simulation" loading="lazy" />
+      </div>
+      <div class="uc-item">
+        <div class="uc-item-text">
+          <div class="uc-num">04</div>
+          <div class="uc-title">Weather Data Integration &amp; City-Pair Optimization</div>
+          <div class="uc-body">Integrating meteorological data from partners like Meteomatics into trajectory planning and ATM workflows, alongside route optimization for the highest-traffic corridors for greener and more efficient operations.</div>
+          <div class="uc-arrow">→</div>
+        </div>
+        <img class="uc-image" src="/uc-weather.jpg" alt="Weather Data Integration" loading="lazy" />
+      </div>
+    </div>
+    <div style="padding:56px 80px;">
+      <a href="/contact" class="btn-navy">Request Platform Access</a>
+      <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" class="btn-outline-navy" target="_blank" style="margin-left:16px;">Open AIR Space Platform →</a>
+    </div>
+  </section>
+
+  <!-- TEAM PREVIEW -->
+  <section class="team" id="team">
+    <div class="team-intro-grid">
+      <img class="team-photo-large" src="/team-photo.jpg" alt="AIR Lab team" />
+      <div class="team-intro-text">
+        <div class="section-label">Our team</div>
+        <h2 class="section-title">56 experts.<br><strong>One mission.</strong></h2>
+        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="/team" class="btn-white">Meet the full team</a>
+          <a href="/contact" class="btn-outline-white">Contact AIR Lab</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-grid">
+      {featuredTeam.map((member: any) => (
+        <div class="team-card" style="background: rgba(255,255,255,0.08); border-radius: 8px;">
+          <div style="padding: 24px 20px;">
+            <div class="team-name">{member.name}</div>
+            <div class="team-role">{member.role}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- NEWS PREVIEW -->
+  <section class="news" id="news">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;">
+      <div>
+        <div class="section-label">Latest from AIR Lab</div>
+        <h2 class="section-title" style="color:#fff;">News &amp;<br><strong>updates</strong></h2>
+      </div>
+      <a href="/news" class="btn-ghost">All articles →</a>
+    </div>
+    <div class="news-grid">
+      {latestNews.map((article: any) => (
+        <div class="news-card">
+          <div class="news-content">
+            <span class="news-tag">{article.category}</span>
+            {article.externalUrl ? (
+              <a href={article.externalUrl} target="_blank" rel="noopener" class="news-title">{article.title}</a>
+            ) : (
+              <a href={`/news/${article.slug.current}`} class="news-title">{article.title}</a>
+            )}
+            <p class="news-excerpt">{article.excerpt}</p>
+            <span class="news-date">{article.publishedAt}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PARTNERS STRIP -->
+  <section class="partners" id="partners">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-label">Our Partners</div>
+      <h2 class="section-title">Built with the<br><strong>best in aviation</strong></h2>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-cell"><span style="font-size:15px;font-weight:600;color:var(--navy);">CAAS</span></div>
+      <div class="partner-cell"><span style="font-size:15px;font-weight:600;color:var(--navy);">Thales</span></div>
+      <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">SGInnovate</span></div>
+      <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">Meteomatics</span></div>
+      <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">Tomorrow.io</span></div>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="/partners" class="btn-outline-navy">View all partners →</a>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta" id="contact">
+    <div class="contact-cta-text">
+      <div class="section-label">Get involved</div>
+      <h2 class="section-title">Ready to join the<br><strong>collaboration?</strong></h2>
+      <p class="section-intro">Whether you're an ANSP, research institution, or technology provider — the RCP is open for collaboration.</p>
+      <div class="contact-cta-actions">
+        <a href="/contact" class="btn-white">Contact AIR Lab</a>
+        <a href="/join-us" class="btn-outline-white">Join the team →</a>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-item">
+        <span class="contact-item-label">Location</span>
+        <span class="contact-item-value">AIR Lab @ WeWork, Suntec Tower 5<br>Temasek Boulevard, Singapore 038985</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Platform access</span>
+        <span class="contact-item-value">
+          <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank">Log in to the RCP →</a>
+        </span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Public API</span>
+        <span class="contact-item-value">
+          <a href="https://open-atms.airlab.aero/public-api/" target="_blank">open-atms.airlab.aero →</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>
+
+<script>
+  const video = document.getElementById('hero-video') as HTMLVideoElement;
+  if (video) video.play().catch(() => {});
+</script>

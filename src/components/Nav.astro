@@ -1,0 +1,30 @@
+---
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
+---
+
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="/airlab-logo.png" alt="AIR Lab" />
+  </a>
+  <ul class="nav-links">
+    {isHome ? (
+      <>
+        <li><a href="#platform">RCP Platform</a></li>
+        <li><a href="#use-cases">Use Cases</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#partners">Partners</a></li>
+      </>
+    ) : (
+      <>
+        <li><a href="/#platform">RCP Platform</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </>
+    )}
+    <li><a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-cta">Log In to RCP</a></li>
+  </ul>
+</nav>

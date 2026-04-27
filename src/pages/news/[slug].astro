@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { client, newsListQuery, newsArticleQuery } from '../../lib/sanity';
+
+export async function getStaticPaths() {
+  const articles = await client.fetch(newsListQuery);
+  return articles
+    .filter((a: any) => !a.externalUrl && a.slug?.current)
+    .map((a: any) => ({ params: { slug: a.slug.current }, props: { article: a } }));
+}
+
+const { slug } = Astro.params;
+const article = await client.fetch(newsArticleQuery, { slug });
+
+if (!article) {
+  return Astro.redirect('/news');
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Base title={article.title} description={article.excerpt}>
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content" style="max-width: 800px;">
+      <div class="section-label">{article.category}</div>
+      <h1 style="font-size: clamp(28px, 4vw, 52px);">{article.title}</h1>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 16px;">{formatDate(article.publishedAt)}</p>
+    </div>
+  </div>
+
+  <section style="background: #fff; padding: 80px;">
+    <div style="max-width: 760px; margin: 0 auto;">
+      {article.excerpt && (
+        <p style="font-size: 20px; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 48px; border-left: 3px solid var(--teal); padding-left: 24px;">
+          {article.excerpt}
+        </p>
+      )}
+      {article.body?.map((block: any) => block._type === 'block' && (
+        <p style="font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 24px; font-weight: 300;">
+          {block.children?.map((c: any) => c.text).join('')}
+        </p>
+      ))}
+      <div style="margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);">
+        <a href="/news" class="btn-outline-navy">← Back to News</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

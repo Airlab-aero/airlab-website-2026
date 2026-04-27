@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Contact" description="Get in touch with AIR Lab Singapore — based at WeWork Suntec Tower 5.">
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Get in touch</div>
+      <h1>Contact<br><strong>AIR Lab</strong></h1>
+      <p>Whether you're interested in partnership, research collaboration, or learning more about the RCP platform — we'd love to hear from you.</p>
+    </div>
+  </div>
+
+  <section style="background: var(--off-white);">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div>
+        <div class="section-label">Location</div>
+        <h2 class="section-title" style="margin-bottom: 32px;">Visit <strong>us</strong></h2>
+        <div class="contact-detail">
+          <div class="contact-item">
+            <span class="contact-item-label">Address</span>
+            <span class="contact-item-value">AIR Lab @ WeWork<br>Suntec Tower 5<br>Temasek Boulevard<br>Singapore 038985</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Platform</span>
+            <span class="contact-item-value">
+              <a href="https://open-atms.airlab.aero/public-api/" target="_blank">Public API Documentation →</a>
+            </span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">RCP Platform</span>
+            <span class="contact-item-value">
+              <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank">Log In to the RCP →</a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Enquiries</div>
+        <h2 class="section-title" style="margin-bottom: 32px;">Send us a <strong>message</strong></h2>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          style="display: flex; flex-direction: column; gap: 20px;"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500;">Name</label>
+              <input type="text" name="name" required style="padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font); font-size: 15px; color: var(--text); background: #fff; outline: none;" />
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <label style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500;">Email</label>
+              <input type="email" name="email" required style="padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font); font-size: 15px; color: var(--text); background: #fff; outline: none;" />
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500;">Organisation</label>
+            <input type="text" name="organisation" style="padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font); font-size: 15px; color: var(--text); background: #fff; outline: none;" />
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500;">Message</label>
+            <textarea name="message" rows="5" required style="padding: 12px 16px; border: 1px solid var(--border); border-radius: 4px; font-family: var(--font); font-size: 15px; color: var(--text); background: #fff; outline: none; resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-airlab" style="align-self: flex-start; border: none; cursor: pointer;">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>

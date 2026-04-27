@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { client, newsListQuery } from '../../lib/sanity';
+
+const articles = await client.fetch(newsListQuery);
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Base title="News" description="The latest news, research highlights, and announcements from AIR Lab Singapore.">
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Latest from AIR Lab</div>
+      <h1>News &amp;<br><strong>updates</strong></h1>
+      <p>Research breakthroughs, partnerships, events, and team highlights from the AIR Lab ecosystem.</p>
+    </div>
+  </div>
+
+  <section style="background: var(--off-white);">
+    <div class="news-grid">
+      {articles.map((article: any) => (
+        <div class="news-card" style="background: #fff; border-color: var(--border);">
+          {article.coverImage && (
+            <img
+              class="news-img"
+              src={`https://cdn.sanity.io/images/x0ftpq7o/production/${article.coverImage.asset._ref.replace('image-','').replace(/-(\w+)$/, '.$1').replace(/-(\d+x\d+)-/, '-$1-')}`}
+              alt={article.title}
+              loading="lazy"
+            />
+          )}
+          <div class="news-content">
+            <span class="news-tag" style="color: var(--red);">{article.category}</span>
+            {article.externalUrl ? (
+              <a href={article.externalUrl} target="_blank" rel="noopener" class="news-title" style="color: var(--navy);">
+                {article.title}
+              </a>
+            ) : (
+              <a href={`/news/${article.slug.current}`} class="news-title" style="color: var(--navy);">
+                {article.title}
+              </a>
+            )}
+            <p class="news-excerpt" style="color: var(--muted);">{article.excerpt}</p>
+            <span class="news-date" style="color: var(--muted); opacity: 0.7;">{formatDate(article.publishedAt)}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .news-card { background: #fff; }
+  .news-tag { color: var(--red) !important; }
+  .news-title { color: var(--navy) !important; }
+  .news-title:hover { color: var(--teal) !important; }
+  .news-excerpt { color: var(--muted) !important; }
+</style>

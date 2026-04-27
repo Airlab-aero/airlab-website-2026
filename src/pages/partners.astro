@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { client, partnersQuery } from '../lib/sanity';
+
+const partners = await client.fetch(partnersQuery);
+const founding = partners.filter((p: any) => p.order <= 2);
+const local = partners.filter((p: any) => p.order > 2 && p.order <= 6);
+const solutions = partners.filter((p: any) => p.order > 6);
+---
+
+<Base title="Partners" description="AIR Lab's ecosystem of founding, local, and solutions partners advancing aviation technology in the Asia-Pacific region.">
+  <Nav slot="nav" />
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Ecosystem</div>
+      <h1>Our<br><strong>partners</strong></h1>
+      <p>A growing ecosystem of industry leaders, research institutions, and innovative companies co-creating the future of air traffic management.</p>
+    </div>
+  </div>
+
+  <section style="background: var(--off-white);">
+    <div class="section-header">
+      <div class="section-label">Founding Partners</div>
+      <h2 class="section-title">Built on a strong<br><strong>foundation</strong></h2>
+      <p class="section-intro" style="margin-top: 16px;">AIR Lab was founded through a unique public-private partnership between CAAS and Thales — bringing together regulatory expertise and world-class aviation technology.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 80px;">
+      {founding.map((p: any) => (
+        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 48px; display: flex; flex-direction: column; gap: 16px; text-decoration: none; transition: box-shadow 0.2s; cursor: pointer;">
+          <div style="font-size: 22px; font-weight: 600; color: var(--navy);">{p.name}</div>
+          <div style="font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+          <div style="font-size: 13px; color: var(--teal); margin-top: 8px;">Visit website →</div>
+        </a>
+      ))}
+    </div>
+
+    <div class="section-header" style="margin-top: 0;">
+      <div class="section-label">Local Partners</div>
+      <h2 class="section-title">Singapore's innovation<br><strong>ecosystem</strong></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 80px;">
+      {local.map((p: any) => (
+        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
+          <div>
+            <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
+            <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+          </div>
+          <div style="font-size: 20px; color: var(--muted);">→</div>
+        </a>
+      ))}
+    </div>
+
+    <div class="section-header" style="margin-top: 0;">
+      <div class="section-label">Solutions Partners</div>
+      <h2 class="section-title">Technology<br><strong>specialists</strong></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+      {solutions.map((p: any) => (
+        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
+          <div>
+            <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
+            <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+          </div>
+          <div style="font-size: 20px; color: var(--muted);">→</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section style="background: var(--navy); padding: 100px 80px;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <div class="section-label">Become a partner</div>
+      <h2 class="section-title" style="color: #fff; margin-bottom: 20px;">Interested in<br><strong>collaborating?</strong></h2>
+      <p style="font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 40px; font-weight: 300; line-height: 1.65;">We're always looking for partners who share our vision of open, collaborative aviation innovation.</p>
+      <a href="/contact" class="btn-airlab">Get in touch →</a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
