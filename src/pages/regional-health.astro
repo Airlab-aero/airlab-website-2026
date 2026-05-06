@@ -1,0 +1,267 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Regional Health — AIR Lab" description="A monthly snapshot of air traffic network performance across South East Asia.">
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <div class="rh-hero">
+    <div class="rh-tag">Regional Collaboration Platform</div>
+    <h1>Regional <strong>Health</strong></h1>
+    <p>A monthly snapshot of air traffic network performance across South East Asia — routes, airports, flight levels, and peak throughput.</p>
+    <div class="rh-badge"><span class="rh-dot"></span> 25 Feb – 24 Mar 2026 &nbsp;·&nbsp; South East Asia</div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="rh-kpi">
+    <div class="rh-kpi-item">
+      <div class="rh-kpi-num">21<sup>+</sup></div>
+      <div class="rh-kpi-lbl">Airports monitored<br>across APAC</div>
+    </div>
+    <div class="rh-kpi-item">
+      <div class="rh-kpi-num">27<sup>k</sup></div>
+      <div class="rh-kpi-lbl">Peak monthly movements<br>Bangkok Suvarnabhumi</div>
+    </div>
+    <div class="rh-kpi-item">
+      <div class="rh-kpi-num">3,810</div>
+      <div class="rh-kpi-lbl">Flights on busiest route<br>Hanoi ↔ Ho Chi Minh City</div>
+    </div>
+    <div class="rh-kpi-item">
+      <div class="rh-kpi-num">75</div>
+      <div class="rh-kpi-lbl">Peak throughput (95th pct)<br>Kuala Lumpur WMKK</div>
+    </div>
+  </div>
+
+  <!-- MAP IMAGE — full width -->
+  <div class="rh-map">
+    <img src="/regional-health-map.png" alt="Regional air traffic situational awareness" />
+    <span class="rh-map-caption">Live regional situational awareness — South East Asia airspace</span>
+  </div>
+
+  <!-- ACCORDION SECTIONS -->
+  <div class="rh-sections">
+
+    <!-- 1. Busiest Airports -->
+    <div class="rh-section">
+      <button class="rh-toggle" data-target="airports" aria-expanded="false">
+        <div>
+          <div class="rh-section-label">Network overview</div>
+          <div class="rh-section-title">Busiest airports by traffic</div>
+        </div>
+        <span class="rh-icon">+</span>
+      </button>
+      <div class="rh-content" id="airports">
+        <div class="rh-airports-grid">
+          {[
+            { name: 'Kuala Lumpur', icao: 'WMKK', pct: 100, total: '29,681', peak: '75', rec: '85 — 16 Mar' },
+            { name: 'Bangkok Suvarnabhumi', icao: 'VTBS', pct: 94, total: '27,778', peak: '65', rec: '73 — 3 Apr' },
+            { name: 'Hong Kong', icao: 'VHHH', pct: 91, total: '27,059', peak: '65', rec: '72 — 21 Mar' },
+            { name: 'Singapore', icao: 'WSSS', pct: 88, total: '26,292', peak: '61', rec: '67 — 22 Mar' },
+            { name: 'Jakarta', icao: 'WIII', pct: 73, total: '21,828', peak: '66', rec: '80 — 16 Mar' },
+            { name: 'Manila', icao: 'RPLL', pct: 69, total: '20,406', peak: '43', rec: '51 — 8 Mar' },
+          ].map(a => (
+            <div class="rh-airport-card">
+              <div class="rh-airport-header">
+                <span class="rh-airport-name">{a.name}</span>
+                <span class="rh-airport-icao">{a.icao}</span>
+              </div>
+              <div class="rh-bar"><div class="rh-bar-fill" style={`width:${a.pct}%`}></div></div>
+              <div class="rh-bar-labels"><span>Arrivals</span><span>Departures</span></div>
+              <div class="rh-row"><span>Total movements</span><span>{a.total}</span></div>
+              <div class="rh-row"><span>Peak throughput (95th)</span><span class="teal">{a.peak}</span></div>
+              <div class="rh-row"><span>Peak recorded</span><span>{a.rec}</span></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Top Routes (dark) -->
+    <div class="rh-section rh-section-dark">
+      <button class="rh-toggle rh-toggle-dark" data-target="routes" aria-expanded="false">
+        <div>
+          <div class="rh-section-label">Busiest corridors</div>
+          <div class="rh-section-title" style="color:#fff">Top routes by volume</div>
+        </div>
+        <span class="rh-icon">+</span>
+      </button>
+      <div class="rh-content" id="routes">
+        <div class="rh-routes-grid">
+          {[
+            { from: 'VVNB', to: 'VVTS', city: 'Hanoi ↔ Ho Chi Minh City', flights: '3,810', flOb: 'FL360', flIb: 'FL350', highest: 'FL430', dist: '620 NM', ob: '1907', ib: '1903' },
+            { from: 'WMKK', to: 'WSSS', city: 'Kuala Lumpur ↔ Singapore', flights: '1,964', flOb: 'FL250', flIb: 'FL220', highest: 'FL330', dist: '114 NM', ob: '974', ib: '990' },
+            { from: 'RPLL', to: 'RPVM', city: 'Manila ↔ Cebu', flights: '1,884', flOb: 'FL330', flIb: 'FL320', highest: 'FL410', dist: '234 NM', ob: '942', ib: '942' },
+            { from: 'WIII', to: 'WSSS', city: 'Jakarta ↔ Singapore', flights: '1,695', flOb: 'FL360', flIb: 'FL350', highest: 'FL430', dist: '409 NM', ob: '865', ib: '830' },
+          ].map(r => (
+            <div class="rh-route-card">
+              <div class="rh-route-header">
+                <span class="rh-route-icao">{r.from} <span class="teal">→</span> {r.to}</span>
+                <span class="rh-route-flights">{r.flights} <span>flights</span></span>
+              </div>
+              <div class="rh-route-city">{r.city}</div>
+              <div class="rh-route-stats">
+                <div class="rh-rs"><div class="rh-rs-lbl">Most used FL</div><div class="rh-rs-val"><span class="ob">{r.flOb}</span> · <span class="teal">{r.flIb}</span></div></div>
+                <div class="rh-rs"><div class="rh-rs-lbl">Highest FL</div><div class="rh-rs-val">{r.highest}</div></div>
+                <div class="rh-rs"><div class="rh-rs-lbl">Median distance</div><div class="rh-rs-val">{r.dist}</div></div>
+                <div class="rh-rs"><div class="rh-rs-lbl">O/B · I/B</div><div class="rh-rs-val"><span class="ob">{r.ob}</span> · <span class="teal">{r.ib}</span></div></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FL Distribution -->
+    <div class="rh-section">
+      <button class="rh-toggle" data-target="fl" aria-expanded="false">
+        <div>
+          <div class="rh-section-label">ATM Insights</div>
+          <div class="rh-section-title">Flight level distribution — key routes</div>
+        </div>
+        <span class="rh-icon">+</span>
+      </button>
+      <div class="rh-content" id="fl">
+        <div class="rh-fl-grid">
+          {[
+            { route: 'VVNB–VVTS · Hanoi/HCM', fl: 'FL360', bars: [{ lbl:'FL430', w:30 }, { lbl:'FL360', w:85 }, { lbl:'FL350', w:72 }, { lbl:'FL340', w:40 }] },
+            { route: 'WMKK–WSSS · KL/Singapore', fl: 'FL250', bars: [{ lbl:'FL330', w:20 }, { lbl:'FL260', w:50 }, { lbl:'FL250', w:88 }, { lbl:'FL220', w:65 }] },
+            { route: 'WBGG–WMKK · Kuching/KL', fl: 'FL380', bars: [{ lbl:'FL400', w:35 }, { lbl:'FL380', w:90 }, { lbl:'FL370', w:60 }, { lbl:'FL340', w:25 }] },
+            { route: 'WBKK–WMKK · Kota Kinabalu/KL', fl: 'FL380', bars: [{ lbl:'FL410', w:28 }, { lbl:'FL380', w:82 }, { lbl:'FL370', w:55 }, { lbl:'FL340', w:20 }] },
+          ].map(f => (
+            <div class="rh-fl-card">
+              <div class="rh-fl-route">{f.route}</div>
+              <div class="rh-fl-num">{f.fl}</div>
+              <div class="rh-fl-sub">Most commonly used</div>
+              <div class="rh-fl-bars">
+                {f.bars.map(b => (
+                  <div class="rh-fl-row">
+                    <span class="rh-fl-lbl">{b.lbl}</span>
+                    <div class="rh-fl-track"><div class="rh-fl-fill" style={`width:${b.w}%`}></div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="rh-cta">
+    <div class="section-label">Regional Collaboration Platform</div>
+    <h2 class="section-title" style="color:#fff;margin-top:8px">Explore the <strong>full dataset</strong></h2>
+    <p>Log in to the RCP to access live traffic data, historical trends, and simulation tools across the APAC region.</p>
+    <div class="rh-cta-btns">
+      <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="btn-primary">Log in to RCP</a>
+      <a href="/contact" class="btn-ghost">Contact AIR Lab</a>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .rh-hero { background: var(--navy); padding: 80px; position: relative; overflow: hidden; }
+  .rh-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(0,210,180,0.04), transparent 60%); }
+  .rh-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(0,210,180,0.3); padding: 3px 10px; border-radius: 4px; margin-bottom: 20px; }
+  .rh-hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 16px; max-width: 520px; }
+  .rh-hero h1 strong { font-weight: 700; }
+  .rh-hero p { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 440px; line-height: 1.6; margin-bottom: 28px; }
+  .rh-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: rgba(255,255,255,0.6); }
+  .rh-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); display: inline-block; }
+
+  .rh-kpi { background: #fff; padding: 36px 80px; display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+  .rh-kpi-item { padding: 0 24px; border-right: 1px solid var(--border); }
+  .rh-kpi-item:first-child { padding-left: 0; }
+  .rh-kpi-item:last-child { border-right: none; }
+  .rh-kpi-num { font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+  .rh-kpi-num sup { font-size: 16px; color: var(--teal); }
+  .rh-kpi-lbl { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+  .rh-map { position: relative; background: var(--navy); line-height: 0; }
+  .rh-map img { width: 100%; max-height: 540px; object-fit: cover; display: block; opacity: 0.92; }
+  .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+  .rh-sections { background: var(--off-white); }
+  .rh-section { border-bottom: 1px solid var(--border); }
+  .rh-section-dark { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .rh-toggle { width: 100%; padding: 32px 80px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; text-align: left; }
+  .rh-toggle:hover { background: rgba(0,0,0,0.02); }
+  .rh-toggle-dark:hover { background: rgba(255,255,255,0.03); }
+  .rh-section-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+  .rh-section-title { font-size: 22px; font-weight: 700; color: var(--navy); }
+  .rh-icon { font-size: 28px; font-weight: 300; color: var(--teal); transition: transform 0.3s; line-height: 1; min-width: 32px; text-align: center; }
+  .rh-toggle[aria-expanded="true"] .rh-icon { transform: rotate(45deg); }
+
+  .rh-content { display: none; padding: 0 80px 48px; }
+  .rh-content.open { display: block; }
+
+  .rh-airports-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rh-airport-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
+  .rh-airport-card:hover { border-color: var(--teal); }
+  .rh-airport-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .rh-airport-name { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .rh-airport-icao { font-size: 11px; color: #fff; background: var(--navy); padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+  .rh-bar { height: 4px; background: #f0f0f0; border-radius: 2px; margin-bottom: 6px; overflow: hidden; }
+  .rh-bar-fill { height: 100%; background: var(--teal); border-radius: 2px; }
+  .rh-bar-labels { display: flex; justify-content: space-between; font-size: 11px; color: #aaa; margin-bottom: 8px; }
+  .rh-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; color: var(--muted); }
+  .rh-row:last-child { border-bottom: none; }
+  .rh-row span:last-child { font-weight: 600; color: var(--navy); }
+  .teal { color: var(--teal) !important; }
+
+  .rh-routes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .rh-route-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
+  .rh-route-card:hover { border-color: rgba(0,210,180,0.4); }
+  .rh-route-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .rh-route-icao { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.05em; }
+  .rh-route-flights { font-size: 20px; font-weight: 700; color: var(--teal); }
+  .rh-route-flights span { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 400; }
+  .rh-route-city { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+  .rh-route-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rh-rs { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+  .rh-rs-lbl { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .rh-rs-val { font-size: 13px; font-weight: 600; color: #fff; }
+  .ob { color: #f5a623; }
+
+  .rh-fl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .rh-fl-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .rh-fl-route { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .rh-fl-num { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .rh-fl-sub { font-size: 11px; color: #aaa; margin-bottom: 12px; }
+  .rh-fl-bars { display: flex; flex-direction: column; gap: 6px; }
+  .rh-fl-row { display: flex; align-items: center; gap: 8px; }
+  .rh-fl-lbl { width: 36px; font-size: 11px; color: var(--muted); }
+  .rh-fl-track { flex: 1; height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+  .rh-fl-fill { height: 100%; background: var(--teal); border-radius: 3px; }
+
+  .rh-cta { background: var(--navy); padding: 80px; text-align: center; }
+  .rh-cta p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 420px; margin: 0 auto 32px; line-height: 1.6; }
+  .rh-cta-btns { display: flex; gap: 16px; justify-content: center; }
+
+  @media (max-width: 900px) {
+    .rh-hero, .rh-toggle, .rh-content, .rh-kpi, .rh-cta { padding-left: 24px; padding-right: 24px; }
+    .rh-kpi { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .rh-airports-grid, .rh-routes-grid { grid-template-columns: 1fr; }
+    .rh-fl-grid { grid-template-columns: repeat(2, 1fr); }
+    .rh-map-caption { left: 24px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.rh-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-target');
+      const content = document.getElementById(id)!;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      content.classList.toggle('open', !isOpen);
+    });
+  });
+</script>
