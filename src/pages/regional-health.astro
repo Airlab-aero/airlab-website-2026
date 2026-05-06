@@ -15,26 +15,6 @@ import Footer from '../components/Footer.astro';
     <div class="rh-badge"><span class="rh-dot"></span> 25 Feb – 24 Mar 2026 &nbsp;·&nbsp; South East Asia</div>
   </div>
 
-  <!-- KPI STRIP -->
-  <div class="rh-kpi">
-    <div class="rh-kpi-item">
-      <div class="rh-kpi-num">21<sup>+</sup></div>
-      <div class="rh-kpi-lbl">Airports monitored<br>across APAC</div>
-    </div>
-    <div class="rh-kpi-item">
-      <div class="rh-kpi-num">27<sup>k</sup></div>
-      <div class="rh-kpi-lbl">Peak monthly movements<br>Bangkok Suvarnabhumi</div>
-    </div>
-    <div class="rh-kpi-item">
-      <div class="rh-kpi-num">3,810</div>
-      <div class="rh-kpi-lbl">Flights on busiest route<br>Hanoi ↔ Ho Chi Minh City</div>
-    </div>
-    <div class="rh-kpi-item">
-      <div class="rh-kpi-num">75</div>
-      <div class="rh-kpi-lbl">Peak throughput (95th pct)<br>Kuala Lumpur WMKK</div>
-    </div>
-  </div>
-
   <!-- MAP IMAGE — full width -->
   <div class="rh-map">
     <img src="/regional-health-map.png" alt="Regional air traffic situational awareness" />
@@ -184,7 +164,7 @@ import Footer from '../components/Footer.astro';
   .rh-kpi-lbl { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
   .rh-map { position: relative; background: var(--navy); line-height: 0; }
-  .rh-map img { width: 100%; max-height: 540px; object-fit: cover; display: block; opacity: 0.92; }
+  .rh-map img { width: 100%; display: block; }
   .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
   .rh-sections { background: var(--off-white); }
