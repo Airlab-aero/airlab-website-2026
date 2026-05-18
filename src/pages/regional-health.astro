@@ -15,11 +15,9 @@ import Footer from '../components/Footer.astro';
     <div class="rh-badge"><span class="rh-dot"></span> 25 Feb – 24 Mar 2026 &nbsp;·&nbsp; South East Asia</div>
   </div>
 
-  <!-- RCP VIDEO — full width -->
+  <!-- MAP IMAGE — full width -->
   <div class="rh-map">
-    <video autoplay muted loop playsinline>
-      <source src="/vid-rcp.mp4" type="video/mp4" />
-    </video>
+    <img src="/regional-health-map.png" alt="Regional air traffic situational awareness" />
     <span class="rh-map-caption">Live regional situational awareness — South East Asia airspace</span>
   </div>
 
@@ -166,7 +164,7 @@ import Footer from '../components/Footer.astro';
   .rh-kpi-lbl { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
   .rh-map { position: relative; background: var(--navy); line-height: 0; }
-  .rh-map video { width: 100%; display: block; }
+  .rh-map img { width: 100%; display: block; }
   .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
   .rh-sections { background: var(--off-white); }
