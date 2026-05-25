@@ -1,4 +1,10 @@
 ---
+/*
+ * Base.astro — master layout
+ * Design: adds IntersectionObserver for scroll-reveal ([data-reveal] elements),
+ * count-up animation for .about-stat-num, and nav scroll state management.
+ * No external libraries — pure vanilla JS, CSS transitions only.
+ */
 import '../styles/global.css';
 
 export interface Props {
@@ -26,3 +32,59 @@ const { title, description = 'AIR Lab — Advancing global aviation efficiency t
     <slot name="footer" />
   </body>
 </html>
+
+<script>
+  // ── Nav scroll transparency ──────────────────────────────────
+  const nav = document.getElementById('nav');
+  if (nav) {
+    const hasDarkHero = !!document.querySelector('.hero, .page-hero');
+    const updateNav = () => {
+      nav.classList.toggle('nav-scrolled', !hasDarkHero || window.scrollY > 40);
+    };
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+  }
+
+  // ── Scroll-reveal (data-reveal) ──────────────────────────────
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const delay = +(el.dataset.revealDelay ?? 0);
+        setTimeout(() => el.classList.add('visible'), delay);
+        revealObserver.unobserve(el);
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  // ── Count-up for stat numbers ────────────────────────────────
+  const statEls = document.querySelectorAll('.about-stat-num');
+  if (statEls.length) {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const suffix = el.querySelector('span')?.textContent ?? '';
+        const raw = el.textContent?.replace(suffix, '').trim() ?? '';
+        const target = parseInt(raw, 10);
+        if (isNaN(target)) return;
+        const duration = 1500;
+        const startTime = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.innerHTML = `${Math.round(eased * target)}<span>${suffix}</span>`;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+
+    statEls.forEach(el => countObserver.observe(el));
+  }
+</script>

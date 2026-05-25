@@ -15,9 +15,9 @@ const heroVideoUrl = cms.heroVideoUrl ?? 'https://airlab.aero/wp-content/uploads
 const heroPrimaryButtonText = cms.heroPrimaryButtonText ?? 'Access the Platform';
 const heroPrimaryButtonUrl = cms.heroPrimaryButtonUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const stats = cms.stats ?? [
-  { number: '2019', suffix: '–', label: 'Founded by Thales & CAAS\nSingapore — building since day one' },
+  { number: '2019', suffix: '–', label: 'Founded by Thales & CAAS\nSingapore, building since day one' },
   { number: '10', suffix: '+', label: 'APAC ANSPs actively\nengaged on the platform' },
-  { number: '100', suffix: '%', label: 'Free access for regional ANSPs —\ncloud-based, open-source stack' },
+  { number: '100', suffix: '%', label: 'Free access for regional ANSPs,\ncloud-based open-source stack' },
 ];
 const ctaTitle = cms.ctaTitle ?? 'Ready to join the collaboration?';
 const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institution, or technology provider — the RCP is open for collaboration.";
@@ -50,8 +50,8 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- STATS STRIP -->
   <div class="about-strip">
-    {stats.map((stat: any) => (
-      <div class="about-stat">
+    {stats.map((stat: any, i: number) => (
+      <div class="about-stat" data-reveal data-reveal-delay={i * 100}>
         <div class="about-stat-num">{stat.number}<span>{stat.suffix}</span></div>
         <div class="about-stat-label" set:html={stat.label.replace(/\n/g, '<br>')}></div>
       </div>
@@ -60,7 +60,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- PLATFORM CAPABILITIES -->
   <section class="capabilities" id="platform">
-    <div class="section-header" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;">
+    <div class="section-header" data-reveal style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;">
       <div>
         <div class="section-label">Regional Collaboration Platform</div>
         <h2 class="section-title">An open sandbox for<br><strong>ATM innovation</strong></h2>
@@ -68,7 +68,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       <p class="section-intro">Cloud-based and built on open-source technologies, the RCP integrates live, historical, and simulated data to support realistic experimentation and co-development across APAC.</p>
     </div>
     <div class="cap-grid">
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="0">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v9l5 3"></path></svg>
         </div>
@@ -76,7 +76,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <p>Real-time flight data enriched with global flight plans and surveillance fusion for accurate situational awareness across the entire APAC region.</p>
         <span class="cap-tag">Live Data</span>
       </div>
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="80">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         </div>
@@ -84,7 +84,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <p>Full FF-ICE/R1 stack enabling collaborative flight planning between airlines and ANSPs, from trajectory negotiation to pre-departure agreement.</p>
         <span class="cap-tag">ICAO Standard</span>
       </div>
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="160">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 17h7M17 14v7"></path></svg>
         </div>
@@ -92,7 +92,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <p>Integrates data from airlines, airports, and service providers to make the ecosystem smarter, safer, and more connected.</p>
         <span class="cap-tag">Open Source</span>
       </div>
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="240">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
         </div>
@@ -100,7 +100,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <p>Accelerated simulation environment enabling ANSPs to test ATM concepts and procedures at scale, running scenarios faster than real-time to validate performance before deployment.</p>
         <span class="cap-tag">Research</span>
       </div>
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="320">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
         </div>
@@ -108,7 +108,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <p>Integration of meteorological data into ATM workflows, enabling weather-aware trajectory planning and safety-critical decision support.</p>
         <span class="cap-tag">Innovation</span>
       </div>
-      <div class="cap-card">
+      <div class="cap-card" data-reveal data-reveal-delay="400">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
         </div>
@@ -121,32 +121,32 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- JOURNEY TIMELINE -->
   <section class="journey" id="journey">
-    <div class="section-header">
+    <div class="section-header" data-reveal>
       <div class="section-label">Platform Journey</div>
       <h2 class="section-title">Gradually unlocking new capabilities,<br><strong>year by year</strong></h2>
     </div>
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-reveal-delay="0">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2019–23</div>
         <div class="timeline-heading">Initializing Capabilities</div>
         <div class="timeline-body">Foundational platform built on open technologies. Cloud-native architecture. Regional data pipelines established.</div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-reveal-delay="100">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2024</div>
         <div class="timeline-heading">Regional Awareness</div>
         <div class="timeline-body">Live &amp; historical data integration. 4D trajectory prediction. Real-time situational awareness for APAC airspace.</div>
       </div>
-      <div class="timeline-item active">
+      <div class="timeline-item active" data-reveal data-reveal-delay="200">
         <div class="timeline-dot"></div>
         <div class="timeline-year">2025</div>
         <div class="timeline-heading">FF-ICE Onboarding</div>
         <div class="timeline-body">Progressive ANSP onboarding. Full FF-ICE/R1 stack deployed. Hybrid "what-if" analysis mode introduced.</div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-reveal-delay="300">
         <div class="timeline-dot"></div>
-        <div class="timeline-year" style="font-weight:600;color:#fff;">2026</div>
+        <div class="timeline-year" style="color:#fff;">2026</div>
         <div class="timeline-heading">Structured Collaboration</div>
         <div class="timeline-body">City-pair optimization. Advanced weather forecasting. High-impact use cases co-developed with ANSP partners.</div>
       </div>
@@ -154,60 +154,116 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
   </section>
 
   <!-- USE CASES -->
-  <section class="use-cases" id="use-cases" style="padding:0;">
-    <div style="padding:100px 80px 48px;">
+  <section class="use-cases" id="use-cases">
+    <div class="uc-header" data-reveal>
       <div class="section-label">Use Cases</div>
       <h2 class="section-title">What you can do<br><strong>on the platform</strong></h2>
     </div>
-    <div class="uc-grid">
-      <div class="uc-item">
-        <div class="uc-item-text">
-          <div class="uc-num">01</div>
-          <div class="uc-title">Regional Situational Awareness</div>
-          <div class="uc-body">Common 4D picture of airspace powered by live, historical, and simulated data. Global source connections, surveillance data fusion, estimated boundary crossings, and traffic hotspot detection.</div>
-          <div class="uc-arrow">→</div>
+
+    <div class="uc-tabs" role="tablist">
+      <button class="uc-tab active" data-uc="0" role="tab">
+        <span class="uc-tab-num">01</span>
+        <span class="uc-tab-title">Regional Situational Awareness</span>
+        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      </button>
+      <button class="uc-tab" data-uc="1" role="tab">
+        <span class="uc-tab-num">02</span>
+        <span class="uc-tab-title">FF-ICE Flight Planning</span>
+        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      </button>
+      <button class="uc-tab" data-uc="2" role="tab">
+        <span class="uc-tab-num">03</span>
+        <span class="uc-tab-title">Fast-Time Simulation</span>
+        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      </button>
+      <button class="uc-tab" data-uc="3" role="tab">
+        <span class="uc-tab-num">04</span>
+        <span class="uc-tab-title">Weather &amp; City-Pair Optimization</span>
+        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      </button>
+    </div>
+
+    <div class="uc-stage">
+      <div class="uc-panel active" data-panel="0">
+        <div class="uc-panel-text">
+          <div class="uc-panel-num">01</div>
+          <h3 class="uc-panel-title">Regional Situational Awareness</h3>
+          <p class="uc-panel-body">Common 4D picture of airspace powered by live, historical, and simulated data. Global source connections, surveillance data fusion, estimated boundary crossings, and traffic hotspot detection.</p>
+          <span class="uc-panel-tag">Live Data</span>
         </div>
-        <img class="uc-image" src="/uc-rsa.jpg" alt="Regional Situational Awareness" loading="lazy" />
+        <div class="uc-panel-img">
+          <img src="/uc-rsa.jpg" alt="Regional Situational Awareness" loading="lazy" />
+        </div>
       </div>
-      <div class="uc-item">
-        <div class="uc-item-text">
-          <div class="uc-num">02</div>
-          <div class="uc-title">FF-ICE Flight Planning</div>
-          <div class="uc-body">Full ICAO FF-ICE/R1 services suite enabling real-time collaborative flight planning between airlines and ANSPs. Trajectory negotiation, pre-departure agreement, and live status visibility.</div>
-          <div class="uc-arrow">→</div>
+      <div class="uc-panel" data-panel="1">
+        <div class="uc-panel-text">
+          <div class="uc-panel-num">02</div>
+          <h3 class="uc-panel-title">FF-ICE Flight Planning</h3>
+          <p class="uc-panel-body">Full ICAO FF-ICE/R1 services suite enabling real-time collaborative flight planning between airlines and ANSPs. Trajectory negotiation, pre-departure agreement, and live status visibility.</p>
+          <span class="uc-panel-tag">ICAO Standard</span>
         </div>
-        <img class="uc-image" src="https://airlab.aero/wp-content/uploads/2025/05/65c15a6fded83a34089b002c39f1a54ab0d10156-1024x579.png" alt="FF-ICE Flight Planning" loading="lazy" />
+        <div class="uc-panel-img">
+          <img src="https://airlab.aero/wp-content/uploads/2025/05/65c15a6fded83a34089b002c39f1a54ab0d10156-1024x579.png" alt="FF-ICE Flight Planning" loading="lazy" />
+        </div>
       </div>
-      <div class="uc-item">
-        <div class="uc-item-text">
-          <div class="uc-num">03</div>
-          <div class="uc-title">Fast-Time Simulation</div>
-          <div class="uc-body">Accelerated simulation environment to test ATM concepts and procedures at scale, running scenarios faster than real-time. Includes continuous descent optimization developed with ATMRI to reduce fuel burn and CO₂ emissions.</div>
-          <div class="uc-arrow">→</div>
+      <div class="uc-panel" data-panel="2">
+        <div class="uc-panel-text">
+          <div class="uc-panel-num">03</div>
+          <h3 class="uc-panel-title">Fast-Time Simulation</h3>
+          <p class="uc-panel-body">Accelerated simulation environment to test ATM concepts and procedures at scale, running scenarios faster than real-time.</p>
+          <span class="uc-panel-tag">Research</span>
         </div>
-        <img class="uc-image" src="/uc-fts.jpg" alt="Fast-Time Simulation" loading="lazy" />
+        <div class="uc-panel-img">
+          <img src="/uc-fts.jpg" alt="Fast-Time Simulation" loading="lazy" />
+        </div>
       </div>
-      <div class="uc-item">
-        <div class="uc-item-text">
-          <div class="uc-num">04</div>
-          <div class="uc-title">Weather Data Integration &amp; City-Pair Optimization</div>
-          <div class="uc-body">Integrating meteorological data from partners like Meteomatics into trajectory planning and ATM workflows, alongside route optimization for the highest-traffic corridors for greener and more efficient operations.</div>
-          <div class="uc-arrow">→</div>
+      <div class="uc-panel" data-panel="3">
+        <div class="uc-panel-text">
+          <div class="uc-panel-num">04</div>
+          <h3 class="uc-panel-title">Weather &amp; City-Pair Optimization</h3>
+          <p class="uc-panel-body">Integrating meteorological data from partners like Meteomatics into trajectory planning and ATM workflows, alongside route optimization for the highest-traffic corridors for greener and more efficient operations.</p>
+          <span class="uc-panel-tag">Innovation</span>
         </div>
-        <img class="uc-image" src="/uc-weather.jpg" alt="Weather Data Integration" loading="lazy" />
+        <div class="uc-panel-img">
+          <img src="/uc-weather.jpg" alt="Weather Data Integration" loading="lazy" />
+        </div>
       </div>
     </div>
-    <div style="padding:56px 80px;">
+
+    <div class="uc-actions">
       <a href="/contact" class="btn-navy">Request Platform Access</a>
-      <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" class="btn-outline-navy" target="_blank" style="margin-left:16px;">Open AIR Space Platform →</a>
+      <a href="https://airspace-hub.aero" class="btn-outline-navy" target="_blank">Open AIR Space Platform →</a>
+    </div>
+  </section>
+
+  <!-- FACES OF AIR LAB -->
+  <section class="faces" id="faces">
+    <div class="faces-grid" data-reveal>
+      <div class="faces-mosaic">
+        <img class="fm-large" src="/face-1.jpg" alt="AIR Lab team" />
+        <img class="fm-top" src="/face-3.jpg" alt="AIR Lab team" />
+        <img class="fm-bot" src="/face-6.jpg" alt="AIR Lab team" />
+      </div>
+      <div class="faces-text">
+        <p class="faces-body">Engineers, developers, ATM specialists, ATCOs, and researchers from Thales and CAAS working side by side to advance aviation across the Asia-Pacific region.</p>
+        <div class="faces-chips">
+          <span class="face-chip">Engineering</span>
+          <span class="face-chip">ATM Operations</span>
+          <span class="face-chip">Research</span>
+          <span class="face-chip">Data Science</span>
+        </div>
+        <div style="margin-top:8px;">
+          <a href="/team" class="btn-ghost">Meet the full team →</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- TEAM PREVIEW -->
   <section class="team" id="team">
     <div class="team-intro-grid">
-      <img class="team-photo-large" src="/team-photo.jpg" alt="AIR Lab team" />
-      <div class="team-intro-text">
+      <img class="team-photo-large" src="/team-photo.jpg" alt="AIR Lab team" data-reveal />
+      <div class="team-intro-text" data-reveal data-reveal-delay="120">
         <div class="section-label">Our team</div>
         <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
         <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
@@ -221,7 +277,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- NEWS PREVIEW -->
   <section class="news" id="news">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;" data-reveal>
       <div>
         <div class="section-label">Latest from AIR Lab</div>
         <h2 class="section-title" style="color:#fff;">News &amp;<br><strong>updates</strong></h2>
@@ -229,8 +285,8 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       <a href="/news" class="btn-ghost">All articles →</a>
     </div>
     <div class="news-grid">
-      {latestNews.map((article: any) => (
-        <div class="news-card">
+      {latestNews.map((article: any, i: number) => (
+        <div class="news-card" data-reveal data-reveal-delay={i * 100}>
           <div class="news-content">
             <span class="news-tag">{article.category}</span>
             {article.externalUrl ? (
@@ -248,7 +304,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- PARTNERS STRIP -->
   <section class="partners" id="partners">
-    <div class="section-header" style="margin-bottom:40px;">
+    <div class="section-header" style="margin-bottom:40px;" data-reveal>
       <div class="section-label">Our Partners</div>
       <h2 class="section-title">Built with the<br><strong>best in aviation</strong></h2>
     </div>
@@ -266,7 +322,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
   <!-- CONTACT CTA -->
   <div class="contact-cta" id="contact">
-    <div class="contact-cta-text">
+    <div class="contact-cta-text" data-reveal>
       <div class="section-label">Get involved</div>
       <h2 class="section-title" set:html={ctaTitle.replace(/(collaboration\??)/i, '<br><strong>$1</strong>')}></h2>
       <p class="section-intro">{ctaSubtitle}</p>
@@ -275,7 +331,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <a href="/join-us" class="btn-outline-white">Join the team →</a>
       </div>
     </div>
-    <div class="contact-detail">
+    <div class="contact-detail" data-reveal data-reveal-delay="150">
       <div class="contact-item">
         <span class="contact-item-label">Location</span>
         <span class="contact-item-value" set:html={ctaLocation.replace(/\n/g, '<br>')}></span>
@@ -300,5 +356,34 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 
 <script>
   const video = document.getElementById('hero-video') as HTMLVideoElement;
-  if (video) video.play().catch(() => {});
+  if (video) { video.playbackRate = 0.5; video.play().catch(() => {}); }
+
+  const ucTabs = Array.from(document.querySelectorAll<HTMLElement>('.uc-tab'));
+  const ucPanels = Array.from(document.querySelectorAll<HTMLElement>('.uc-panel'));
+  if (ucTabs.length) {
+    let ucCurrent = 0;
+    let ucTimer: ReturnType<typeof setInterval>;
+
+    function ucActivate(idx: number) {
+      ucCurrent = idx;
+      ucTabs.forEach((t, i) => {
+        const wasActive = t.classList.contains('active');
+        t.classList.toggle('active', i === idx);
+        if (i === idx && !wasActive) {
+          const bar = t.querySelector<HTMLElement>('.uc-progress-bar');
+          if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = ''; }
+        }
+      });
+      ucPanels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    }
+
+    function ucStartTimer() {
+      clearInterval(ucTimer);
+      ucTimer = setInterval(() => ucActivate((ucCurrent + 1) % ucTabs.length), 5000);
+    }
+
+    ucTabs.forEach((tab, i) => tab.addEventListener('click', () => { ucActivate(i); ucStartTimer(); }));
+    ucActivate(0);
+    ucStartTimer();
+  }
 </script>

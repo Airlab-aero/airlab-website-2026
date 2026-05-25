@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { client, newsListQuery, imageUrl } from '../../lib/sanity';
 
 const articles = await client.fetch(newsListQuery);
+const categories = ['All', ...Array.from(new Set(articles.map((a: any) => a.category).filter(Boolean)))];
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -23,9 +24,14 @@ function formatDate(dateStr: string) {
   </div>
 
   <section style="background: var(--off-white);">
-    <div class="news-grid">
+    <div class="filter-tabs">
+      {categories.map((cat: string) => (
+        <button class={`filter-tab${cat === 'All' ? ' active' : ''}`} data-cat={cat}>{cat}</button>
+      ))}
+    </div>
+    <div class="news-grid" id="news-grid">
       {articles.map((article: any) => (
-        <div class="news-card" style="background: #fff; border-color: var(--border);">
+        <div class="news-card" data-cat={article.category} style="background: #fff; border-color: var(--border);">
           {(article.coverImageUrl || article.coverImage) && (
             <img
               class="news-img"
@@ -57,9 +63,28 @@ function formatDate(dateStr: string) {
 </Base>
 
 <style>
+  .filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .filter-tab { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 7px 18px; font-size: 13px; color: var(--muted); cursor: pointer; transition: all 0.2s; font-family: var(--font); }
+  .filter-tab:hover { border-color: var(--teal); color: var(--teal); }
+  .filter-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
   .news-card { background: #fff; }
   .news-tag { color: var(--red) !important; }
   .news-title { color: var(--navy) !important; }
   .news-title:hover { color: var(--teal) !important; }
   .news-excerpt { color: var(--muted) !important; }
 </style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.filter-tab');
+  const cards = document.querySelectorAll<HTMLElement>('.news-card[data-cat]');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      cards.forEach(card => {
+        card.style.display = (cat === 'All' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>

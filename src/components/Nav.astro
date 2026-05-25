@@ -1,4 +1,10 @@
 ---
+/*
+ * Nav.astro
+ * Design: transparent at page top → frosted navy on scroll (nav-scrolled class toggled by Base.astro).
+ * Mobile: hamburger button reveals full-screen overlay menu.
+ * Active state: teal underline indicator instead of white-only color.
+ */
 const currentPath = Astro.url.pathname;
 ---
 
@@ -6,18 +12,86 @@ const currentPath = Astro.url.pathname;
   <a href="/" class="nav-logo">
     <img src="/airlab-logo.png" alt="AIR Lab" />
   </a>
+
   <ul class="nav-links">
-    <li><a href="/#platform" class={currentPath === '/' ? '' : ''}>RCP Platform</a></li>
+    <li><a href="/#platform">RCP Platform</a></li>
     <li><a href="/#use-cases">Use Cases</a></li>
     <li><a href="/team" class={currentPath.startsWith('/team') ? 'nav-active' : ''}>Team</a></li>
     <li><a href="/news" class={currentPath.startsWith('/news') ? 'nav-active' : ''}>News</a></li>
     <li><a href="/regional-health" class={currentPath.startsWith('/regional-health') ? 'nav-active' : ''}>Regional Health</a></li>
     <li><a href="/partners" class={currentPath.startsWith('/partners') ? 'nav-active' : ''}>Partners</a></li>
     <li><a href="/contact" class={currentPath.startsWith('/contact') ? 'nav-active' : ''}>Contact</a></li>
-    <li><a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-cta">Log In to RCP</a></li>
+    <li>
+      <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-cta">
+        Log In to RCP
+      </a>
+    </li>
   </ul>
+
+  <button class="nav-burger" id="nav-burger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
+<!-- Mobile full-screen menu -->
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Navigation menu">
+  <a href="/#platform">RCP Platform</a>
+  <a href="/#use-cases">Use Cases</a>
+  <a href="/team">Team</a>
+  <a href="/news">News</a>
+  <a href="/regional-health">Regional Health</a>
+  <a href="/partners">Partners</a>
+  <a href="/contact">Contact</a>
+  <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-mobile-cta">
+    Log In to RCP →
+  </a>
+</div>
+
 <style>
-  .nav-active { color: #fff !important; }
+  .nav-active {
+    color: #fff !important;
+    position: relative;
+  }
+  .nav-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
 </style>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const mobileMenu = document.getElementById('nav-mobile');
+
+  if (burger && mobileMenu) {
+    const open = () => {
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    burger.addEventListener('click', () => {
+      burger.classList.contains('open') ? close() : open();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') close();
+    });
+  }
+</script>
