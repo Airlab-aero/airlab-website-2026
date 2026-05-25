@@ -24,6 +24,7 @@ const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institu
 const ctaLocation = cms.ctaLocation ?? 'AIR Lab @ WeWork, Suntec Tower 5\nTemasek Boulevard, Singapore 038985';
 const ctaPlatformUrl = cms.ctaPlatformUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title="AIR Lab — Regional Collaboration Platform" description="A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management.">
@@ -192,7 +193,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
           <span class="uc-panel-tag">Live Data</span>
         </div>
         <div class="uc-panel-img">
-          <img src="/uc-rsa.jpg" alt="Regional Situational Awareness" loading="lazy" />
+          <img src={`${base}/uc-rsa.jpg`} alt="Regional Situational Awareness" loading="lazy" />
         </div>
       </div>
       <div class="uc-panel" data-panel="1">
@@ -214,7 +215,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
           <span class="uc-panel-tag">Research</span>
         </div>
         <div class="uc-panel-img">
-          <img src="/uc-fts.jpg" alt="Fast-Time Simulation" loading="lazy" />
+          <img src={`${base}/uc-fts.jpg`} alt="Fast-Time Simulation" loading="lazy" />
         </div>
       </div>
       <div class="uc-panel" data-panel="3">
@@ -225,7 +226,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
           <span class="uc-panel-tag">Innovation</span>
         </div>
         <div class="uc-panel-img">
-          <img src="/uc-weather.jpg" alt="Weather Data Integration" loading="lazy" />
+          <img src={`${base}/uc-weather.jpg`} alt="Weather Data Integration" loading="lazy" />
         </div>
       </div>
     </div>
@@ -240,9 +241,9 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
   <section class="faces" id="faces">
     <div class="faces-grid" data-reveal>
       <div class="faces-mosaic">
-        <img class="fm-large" src="/face-1.jpg" alt="AIR Lab team" />
-        <img class="fm-top" src="/face-3.jpg" alt="AIR Lab team" />
-        <img class="fm-bot" src="/face-6.jpg" alt="AIR Lab team" />
+        <img class="fm-large" src={`${base}/face-1.jpg`} alt="AIR Lab team" />
+        <img class="fm-top" src={`${base}/face-3.jpg`} alt="AIR Lab team" />
+        <img class="fm-bot" src={`${base}/face-6.jpg`} alt="AIR Lab team" />
       </div>
       <div class="faces-text">
         <p class="faces-body">Engineers, developers, ATM specialists, ATCOs, and researchers from Thales and CAAS working side by side to advance aviation across the Asia-Pacific region.</p>
@@ -262,7 +263,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
   <!-- TEAM PREVIEW -->
   <section class="team" id="team">
     <div class="team-intro-grid">
-      <img class="team-photo-large" src="/team-photo.jpg" alt="AIR Lab team" data-reveal />
+      <img class="team-photo-large" src={`${base}/team-photo.jpg`} alt="AIR Lab team" data-reveal />
       <div class="team-intro-text" data-reveal data-reveal-delay="120">
         <div class="section-label">Our team</div>
         <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
