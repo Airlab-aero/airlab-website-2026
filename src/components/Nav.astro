@@ -6,21 +6,22 @@
  * Active state: teal underline indicator instead of white-only color.
  */
 const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <nav id="nav">
-  <a href="/" class="nav-logo">
-    <img src="/airlab-logo.png" alt="AIR Lab" />
+  <a href={`${base}/`} class="nav-logo">
+    <img src={`${base}/airlab-logo.png`} alt="AIR Lab" />
   </a>
 
   <ul class="nav-links">
-    <li><a href="/#platform">RCP Platform</a></li>
-    <li><a href="/#use-cases">Use Cases</a></li>
-    <li><a href="/team" class={currentPath.startsWith('/team') ? 'nav-active' : ''}>Team</a></li>
-    <li><a href="/news" class={currentPath.startsWith('/news') ? 'nav-active' : ''}>News</a></li>
-    <li><a href="/regional-health" class={currentPath.startsWith('/regional-health') ? 'nav-active' : ''}>Regional Health</a></li>
-    <li><a href="/partners" class={currentPath.startsWith('/partners') ? 'nav-active' : ''}>Partners</a></li>
-    <li><a href="/contact" class={currentPath.startsWith('/contact') ? 'nav-active' : ''}>Contact</a></li>
+    <li><a href={`${base}/#platform`}>RCP Platform</a></li>
+    <li><a href={`${base}/#use-cases`}>Use Cases</a></li>
+    <li><a href={`${base}/team`} class={currentPath.startsWith('/team') ? 'nav-active' : ''}>Team</a></li>
+    <li><a href={`${base}/news`} class={currentPath.startsWith('/news') ? 'nav-active' : ''}>News</a></li>
+    <li><a href={`${base}/regional-health`} class={currentPath.startsWith('/regional-health') ? 'nav-active' : ''}>Regional Health</a></li>
+    <li><a href={`${base}/partners`} class={currentPath.startsWith('/partners') ? 'nav-active' : ''}>Partners</a></li>
+    <li><a href={`${base}/contact`} class={currentPath.startsWith('/contact') ? 'nav-active' : ''}>Contact</a></li>
     <li>
       <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-cta">
         Log In to RCP
@@ -37,13 +38,13 @@ const currentPath = Astro.url.pathname;
 
 <!-- Mobile full-screen menu -->
 <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Navigation menu">
-  <a href="/#platform">RCP Platform</a>
-  <a href="/#use-cases">Use Cases</a>
-  <a href="/team">Team</a>
-  <a href="/news">News</a>
-  <a href="/regional-health">Regional Health</a>
-  <a href="/partners">Partners</a>
-  <a href="/contact">Contact</a>
+  <a href={`${base}/#platform`}>RCP Platform</a>
+  <a href={`${base}/#use-cases`}>Use Cases</a>
+  <a href={`${base}/team`}>Team</a>
+  <a href={`${base}/news`}>News</a>
+  <a href={`${base}/regional-health`}>Regional Health</a>
+  <a href={`${base}/partners`}>Partners</a>
+  <a href={`${base}/contact`}>Contact</a>
   <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="nav-mobile-cta">
     Log In to RCP →
   </a>
