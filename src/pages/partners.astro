@@ -8,6 +8,7 @@ const partners = await client.fetch(partnersQuery);
 const founding = partners.filter((p: any) => p.order <= 2);
 const local = partners.filter((p: any) => p.order > 2 && p.order <= 6);
 const solutions = partners.filter((p: any) => p.order > 6);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title="Partners" description="AIR Lab's ecosystem of founding, local, and solutions partners advancing aviation technology in the Asia-Pacific region.">
@@ -75,7 +76,7 @@ const solutions = partners.filter((p: any) => p.order > 6);
       <div class="section-label">Become a partner</div>
       <h2 class="section-title" style="color: #fff; margin-bottom: 20px;">Interested in<br><strong>collaborating?</strong></h2>
       <p style="font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 40px; font-weight: 300; line-height: 1.65;">We're always looking for partners who share our vision of open, collaborative aviation innovation.</p>
-      <a href="/contact" class="btn-airlab">Get in touch →</a>
+      <a href={`${base}/contact`} class="btn-airlab">Get in touch →</a>
     </div>
   </section>
 

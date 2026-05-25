@@ -13,6 +13,7 @@ export interface Props {
 }
 
 const { title, description = 'AIR Lab — Advancing global aviation efficiency through innovative ATM solutions.' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ const { title, description = 'AIR Lab — Advancing global aviation efficiency t
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | AIR Lab</title>
-    <link rel="icon" type="image/png" href="/airlab-logo.png" />
+    <link rel="icon" type="image/png" href={`${base}/airlab-logo.png`} />
   </head>
   <body>
     <slot name="nav" />

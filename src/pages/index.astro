@@ -232,7 +232,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
 
     <div class="uc-actions">
-      <a href="/contact" class="btn-navy">Request Platform Access</a>
+      <a href={`${base}/contact`} class="btn-navy">Request Platform Access</a>
       <a href="https://airspace-hub.aero" class="btn-outline-navy" target="_blank">Open AIR Space Platform →</a>
     </div>
   </section>
@@ -254,7 +254,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <span class="face-chip">Data Science</span>
         </div>
         <div style="margin-top:8px;">
-          <a href="/team" class="btn-ghost">Meet the full team →</a>
+          <a href={`${base}/team`} class="btn-ghost">Meet the full team →</a>
         </div>
       </div>
     </div>
@@ -269,8 +269,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
         <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="/team" class="btn-white">Meet the full team</a>
-          <a href="/contact" class="btn-outline-white">Contact AIR Lab</a>
+          <a href={`${base}/team`} class="btn-white">Meet the full team</a>
+          <a href={`${base}/contact`} class="btn-outline-white">Contact AIR Lab</a>
         </div>
       </div>
     </div>
@@ -283,7 +283,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="section-label">Latest from AIR Lab</div>
         <h2 class="section-title" style="color:#fff;">News &amp;<br><strong>updates</strong></h2>
       </div>
-      <a href="/news" class="btn-ghost">All articles →</a>
+      <a href={`${base}/news`} class="btn-ghost">All articles →</a>
     </div>
     <div class="news-grid">
       {latestNews.map((article: any, i: number) => (
@@ -293,7 +293,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             {article.externalUrl ? (
               <a href={article.externalUrl} target="_blank" rel="noopener" class="news-title">{article.title}</a>
             ) : (
-              <a href={`/news/${article.slug.current}`} class="news-title">{article.title}</a>
+              <a href={`${base}/news/${article.slug.current}`} class="news-title">{article.title}</a>
             )}
             <p class="news-excerpt">{article.excerpt}</p>
             <span class="news-date">{article.publishedAt}</span>
@@ -317,7 +317,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">Tomorrow.io</span></div>
     </div>
     <div style="margin-top:32px;">
-      <a href="/partners" class="btn-outline-navy">View all partners →</a>
+      <a href={`${base}/partners`} class="btn-outline-navy">View all partners →</a>
     </div>
   </section>
 
@@ -328,8 +328,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h2 class="section-title" set:html={ctaTitle.replace(/(collaboration\??)/i, '<br><strong>$1</strong>')}></h2>
       <p class="section-intro">{ctaSubtitle}</p>
       <div class="contact-cta-actions">
-        <a href="/contact" class="btn-white">Contact AIR Lab</a>
-        <a href="/join-us" class="btn-outline-white">Join the team →</a>
+        <a href={`${base}/contact`} class="btn-white">Contact AIR Lab</a>
+        <a href={`${base}/join-us`} class="btn-outline-white">Join the team →</a>
       </div>
     </div>
     <div class="contact-detail" data-reveal data-reveal-delay="150">

@@ -16,6 +16,7 @@ const stats = cms.stats ?? [
 const careersDescription = cms.careersDescription ?? 'AIR Lab positions are posted on the Thales careers portal. Browse current openings in software engineering, ATM operations, data science, and more.';
 const careersUrl = cms.careersUrl ?? 'https://www.thalesgroup.com/en/careers';
 const address = cms.address ?? 'AIR Lab @ WeWork\nSuntec Tower 5, Temasek Boulevard\nSingapore 038985';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title="Join Us" description="Join AIR Lab and help shape the future of air traffic management through open technologies and collaboration.">
@@ -69,7 +70,7 @@ const address = cms.address ?? 'AIR Lab @ WeWork\nSuntec Tower 5, Temasek Boulev
         <div style="margin-top: 32px; background: var(--navy); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 16px;">
           <div style="font-size: 15px; font-weight: 600; color: #fff;">Based in Singapore</div>
           <div style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; font-weight: 300;" set:html={address.replace(/\n/g, '<br>')}></div>
-          <a href="/contact" style="font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-top: 8px; transition: color 0.2s;">
+          <a href={`${base}/contact`} style="font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-top: 8px; transition: color 0.2s;">
             Questions? Contact us →
           </a>
         </div>
