@@ -157,78 +157,41 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- USE CASES -->
   <section class="use-cases" id="use-cases">
     <div class="uc-header" data-reveal>
-      <div class="section-label">Use Cases</div>
+      <div class="section-label">Regional Collaboration Platform</div>
       <h2 class="section-title">What you can do<br><strong>on the platform</strong></h2>
     </div>
 
-    <div class="uc-tabs" role="tablist">
-      <button class="uc-tab active" data-uc="0" role="tab">
-        <span class="uc-tab-num">01</span>
-        <span class="uc-tab-title">Regional Situational Awareness</span>
-        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+    <div class="pillar-tabs" id="pillarTabs">
+      <button class="pillar-tab active" data-pillar="observe">
+        <span class="pillar-num">01</span>
+        <span class="pillar-name">Observe</span>
+        <span class="pillar-desc">Live situational awareness</span>
       </button>
-      <button class="uc-tab" data-uc="1" role="tab">
-        <span class="uc-tab-num">02</span>
-        <span class="uc-tab-title">FF-ICE Flight Planning</span>
-        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      <button class="pillar-tab" data-pillar="understand">
+        <span class="pillar-num">02</span>
+        <span class="pillar-name">Understand</span>
+        <span class="pillar-desc">Data into insight</span>
       </button>
-      <button class="uc-tab" data-uc="2" role="tab">
-        <span class="uc-tab-num">03</span>
-        <span class="uc-tab-title">Fast-Time Simulation</span>
-        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      <button class="pillar-tab" data-pillar="simulate">
+        <span class="pillar-num">03</span>
+        <span class="pillar-name">Simulate</span>
+        <span class="pillar-desc">Model futures</span>
       </button>
-      <button class="uc-tab" data-uc="3" role="tab">
-        <span class="uc-tab-num">04</span>
-        <span class="uc-tab-title">Weather &amp; City-Pair Optimization</span>
-        <div class="uc-progress-track"><div class="uc-progress-bar"></div></div>
+      <button class="pillar-tab" data-pillar="collaborate">
+        <span class="pillar-num">04</span>
+        <span class="pillar-name">Collaborate</span>
+        <span class="pillar-desc">Coordinate across borders</span>
+      </button>
+      <button class="pillar-tab" data-pillar="explore">
+        <span class="pillar-num">05</span>
+        <span class="pillar-name">Explore</span>
+        <span class="pillar-desc">What-if scenarios</span>
       </button>
     </div>
 
-    <div class="uc-stage">
-      <div class="uc-panel active" data-panel="0">
-        <div class="uc-panel-text">
-          <div class="uc-panel-num">01</div>
-          <h3 class="uc-panel-title">Regional Situational Awareness</h3>
-          <p class="uc-panel-body">Common 4D picture of airspace powered by live, historical, and simulated data. Global source connections, surveillance data fusion, estimated boundary crossings, and traffic hotspot detection.</p>
-          <span class="uc-panel-tag">Live Data</span>
-        </div>
-        <div class="uc-panel-img">
-          <img src={`${base}/uc-rsa.jpg`} alt="Regional Situational Awareness" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-panel" data-panel="1">
-        <div class="uc-panel-text">
-          <div class="uc-panel-num">02</div>
-          <h3 class="uc-panel-title">FF-ICE Flight Planning</h3>
-          <p class="uc-panel-body">Full ICAO FF-ICE/R1 services suite enabling real-time collaborative flight planning between airlines and ANSPs. Trajectory negotiation, pre-departure agreement, and live status visibility.</p>
-          <span class="uc-panel-tag">ICAO Standard</span>
-        </div>
-        <div class="uc-panel-img">
-          <img src="https://airlab.aero/wp-content/uploads/2025/05/65c15a6fded83a34089b002c39f1a54ab0d10156-1024x579.png" alt="FF-ICE Flight Planning" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-panel" data-panel="2">
-        <div class="uc-panel-text">
-          <div class="uc-panel-num">03</div>
-          <h3 class="uc-panel-title">Fast-Time Simulation</h3>
-          <p class="uc-panel-body">Accelerated simulation environment to test ATM concepts and procedures at scale, running scenarios faster than real-time.</p>
-          <span class="uc-panel-tag">Research</span>
-        </div>
-        <div class="uc-panel-img">
-          <img src={`${base}/uc-fts.jpg`} alt="Fast-Time Simulation" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-panel" data-panel="3">
-        <div class="uc-panel-text">
-          <div class="uc-panel-num">04</div>
-          <h3 class="uc-panel-title">Weather &amp; City-Pair Optimization</h3>
-          <p class="uc-panel-body">Integrating meteorological data from partners like Meteomatics into trajectory planning and ATM workflows, alongside route optimization for the highest-traffic corridors for greener and more efficient operations.</p>
-          <span class="uc-panel-tag">Innovation</span>
-        </div>
-        <div class="uc-panel-img">
-          <img src={`${base}/uc-weather.jpg`} alt="Weather Data Integration" loading="lazy" />
-        </div>
-      </div>
+    <div class="pillar-stage">
+      <div class="pillar-features" id="featureList"></div>
+      <div class="pillar-detail" id="featureDetail"></div>
     </div>
 
     <div class="uc-actions">
@@ -359,32 +322,79 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const video = document.getElementById('hero-video') as HTMLVideoElement;
   if (video) { video.playbackRate = 0.5; video.play().catch(() => {}); }
 
-  const ucTabs = Array.from(document.querySelectorAll<HTMLElement>('.uc-tab'));
-  const ucPanels = Array.from(document.querySelectorAll<HTMLElement>('.uc-panel'));
-  if (ucTabs.length) {
-    let ucCurrent = 0;
-    let ucTimer: ReturnType<typeof setInterval>;
+  // ── Platform pillars ──
+  const RCP_BASE = import.meta.env.BASE_URL.replace(/\/$/, '') + '/rcp';
 
-    function ucActivate(idx: number) {
-      ucCurrent = idx;
-      ucTabs.forEach((t, i) => {
-        const wasActive = t.classList.contains('active');
-        t.classList.toggle('active', i === idx);
-        if (i === idx && !wasActive) {
-          const bar = t.querySelector<HTMLElement>('.uc-progress-bar');
-          if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = ''; }
-        }
+  const PILLARS: Record<string, { features: { id: string; title: string; desc: string; tag: string; src: string; type: 'img' | 'video' }[] }> = {
+    observe: { features: [
+      { id: 'lasd', title: 'Live Air Situation Display', desc: 'Global surveillance air-situation picture from different sources (track fusion), providing a comprehensive and increasingly stable view of regional air traffic.', tag: 'Real-time', src: RCP_BASE+'/observe-asd.png', type: 'img' },
+      { id: 'hybrid', title: 'Hybrid Mode & Replay', desc: 'Blend live and historical data with simulated traffic. Replay any past traffic scenario for analysis or training.', tag: 'Analysis', src: RCP_BASE+'/observe-hybrid.png', type: 'img' },
+      { id: 'fpg', title: 'Flight Plan & Trajectory Generator', desc: 'AI-driven generator creating optimised 4D trajectories using ML models to balance efficiency, operational constraints, and dynamic factors such as weather.', tag: 'AI', src: RCP_BASE+'/observe-fpg.mp4', type: 'video' },
+      { id: 'sigmet', title: 'SIGMET', desc: 'Weather-related information, including SIGMET-based constraints, integrated into the RCP environment to improve shared situational awareness and support weather-aware traffic assessment.', tag: 'Weather', src: RCP_BASE+'/observe-sigmet.mp4', type: 'video' },
+    ]},
+    understand: { features: [
+      { id: 'hotspot', title: 'Hotspots & Demand Forecasting', desc: 'Predict saturation points and capacity bottlenecks under different traffic growth scenarios across the SEA region.', tag: 'Forecasting', src: RCP_BASE+'/understand-hotspots.mp4', type: 'video' },
+      { id: 'kpi', title: 'KPIs & Regional Indicators', desc: 'Capacity, punctuality, and efficiency across your region at a glance — dashboards built for ANSP operational needs.', tag: 'Analytics', src: RCP_BASE+'/understand-kpi.png', type: 'img' },
+      { id: 'rh', title: 'Regional Health', desc: 'A monthly snapshot of South East Asian airspace — routes, airports, flight levels, and peak traffic trends.', tag: 'Monthly', src: RCP_BASE+'/understand-regional-health.png', type: 'img' },
+    ]},
+    simulate: { features: [
+      { id: 'scenario', title: 'Scenario Editor', desc: 'Build any traffic or airspace scenario in minutes — modify traffic density, routes, sector boundaries, and weather constraints.', tag: 'Editor', src: RCP_BASE+'/simulate-scenario.mp4', type: 'video' },
+      { id: 'fts', title: 'Fast-time Simulation', desc: 'Run a full day of traffic in seconds. Compare outcomes side by side across multiple scenarios to validate ATM concepts.', tag: 'Research', src: RCP_BASE+'/simulate-fts.mp4', type: 'video' },
+      { id: 'cdr', title: 'Area Avoidance & CDR', desc: 'Define exclusion zones and watch the network automatically re-route around them — conflict detection and resolution built in.', tag: 'Safety', src: RCP_BASE+'/simulate-cdr.mp4', type: 'video' },
+    ]},
+    collaborate: { features: [
+      { id: 'ffice', title: 'FF-ICE Trajectory Negotiation', desc: 'eAU and eASP services. FF-ICE/R1 flight plans integrated into the RCP — agreed trajectories available for collaborative awareness and trajectory forecast between ANSPs and airlines.', tag: 'ICAO Standard', src: RCP_BASE+'/collaborate-ffice.mp4', type: 'video' },
+    ]},
+    explore: { features: [
+      { id: 'whatif', title: 'What-if Explorer', desc: 'Toggle constraints on and off — runway closures, sector redesigns, demand surges — and instantly see the downstream impact on the regional network.', tag: 'Simulation', src: RCP_BASE+'/explore-whatif.mp4', type: 'video' },
+    ]},
+  };
+
+  let currentPillar = 'observe';
+
+  function renderFeatures(pillar: string) {
+    const list = document.getElementById('featureList')!;
+    const feats = PILLARS[pillar].features;
+    list.innerHTML = feats.map((f, i) => `
+      <button class="feat-btn ${i === 0 ? 'active' : ''}" data-idx="${i}">
+        <div class="feat-dot"></div>
+        <div class="feat-text"><h4>${f.title}</h4></div>
+      </button>
+    `).join('');
+    list.querySelectorAll<HTMLButtonElement>('.feat-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        list.querySelectorAll('.feat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderDetail(currentPillar, i);
       });
-      ucPanels.forEach((p, i) => p.classList.toggle('active', i === idx));
-    }
-
-    function ucStartTimer() {
-      clearInterval(ucTimer);
-      ucTimer = setInterval(() => ucActivate((ucCurrent + 1) % ucTabs.length), 5000);
-    }
-
-    ucTabs.forEach((tab, i) => tab.addEventListener('click', () => { ucActivate(i); ucStartTimer(); }));
-    ucActivate(0);
-    ucStartTimer();
+    });
   }
+
+  function renderDetail(pillar: string, idx: number) {
+    const f = PILLARS[pillar].features[idx];
+    const detail = document.getElementById('featureDetail')!;
+    const media = f.type === 'video'
+      ? `<video src="${f.src}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:contain;display:block;"></video>`
+      : `<img src="${f.src}" style="width:100%;height:100%;object-fit:contain;display:block;background:#0b1a2f;" alt="${f.title}">`;
+    detail.innerHTML = `
+      <div class="detail-body">
+        <div class="detail-title">${f.title}</div>
+        <div class="detail-desc">${f.desc}</div>
+      </div>
+      <div class="detail-img">${media}</div>
+    `;
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.pillar-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentPillar = tab.dataset.pillar!;
+      renderFeatures(currentPillar);
+      renderDetail(currentPillar, 0);
+    });
+  });
+
+  renderFeatures('observe');
+  renderDetail('observe', 0);
 </script>
