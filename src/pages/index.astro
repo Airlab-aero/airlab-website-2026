@@ -190,8 +190,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
 
     <div class="pillar-stage">
-      <div class="pillar-features" id="featureList"></div>
-      <div class="pillar-detail" id="featureDetail"></div>
+      <div class="pillar-left" id="pillarLeft"></div>
+      <div class="pillar-visual" id="pillarVisual"></div>
+      <nav class="pillar-feat-nav" id="pillarNav"></nav>
     </div>
 
     <div class="uc-actions">
@@ -351,38 +352,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   };
 
   let currentPillar = 'observe';
+  let currentIdx = 0;
 
-  function renderFeatures(pillar: string) {
-    const list = document.getElementById('featureList')!;
+  function renderPillar(pillar: string, idx: number) {
+    currentIdx = idx;
     const feats = PILLARS[pillar].features;
-    list.innerHTML = feats.map((f, i) => `
-      <button class="feat-btn ${i === 0 ? 'active' : ''}" data-idx="${i}">
-        <div class="feat-dot"></div>
-        <div class="feat-text"><h4>${f.title}</h4></div>
-      </button>
-    `).join('');
-    list.querySelectorAll<HTMLButtonElement>('.feat-btn').forEach((btn, i) => {
-      btn.addEventListener('click', () => {
-        list.querySelectorAll('.feat-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderDetail(currentPillar, i);
-      });
-    });
-  }
+    const f = feats[idx];
 
-  function renderDetail(pillar: string, idx: number) {
-    const f = PILLARS[pillar].features[idx];
-    const detail = document.getElementById('featureDetail')!;
-    const media = f.type === 'video'
-      ? `<video src="${f.src}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
-      : `<img src="${f.src}" style="width:100%;height:100%;object-fit:cover;display:block;" alt="${f.title}">`;
-    detail.innerHTML = `
-      <div class="detail-body">
-        <div class="detail-title">${f.title}</div>
-        <div class="detail-desc">${f.desc}</div>
-      </div>
-      <div class="detail-img">${media}</div>
-    `;
+    // Left panel: tag → title → desc → feature nav
+    const left = document.getElementById('pillarLeft')!;
+    // Left: tag → title → desc
+    left.innerHTML = `
+      <div class="pl-info">
+        <span class="pl-tag">${f.tag}</span>
+        <div class="pl-title">${f.title}</div>
+        <p class="pl-desc">${f.desc}</p>
+      </div>`;
+
+    // Center: visual
+    const visual = document.getElementById('pillarVisual')!;
+    visual.innerHTML = f.type === 'video'
+      ? `<video src="${f.src}" autoplay muted loop playsinline></video>`
+      : `<img src="${f.src}" alt="${f.title}">`;
+
+    // Right: feature nav
+    const nav = document.getElementById('pillarNav')!;
+    nav.innerHTML = feats.map((ft, i) => `
+      <button class="pfn-btn ${i === idx ? 'active' : ''}" data-fi="${i}">
+        <span class="pfn-dot"></span>
+        <span class="pfn-name">${ft.title}</span>
+      </button>`).join('');
+    nav.querySelectorAll<HTMLButtonElement>('.pfn-btn').forEach(btn => {
+      btn.addEventListener('click', () => renderPillar(pillar, Number(btn.dataset.fi)));
+    });
   }
 
   document.querySelectorAll<HTMLButtonElement>('.pillar-tab').forEach(tab => {
@@ -390,11 +392,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       currentPillar = tab.dataset.pillar!;
-      renderFeatures(currentPillar);
-      renderDetail(currentPillar, 0);
+      renderPillar(currentPillar, 0);
     });
   });
 
-  renderFeatures('observe');
-  renderDetail('observe', 0);
+  renderPillar('observe', 0);
 </script>
