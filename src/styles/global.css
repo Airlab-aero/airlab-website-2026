@@ -280,28 +280,6 @@ section { padding: 100px 80px; }
 
 .uc-actions { display: flex; gap: 16px; margin-top: 36px; }
 
-/* ── RCP IN ACTION ── */
-.rcp-action { background: #fff; padding: 100px 80px 80px; }
-.rca-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
-.rca-intro { font-size: 16px; color: var(--muted); line-height: 1.75; font-weight: 300; }
-
-.rca-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
-
-.rca-col-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
-.rca-col-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--teal); }
-.rca-col-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
-
-.rca-card { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px; margin-bottom: 10px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
-.rca-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6,113,129,0.08); }
-.rca-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 9px; }
-.rca-tag-active { color: #059669; }
-.rca-tag-live { color: #2563eb; }
-.rca-card-title { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 8px; }
-.rca-card-body { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
-.rca-card-meta { display: flex; justify-content: space-between; font-size: 11px; color: #aaa; padding-top: 10px; border-top: 1px solid var(--border); font-weight: 500; }
-
-.rca-actions { display: flex; gap: 16px; margin-top: 48px; }
-
 /* ── FACES OF AIR LAB ── */
 .faces { background: var(--navy); padding: 0; overflow: hidden; }
 .faces-grid { display: grid; grid-template-columns: 3fr 2fr; min-height: 540px; }
@@ -467,10 +445,6 @@ footer {
   .hero-content { padding: 0 24px; }
   .about-strip, .team-intro-grid, .contact-cta { grid-template-columns: 1fr; padding: 48px 24px; }
   .cap-grid, .news-grid, .team-grid { grid-template-columns: 1fr 1fr; }
-  .rca-header { grid-template-columns: 1fr; gap: 20px; }
-  .rca-columns { grid-template-columns: 1fr; }
-  .rcp-action { padding: 72px 24px 56px; }
-  .rca-actions { flex-wrap: wrap; }
   .faces-grid { grid-template-columns: 1fr; }
   .faces-mosaic { height: 280px; }
   .faces-text { padding: 48px 24px; }
