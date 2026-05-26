@@ -271,12 +271,12 @@ section { padding: 100px 80px; }
 .feat-text h4 { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); margin: 0; line-height: 1.35; }
 .feat-btn.active h4 { color: #fff; font-weight: 700; }
 
-.pillar-detail { display: grid; grid-template-columns: 1fr 1.4fr; height: 100%; }
-.detail-body { padding: 32px 28px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-right: 1px solid rgba(255,255,255,0.08); overflow: hidden; background: var(--navy); }
+.pillar-detail { display: grid; grid-template-columns: 1fr 1.4fr; height: 100%; align-items: stretch; }
+.detail-body { padding: 32px 28px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-right: 1px solid rgba(255,255,255,0.08); overflow: hidden; background: var(--navy); align-self: stretch; }
 .detail-title { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.25; }
 .detail-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; }
-.detail-img { overflow: hidden; background: var(--navy); height: 100%; }
-.detail-img img, .detail-img video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.detail-img { overflow: hidden; background: var(--navy); align-self: stretch; }
+.detail-img img, .detail-img video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .uc-actions { display: flex; gap: 16px; margin-top: 36px; }
 
