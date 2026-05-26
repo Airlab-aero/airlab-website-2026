@@ -3,6 +3,153 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// ─── Card data ────────────────────────────────────────────────────────────────
+// To add a photo: drop the file in public/images/rcp-in-action/ and set the
+// `image` field to the filename (e.g. image: 'sea-fir-workshop.jpg').
+// Leave `image` undefined or remove it to show the placeholder.
+// ──────────────────────────────────────────────────────────────────────────────
+
+type Tag = 'Workshop' | 'Working Group' | 'Training' | 'Active' | 'Partner' | 'Live' | 'Research' | 'AI';
+
+interface Card {
+  tag: Tag;
+  title: string;
+  body: string;
+  meta: [string, string];
+  image?: string;
+}
+
+const WORKSHOPS: Card[] = [
+  {
+    tag: 'Workshop',
+    title: 'SEA FIR Coordination Workshop',
+    body: 'Cross-FIR session with 8 ANSPs to align on trajectory sharing procedures and RCP data access protocols.',
+    meta: ['Bangkok', 'Mar 2025'],
+    // image: 'sea-fir-workshop.jpg',
+  },
+  {
+    tag: 'Working Group',
+    title: 'FF-ICE Integration Working Group',
+    body: 'Review of FF-ICE/R1 procedures and interoperability requirements across participating FIRs.',
+    meta: ['Singapore', 'Jan 2025'],
+    // image: 'ffice-working-group.jpg',
+  },
+  {
+    tag: 'Training',
+    title: 'CDO Trial Planning Sessions',
+    body: 'Pre-study coordination for Continuous Descent Operations simulation trials across three high-traffic city-pair routes.',
+    meta: ['Manila', 'Nov 2024'],
+    // image: 'cdo-trial-manila.jpg',
+  },
+  {
+    tag: 'Workshop',
+    title: 'Regional Hotspot Analysis',
+    body: 'Capacity planning session using RCP demand forecasting tools to identify saturation risks across peak corridors.',
+    meta: ['Kuala Lumpur', 'Sep 2024'],
+    // image: 'hotspot-analysis-kl.jpg',
+  },
+  {
+    tag: 'Working Group',
+    title: 'Area Avoidance & CDR Working Group',
+    body: 'Technical review of conflict detection and resolution procedures integrated into the RCP simulation environment.',
+    meta: ['Virtual', 'Jul 2024'],
+    // image: 'cdr-working-group.jpg',
+  },
+];
+
+const ENGAGEMENTS: Card[] = [
+  {
+    tag: 'Active',
+    title: 'Civil Aviation Authority of Singapore',
+    body: 'Bilateral collaboration on trajectory negotiation trials and FF-ICE/R1 live implementation across Singapore FIR.',
+    meta: ['CAAS', 'WSSS FIR'],
+    // image: 'caas-engagement.jpg',
+  },
+  {
+    tag: 'Active',
+    title: 'DCA Malaysia',
+    body: 'Regional health data sharing and route-level hotspot monitoring across Kuala Lumpur FIR.',
+    meta: ['DCA', 'WMKK FIR'],
+    // image: 'dca-malaysia.jpg',
+  },
+  {
+    tag: 'Active',
+    title: 'AirNav Indonesia',
+    body: 'CDO route optimisation and data pipeline integration across Jakarta and Makassar FIRs.',
+    meta: ['AirNav', 'WIII FIR'],
+    // image: 'airnav-indonesia.jpg',
+  },
+  {
+    tag: 'Active',
+    title: 'CAAT Thailand',
+    body: 'Cross-FIR conflict detection monitoring and shared situational awareness trials with Bangkok ACC.',
+    meta: ['CAAT', 'VTBB FIR'],
+    // image: 'caat-thailand.jpg',
+  },
+  {
+    tag: 'Partner',
+    title: 'ICAO APAC & Regional Bodies',
+    body: 'Alignment on PBCS implementation and FF-ICE roadmap within the ICAO Asia-Pacific regional framework.',
+    meta: ['ICAO APAC', 'Regional'],
+    // image: 'icao-apac.jpg',
+  },
+];
+
+const TECHNICAL: Card[] = [
+  {
+    tag: 'Live',
+    title: 'FF-ICE/R1 Implementation',
+    body: 'End-to-end eAU and eASP services operational across 5 ANSPs. Real-time trajectory negotiation in production.',
+    meta: ['5 ANSPs', 'SEA Region'],
+    // image: 'ffice-r1-live.jpg',
+  },
+  {
+    tag: 'Live',
+    title: 'Surveillance Data Fusion',
+    body: '10+ surveillance sources fused into a single coherent regional air picture, updated every 4 seconds.',
+    meta: ['10+ sources', '4 s refresh'],
+    // image: 'surveillance-fusion.jpg',
+  },
+  {
+    tag: 'Live',
+    title: 'Regional Health Dashboard',
+    body: 'Monthly reporting on SEA airspace performance — routes, airports, flight levels, and peak throughput trends.',
+    meta: ['Monthly', 'SEA Region'],
+    // image: 'regional-health-dashboard.jpg',
+  },
+  {
+    tag: 'Research',
+    title: 'Fast-Time Simulation Framework',
+    body: '50+ scenarios validated at regional scale — supporting concept evaluation, trial design, and ANSP training.',
+    meta: ['50+ scenarios', 'ATM Research'],
+    // image: 'fast-time-simulation.jpg',
+  },
+  {
+    tag: 'AI',
+    title: 'AI-Driven Trajectory Generator',
+    body: 'ML models generating optimised 4D trajectories balancing efficiency, operational constraints, and real-time weather.',
+    meta: ['AI / ML', 'In development'],
+    // image: 'ai-trajectory.jpg',
+  },
+];
+
+const TAG_COLORS: Record<Tag, string> = {
+  Workshop:       'var(--teal)',
+  'Working Group': 'var(--teal)',
+  Training:       'var(--teal)',
+  Active:         '#059669',
+  Partner:        '#7c3aed',
+  Live:           '#2563eb',
+  Research:       '#d97706',
+  AI:             '#db2777',
+};
+
+const COLUMNS = [
+  { num: '01', label: 'Workshops & Working Groups', cards: WORKSHOPS },
+  { num: '02', label: 'ANSP & Partner Engagements', cards: ENGAGEMENTS },
+  { num: '03', label: 'Technical Backbone',          cards: TECHNICAL  },
+];
 ---
 
 <Base title="RCP in Action — AIR Lab" description="How Air Lab turns the Regional Collaboration Platform into real engagements across South East Asia — workshops, ANSP partnerships, and technical deployments.">
@@ -21,125 +168,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- CARDS -->
   <div class="rca-body">
-
     <div class="rca-columns">
-
-      <!-- Column 1: Workshops -->
-      <div class="rca-col">
-        <div class="rca-col-header">
-          <span class="rca-col-num">01</span>
-          <span class="rca-col-label">Workshops &amp; Working Groups</span>
+      {COLUMNS.map(col => (
+        <div class="rca-col">
+          <div class="rca-col-header">
+            <span class="rca-col-num">{col.num}</span>
+            <span class="rca-col-label">{col.label}</span>
+          </div>
+          {col.cards.map(card => (
+            <div class="rca-card">
+              {/* Image slot — shows photo if provided, placeholder otherwise */}
+              <div class="rca-card-img">
+                {card.image
+                  ? <img src={`${base}/images/rcp-in-action/${card.image}`} alt={card.title} />
+                  : <div class="rca-card-img-placeholder">
+                      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <path d="M8 36l10-12 7 8 5-6 10 10" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="16" cy="18" r="3" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+                      </svg>
+                    </div>
+                }
+              </div>
+              {/* Card body */}
+              <div class="rca-card-body-wrap">
+                <span class="rca-tag" style={`color:${TAG_COLORS[card.tag]}`}>{card.tag}</span>
+                <div class="rca-card-title">{card.title}</div>
+                <p class="rca-card-body">{card.body}</p>
+                <div class="rca-card-meta">
+                  <span>{card.meta[0]}</span>
+                  <span>{card.meta[1]}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div class="rca-card">
-          <span class="rca-tag">Workshop</span>
-          <div class="rca-card-title">SEA FIR Coordination Workshop</div>
-          <p class="rca-card-body">Cross-FIR session with 8 ANSPs to align on trajectory sharing procedures and RCP data access protocols.</p>
-          <div class="rca-card-meta"><span>Bangkok</span><span>Mar 2025</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Working Group</span>
-          <div class="rca-card-title">FF-ICE Integration Working Group</div>
-          <p class="rca-card-body">Review of FF-ICE/R1 procedures and interoperability requirements across participating FIRs.</p>
-          <div class="rca-card-meta"><span>Singapore</span><span>Jan 2025</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Training</span>
-          <div class="rca-card-title">CDO Trial Planning Sessions</div>
-          <p class="rca-card-body">Pre-study coordination for Continuous Descent Operations simulation trials across three high-traffic city-pair routes.</p>
-          <div class="rca-card-meta"><span>Manila</span><span>Nov 2024</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Workshop</span>
-          <div class="rca-card-title">Regional Hotspot Analysis</div>
-          <p class="rca-card-body">Capacity planning session using RCP demand forecasting tools to identify saturation risks across peak corridors.</p>
-          <div class="rca-card-meta"><span>Kuala Lumpur</span><span>Sep 2024</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Working Group</span>
-          <div class="rca-card-title">Area Avoidance &amp; CDR Working Group</div>
-          <p class="rca-card-body">Technical review of conflict detection and resolution procedures integrated into the RCP simulation environment.</p>
-          <div class="rca-card-meta"><span>Virtual</span><span>Jul 2024</span></div>
-        </div>
-      </div>
-
-      <!-- Column 2: Engagements -->
-      <div class="rca-col">
-        <div class="rca-col-header">
-          <span class="rca-col-num">02</span>
-          <span class="rca-col-label">ANSP &amp; Partner Engagements</span>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-active">Active</span>
-          <div class="rca-card-title">Civil Aviation Authority of Singapore</div>
-          <p class="rca-card-body">Bilateral collaboration on trajectory negotiation trials and FF-ICE/R1 live implementation across Singapore FIR.</p>
-          <div class="rca-card-meta"><span>CAAS</span><span>WSSS FIR</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-active">Active</span>
-          <div class="rca-card-title">DCA Malaysia</div>
-          <p class="rca-card-body">Regional health data sharing and route-level hotspot monitoring across Kuala Lumpur FIR.</p>
-          <div class="rca-card-meta"><span>DCA</span><span>WMKK FIR</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-active">Active</span>
-          <div class="rca-card-title">AirNav Indonesia</div>
-          <p class="rca-card-body">CDO route optimisation and data pipeline integration across Jakarta and Makassar FIRs.</p>
-          <div class="rca-card-meta"><span>AirNav</span><span>WIII FIR</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-active">Active</span>
-          <div class="rca-card-title">CAAT Thailand</div>
-          <p class="rca-card-body">Cross-FIR conflict detection monitoring and shared situational awareness trials with Bangkok ACC.</p>
-          <div class="rca-card-meta"><span>CAAT</span><span>VTBB FIR</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Partner</span>
-          <div class="rca-card-title">ICAO APAC &amp; Regional Bodies</div>
-          <p class="rca-card-body">Alignment on PBCS implementation and FF-ICE roadmap within the ICAO Asia-Pacific regional framework.</p>
-          <div class="rca-card-meta"><span>ICAO APAC</span><span>Regional</span></div>
-        </div>
-      </div>
-
-      <!-- Column 3: Technical -->
-      <div class="rca-col">
-        <div class="rca-col-header">
-          <span class="rca-col-num">03</span>
-          <span class="rca-col-label">Technical Backbone</span>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-live">Live</span>
-          <div class="rca-card-title">FF-ICE/R1 Implementation</div>
-          <p class="rca-card-body">End-to-end eAU and eASP services operational across 5 ANSPs. Real-time trajectory negotiation in production.</p>
-          <div class="rca-card-meta"><span>5 ANSPs</span><span>SEA Region</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-live">Live</span>
-          <div class="rca-card-title">Surveillance Data Fusion</div>
-          <p class="rca-card-body">10+ surveillance sources fused into a single coherent regional air picture, updated every 4 seconds.</p>
-          <div class="rca-card-meta"><span>10+ sources</span><span>4 s refresh</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag rca-tag-live">Live</span>
-          <div class="rca-card-title">Regional Health Dashboard</div>
-          <p class="rca-card-body">Monthly reporting on SEA airspace performance — routes, airports, flight levels, and peak throughput trends.</p>
-          <div class="rca-card-meta"><span>Monthly</span><span>SEA Region</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">Research</span>
-          <div class="rca-card-title">Fast-Time Simulation Framework</div>
-          <p class="rca-card-body">50+ scenarios validated at regional scale — supporting concept evaluation, trial design, and ANSP training.</p>
-          <div class="rca-card-meta"><span>50+ scenarios</span><span>ATM Research</span></div>
-        </div>
-        <div class="rca-card">
-          <span class="rca-tag">AI</span>
-          <div class="rca-card-title">AI-Driven Trajectory Generator</div>
-          <p class="rca-card-body">ML models generating optimised 4D trajectories balancing efficiency, operational constraints, and real-time weather.</p>
-          <div class="rca-card-meta"><span>AI / ML</span><span>In development</span></div>
-        </div>
-      </div>
-
+      ))}
     </div>
   </div>
 
@@ -158,6 +223,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Base>
 
 <style>
+  /* Hero */
   .rca-hero { background: var(--navy); padding: 80px 80px 72px; position: relative; overflow: hidden; }
   .rca-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 75% 50%, rgba(6,113,129,0.08), transparent 60%); }
   .rca-hero-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(6,113,129,0.4); padding: 3px 10px; border-radius: 4px; margin-bottom: 20px; }
@@ -165,13 +231,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .rca-hero h1 strong { font-weight: 700; }
   .rca-hero p { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.7; margin-bottom: 48px; font-weight: 300; }
 
-  .rca-hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; max-width: 720px; }
+  .rca-hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; max-width: 720px; }
   .rca-stat { padding: 24px 28px; border-right: 1px solid rgba(255,255,255,0.08); }
   .rca-stat:last-child { border-right: none; }
   .rca-stat-num { display: block; font-size: 32px; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 6px; }
   .rca-stat-lbl { display: block; font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.4; }
 
-  .rca-body { background: #fff; padding: 80px 80px 80px; }
+  /* Body */
+  .rca-body { background: #fff; padding: 80px; }
 
   .rca-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
 
@@ -179,15 +246,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .rca-col-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--teal); }
   .rca-col-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
 
-  .rca-card { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px; margin-bottom: 10px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+  /* Card */
+  .rca-card { background: var(--cream); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
   .rca-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(6,113,129,0.08); }
-  .rca-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 9px; }
-  .rca-tag-active { color: #059669; }
-  .rca-tag-live { color: #2563eb; }
-  .rca-card-title { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 8px; }
+
+  /* Image slot */
+  .rca-card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; position: relative; }
+  .rca-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .rca-card:hover .rca-card-img img { transform: scale(1.04); }
+
+  /* Placeholder shown when no image */
+  .rca-card-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0b1a2f 0%, #112240 60%, #0d2137 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rca-card-img-placeholder svg { width: 48px; height: 48px; }
+
+  /* Card text body */
+  .rca-card-body-wrap { padding: 16px 18px 18px; }
+  .rca-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 7px; }
+  .rca-card-title { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 7px; }
   .rca-card-body { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
   .rca-card-meta { display: flex; justify-content: space-between; font-size: 11px; color: #aaa; padding-top: 10px; border-top: 1px solid var(--border); font-weight: 500; }
 
+  /* CTA */
   .rca-cta { background: var(--navy); padding: 80px; text-align: center; }
   .rca-cta p { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 460px; margin: 16px auto 36px; line-height: 1.7; }
   .rca-cta-btns { display: flex; gap: 16px; justify-content: center; }
