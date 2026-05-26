@@ -262,12 +262,12 @@ section { padding: 100px 80px; }
 .pillar-desc { font-size: 13px; color: #999; line-height: 1.4; font-weight: 400; }
 .pillar-tab.active .pillar-desc { color: var(--muted); }
 
-/* ── Stage: info (left) | visual (center) | feature nav (right) ── */
-.pillar-stage { display: grid; grid-template-columns: 1fr 1fr 3fr; height: 520px; border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; overflow: hidden; }
+/* ── Stage: feature nav (left, 1fr) | detail: text+image (right, 4fr) ── */
+.pillar-stage { display: grid; grid-template-columns: 1fr 4fr; height: 520px; border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; overflow: hidden; }
 
-/* Left: tag → title → desc, vertically centered */
-.pillar-left { background: var(--navy); border-right: 1px solid rgba(255,255,255,0.07); overflow: hidden; }
-.pl-info { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 32px 22px; gap: 10px; }
+/* Detail: text flush directly against image — zero gap */
+.pillar-detail { display: flex; height: 100%; }
+.pl-info { flex: 0 0 30%; display: flex; flex-direction: column; justify-content: center; padding: 32px 24px; gap: 12px; background: var(--navy); overflow: hidden; }
 .pl-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
 .pl-title { font-size: 21px; font-weight: 700; color: #fff; line-height: 1.2; }
 .pl-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; }
@@ -283,7 +283,7 @@ section { padding: 100px 80px; }
 .pfn-name { line-height: 1.35; }
 
 /* Right: visual fills the space */
-.pillar-visual { position: relative; background: #0b1928; overflow: hidden; }
+.pillar-visual { flex: 1; position: relative; background: var(--navy); overflow: hidden; }
 .pillar-visual img, .pillar-visual video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .uc-actions { display: flex; gap: 16px; margin-top: 36px; }
@@ -459,10 +459,10 @@ footer {
   .use-cases { padding: 72px 24px 40px; }
   .use-cases { padding: 72px 24px 40px; }
   .pillar-stage { grid-template-columns: 1fr; height: auto; }
-  .pillar-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
-  .pl-info { height: auto; padding: 28px 24px 20px; }
+  .pillar-feat-nav { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .pillar-detail { flex-direction: column; }
+  .pl-info { flex: none; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 24px 20px; }
   .pillar-visual { height: 240px; }
-  .pillar-feat-nav { border-left: none; border-top: 1px solid rgba(255,255,255,0.07); }
   .uc-actions { flex-wrap: wrap; margin-top: 24px; }
   footer { grid-template-columns: 1fr 1fr; padding: 48px 24px; }
   .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; }

@@ -190,9 +190,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
 
     <div class="pillar-stage">
-      <div class="pillar-left" id="pillarLeft"></div>
-      <div class="pillar-visual" id="pillarVisual"></div>
       <div class="pillar-feat-nav" id="pillarNav"></div>
+      <div class="pillar-detail" id="pillarDetail"></div>
     </div>
 
     <div class="uc-actions">
@@ -359,23 +358,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     const feats = PILLARS[pillar].features;
     const f = feats[idx];
 
-    // Left panel: tag → title → desc → feature nav
-    const left = document.getElementById('pillarLeft')!;
-    // Left: tag → title → desc
-    left.innerHTML = `
+    // Detail: text flush against image, no gap
+    const detail = document.getElementById('pillarDetail')!;
+    const media = f.type === 'video'
+      ? `<video src="${f.src}" autoplay muted loop playsinline></video>`
+      : `<img src="${f.src}" alt="${f.title}">`;
+    detail.innerHTML = `
       <div class="pl-info">
         <span class="pl-tag">${f.tag}</span>
         <div class="pl-title">${f.title}</div>
         <p class="pl-desc">${f.desc}</p>
-      </div>`;
+      </div>
+      <div class="pillar-visual">${media}</div>`;
 
-    // Center: visual
-    const visual = document.getElementById('pillarVisual')!;
-    visual.innerHTML = f.type === 'video'
-      ? `<video src="${f.src}" autoplay muted loop playsinline></video>`
-      : `<img src="${f.src}" alt="${f.title}">`;
-
-    // Right: feature nav
+    // Feature nav
     const nav = document.getElementById('pillarNav')!;
     nav.innerHTML = feats.map((ft, i) => `
       <button class="pfn-btn ${i === idx ? 'active' : ''}" data-fi="${i}">
