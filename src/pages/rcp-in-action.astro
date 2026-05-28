@@ -154,7 +154,7 @@ const LOGOS: PartnerLogo[] = [
       </div>
 
       <!-- Photo carousel -->
-      <div class="ria-carousel">
+      <div class="ria-carousel" id="workshopCarousel">
         <div class="ria-carousel-viewport">
           <div class="ria-carousel-track" id="carouselTrack">
             {PHOTOS.map((p, i) => (
@@ -195,39 +195,74 @@ const LOGOS: PartnerLogo[] = [
       <div class="section-label">Events</div>
       <h2 class="ria-section-title">Workshops &amp; <strong>key moments</strong></h2>
     </div>
-    <div class="ria-events-list">
-      {EVENTS.map(ev => (
-        <div class="ria-event">
-          {ev.photo && (
-            <div class="ria-event-photo">
-              <img src={`${base}/images/${ev.photo}`} alt={ev.name} />
+    <div class="ria-process-layout">
+
+      <!-- Event list -->
+      <div>
+        <div class="ria-events-list">
+          {EVENTS.map(ev => (
+            <div class="ria-event">
+              <div class="ria-event-date">{ev.date}</div>
+              <div class="ria-event-body">
+                <div class="ria-event-name">
+                  {ev.name}
+                  {ev.upcoming && <span class="ria-upcoming-badge">Upcoming</span>}
+                </div>
+                <div class="ria-event-loc">{ev.location}</div>
+                <p class="ria-event-desc">{ev.description}</p>
+              </div>
+              <div class="ria-event-actions">
+                <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/>
+                  </svg>
+                </a>
+                {ev.link && (
+                  <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                )}
+              </div>
             </div>
-          )}
-          <div class="ria-event-date">{ev.date}</div>
-          <div class="ria-event-body">
-            <div class="ria-event-name">
-              {ev.name}
-              {ev.upcoming && <span class="ria-upcoming-badge">Upcoming</span>}
-            </div>
-            <div class="ria-event-loc">{ev.location}</div>
-            <p class="ria-event-desc">{ev.description}</p>
-          </div>
-          <div class="ria-event-actions">
-            <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/>
-              </svg>
-            </a>
-            {ev.link && (
-              <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer">Learn more →</a>
-            )}
+          ))}
+        </div>
+        <div class="ria-events-cta">
+          <p>Want to participate in a workshop or working group?</p>
+          <a href={`${base}/contact`} class="btn-navy">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Event photos carousel -->
+      <div class="ria-carousel" id="eventsCarousel">
+        <div class="ria-carousel-viewport">
+          <div class="ria-carousel-track">
+            {EVENTS.filter(ev => ev.photo).map((ev, i) => (
+              <div class={`ria-slide ${i === 0 ? 'active' : ''}`} data-index={i}>
+                <div class="ria-slide-img">
+                  <img src={`${base}/images/${ev.photo}`} alt={ev.name}
+                    onerror="this.parentElement.classList.add('ria-slide-placeholder')" />
+                </div>
+                <div class="ria-slide-caption">
+                  <p class="ria-slide-text">{ev.name}</p>
+                  <span class="ria-slide-meta">{ev.date} · {ev.location}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-    <div class="ria-events-cta">
-      <p>Want to participate in a workshop or working group?</p>
-      <a href={`${base}/contact`} class="btn-navy">Get in touch</a>
+        <div class="ria-carousel-controls">
+          <button class="ria-carousel-btn" id="evCarouselPrev" aria-label="Photo précédente">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+          </button>
+          <div class="ria-carousel-dots" id="evCarouselDots">
+            {EVENTS.filter(ev => ev.photo).map((_, i) => (
+              <button class={`ria-dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Photo ${i + 1}`}></button>
+            ))}
+          </div>
+          <button class="ria-carousel-btn" id="evCarouselNext" aria-label="Photo suivante">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -531,29 +566,14 @@ const LOGOS: PartnerLogo[] = [
 
   .ria-event {
     display: grid;
-    grid-template-columns: 140px 90px 1fr auto;
-    gap: 24px;
+    grid-template-columns: 90px 1fr auto;
+    gap: 20px;
     align-items: center;
     background: var(--cream);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 16px 24px 16px 16px;
+    padding: 18px 20px;
     transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .ria-event-photo {
-    width: 140px;
-    height: 90px;
-    border-radius: 6px;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: var(--navy);
-  }
-  .ria-event-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
   }
   .ria-event:hover {
     border-color: rgba(6,113,129,0.3);
@@ -705,8 +725,7 @@ const LOGOS: PartnerLogo[] = [
     .ria-process-layout { grid-template-columns: 1fr; gap: 40px; }
     .ria-carousel { position: static; }
     .ria-pillars-grid { grid-template-columns: 1fr; gap: 16px; }
-    .ria-event { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
-    .ria-event-photo { width: 100%; height: 160px; }
+    .ria-event { grid-template-columns: 1fr; gap: 8px; }
     .ria-event-date { text-align: left; }
     .ria-event-actions { flex-direction: row; align-items: center; }
     .ria-logo-item { width: 120px; height: 64px; }
@@ -716,19 +735,26 @@ const LOGOS: PartnerLogo[] = [
 </style>
 
 <script>
-  const slides = document.querySelectorAll<HTMLElement>('.ria-slide');
-  const dots = document.querySelectorAll<HTMLButtonElement>('.ria-dot');
-  let current = 0;
+  function initCarousel(containerId: string, prevId: string, nextId: string) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const slides = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
+    const dots = Array.from(container.querySelectorAll<HTMLButtonElement>('.ria-dot'));
+    let current = 0;
 
-  function goTo(idx: number) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (idx + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
+    function goTo(idx: number) {
+      slides[current].classList.remove('active');
+      dots[current]?.classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current]?.classList.add('active');
+    }
+
+    document.getElementById(prevId)?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById(nextId)?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.dot))));
   }
 
-  document.getElementById('carouselPrev')?.addEventListener('click', () => goTo(current - 1));
-  document.getElementById('carouselNext')?.addEventListener('click', () => goTo(current + 1));
-  dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.dot))));
+  initCarousel('workshopCarousel', 'carouselPrev', 'carouselNext');
+  initCarousel('eventsCarousel', 'evCarouselPrev', 'evCarouselNext');
 </script>
