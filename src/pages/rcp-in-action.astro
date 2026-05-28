@@ -5,32 +5,43 @@ import Footer from '../components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // ─── Section 1: Workshops & Working Groups ─────────────────────────────────────
-// Drop images in public/images/rcp-in-action/workshops/ and set the `image` field.
-type WType = 'Workshop' | 'Working Group' | 'Training' | 'Event';
-interface Workshop {
-  type: WType;
-  title: string;
-  date: string;
-  location: string;
-  description: string;
-  image?: string;
-}
-
-const WORKSHOPS: Workshop[] = [
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { type: 'Training',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+interface ProcessStep { num: string; title: string; desc: string; }
+const PROCESS_STEPS: ProcessStep[] = [
+  {
+    num: '01',
+    title: 'Workshop',
+    desc: 'AIR Lab convenes ANSPs, airlines, and regulators for focused working sessions. These workshops surface operational pain points, align on regional ATM challenges, and build the shared vocabulary needed for effective collaboration.',
+  },
+  {
+    num: '02',
+    title: 'Use case definition',
+    desc: 'Participants define concrete use cases with clear operational value — trajectory sharing, capacity forecasting, FF-ICE onboarding, weather integration. Each use case is scoped, prioritised, and assigned to a dedicated working group.',
+  },
+  {
+    num: '03',
+    title: 'Technical onboarding',
+    desc: 'ANSPs connect to the RCP environment with direct support from AIR Lab engineers. Data feeds are integrated, interfaces validated, and teams trained on the platform\'s tools and open APIs.',
+  },
+  {
+    num: '04',
+    title: 'Co-development & iteration',
+    desc: 'Working groups test and refine platform features against real traffic scenarios. Feedback loops between operations and engineering drive rapid iteration toward validated, deployment-ready capabilities.',
+  },
+  {
+    num: '05',
+    title: 'Regional rollout',
+    desc: 'Validated capabilities are progressively deployed across the APAC network. Cross-ANSP coordination ensures consistent implementation, knowledge transfer, and continuous improvement.',
+  },
 ];
 
-const W_COLOR: Record<WType, string> = {
-  Workshop:        'var(--teal)',
-  'Working Group': '#7c3aed',
-  Training:        '#d97706',
-  Event:           '#2563eb',
-};
+// Drop photos in public/images/rcp-in-action/workshops/ and update src fields below.
+interface WorkshopPhoto { src: string; caption: string; meta?: string; }
+const PHOTOS: WorkshopPhoto[] = [
+  { src: 'photo-1.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
+  { src: 'photo-2.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
+  { src: 'photo-3.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
+  { src: 'photo-4.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
+];
 
 // ─── Section 2: Technical Backbone ────────────────────────────────────────────
 interface TechPillar { title: string; description: string; }
@@ -90,32 +101,59 @@ const LOGOS: PartnerLogo[] = [
   <section class="ria-section ria-workshops-section">
     <div class="ria-section-head">
       <div class="section-label">01 Workshops &amp; Working Groups</div>
+      <h2 class="ria-section-title">How we work<br><strong>together</strong></h2>
     </div>
-    <div class="ria-cards-grid">
-      {WORKSHOPS.map(w => (
-        <div class="ria-card">
-          <div class="ria-card-img">
-            {w.image
-              ? <img src={`${base}/images/rcp-in-action/workshops/${w.image}`} alt={w.title} />
-              : <div class="ria-img-placeholder">
-                  <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                    <path d="M8 36l10-12 7 8 5-6 10 10" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="16" cy="18" r="3" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-                  </svg>
-                </div>
-            }
-          </div>
-          <div class="ria-card-body">
-            <span class="ria-badge" style={`color:${W_COLOR[w.type]}`}>{w.type}</span>
-            <div class="ria-card-title">{w.title}</div>
-            <p class="ria-card-desc">{w.description}</p>
-            <div class="ria-card-meta">
-              <span>{w.location}</span>
-              <span>{w.date}</span>
+    <div class="ria-process-layout">
+
+      <!-- Process steps -->
+      <div class="ria-steps">
+        {PROCESS_STEPS.map((step, i) => (
+          <div class="ria-step">
+            <div class="ria-step-left">
+              <div class="ria-step-num">{step.num}</div>
+              {i < PROCESS_STEPS.length - 1 && <div class="ria-step-line"></div>}
+            </div>
+            <div class="ria-step-content">
+              <div class="ria-step-title">{step.title}</div>
+              <p class="ria-step-desc">{step.desc}</p>
             </div>
           </div>
+        ))}
+      </div>
+
+      <!-- Photo carousel -->
+      <div class="ria-carousel">
+        <div class="ria-carousel-viewport">
+          <div class="ria-carousel-track" id="carouselTrack">
+            {PHOTOS.map((p, i) => (
+              <div class={`ria-slide ${i === 0 ? 'active' : ''}`} data-index={i}>
+                <div class="ria-slide-img">
+                  <img src={`${base}/images/rcp-in-action/workshops/${p.src}`} alt={p.caption}
+                    onerror="this.parentElement.classList.add('ria-slide-placeholder')" />
+                </div>
+                <div class="ria-slide-caption">
+                  <p class="ria-slide-text">{p.caption}</p>
+                  {p.meta && <span class="ria-slide-meta">{p.meta}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+        <div class="ria-carousel-controls">
+          <button class="ria-carousel-btn" id="carouselPrev" aria-label="Photo précédente">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+          </button>
+          <div class="ria-carousel-dots" id="carouselDots">
+            {PHOTOS.map((_, i) => (
+              <button class={`ria-dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Photo ${i + 1}`}></button>
+            ))}
+          </div>
+          <button class="ria-carousel-btn" id="carouselNext" aria-label="Photo suivante">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg>
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -135,11 +173,6 @@ const LOGOS: PartnerLogo[] = [
             <p class="ria-pillar-desc">{p.description}</p>
           </div>
         ))}
-      </div>
-      <!-- Replace the placeholder below with an <img> or embedded diagram when ready -->
-      <div class="ria-diagram-placeholder">
-        <div class="ria-diagram-label">RCP Architecture Diagram</div>
-        <div class="ria-diagram-hint">[ Diagram to be inserted ]</div>
       </div>
     </div>
   </section>
@@ -257,80 +290,140 @@ const LOGOS: PartnerLogo[] = [
   /* ── Section 1: Workshops ──────────────────────────────────────────────────── */
   .ria-workshops-section { background: #fff; }
 
-  .ria-cards-grid {
+  .ria-process-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
   }
 
-  .ria-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  /* Steps */
+  .ria-steps { display: flex; flex-direction: column; }
+  .ria-step { display: flex; gap: 20px; }
+  .ria-step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
   }
-  .ria-card:hover {
-    border-color: var(--teal);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(6,113,129,0.08);
+  .ria-step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .ria-step-line {
+    width: 1px;
+    flex: 1;
+    min-height: 28px;
+    background: var(--border);
+    margin: 6px 0;
+  }
+  .ria-step-content { padding-bottom: 36px; }
+  .ria-step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    padding-top: 8px;
+  }
+  .ria-step-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
   }
 
-  .ria-card-img {
-    width: 100%;
-    aspect-ratio: 3/2;
+  /* Carousel */
+  .ria-carousel { position: sticky; top: 100px; }
+  .ria-carousel-viewport {
+    border-radius: 12px;
     overflow: hidden;
+    background: var(--navy);
+    aspect-ratio: 4/3;
+    position: relative;
   }
-  .ria-card-img img {
+  .ria-carousel-track { position: relative; width: 100%; height: 100%; }
+  .ria-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .ria-slide.active { opacity: 1; }
+  .ria-slide-img {
+    flex: 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0b1a2f 0%, #112240 60%, #0d2137 100%);
+  }
+  .ria-slide-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
   }
-  .ria-card:hover .ria-card-img img { transform: scale(1.04); }
-
-  .ria-img-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #0b1a2f 0%, #112240 60%, #0d2137 100%);
+  .ria-slide-img.ria-slide-placeholder img { display: none; }
+  .ria-slide-caption {
+    padding: 14px 18px;
+    background: var(--navy);
+    flex-shrink: 0;
+  }
+  .ria-slide-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+  .ria-slide-meta {
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .ria-carousel-controls {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
   }
-  .ria-img-placeholder svg { width: 48px; height: 48px; }
-
-  .ria-card-body { padding: 16px 18px 18px; }
-  .ria-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-  }
-  .ria-card-title {
-    font-size: 14px;
-    font-weight: 700;
+  .ria-carousel-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff;
     color: var(--navy);
-    line-height: 1.35;
-    margin-bottom: 7px;
-  }
-  .ria-card-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 12px;
-  }
-  .ria-card-meta {
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #aaa;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
   }
+  .ria-carousel-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .ria-carousel-btn svg { width: 14px; height: 14px; }
+  .ria-carousel-dots { display: flex; gap: 6px; }
+  .ria-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    padding: 0;
+  }
+  .ria-dot.active { background: var(--navy); transform: scale(1.3); }
 
   /* ── Section 2: Technical Backbone ────────────────────────────────────────── */
   .ria-tech-section { background: var(--cream); }
@@ -373,26 +466,6 @@ const LOGOS: PartnerLogo[] = [
     font-size: 13px;
     color: var(--muted);
     line-height: 1.7;
-  }
-
-  .ria-diagram-placeholder {
-    border: 2px dashed var(--border);
-    border-radius: 10px;
-    padding: 72px 40px;
-    text-align: center;
-  }
-  .ria-diagram-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 8px;
-  }
-  .ria-diagram-hint {
-    font-size: 14px;
-    color: #bbb;
-    font-style: italic;
   }
 
   /* ── Section 3: Upcoming Events ────────────────────────────────────────────── */
@@ -510,14 +583,30 @@ const LOGOS: PartnerLogo[] = [
   @media (max-width: 900px) {
     .ria-hero, .ria-section, .ria-cta { padding-left: 24px; padding-right: 24px; }
     .ria-hero { padding-top: 60px; padding-bottom: 52px; }
-    .ria-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .ria-process-layout { grid-template-columns: 1fr; gap: 40px; }
+    .ria-carousel { position: static; }
     .ria-pillars-grid { grid-template-columns: 1fr; gap: 16px; }
     .ria-event { grid-template-columns: 1fr; gap: 12px; }
     .ria-event-date { text-align: left; }
     .ria-logo-item { width: 120px; height: 64px; }
     .ria-cta-btns { flex-direction: column; align-items: center; }
   }
-  @media (max-width: 600px) {
-    .ria-cards-grid { grid-template-columns: 1fr; }
-  }
 </style>
+
+<script>
+  const slides = document.querySelectorAll<HTMLElement>('.ria-slide');
+  const dots = document.querySelectorAll<HTMLButtonElement>('.ria-dot');
+  let current = 0;
+
+  function goTo(idx: number) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  document.getElementById('carouselPrev')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('carouselNext')?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.dot))));
+</script>
