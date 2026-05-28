@@ -15,7 +15,7 @@ const heroVideoUrl = cms.heroVideoUrl ?? 'https://airlab.aero/wp-content/uploads
 const heroPrimaryButtonText = cms.heroPrimaryButtonText ?? 'Access the Platform';
 const heroPrimaryButtonUrl = cms.heroPrimaryButtonUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const stats = cms.stats ?? [
-  { number: '2019', suffix: '–', label: 'Founded by Thales & CAAS\nSingapore, building since day one' },
+  { number: '2019', suffix: '', label: 'Founded by Thales & CAAS\nSingapore, building since day one' },
   { number: '10', suffix: '+', label: 'APAC ANSPs actively\nengaged on the platform' },
   { number: '100', suffix: '%', label: 'Free access for regional ANSPs,\ncloud-based open-source stack' },
 ];
@@ -61,12 +61,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <!-- PLATFORM CAPABILITIES -->
   <section class="capabilities" id="platform">
-    <div class="section-header" data-reveal style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;">
-      <div>
-        <div class="section-label">Regional Collaboration Platform</div>
-        <h2 class="section-title">An open sandbox for<br><strong>ATM innovation</strong></h2>
-      </div>
-      <p class="section-intro">Cloud-based and built on open-source technologies, the RCP integrates live, historical, and simulated data to support realistic experimentation and co-development across APAC.</p>
+    <div class="section-header" data-reveal style="text-align:center;">
+      <div class="section-label">Regional Collaboration Platform</div>
+      <h2 class="section-title">An open sandbox for<br><strong>ATM innovation</strong></h2>
     </div>
     <div class="cap-grid">
       <div class="cap-card" data-reveal data-reveal-delay="0">
@@ -320,7 +317,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <script>
   const video = document.getElementById('hero-video') as HTMLVideoElement;
-  if (video) { video.playbackRate = 0.5; video.play().catch(() => {}); }
+  if (video) {
+    video.playbackRate = 0.5;
+    video.addEventListener('loadedmetadata', () => { video.currentTime = 180; });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= 205) video.currentTime = 180; });
+    video.play().catch(() => {});
+  }
 
   // ── Platform pillars ──
   const RCP_BASE = import.meta.env.BASE_URL.replace(/\/$/, '') + '/rcp';
