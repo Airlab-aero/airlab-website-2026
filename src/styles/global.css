@@ -173,7 +173,7 @@ section { padding: 100px 80px; }
 }
 .about-stat { display: flex; flex-direction: column; gap: 6px; }
 .about-stat-num {
-  font-size: 42px; font-weight: 300; color: var(--navy); letter-spacing: -0.03em;
+  font-size: 42px; font-weight: 300; color: var(--teal); letter-spacing: -0.03em;
   line-height: 1;
 }
 .about-stat-num span { color: var(--red); }
@@ -228,7 +228,7 @@ section { padding: 100px 80px; }
 .timeline { display: flex; gap: 0; position: relative; margin-top: 64px; overflow-x: auto; }
 .timeline::before {
   content: ''; position: absolute; top: 28px; left: 0; right: 0; height: 1px;
-  background: rgba(255,255,255,0.12);
+  background: linear-gradient(90deg, var(--teal) 0%, rgba(6,113,129,0.35) 50%, rgba(255,255,255,0.08) 100%);
 }
 .timeline-item { flex: 1; min-width: 200px; padding: 0 24px 0 0; position: relative; }
 .timeline-dot {
