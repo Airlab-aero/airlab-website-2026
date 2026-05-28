@@ -67,27 +67,7 @@ interface RCPEvent {
 }
 
 const EVENTS: RCPEvent[] = [
-  {
-    name: 'VATM Workshop',
-    date: '2025',
-    location: 'Vietnam',
-    description: 'AIR Lab met with VATM to explore regional data sharing and align on ATM collaboration priorities within the South East Asia corridor.',
-    photos: ['rcp-in-action/events/vatm-workshop.jpg'],
-  },
-  {
-    name: 'Airspace World Hong Kong',
-    date: 'Dec 2025',
-    location: 'Hong Kong',
-    description: 'AIR Lab joined the global ATM community at Airspace World Hong Kong, presenting the RCP and engaging with ANSP partners from across the region.',
-    photos: ['rcp-in-action/events/asw-hk-2025.jpg', 'rcp-in-action/events/asw-hk-2025-2.jpg', 'rcp-in-action/events/asw-hk-2025-3.jpg'],
-  },
-  {
-    name: 'Singapore Airshow',
-    date: 'Feb 2026',
-    location: 'Singapore',
-    description: 'AIR Lab showcased the Regional Collaboration Platform at Singapore Airshow 2026, one of Asia\'s most prominent aviation events.',
-    photos: ['rcp-in-action/events/singapore-airshow-2026.jpg', 'rcp-in-action/events/singapore-airshow-2026-2.jpg'],
-  },
+  // Most recent first
   {
     name: 'Airspace World Lisbon',
     date: 'Mar 2026',
@@ -101,6 +81,27 @@ const EVENTS: RCPEvent[] = [
     location: 'Singapore',
     description: 'AIR Lab participated in AOIC 2026, sharing the latest developments of the Regional Collaboration Platform with operators and stakeholders across the region.',
     photos: ['rcp-in-action/events/aoic-2026.jpg'],
+  },
+  {
+    name: 'Singapore Airshow',
+    date: 'Feb 2026',
+    location: 'Singapore',
+    description: 'AIR Lab showcased the Regional Collaboration Platform at Singapore Airshow 2026, one of Asia\'s most prominent aviation events.',
+    photos: ['rcp-in-action/events/singapore-airshow-2026.jpg', 'rcp-in-action/events/singapore-airshow-2026-2.jpg'],
+  },
+  {
+    name: 'Airspace World Hong Kong',
+    date: 'Dec 2025',
+    location: 'Hong Kong',
+    description: 'AIR Lab joined the global ATM community at Airspace World Hong Kong, presenting the RCP and engaging with ANSP partners from across the region.',
+    photos: ['rcp-in-action/events/asw-hk-2025.jpg', 'rcp-in-action/events/asw-hk-2025-2.jpg', 'rcp-in-action/events/asw-hk-2025-3.jpg'],
+  },
+  {
+    name: 'VATM Workshop',
+    date: '2025',
+    location: 'Vietnam',
+    description: 'AIR Lab met with VATM to explore regional data sharing and align on ATM collaboration priorities within the South East Asia corridor.',
+    photos: ['rcp-in-action/events/vatm-workshop.jpg'],
   },
 ];
 
@@ -203,7 +204,8 @@ const LOGOS: PartnerLogo[] = [
 
       <!-- Event list -->
       <div>
-        <div class="ria-events-list">
+        <div class="ria-events-scroller">
+        <div class="ria-events-list" id="evListTrack">
           {EVENTS.map((ev, evIdx) => (
             <div class={`ria-event ${evIdx === 0 ? 'ria-event--active' : ''}`} data-ev-idx={evIdx}>
               <div class="ria-event-date">{ev.date}</div>
@@ -227,6 +229,16 @@ const LOGOS: PartnerLogo[] = [
               </div>
             </div>
           ))}
+        </div>
+        </div><!-- end ria-events-scroller -->
+        <div class="ria-events-list-nav">
+          <button class="ria-list-nav-btn" id="evListUp" aria-label="Plus récents" disabled>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4-4 4 4"/></svg>
+          </button>
+          <span class="ria-list-nav-counter" id="evListCounter"></span>
+          <button class="ria-list-nav-btn" id="evListDown" aria-label="Plus anciens">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
         </div>
         <div class="ria-events-cta">
           <p>Want to participate in a workshop or working group?</p>
@@ -560,6 +572,39 @@ const LOGOS: PartnerLogo[] = [
 
   /* ── Events ────────────────────────────────────────────────────────────────── */
   .ria-events-section { background: var(--navy); }
+
+  .ria-events-scroller { overflow: hidden; }
+  .ria-events-list { transition: transform 0.35s ease; margin-bottom: 0; }
+
+  .ria-events-list-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0 0;
+  }
+  .ria-list-nav-btn {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.8);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .ria-list-nav-btn svg { width: 14px; height: 14px; }
+  .ria-list-nav-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.3);
+  }
+  .ria-list-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .ria-list-nav-counter {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+    flex: 1;
+  }
   .ria-events-section .ria-section-label,
   .ria-events-section .section-label { color: var(--teal); }
   .ria-events-section .ria-section-title { color: #fff; }
@@ -568,7 +613,6 @@ const LOGOS: PartnerLogo[] = [
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 40px;
   }
 
   .ria-event {
@@ -772,36 +816,71 @@ const LOGOS: PartnerLogo[] = [
 
   initCarousel('workshopCarousel', 'carouselPrev', 'carouselNext');
 
-  // ── Events carousel: clicking a card filters to its photos ──
+  // ── Events: photo carousel + vertical list navigation ──
   (function() {
     const container = document.getElementById('eventsCarousel');
-    if (!container) return;
+    const track     = document.getElementById('evListTrack');
+    const scroller  = track?.parentElement as HTMLElement | null;
+    if (!container || !track || !scroller) return;
 
-    const slides = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
-    const dots   = Array.from(container.querySelectorAll<HTMLButtonElement>('[data-ev-dot]'));
-    const cards  = Array.from(document.querySelectorAll<HTMLElement>('.ria-event[data-ev-idx]'));
-    let current  = 0;
+    const VISIBLE   = 3;
+    const slides    = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
+    const dots      = Array.from(container.querySelectorAll<HTMLButtonElement>('[data-ev-dot]'));
+    const cards     = Array.from(document.querySelectorAll<HTMLElement>('.ria-event[data-ev-idx]'));
+    const btnUp     = document.getElementById('evListUp') as HTMLButtonElement;
+    const btnDown   = document.getElementById('evListDown') as HTMLButtonElement;
+    const counter   = document.getElementById('evListCounter');
 
-    function activate(idx: number) {
-      slides[current].classList.remove('active');
-      current = (idx + slides.length) % slides.length;
-      slides[current].classList.add('active');
+    let currentSlide = 0;
+    let listOffset   = 0; // which card is first visible
 
-      const evIdx = Number(slides[current].dataset.ev);
+    // ── Vertical list scroll ──────────────────────────────────────────────────
+    function updateList() {
+      const gap = 12;
+      const cardH = (cards[0]?.offsetHeight ?? 110) + gap;
+      const visibleH = Math.min(VISIBLE, cards.length) * cardH - gap;
+      scroller.style.height = `${visibleH}px`;
+      track.style.transform = `translateY(-${listOffset * cardH}px)`;
+
+      btnUp.disabled   = listOffset === 0;
+      btnDown.disabled = listOffset >= cards.length - VISIBLE;
+      if (counter) counter.textContent =
+        `${listOffset + 1}–${Math.min(listOffset + VISIBLE, cards.length)} / ${cards.length}`;
+    }
+
+    btnUp?.addEventListener('click',   () => { listOffset = Math.max(0, listOffset - 1); updateList(); });
+    btnDown?.addEventListener('click', () => { listOffset = Math.min(cards.length - VISIBLE, listOffset + 1); updateList(); });
+
+    // ── Photo carousel ────────────────────────────────────────────────────────
+    function activateSlide(idx: number) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (idx + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+
+      const evIdx = Number(slides[currentSlide].dataset.ev);
       dots.forEach(d => d.classList.remove('active'));
       dots[evIdx]?.classList.add('active');
       cards.forEach(c => c.classList.remove('ria-event--active'));
       cards[evIdx]?.classList.add('ria-event--active');
+
+      // Scroll list to keep active card visible
+      if (evIdx < listOffset || evIdx >= listOffset + VISIBLE) {
+        listOffset = Math.min(Math.max(0, evIdx - 1), cards.length - VISIBLE);
+        updateList();
+      }
     }
 
     function goToEvent(evIdx: number) {
       const first = slides.findIndex(s => Number(s.dataset.ev) === evIdx);
-      if (first >= 0) activate(first);
+      if (first >= 0) activateSlide(first);
     }
 
-    document.getElementById('evCarouselPrev')?.addEventListener('click', () => activate(current - 1));
-    document.getElementById('evCarouselNext')?.addEventListener('click', () => activate(current + 1));
+    document.getElementById('evCarouselPrev')?.addEventListener('click', () => activateSlide(currentSlide - 1));
+    document.getElementById('evCarouselNext')?.addEventListener('click', () => activateSlide(currentSlide + 1));
     dots.forEach(d => d.addEventListener('click', () => goToEvent(Number(d.dataset.evDot))));
     cards.forEach(c => c.addEventListener('click', () => goToEvent(Number(c.dataset.evIdx))));
+
+    // Init after layout
+    requestAnimationFrame(updateList);
   })();
 </script>
