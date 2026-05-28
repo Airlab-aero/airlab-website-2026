@@ -180,7 +180,7 @@ section { padding: 100px 80px; }
 .about-stat-label { font-size: 14px; color: var(--muted); font-weight: 400; line-height: 1.5; }
 
 /* ── PLATFORM CAPABILITIES ── */
-.capabilities { background: var(--off-white); }
+.capabilities { background: var(--off-white); position: relative; overflow: hidden; }
 .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .cap-card {
   background: #fff; border: 1px solid var(--border); border-radius: 8px;
