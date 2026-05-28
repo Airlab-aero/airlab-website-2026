@@ -32,10 +32,11 @@ const PROCESS_STEPS: ProcessStep[] = [
 // Drop photos in public/images/rcp-in-action/workshops/ and update src fields below.
 interface WorkshopPhoto { src: string; caption: string; meta?: string; }
 const PHOTOS: WorkshopPhoto[] = [
-  { src: 'photo-1.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
-  { src: 'photo-2.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
-  { src: 'photo-3.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
-  { src: 'photo-4.jpg', caption: '[TO FILL]', meta: '[Location · Date]' },
+  { src: 'rcp-in-action/events/vatm-workshop.jpg',          caption: 'VATM Workshop',            meta: 'Vietnam · 2025' },
+  { src: 'rcp-in-action/events/asw-hk-2025.jpg',            caption: 'Airspace World Hong Kong',  meta: 'Hong Kong · 2025' },
+  { src: 'rcp-in-action/events/singapore-airshow-2026.jpg',  caption: 'Singapore Airshow',         meta: 'Singapore · Feb 2026' },
+  { src: 'rcp-in-action/events/asw-lisbon-2026.jpg',         caption: 'Airspace World Lisbon',     meta: 'Lisbon · Mar 2026' },
+  { src: 'rcp-in-action/events/aoic-2026.jpg',               caption: 'AOIC 2026',                 meta: '2026' },
 ];
 
 // ─── Section 2: Technical Backbone ────────────────────────────────────────────
@@ -62,13 +63,46 @@ interface RCPEvent {
   upcoming?: boolean;
   link?: string;
   linkedin?: string;
+  photo?: string;
 }
 
 const EVENTS: RCPEvent[] = [
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]', upcoming: true },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]', upcoming: true },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  {
+    name: 'VATM Workshop',
+    date: '2025',
+    location: 'Vietnam',
+    description: '[TO FILL: 1 to 2 sentences]',
+    photo: 'rcp-in-action/events/vatm-workshop.jpg',
+  },
+  {
+    name: 'Airspace World Hong Kong',
+    date: '2025',
+    location: 'Hong Kong',
+    description: '[TO FILL: 1 to 2 sentences]',
+    photo: 'rcp-in-action/events/asw-hk-2025.jpg',
+  },
+  {
+    name: 'Singapore Airshow',
+    date: 'Feb 2026',
+    location: 'Singapore',
+    description: '[TO FILL: 1 to 2 sentences]',
+    photo: 'rcp-in-action/events/singapore-airshow-2026.jpg',
+  },
+  {
+    name: 'Airspace World Lisbon',
+    date: 'Mar 2026',
+    location: 'Lisbon, Portugal',
+    description: '[TO FILL: 1 to 2 sentences]',
+    photo: 'rcp-in-action/events/asw-lisbon-2026.jpg',
+  },
+  {
+    name: 'AOIC 2026',
+    date: '2026',
+    location: '[TO FILL]',
+    description: '[TO FILL: 1 to 2 sentences]',
+    upcoming: true,
+    photo: 'rcp-in-action/events/aoic-2026.jpg',
+  },
 ];
 
 // ─── Section 4: ANSP & Partner Network ────────────────────────────────────────
@@ -126,7 +160,7 @@ const LOGOS: PartnerLogo[] = [
             {PHOTOS.map((p, i) => (
               <div class={`ria-slide ${i === 0 ? 'active' : ''}`} data-index={i}>
                 <div class="ria-slide-img">
-                  <img src={`${base}/images/rcp-in-action/workshops/${p.src}`} alt={p.caption}
+                  <img src={`${base}/images/${p.src}`} alt={p.caption}
                     onerror="this.parentElement.classList.add('ria-slide-placeholder')" />
                 </div>
                 <div class="ria-slide-caption">
@@ -164,6 +198,11 @@ const LOGOS: PartnerLogo[] = [
     <div class="ria-events-list">
       {EVENTS.map(ev => (
         <div class="ria-event">
+          {ev.photo && (
+            <div class="ria-event-photo">
+              <img src={`${base}/images/${ev.photo}`} alt={ev.name} />
+            </div>
+          )}
           <div class="ria-event-date">{ev.date}</div>
           <div class="ria-event-body">
             <div class="ria-event-name">
@@ -492,14 +531,29 @@ const LOGOS: PartnerLogo[] = [
 
   .ria-event {
     display: grid;
-    grid-template-columns: 110px 1fr auto;
-    gap: 28px;
+    grid-template-columns: 140px 90px 1fr auto;
+    gap: 24px;
     align-items: center;
     background: var(--cream);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 20px 24px;
+    padding: 16px 24px 16px 16px;
     transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .ria-event-photo {
+    width: 140px;
+    height: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--navy);
+  }
+  .ria-event-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .ria-event:hover {
     border-color: rgba(6,113,129,0.3);
@@ -651,7 +705,8 @@ const LOGOS: PartnerLogo[] = [
     .ria-process-layout { grid-template-columns: 1fr; gap: 40px; }
     .ria-carousel { position: static; }
     .ria-pillars-grid { grid-template-columns: 1fr; gap: 16px; }
-    .ria-event { grid-template-columns: 1fr; gap: 8px; }
+    .ria-event { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
+    .ria-event-photo { width: 100%; height: 160px; }
     .ria-event-date { text-align: left; }
     .ria-event-actions { flex-direction: row; align-items: center; }
     .ria-logo-item { width: 120px; height: 64px; }
