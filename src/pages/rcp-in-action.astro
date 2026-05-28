@@ -63,7 +63,7 @@ interface RCPEvent {
   upcoming?: boolean;
   link?: string;
   linkedin?: string;
-  photo?: string;
+  photos?: string[];
 }
 
 const EVENTS: RCPEvent[] = [
@@ -72,28 +72,28 @@ const EVENTS: RCPEvent[] = [
     date: '2025',
     location: 'Vietnam',
     description: '[TO FILL: 1 to 2 sentences]',
-    photo: 'rcp-in-action/events/vatm-workshop.jpg',
+    photos: ['rcp-in-action/events/vatm-workshop.jpg'],
   },
   {
     name: 'Airspace World Hong Kong',
     date: '2025',
     location: 'Hong Kong',
     description: '[TO FILL: 1 to 2 sentences]',
-    photo: 'rcp-in-action/events/asw-hk-2025.jpg',
+    photos: ['rcp-in-action/events/asw-hk-2025.jpg', 'rcp-in-action/events/asw-hk-2025-2.jpg', 'rcp-in-action/events/asw-hk-2025-3.jpg'],
   },
   {
     name: 'Singapore Airshow',
     date: 'Feb 2026',
     location: 'Singapore',
     description: '[TO FILL: 1 to 2 sentences]',
-    photo: 'rcp-in-action/events/singapore-airshow-2026.jpg',
+    photos: ['rcp-in-action/events/singapore-airshow-2026.jpg', 'rcp-in-action/events/singapore-airshow-2026-2.jpg'],
   },
   {
     name: 'Airspace World Lisbon',
     date: 'Mar 2026',
     location: 'Lisbon, Portugal',
     description: '[TO FILL: 1 to 2 sentences]',
-    photo: 'rcp-in-action/events/asw-lisbon-2026.jpg',
+    photos: ['rcp-in-action/events/asw-lisbon-2026.jpg', 'rcp-in-action/events/asw-lisbon-2026-2.jpg', 'rcp-in-action/events/asw-lisbon-2026-3.jpg'],
   },
   {
     name: 'AOIC 2026',
@@ -101,9 +101,14 @@ const EVENTS: RCPEvent[] = [
     location: '[TO FILL]',
     description: '[TO FILL: 1 to 2 sentences]',
     upcoming: true,
-    photo: 'rcp-in-action/events/aoic-2026.jpg',
+    photos: ['rcp-in-action/events/aoic-2026.jpg'],
   },
 ];
+
+// Flat list of all slides (for carousel rendering)
+const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
+  (ev.photos ?? []).map(photo => ({ photo, ev, evIdx }))
+);
 
 // ─── Section 4: ANSP & Partner Network ────────────────────────────────────────
 // Drop logo files in public/images/logos/ and set the image filename below.
@@ -200,8 +205,8 @@ const LOGOS: PartnerLogo[] = [
       <!-- Event list -->
       <div>
         <div class="ria-events-list">
-          {EVENTS.map(ev => (
-            <div class="ria-event">
+          {EVENTS.map((ev, evIdx) => (
+            <div class={`ria-event ${evIdx === 0 ? 'ria-event--active' : ''}`} data-ev-idx={evIdx}>
               <div class="ria-event-date">{ev.date}</div>
               <div class="ria-event-body">
                 <div class="ria-event-name">
@@ -212,13 +217,13 @@ const LOGOS: PartnerLogo[] = [
                 <p class="ria-event-desc">{ev.description}</p>
               </div>
               <div class="ria-event-actions">
-                <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onclick="event.stopPropagation()">
                   <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/>
                   </svg>
                 </a>
                 {ev.link && (
-                  <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                  <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Learn more →</a>
                 )}
               </div>
             </div>
@@ -234,10 +239,10 @@ const LOGOS: PartnerLogo[] = [
       <div class="ria-carousel" id="eventsCarousel">
         <div class="ria-carousel-viewport">
           <div class="ria-carousel-track">
-            {EVENTS.filter(ev => ev.photo).map((ev, i) => (
-              <div class={`ria-slide ${i === 0 ? 'active' : ''}`} data-index={i}>
+            {EVENT_SLIDES.map(({ photo, ev, evIdx }, slideIdx) => (
+              <div class={`ria-slide ${slideIdx === 0 ? 'active' : ''}`} data-ev={evIdx}>
                 <div class="ria-slide-img">
-                  <img src={`${base}/images/${ev.photo}`} alt={ev.name}
+                  <img src={`${base}/images/${photo}`} alt={ev.name}
                     onerror="this.parentElement.classList.add('ria-slide-placeholder')" />
                 </div>
                 <div class="ria-slide-caption">
@@ -253,8 +258,8 @@ const LOGOS: PartnerLogo[] = [
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
           </button>
           <div class="ria-carousel-dots" id="evCarouselDots">
-            {EVENTS.filter(ev => ev.photo).map((_, i) => (
-              <button class={`ria-dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Photo ${i + 1}`}></button>
+            {EVENTS.map((ev, evIdx) => (
+              <button class={`ria-dot ${evIdx === 0 ? 'active' : ''}`} data-ev-dot={evIdx} aria-label={ev.name}></button>
             ))}
           </div>
           <button class="ria-carousel-btn" id="evCarouselNext" aria-label="Photo suivante">
@@ -555,7 +560,10 @@ const LOGOS: PartnerLogo[] = [
   }
 
   /* ── Events ────────────────────────────────────────────────────────────────── */
-  .ria-events-section { background: #fff; }
+  .ria-events-section { background: var(--navy); }
+  .ria-events-section .ria-section-label,
+  .ria-events-section .section-label { color: var(--teal); }
+  .ria-events-section .ria-section-title { color: #fff; }
 
   .ria-events-list {
     display: flex;
@@ -569,15 +577,21 @@ const LOGOS: PartnerLogo[] = [
     grid-template-columns: 90px 1fr auto;
     gap: 20px;
     align-items: center;
-    background: var(--cream);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 18px 20px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   }
   .ria-event:hover {
-    border-color: rgba(6,113,129,0.3);
-    box-shadow: 0 4px 16px rgba(6,113,129,0.06);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(6,113,129,0.4);
+  }
+  .ria-event--active {
+    background: rgba(6,113,129,0.15);
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px var(--teal);
   }
 
   .ria-event-date {
@@ -591,7 +605,7 @@ const LOGOS: PartnerLogo[] = [
   .ria-event-name {
     font-size: 15px;
     font-weight: 700;
-    color: var(--navy);
+    color: #fff;
     margin-bottom: 4px;
     display: flex;
     align-items: center;
@@ -611,14 +625,14 @@ const LOGOS: PartnerLogo[] = [
   }
   .ria-event-loc {
     font-size: 11px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.45);
     text-transform: uppercase;
     letter-spacing: 0.07em;
     margin-bottom: 6px;
   }
   .ria-event-desc {
     font-size: 13px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.5);
     line-height: 1.65;
   }
 
@@ -665,9 +679,11 @@ const LOGOS: PartnerLogo[] = [
     align-items: center;
     gap: 24px;
     padding: 24px 28px;
-    background: var(--navy);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     flex-wrap: wrap;
+    margin-top: 16px;
   }
   .ria-events-cta p {
     font-size: 14px;
@@ -756,5 +772,37 @@ const LOGOS: PartnerLogo[] = [
   }
 
   initCarousel('workshopCarousel', 'carouselPrev', 'carouselNext');
-  initCarousel('eventsCarousel', 'evCarouselPrev', 'evCarouselNext');
+
+  // ── Events carousel: clicking a card filters to its photos ──
+  (function() {
+    const container = document.getElementById('eventsCarousel');
+    if (!container) return;
+
+    const slides = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
+    const dots   = Array.from(container.querySelectorAll<HTMLButtonElement>('[data-ev-dot]'));
+    const cards  = Array.from(document.querySelectorAll<HTMLElement>('.ria-event[data-ev-idx]'));
+    let current  = 0;
+
+    function activate(idx: number) {
+      slides[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+
+      const evIdx = Number(slides[current].dataset.ev);
+      dots.forEach(d => d.classList.remove('active'));
+      dots[evIdx]?.classList.add('active');
+      cards.forEach(c => c.classList.remove('ria-event--active'));
+      cards[evIdx]?.classList.add('ria-event--active');
+    }
+
+    function goToEvent(evIdx: number) {
+      const first = slides.findIndex(s => Number(s.dataset.ev) === evIdx);
+      if (first >= 0) activate(first);
+    }
+
+    document.getElementById('evCarouselPrev')?.addEventListener('click', () => activate(current - 1));
+    document.getElementById('evCarouselNext')?.addEventListener('click', () => activate(current + 1));
+    dots.forEach(d => d.addEventListener('click', () => goToEvent(Number(d.dataset.evDot))));
+    cards.forEach(c => c.addEventListener('click', () => goToEvent(Number(c.dataset.evIdx))));
+  })();
 </script>
