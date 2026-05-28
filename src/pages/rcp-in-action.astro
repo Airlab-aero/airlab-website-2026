@@ -10,12 +10,12 @@ const PROCESS_STEPS: ProcessStep[] = [
   {
     num: '01',
     title: 'Workshop',
-    desc: 'AIR Lab convenes ANSPs, airlines, and regulators for focused working sessions. These workshops surface operational pain points, align on regional ATM challenges, and build the shared vocabulary needed for effective collaboration.',
+    desc: 'AIR Lab convenes ANSPs for focused working sessions. These workshops surface operational pain points, align on regional ATM challenges, and build the shared vocabulary needed for effective collaboration.',
   },
   {
     num: '02',
     title: 'Use case definition',
-    desc: 'Participants define concrete use cases with clear operational value — trajectory sharing, capacity forecasting, FF-ICE onboarding, weather integration. Each use case is scoped, prioritised, and assigned to a dedicated working group.',
+    desc: 'Participants define concrete use cases with clear operational value, trajectory sharing, capacity forecasting, FF-ICE onboarding, weather integration. Each use case is scoped, prioritised, and assigned to a dedicated working group.',
   },
   {
     num: '03',
@@ -25,12 +25,7 @@ const PROCESS_STEPS: ProcessStep[] = [
   {
     num: '04',
     title: 'Co-development & iteration',
-    desc: 'Working groups test and refine platform features against real traffic scenarios. Feedback loops between operations and engineering drive rapid iteration toward validated, deployment-ready capabilities.',
-  },
-  {
-    num: '05',
-    title: 'Regional rollout',
-    desc: 'Validated capabilities are progressively deployed across the APAC network. Cross-ANSP coordination ensures consistent implementation, knowledge transfer, and continuous improvement.',
+    desc: 'Working groups test and refine platform features, feedback loops between operations and engineering drive rapid iteration toward validated, deployment-ready capabilities.',
   },
 ];
 
@@ -58,18 +53,20 @@ const TECH_ICONS = [
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 14v3.5H21M14 17.5h3.5M17.5 21v-3.5"/></svg>`,
 ];
 
-// ─── Section 3: Upcoming Events ────────────────────────────────────────────────
-interface UpcomingEvent {
+// ─── Events ───────────────────────────────────────────────────────────────────
+interface RCPEvent {
   name: string;
   date: string;
   location: string;
   description: string;
+  upcoming?: boolean;
   link?: string;
 }
 
-const EVENTS: UpcomingEvent[] = [
+const EVENTS: RCPEvent[] = [
   { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]', upcoming: true },
+  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]', upcoming: true },
   { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
 ];
 
@@ -157,6 +154,36 @@ const LOGOS: PartnerLogo[] = [
     </div>
   </section>
 
+  <!-- ── Events ───────────────────────────────────────────────────────────── -->
+  <section class="ria-section ria-events-section">
+    <div class="ria-section-head">
+      <div class="section-label">Events</div>
+      <h2 class="ria-section-title">Workshops &amp; <strong>key moments</strong></h2>
+    </div>
+    <div class="ria-events-list">
+      {EVENTS.map(ev => (
+        <div class="ria-event">
+          <div class="ria-event-date">{ev.date}</div>
+          <div class="ria-event-body">
+            <div class="ria-event-name">
+              {ev.name}
+              {ev.upcoming && <span class="ria-upcoming-badge">Upcoming</span>}
+            </div>
+            <div class="ria-event-loc">{ev.location}</div>
+            <p class="ria-event-desc">{ev.description}</p>
+          </div>
+          {ev.link && (
+            <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer">Learn more →</a>
+          )}
+        </div>
+      ))}
+    </div>
+    <div class="ria-events-cta">
+      <p>Want to participate in a workshop or working group?</p>
+      <a href={`${base}/contact`} class="btn-navy">Get in touch</a>
+    </div>
+  </section>
+
   <!-- ── 2. Technical Backbone ─────────────────────────────────────────────── -->
   <section class="ria-section ria-tech-section">
     <div class="ria-tech-inner">
@@ -174,29 +201,6 @@ const LOGOS: PartnerLogo[] = [
           </div>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- ── 3. Upcoming Events ──────────────────────────────────────────────── -->
-  <section class="ria-section ria-events-section">
-    <div class="ria-section-head">
-      <div class="section-label" style="color:var(--teal)">03 Upcoming Events</div>
-      <h2 class="ria-section-title" style="color:#fff">What's <strong>coming next</strong></h2>
-    </div>
-    <div class="ria-events-list">
-      {EVENTS.map(ev => (
-        <div class="ria-event">
-          <div class="ria-event-date">{ev.date}</div>
-          <div class="ria-event-body">
-            <div class="ria-event-name">{ev.name}</div>
-            <div class="ria-event-loc">{ev.location}</div>
-            <p class="ria-event-desc">{ev.description}</p>
-          </div>
-          {ev.link && (
-            <a href={ev.link} class="ria-event-cta" target="_blank" rel="noopener noreferrer">Learn more →</a>
-          )}
-        </div>
-      ))}
     </div>
   </section>
 
@@ -468,34 +472,34 @@ const LOGOS: PartnerLogo[] = [
     line-height: 1.7;
   }
 
-  /* ── Section 3: Upcoming Events ────────────────────────────────────────────── */
-  .ria-events-section { background: var(--navy); }
-  .ria-events-section .ria-section-title { color: #fff; }
+  /* ── Events ────────────────────────────────────────────────────────────────── */
+  .ria-events-section { background: #fff; }
 
   .ria-events-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    margin-bottom: 40px;
   }
 
   .ria-event {
     display: grid;
-    grid-template-columns: 120px 1fr auto;
+    grid-template-columns: 110px 1fr auto;
     gap: 28px;
     align-items: center;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--cream);
+    border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 24px 28px;
-    transition: border-color 0.2s, background 0.2s;
+    padding: 20px 24px;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .ria-event:hover {
-    border-color: rgba(6,113,129,0.4);
-    background: rgba(6,113,129,0.04);
+    border-color: rgba(6,113,129,0.3);
+    box-shadow: 0 4px 16px rgba(6,113,129,0.06);
   }
 
   .ria-event-date {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--teal);
     line-height: 1.5;
@@ -505,36 +509,61 @@ const LOGOS: PartnerLogo[] = [
   .ria-event-name {
     font-size: 15px;
     font-weight: 700;
-    color: #fff;
+    color: var(--navy);
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ria-upcoming-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(6,113,129,0.1);
+    border: 1px solid rgba(6,113,129,0.25);
+    border-radius: 4px;
+    padding: 2px 7px;
   }
   .ria-event-loc {
     font-size: 11px;
-    color: rgba(255,255,255,0.4);
+    color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .ria-event-desc {
     font-size: 13px;
-    color: rgba(255,255,255,0.55);
+    color: var(--muted);
     line-height: 1.65;
   }
 
-  .ria-event-cta {
+  .ria-event-link {
     font-size: 12px;
     font-weight: 700;
     color: var(--teal);
     text-decoration: none;
     white-space: nowrap;
-    padding: 8px 16px;
-    border: 1px solid rgba(6,113,129,0.4);
-    border-radius: 6px;
-    transition: background 0.2s, border-color 0.2s;
+    transition: opacity 0.15s;
   }
-  .ria-event-cta:hover {
-    background: rgba(6,113,129,0.15);
-    border-color: var(--teal);
+  .ria-event-link:hover { opacity: 0.7; }
+
+  .ria-events-cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 28px;
+    background: var(--navy);
+    border-radius: 10px;
+    flex-wrap: wrap;
+  }
+  .ria-events-cta p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    flex: 1;
+    margin: 0;
   }
 
   /* ── Section 4: Logo Wall ───────────────────────────────────────────────────── */
@@ -586,10 +615,11 @@ const LOGOS: PartnerLogo[] = [
     .ria-process-layout { grid-template-columns: 1fr; gap: 40px; }
     .ria-carousel { position: static; }
     .ria-pillars-grid { grid-template-columns: 1fr; gap: 16px; }
-    .ria-event { grid-template-columns: 1fr; gap: 12px; }
+    .ria-event { grid-template-columns: 1fr; gap: 8px; }
     .ria-event-date { text-align: left; }
     .ria-logo-item { width: 120px; height: 64px; }
     .ria-cta-btns { flex-direction: column; align-items: center; }
+    .ria-events-cta { flex-direction: column; align-items: flex-start; gap: 16px; }
   }
 </style>
 
