@@ -15,7 +15,7 @@ const heroVideoUrl = cms.heroVideoUrl ?? 'https://airlab.aero/wp-content/uploads
 const heroPrimaryButtonText = cms.heroPrimaryButtonText ?? 'Access the Platform';
 const heroPrimaryButtonUrl = cms.heroPrimaryButtonUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const stats = cms.stats ?? [
-  { number: '2019', suffix: '', label: 'Founded by Thales & CAAS\nSingapore, building since day one' },
+  { number: '2019', suffix: '', label: 'Founded by Thales & CAAS\nSingapore' },
   { number: '10', suffix: '+', label: 'APAC ANSPs actively\nengaged on the platform' },
   { number: '100', suffix: '%', label: 'Free access for regional ANSPs,\ncloud-based open-source stack' },
 ];
@@ -65,12 +65,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="section-label">Regional Collaboration Platform</div>
       <h2 class="section-title">An open sandbox for<br><strong>ATM innovation</strong></h2>
     </div>
-    <div class="cap-grid">
+    <div class="cap-grid" style="grid-template-columns:repeat(4,1fr);">
       <div class="cap-card" data-reveal data-reveal-delay="0">
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v9l5 3"></path></svg>
         </div>
-        <h3>4D Trajectory Prediction</h3>
+        <h3>4D Trajectory</h3>
         <p>Real-time flight data enriched with global flight plans and surveillance fusion for accurate situational awareness across the entire APAC region.</p>
         <span class="cap-tag">Live Data</span>
       </div>
@@ -78,7 +78,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
         </div>
-        <h3>FF-ICE Services Suite</h3>
+        <h3>FF-ICE</h3>
         <p>Full FF-ICE/R1 stack enabling collaborative flight planning between airlines and ANSPs, from trajectory negotiation to pre-departure agreement.</p>
         <span class="cap-tag">ICAO Standard</span>
       </div>
@@ -94,25 +94,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="cap-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
         </div>
-        <h3>Fast-Time Simulation</h3>
+        <h3>Fast Time Simulation</h3>
         <p>Accelerated simulation environment enabling ANSPs to test ATM concepts and procedures at scale, running scenarios faster than real-time to validate performance before deployment.</p>
         <span class="cap-tag">Research</span>
-      </div>
-      <div class="cap-card" data-reveal data-reveal-delay="320">
-        <div class="cap-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
-        </div>
-        <h3>Weather Data Integration</h3>
-        <p>Integration of meteorological data into ATM workflows, enabling weather-aware trajectory planning and safety-critical decision support.</p>
-        <span class="cap-tag">Innovation</span>
-      </div>
-      <div class="cap-card" data-reveal data-reveal-delay="400">
-        <div class="cap-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#067181" stroke-width="1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"></path></svg>
-        </div>
-        <h3>AI &amp; Machine Learning</h3>
-        <p>Embedding AI capabilities across the platform to enhance prediction, automation, and collaborative decision-making for ANSPs and airlines.</p>
-        <span class="cap-tag">AI-Powered</span>
       </div>
     </div>
   </section>
@@ -220,22 +204,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
-  <!-- TEAM PREVIEW -->
-  <section class="team" id="team">
-    <div class="team-intro-grid">
-      <img class="team-photo-large" src={`${base}/team-photo.jpg`} alt="AIR Lab team" data-reveal />
-      <div class="team-intro-text" data-reveal data-reveal-delay="120">
-        <div class="section-label">Our team</div>
-        <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
-        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href={`${base}/team`} class="btn-white">Meet the full team</a>
-          <a href={`${base}/contact`} class="btn-outline-white">Contact AIR Lab</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- NEWS PREVIEW -->
   <section class="news" id="news">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;" data-reveal>
@@ -260,6 +228,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- TEAM PREVIEW -->
+  <section class="team" id="team">
+    <div class="team-intro-grid">
+      <img class="team-photo-large" src={`${base}/team-photo.jpg`} alt="AIR Lab team" data-reveal />
+      <div class="team-intro-text" data-reveal data-reveal-delay="120">
+        <div class="section-label">Our team</div>
+        <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
+        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href={`${base}/team`} class="btn-white">Meet the full team</a>
+          <a href={`${base}/contact`} class="btn-outline-white">Contact AIR Lab</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -320,7 +304,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   if (video) {
     video.playbackRate = 0.5;
     video.addEventListener('loadedmetadata', () => { video.currentTime = 180; });
-    video.addEventListener('timeupdate', () => { if (video.currentTime >= 205) video.currentTime = 180; });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= 215) video.currentTime = 180; });
     video.play().catch(() => {});
   }
 
