@@ -7,7 +7,7 @@ import { client, joinUsPageQuery } from '../lib/sanity';
 const cms = await client.fetch(joinUsPageQuery) ?? {};
 const heroSubtitle = cms.heroSubtitle ?? 'Be part of a groundbreaking initiative that is revolutionising air traffic management through open technologies and collaboration.';
 const missionPara1 = cms.missionPara1 ?? 'AIR Lab is dedicated to advancing global aviation efficiency and sustainability by creating innovative Air Traffic Management solutions through open technologies and collaboration.';
-const missionPara2 = cms.missionPara2 ?? "We leverage artificial intelligence, machine learning, and open data standards to solve aviation's most complex challenges — alongside a world-class team of engineers, ATM specialists, and researchers.";
+const missionPara2 = cms.missionPara2 ?? "We leverage artificial intelligence, machine learning, and open data standards to solve aviation's most complex challenges, alongside a world-class team of engineers, ATM specialists, and researchers.";
 const stats = cms.stats ?? [
   { label: '56+', desc: 'Team members across operations, engineering & research' },
   { label: '10+', desc: 'Partner organisations across industry and academia' },

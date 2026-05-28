@@ -20,7 +20,7 @@ const stats = cms.stats ?? [
   { number: '100', suffix: '%', label: 'Free access for regional ANSPs,\ncloud-based open-source stack' },
 ];
 const ctaTitle = cms.ctaTitle ?? 'Ready to join the collaboration?';
-const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institution, or technology provider — the RCP is open for collaboration.";
+const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institution, or technology provider: the RCP is open for collaboration.";
 const ctaLocation = cms.ctaLocation ?? 'AIR Lab @ WeWork, Suntec Tower 5\nTemasek Boulevard, Singapore 038985';
 const ctaPlatformUrl = cms.ctaPlatformUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
@@ -238,7 +238,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="team-intro-text" data-reveal data-reveal-delay="120">
         <div class="section-label">Our team</div>
         <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
-        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS — working side by side to advance aviation in the Asia-Pacific region.</p>
+        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS, working side by side to advance aviation in the Asia-Pacific region.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
           <a href={`${base}/team`} class="btn-white">Meet the full team</a>
           <a href={`${base}/contact`} class="btn-outline-white">Contact AIR Lab</a>
@@ -320,19 +320,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     ]},
     understand: { features: [
       { id: 'hotspot', title: 'Hotspots & Demand Forecasting', desc: 'Predict saturation points and capacity bottlenecks under different traffic growth scenarios across the SEA region.', tag: 'Forecasting', src: RCP_BASE+'/understand-hotspots.mp4', type: 'video' },
-      { id: 'kpi', title: 'KPIs & Regional Indicators', desc: 'Capacity, punctuality, and efficiency across your region at a glance — dashboards built for ANSP operational needs.', tag: 'Analytics', src: RCP_BASE+'/understand-kpi.png', type: 'img' },
-      { id: 'rh', title: 'Regional Health', desc: 'A monthly snapshot of South East Asian airspace — routes, airports, flight levels, and peak traffic trends.', tag: 'Monthly', src: RCP_BASE+'/understand-regional-health.png', type: 'img' },
+      { id: 'kpi', title: 'KPIs & Regional Indicators', desc: 'Capacity, punctuality, and efficiency across your region at a glance, with dashboards built for ANSP operational needs.', tag: 'Analytics', src: RCP_BASE+'/understand-kpi.png', type: 'img' },
+      { id: 'rh', title: 'Regional Health', desc: 'A monthly snapshot of South East Asian airspace: routes, airports, flight levels, and peak traffic trends.', tag: 'Monthly', src: RCP_BASE+'/understand-regional-health.png', type: 'img' },
     ]},
     simulate: { features: [
-      { id: 'scenario', title: 'Scenario Editor', desc: 'Build any traffic or airspace scenario in minutes — modify traffic density, routes, sector boundaries, and weather constraints.', tag: 'Editor', src: RCP_BASE+'/simulate-scenario.mp4', type: 'video' },
+      { id: 'scenario', title: 'Scenario Editor', desc: 'Build any traffic or airspace scenario in minutes: modify traffic density, routes, sector boundaries, and weather constraints.', tag: 'Editor', src: RCP_BASE+'/simulate-scenario.mp4', type: 'video' },
       { id: 'fts', title: 'Fast-time Simulation', desc: 'Run a full day of traffic in seconds. Compare outcomes side by side across multiple scenarios to validate ATM concepts.', tag: 'Research', src: RCP_BASE+'/simulate-fts.mp4', type: 'video' },
-      { id: 'cdr', title: 'Area Avoidance & CDR', desc: 'Define exclusion zones and watch the network automatically re-route around them — conflict detection and resolution built in.', tag: 'Safety', src: RCP_BASE+'/simulate-cdr.mp4', type: 'video' },
+      { id: 'cdr', title: 'Area Avoidance & CDR', desc: 'Define exclusion zones and watch the network automatically re-route around them, with conflict detection and resolution built in.', tag: 'Safety', src: RCP_BASE+'/simulate-cdr.mp4', type: 'video' },
     ]},
     collaborate: { features: [
-      { id: 'ffice', title: 'FF-ICE Trajectory Negotiation', desc: 'eAU and eASP services. FF-ICE/R1 flight plans integrated into the RCP — agreed trajectories available for collaborative awareness and trajectory forecast between ANSPs and airlines.', tag: 'ICAO Standard', src: RCP_BASE+'/collaborate-ffice.mp4', type: 'video' },
+      { id: 'ffice', title: 'FF-ICE Trajectory Negotiation', desc: 'eAU and eASP services. FF-ICE/R1 flight plans integrated into the RCP; agreed trajectories available for collaborative awareness and trajectory forecast between ANSPs and airlines.', tag: 'ICAO Standard', src: RCP_BASE+'/collaborate-ffice.mp4', type: 'video' },
     ]},
     explore: { features: [
-      { id: 'whatif', title: 'What-if Explorer', desc: 'Toggle constraints on and off — runway closures, sector redesigns, demand surges — and instantly see the downstream impact on the regional network.', tag: 'Simulation', src: RCP_BASE+'/explore-whatif.mp4', type: 'video' },
+      { id: 'whatif', title: 'What-if Explorer', desc: 'Toggle constraints on and off: runway closures, sector redesigns, demand surges, and instantly see the downstream impact on the regional network.', tag: 'Simulation', src: RCP_BASE+'/explore-whatif.mp4', type: 'video' },
     ]},
   };
 

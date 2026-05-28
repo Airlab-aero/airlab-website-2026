@@ -12,14 +12,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <div class="rh-hero">
     <div class="rh-tag">Regional Collaboration Platform</div>
     <h1>Regional <strong>Insights</strong></h1>
-    <p>A monthly snapshot of air traffic network performance across South East Asia — routes, airports, flight levels, and peak throughput.</p>
+    <p>A monthly snapshot of air traffic network performance across South East Asia: routes, airports, flight levels, and peak throughput.</p>
     <div class="rh-badge"><span class="rh-dot"></span> 25 Feb – 24 Mar 2026 &nbsp;·&nbsp; South East Asia</div>
   </div>
 
   <!-- MAP IMAGE — full width -->
   <div class="rh-map">
     <img src={`${base}/regional-health-map.png`} alt="Regional air traffic situational awareness" />
-    <span class="rh-map-caption">Live regional situational awareness — South East Asia airspace</span>
+    <span class="rh-map-caption">Live regional situational awareness, South East Asia airspace</span>
   </div>
 
   <!-- ACCORDION SECTIONS -->
@@ -37,12 +37,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="rh-content" id="airports">
         <div class="rh-airports-grid">
           {[
-            { name: 'Kuala Lumpur', icao: 'WMKK', pct: 100, total: '29,681', peak: '75', rec: '85 — 16 Mar' },
-            { name: 'Bangkok Suvarnabhumi', icao: 'VTBS', pct: 94, total: '27,778', peak: '65', rec: '73 — 3 Apr' },
-            { name: 'Hong Kong', icao: 'VHHH', pct: 91, total: '27,059', peak: '65', rec: '72 — 21 Mar' },
-            { name: 'Singapore', icao: 'WSSS', pct: 88, total: '26,292', peak: '61', rec: '67 — 22 Mar' },
-            { name: 'Jakarta', icao: 'WIII', pct: 73, total: '21,828', peak: '66', rec: '80 — 16 Mar' },
-            { name: 'Manila', icao: 'RPLL', pct: 69, total: '20,406', peak: '43', rec: '51 — 8 Mar' },
+            { name: 'Kuala Lumpur', icao: 'WMKK', pct: 100, total: '29,681', peak: '75', rec: '85, 16 Mar' },
+            { name: 'Bangkok Suvarnabhumi', icao: 'VTBS', pct: 94, total: '27,778', peak: '65', rec: '73, 3 Apr' },
+            { name: 'Hong Kong', icao: 'VHHH', pct: 91, total: '27,059', peak: '65', rec: '72, 21 Mar' },
+            { name: 'Singapore', icao: 'WSSS', pct: 88, total: '26,292', peak: '61', rec: '67, 22 Mar' },
+            { name: 'Jakarta', icao: 'WIII', pct: 73, total: '21,828', peak: '66', rec: '80, 16 Mar' },
+            { name: 'Manila', icao: 'RPLL', pct: 69, total: '20,406', peak: '43', rec: '51, 8 Mar' },
           ].map(a => (
             <div class="rh-airport-card">
               <div class="rh-airport-header">
@@ -100,7 +100,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <button class="rh-toggle" data-target="fl" aria-expanded="false">
         <div>
           <div class="rh-section-label">ATM Insights</div>
-          <div class="rh-section-title">Flight level distribution — key routes</div>
+          <div class="rh-section-title">Flight level distribution: key routes</div>
         </div>
         <span class="rh-icon">+</span>
       </button>

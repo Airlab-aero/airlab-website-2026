@@ -17,12 +17,12 @@ interface Workshop {
 }
 
 const WORKSHOPS: Workshop[] = [
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { type: 'Training',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
+  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { type: 'Training',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { type: 'Working Group', title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { type: 'Workshop',      title: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
 ];
 
 const W_COLOR: Record<WType, string> = {
@@ -36,9 +36,9 @@ const W_COLOR: Record<WType, string> = {
 interface TechPillar { title: string; description: string; }
 
 const TECH_PILLARS: TechPillar[] = [
-  { title: '[TO FILL]', description: '[TO FILL — 2–3 sentences describing this technical capability]' },
-  { title: '[TO FILL]', description: '[TO FILL — 2–3 sentences describing this technical capability]' },
-  { title: '[TO FILL]', description: '[TO FILL — 2–3 sentences describing this technical capability]' },
+  { title: '[TO FILL]', description: '[TO FILL: 2-3 sentences describing this technical capability]' },
+  { title: '[TO FILL]', description: '[TO FILL: 2-3 sentences describing this technical capability]' },
+  { title: '[TO FILL]', description: '[TO FILL: 2-3 sentences describing this technical capability]' },
 ];
 
 const TECH_ICONS = [
@@ -57,9 +57,9 @@ interface UpcomingEvent {
 }
 
 const EVENTS: UpcomingEvent[] = [
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
-  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL — 1 to 2 sentences]' },
+  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
+  { name: '[TO FILL]', date: '[TO FILL]', location: '[TO FILL]', description: '[TO FILL: 1 to 2 sentences]' },
 ];
 
 // ─── Section 4: ANSP & Partner Network ────────────────────────────────────────
@@ -83,7 +83,7 @@ const LOGOS: PartnerLogo[] = [
   <div class="ria-hero">
     <div class="ria-hero-tag">Regional Collaboration Platform</div>
     <h1>RCP <strong>in Action</strong></h1>
-    <p>From workshops and working groups to a growing technical backbone — Air Lab puts the RCP to work across South East Asia.</p>
+    <p>From workshops and working groups to a growing technical backbone. Air Lab puts the RCP to work across South East Asia.</p>
   </div>
 
   <!-- ── 1. Workshops & Working Groups ────────────────────────────────────── -->
@@ -125,7 +125,7 @@ const LOGOS: PartnerLogo[] = [
       <div class="ria-section-head ria-section-head--centered">
         <div class="section-label">02 Technical Backbone</div>
         <h2 class="ria-section-title">The infrastructure<br><strong>behind the platform</strong></h2>
-        <p class="ria-tech-intro">[TO FILL — 2–3 sentences introducing Air Lab's technical expertise and the RCP architecture at a high level]</p>
+        <p class="ria-tech-intro">[TO FILL: 2-3 sentences introducing Air Lab's technical expertise and the RCP architecture at a high level]</p>
       </div>
       <div class="ria-pillars-grid">
         {TECH_PILLARS.map((p, i) => (
@@ -190,7 +190,7 @@ const LOGOS: PartnerLogo[] = [
   <div class="ria-cta">
     <div class="section-label">Get involved</div>
     <h2 class="section-title" style="color:#fff;margin-top:8px">Ready to collaborate<br><strong>on the platform?</strong></h2>
-    <p>Whether you're an ANSP, airline, or research institution — reach out to explore how your organisation can engage with the RCP programme.</p>
+    <p>Whether you're an ANSP, airline, or research institution, reach out to explore how your organisation can engage with the RCP programme.</p>
     <div class="ria-cta-btns">
       <a href={`${base}/contact`} class="btn-primary">Contact AIR Lab</a>
       <a href={`${base}/partners`} class="btn-ghost">Our Partners</a>

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { client, contactPageQuery } from '../lib/sanity';
 
 const cms = await client.fetch(contactPageQuery) ?? {};
-const heroSubtitle = cms.heroSubtitle ?? "Whether you're interested in partnership, research collaboration, or learning more about the RCP platform — we'd love to hear from you.";
+const heroSubtitle = cms.heroSubtitle ?? "Whether you're interested in partnership, research collaboration, or learning more about the RCP platform, we'd love to hear from you.";
 const address = cms.address ?? 'AIR Lab @ WeWork\nSuntec Tower 5\nTemasek Boulevard\nSingapore 038985';
 const apiUrl = cms.apiUrl ?? 'https://open-atms.airlab.aero/public-api/';
 const rcpUrl = cms.rcpUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
