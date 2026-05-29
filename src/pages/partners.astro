@@ -74,84 +74,102 @@ const ECOSYSTEM = [
   <!-- ── Partnerships with Startups ────────────────────────────────────── -->
   <section class="startup-section">
 
-    <div class="startup-header">
-      <div class="section-label" style="color: var(--teal);">Startup Programme</div>
-      <h2 class="section-title" style="color: #fff;">Partnerships<br><strong>with startups</strong></h2>
-      <p style="color: rgba(255,255,255,0.6); font-size: 17px; font-weight: 300; line-height: 1.65; max-width: 560px;">AIR Lab connects innovative startups with the ATM ecosystem — providing access to operational data, technical infrastructure, and a global network of aviation stakeholders.</p>
-    </div>
-
-    <!-- 1. Mission -->
-    <div class="startup-block">
-      <div class="startup-block-label">01 — Our mission</div>
-      <div class="mission-grid">
-        <div class="mission-card">
-          <div class="mission-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Build stronger bridges between startups and ATM stakeholders</h3>
-          <p>Identify real-world challenges and explore scalable solutions together.</p>
-        </div>
-        <div class="mission-card">
-          <div class="mission-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <h3>Foster innovation in the APAC ATM ecosystem</h3>
-          <p>Support the transition to smarter, more collaborative air traffic systems across the region.</p>
-        </div>
+    <!-- Header -->
+    <div class="sp-header-row">
+      <div>
+        <div class="sp-eyebrow">Startup Programme</div>
+        <h2 class="sp-title">Partnerships<br><strong>with startups</strong></h2>
       </div>
+      <p class="sp-intro">AIR Lab connects innovative startups with the ATM ecosystem — providing access to operational data, technical infrastructure, and a global network of aviation stakeholders.</p>
     </div>
 
-    <!-- 2. Process -->
-    <div class="startup-block">
-      <div class="startup-block-label">02 — The process</div>
-      <div class="process-steps">
-        {[
-          { n: '1', title: 'Scouting', desc: 'AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.' },
-          { n: '2', title: 'Use Case Creation', desc: 'Use case curation and presentation of proposal to a panel from AIR Lab & CAAS.' },
-          { n: '3', title: 'POC', desc: 'First 3 months to demonstrate that the solution can integrate to AIR Lab\'s platform through open APIs.' },
-          { n: '4', title: 'Extended POC', desc: 'Further prove solution accuracy and resolution — requiring additional computing power and real data.' },
-          { n: '5', title: 'AIRspace Hub', desc: 'Showcasing the validated solution to other ATM stakeholders to facilitate further growth.' },
-        ].map((step, i) => (
-          <div class="process-step" data-step={i}>
-            <div class="ps-num">{step.n}</div>
-            <div class="ps-content">
-              <div class="ps-title">{step.title}</div>
-              <div class="ps-desc">{step.desc}</div>
+    <!-- 01 Mission -->
+    <div class="sp-block">
+      <div class="sp-block-num">01</div>
+      <div class="sp-block-content">
+        <h3 class="sp-block-title">Our mission</h3>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <h4>Build stronger bridges between startups and ATM stakeholders</h4>
+            <p>Identify real-world challenges and explore scalable solutions together.</p>
           </div>
-        ))}
+          <div class="mission-card">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4>Foster innovation in the APAC ATM ecosystem</h4>
+            <p>Support the transition to smarter, more collaborative air traffic systems across the region.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 3. Examples -->
-    <div class="startup-block">
-      <div class="startup-block-label">03 — Examples</div>
-      <div class="startup-examples">
-
-        <!-- Meteomatics -->
-        <div class="startup-card">
-          <div class="sc-logo">
-            <img src={`${base}/images/partners/meteomatics.png`} alt="Meteomatics" />
-          </div>
-          <div class="sc-body">
-            <h3 class="sc-title">Meteomatics</h3>
-            <p class="sc-desc">Meteomatics joined AIR Lab to integrate their high-resolution weather forecasting data — the SING1K model — directly into the Regional Collaboration Platform. The partnership explores how precise precipitation and wind data can improve route planning, reduce fuel consumption, and enhance situational awareness for APAC ANSPs.</p>
-            <a href={`${base}/news/meteomatics-airlab-weather-forecasting-atm`} class="sc-link">Read the article →</a>
+    <!-- 02 Process -->
+    <div class="sp-block">
+      <div class="sp-block-num">02</div>
+      <div class="sp-block-content">
+        <h3 class="sp-block-title">The process</h3>
+        <div class="process-track">
+          <div class="process-line"></div>
+          {[
+            { title: 'Scouting', desc: 'AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.' },
+            { title: 'Use Case Creation', desc: 'Use case curation and presentation of proposal to a panel from AIR Lab & CAAS.' },
+            { title: 'POC', desc: 'First 3 months: demonstrate integration into the platform through open APIs.' },
+            { title: 'Extended POC', desc: 'Further prove solution accuracy and resolution with additional computing power and real data.' },
+            { title: 'AIRspace Hub', desc: 'Showcase the validated solution to other ATM stakeholders to facilitate further growth.' },
+          ].map((step, i) => (
+            <button class={`ps-step ${i === 0 ? 'active' : ''}`} data-idx={i}>
+              <div class="ps-dot"></div>
+              <div class="ps-step-num">{i + 1}</div>
+              <div class="ps-step-title">{step.title}</div>
+            </button>
+          ))}
+        </div>
+        <div class="process-detail" id="processDetail">
+          <div class="pd-num">1</div>
+          <div>
+            <div class="pd-title">Scouting</div>
+            <div class="pd-desc">AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.</div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Hela Labs -->
-        <div class="startup-card">
-          <div class="sc-img-wrap">
-            <img src={`${base}/images/startups/hela-labs-1.jpg`} alt="Hela Labs demo day" class="sc-photo" />
-            <img src={`${base}/images/startups/hela-labs-2.jpg`} alt="Hela Labs demo day" class="sc-photo sc-photo--2" />
+    <!-- 03 Examples -->
+    <div class="sp-block">
+      <div class="sp-block-num">03</div>
+      <div class="sp-block-content">
+        <h3 class="sp-block-title">Examples</h3>
+        <div class="examples-grid">
+
+          <!-- Meteomatics -->
+          <div class="ex-card">
+            <div class="ex-card-top">
+              <div class="ex-logo-wrap">
+                <img src={`${base}/images/partners/meteomatics.png`} alt="Meteomatics" class="ex-logo" />
+              </div>
+              <span class="ex-tag">Weather & Data</span>
+            </div>
+            <h4 class="ex-name">Meteomatics</h4>
+            <p class="ex-desc">Integration of the high-resolution SING1K weather forecasting model directly into the RCP — improving route planning, reducing fuel consumption, and enhancing situational awareness for APAC ANSPs.</p>
+            <a href={`${base}/news/meteomatics-airlab-weather-forecasting-atm`} class="ex-link">Read the article →</a>
           </div>
-          <div class="sc-body">
-            <h3 class="sc-title">Hela Labs</h3>
-            <p class="sc-desc">Hela Labs participated in AIR Lab's startup programme, presenting their solution at a demo day with AIR Lab and CAAS. The collaboration explores how their technology can support ATM operations across the APAC region, from data processing to real-time decision support.</p>
+
+          <!-- Hela Labs -->
+          <div class="ex-card">
+            <div class="ex-card-top ex-card-top--photos">
+              <img src={`${base}/images/startups/hela-labs-1.jpg`} alt="Hela Labs" class="ex-photo ex-photo--1" />
+              <img src={`${base}/images/startups/hela-labs-2.jpg`} alt="Hela Labs" class="ex-photo ex-photo--2" />
+            </div>
+            <span class="ex-tag">Demo Day</span>
+            <h4 class="ex-name">Hela Labs</h4>
+            <p class="ex-desc">Hela Labs presented their solution at a demo day with AIR Lab and CAAS, exploring how their technology can support ATM operations across the APAC region — from data processing to real-time decision support.</p>
           </div>
+
         </div>
-
       </div>
     </div>
 
@@ -194,45 +212,79 @@ const ECOSYSTEM = [
   .eco-name { font-size: 13px; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
 
   /* ── Startup section ── */
-  .startup-section { background: #0d1b2a; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
-  .startup-header { max-width: 640px; }
-  .startup-block-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 32px; font-weight: 500; }
-  .startup-block { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 48px; }
+  .startup-section { background: #0b1622; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
+
+  /* Header */
+  .sp-header-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+  .sp-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
+  .sp-title { font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: #fff; line-height: 1.15; margin: 0; }
+  .sp-title strong { font-weight: 700; }
+  .sp-intro { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; align-self: end; margin: 0; }
+
+  /* Blocks */
+  .sp-block { display: grid; grid-template-columns: 80px 1fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 56px; }
+  .sp-block-num { font-size: 13px; font-weight: 700; color: var(--teal); letter-spacing: 0.05em; padding-top: 6px; }
+  .sp-block-title { font-size: 26px; font-weight: 600; color: #fff; margin: 0 0 32px; }
 
   /* Mission */
-  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .mission-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 36px; transition: border-color 0.2s, background 0.2s; }
-  .mission-card:hover { background: rgba(6,113,129,0.12); border-color: var(--teal); }
-  .mission-icon { width: 44px; height: 44px; border: 1px solid rgba(6,113,129,0.5); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-  .mission-icon svg { width: 22px; height: 22px; stroke: var(--teal); }
-  .mission-card h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 10px; line-height: 1.4; }
-  .mission-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mission-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 32px; transition: all 0.25s; cursor: default; }
+  .mission-card:hover { background: rgba(6,113,129,0.1); border-color: rgba(6,113,129,0.4); transform: translateY(-2px); }
+  .mission-icon { width: 40px; height: 40px; background: rgba(6,113,129,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .mission-icon svg { width: 20px; height: 20px; stroke: var(--teal); }
+  .mission-card h4 { font-size: 15px; font-weight: 600; color: #fff; margin: 0 0 10px; line-height: 1.45; }
+  .mission-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
 
-  /* Process */
-  .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
-  .process-step { position: relative; padding: 24px 20px 24px 0; cursor: default; }
-  .process-step::after { content: '→'; position: absolute; right: 0; top: 30px; color: rgba(255,255,255,0.2); font-size: 18px; }
-  .process-step:last-child::after { display: none; }
-  .ps-num { font-size: 36px; font-weight: 700; color: var(--teal); opacity: 0.5; line-height: 1; margin-bottom: 12px; transition: opacity 0.2s; }
-  .process-step:hover .ps-num { opacity: 1; }
-  .ps-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-  .ps-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55; transition: color 0.2s; }
-  .process-step:hover .ps-desc { color: rgba(255,255,255,0.8); }
+  /* Process — interactive tabs */
+  .process-track { display: flex; position: relative; margin-bottom: 32px; gap: 0; }
+  .process-line { position: absolute; top: 18px; left: 18px; right: 18px; height: 1px; background: rgba(255,255,255,0.12); z-index: 0; }
+  .ps-step { flex: 1; background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 8px 0; position: relative; z-index: 1; }
+  .ps-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s; flex-shrink: 0; }
+  .ps-step.active .ps-dot, .ps-step:hover .ps-dot { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 0 4px rgba(6,113,129,0.2); }
+  .ps-step-num { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; transition: color 0.2s; }
+  .ps-step.active .ps-step-num, .ps-step:hover .ps-step-num { color: var(--teal); }
+  .ps-step-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); text-align: center; transition: color 0.2s; line-height: 1.3; }
+  .ps-step.active .ps-step-title, .ps-step:hover .ps-step-title { color: #fff; }
+
+  .process-detail { display: flex; gap: 24px; align-items: flex-start; background: rgba(6,113,129,0.08); border: 1px solid rgba(6,113,129,0.25); border-radius: 12px; padding: 28px 32px; }
+  .pd-num { font-size: 48px; font-weight: 700; color: var(--teal); opacity: 0.3; line-height: 1; flex-shrink: 0; }
+  .pd-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .pd-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; }
 
   /* Examples */
-  .startup-examples { display: flex; flex-direction: column; gap: 40px; }
-  .startup-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; transition: border-color 0.2s; }
-  .startup-card:hover { border-color: rgba(6,113,129,0.5); }
-  .sc-logo { display: flex; align-items: center; justify-content: center; height: 80px; }
-  .sc-logo img { max-height: 60px; max-width: 160px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; }
-  .sc-img-wrap { position: relative; height: 160px; border-radius: 10px; overflow: hidden; }
-  .sc-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s; }
-  .sc-photo--2 { opacity: 0; }
-  .sc-img-wrap:hover .sc-photo--2 { opacity: 1; }
-  .sc-img-wrap:hover .sc-photo:not(.sc-photo--2) { opacity: 0; }
-  .sc-title { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 12px; }
-  .sc-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
-  .sc-link { font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 500; }
-  .sc-link:hover { color: #fff; }
+  .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .ex-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: all 0.25s; }
+  .ex-card:hover { border-color: rgba(6,113,129,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .ex-card-top { height: 100px; display: flex; align-items: center; justify-content: flex-start; }
+  .ex-logo-wrap { background: #fff; border-radius: 10px; padding: 14px 20px; display: inline-flex; }
+  .ex-logo { max-height: 44px; max-width: 160px; object-fit: contain; }
+  .ex-card-top--photos { position: relative; height: 160px; border-radius: 10px; overflow: hidden; }
+  .ex-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.45s; border-radius: 10px; }
+  .ex-photo--2 { opacity: 0; }
+  .ex-card-top--photos:hover .ex-photo--2 { opacity: 1; }
+  .ex-card-top--photos:hover .ex-photo--1 { opacity: 0; }
+  .ex-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  .ex-name { font-size: 20px; font-weight: 700; color: #fff; margin: 0; }
+  .ex-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; flex: 1; }
+  .ex-link { font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 600; align-self: flex-start; }
+  .ex-link:hover { color: #fff; }
 </style>
 
+<script>
+  const STEPS = [
+    { title: 'Scouting', desc: 'AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.' },
+    { title: 'Use Case Creation', desc: 'Use case curation and presentation of proposal to a panel from AIR Lab & CAAS.' },
+    { title: 'POC', desc: 'First 3 months: demonstrate integration into AIR Lab\'s platform through open APIs.' },
+    { title: 'Extended POC', desc: 'Further prove solution accuracy and resolution with additional computing power and real data.' },
+    { title: 'AIRspace Hub', desc: 'Showcase the validated solution to other ATM stakeholders to facilitate further growth.' },
+  ];
+  const detail = document.getElementById('processDetail');
+  document.querySelectorAll<HTMLElement>('.ps-step').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.idx);
+      document.querySelectorAll('.ps-step').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (detail) detail.innerHTML = `<div class="pd-num">${idx + 1}</div><div><div class="pd-title">${STEPS[idx].title}</div><div class="pd-desc">${STEPS[idx].desc}</div></div>`;
+    });
+  });
+</script>
