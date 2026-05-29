@@ -9,6 +9,20 @@ const founding = partners.filter((p: any) => p.order <= 2);
 const local = partners.filter((p: any) => p.order > 2 && p.order <= 6);
 const solutions = partners.filter((p: any) => p.order > 6);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const LOGOS: Record<string, string> = {
+  'caas':        'caas.png',
+  'thales':      'thales.webp',
+  'sginnovate':  'sginnovate.png',
+  'meteomatics': 'meteomatics.png',
+  'tomorrow.io': 'tomorrow.png',
+};
+
+function logoFor(name: string): string | null {
+  const key = name.toLowerCase().replace(/[^a-z0-9.]/g, '');
+  const match = Object.keys(LOGOS).find(k => key.includes(k.replace('.', '')));
+  return match ? `${base}/images/partners/${LOGOS[match]}` : null;
+}
 ---
 
 <Base title="Partners" description="AIR Lab's ecosystem of founding, local, and solutions partners advancing aviation technology in the Asia-Pacific region.">
@@ -29,13 +43,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="section-intro" style="margin-top: 16px;">AIR Lab was founded through a unique public-private partnership between CAAS and Thales, bringing together regulatory expertise and world-class aviation technology.</p>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 80px;">
-      {founding.map((p: any) => (
-        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 48px; display: flex; flex-direction: column; gap: 16px; text-decoration: none; transition: box-shadow 0.2s; cursor: pointer;">
-          <div style="font-size: 22px; font-weight: 600; color: var(--navy);">{p.name}</div>
-          <div style="font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
-          <div style="font-size: 13px; color: var(--teal); margin-top: 8px;">Visit website →</div>
-        </a>
-      ))}
+      {founding.map((p: any) => {
+        const logo = logoFor(p.name);
+        return (
+          <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 48px; display: flex; flex-direction: column; gap: 16px; text-decoration: none; transition: box-shadow 0.2s; cursor: pointer;">
+            {logo
+              ? <img src={logo} alt={p.name} style="max-height: 52px; max-width: 180px; object-fit: contain;" />
+              : <div style="font-size: 22px; font-weight: 600; color: var(--navy);">{p.name}</div>
+            }
+            <div style="font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+            <div style="font-size: 13px; color: var(--teal); margin-top: 8px;">Visit website →</div>
+          </a>
+        );
+      })}
     </div>
 
     <div class="section-header" style="margin-top: 0;">
@@ -43,15 +63,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h2 class="section-title">Singapore's innovation<br><strong>ecosystem</strong></h2>
     </div>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 80px;">
-      {local.map((p: any) => (
-        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
-          <div>
-            <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
-            <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
-          </div>
-          <div style="font-size: 20px; color: var(--muted);">→</div>
-        </a>
-      ))}
+      {local.map((p: any) => {
+        const logo = logoFor(p.name);
+        return (
+          <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
+            <div style="display: flex; align-items: center; gap: 20px;">
+              {logo && <img src={logo} alt={p.name} style="max-height: 36px; max-width: 120px; object-fit: contain;" />}
+              <div>
+                <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
+                <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+              </div>
+            </div>
+            <div style="font-size: 20px; color: var(--muted);">→</div>
+          </a>
+        );
+      })}
     </div>
 
     <div class="section-header" style="margin-top: 0;">
@@ -59,15 +85,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h2 class="section-title">Technology<br><strong>specialists</strong></h2>
     </div>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-      {solutions.map((p: any) => (
-        <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
-          <div>
-            <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
-            <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
-          </div>
-          <div style="font-size: 20px; color: var(--muted);">→</div>
-        </a>
-      ))}
+      {solutions.map((p: any) => {
+        const logo = logoFor(p.name);
+        return (
+          <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
+            <div style="display: flex; align-items: center; gap: 20px;">
+              {logo && <img src={logo} alt={p.name} style="max-height: 36px; max-width: 120px; object-fit: contain;" />}
+              <div>
+                <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
+                <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+              </div>
+            </div>
+            <div style="font-size: 20px; color: var(--muted);">→</div>
+          </a>
+        );
+      })}
     </div>
   </section>
 
