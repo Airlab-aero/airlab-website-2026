@@ -255,8 +255,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h2 class="section-title">Trusted by<br><strong>aviation leaders</strong></h2>
     </div>
     <div class="partners-grid">
-      <div class="partner-cell"><span style="font-size:15px;font-weight:600;color:var(--navy);">CAAS</span></div>
-      <div class="partner-cell"><span style="font-size:15px;font-weight:600;color:var(--navy);">Thales</span></div>
+      <div class="partner-cell">
+        <a href="https://www.caas.gov.sg" target="_blank" rel="noopener" class="partner-logo-link">
+          <img src={`${base}/images/partners/caas.png`} alt="CAAS" class="partner-logo" />
+        </a>
+      </div>
+      <div class="partner-cell">
+        <a href="https://www.thalesgroup.com" target="_blank" rel="noopener" class="partner-logo-link">
+          <img src={`${base}/images/partners/thales.webp`} alt="Thales" class="partner-logo" />
+        </a>
+      </div>
       <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">SGInnovate</span></div>
       <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">Meteomatics</span></div>
       <div class="partner-cell"><span style="font-size:14px;font-weight:500;color:var(--muted);">Tomorrow.io</span></div>

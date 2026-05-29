@@ -390,8 +390,9 @@ section { padding: 100px 80px; }
   background: #fff; transition: background 0.2s;
 }
 .partner-cell:hover { background: var(--off-white); }
-.partner-cell img { max-height: 36px; max-width: 110px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
-.partner-cell:hover img { opacity: 1; filter: grayscale(0%); }
+.partner-logo-link { display: flex; align-items: center; justify-content: center; }
+.partner-logo { max-height: 44px; max-width: 120px; object-fit: contain; transition: opacity 0.2s; }
+.partner-cell:hover .partner-logo { opacity: 0.8; }
 
 /* ── CONTACT CTA ── */
 .contact-cta {
