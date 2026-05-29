@@ -8,6 +8,11 @@ const articles = await client.fetch(newsListQuery);
 const categories = ['All', ...Array.from(new Set(articles.map((a: any) => a.category).filter(Boolean)))];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+// Fallback images for articles whose WordPress URLs are broken
+const LOCAL_COVERS: Record<string, string> = {
+  'successful-cdo-simulation-trials': `${base}/images/news/cdo-simulation.png`,
+};
+
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 }
@@ -33,10 +38,10 @@ function formatDate(dateStr: string) {
     <div class="news-grid" id="news-grid">
       {articles.map((article: any) => (
         <div class="news-card" data-cat={article.category} style="background: #fff; border-color: var(--border);">
-          {(article.coverImageUrl || article.coverImage) && (
+          {(LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || article.coverImage) && (
             <img
               class="news-img"
-              src={article.coverImageUrl || imageUrl(article.coverImage, 600)}
+              src={LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || imageUrl(article.coverImage, 600)}
               alt={article.title}
               loading="lazy"
             />
