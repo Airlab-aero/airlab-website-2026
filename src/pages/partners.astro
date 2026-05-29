@@ -225,7 +225,7 @@ const ECOSYSTEM = [
   .eco-name { font-size: 13px; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
 
   /* ── Startup section ── */
-  .startup-section { background: #1a3048; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
+  .startup-section { background: #0b1622; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
 
   /* Header */
   .sp-header-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
@@ -255,13 +255,13 @@ const ECOSYSTEM = [
 
   /* Process — interactive tabs */
   .process-track { display: flex; position: relative; margin-bottom: 32px; gap: 0; }
-  .process-line { position: absolute; top: 18px; left: 18px; right: 18px; height: 1px; background: rgba(255,255,255,0.12); z-index: 0; }
+  .process-line { position: absolute; top: 18px; left: 18px; right: 18px; height: 1px; background: rgba(255,255,255,0.5); z-index: 0; }
   .ps-step { flex: 1; background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 8px 0; position: relative; z-index: 1; }
-  .ps-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.2); transition: all 0.2s; flex-shrink: 0; }
-  .ps-step.active .ps-dot, .ps-step:hover .ps-dot { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 0 4px rgba(6,113,129,0.2); }
-  .ps-step-num { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 600; transition: color 0.2s; }
+  .ps-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); border: 2px solid rgba(255,255,255,0.6); transition: all 0.2s; flex-shrink: 0; }
+  .ps-step.active .ps-dot, .ps-step:hover .ps-dot { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 0 4px rgba(6,113,129,0.3); }
+  .ps-step-num { font-size: 11px; color: rgba(255,255,255,0.75); font-weight: 600; transition: color 0.2s; }
   .ps-step.active .ps-step-num, .ps-step:hover .ps-step-num { color: var(--teal); }
-  .ps-step-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); text-align: center; transition: color 0.2s; line-height: 1.3; }
+  .ps-step-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); text-align: center; transition: color 0.2s; line-height: 1.3; }
   .ps-step.active .ps-step-title, .ps-step:hover .ps-step-title { color: #fff; }
 
   .process-detail { display: flex; gap: 24px; align-items: flex-start; background: rgba(6,113,129,0.08); border: 1px solid rgba(6,113,129,0.25); border-radius: 12px; padding: 28px 32px; }
