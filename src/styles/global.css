@@ -242,7 +242,7 @@ section { padding: 100px 80px; }
   box-shadow: 0 0 0 4px rgba(6,113,129,0.25);
 }
 .timeline-year {
-  font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.3);
+  font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.85);
   margin-bottom: 8px; letter-spacing: -0.02em;
 }
 .timeline-item.active .timeline-year { color: #fff; font-weight: 700; }
