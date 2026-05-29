@@ -9,6 +9,7 @@ const latestNews = news.slice(0, 3);
 const team = await client.fetch(teamQuery);
 const featuredTeam = team.filter((m: any) => imageUrl(m.photo) || m.photoUrl).slice(0, 12);
 const cms = await client.fetch(homePageQuery) ?? {};
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const heroSubtitle = cms.heroSubtitle ?? 'A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management. Together.';
 const heroVideoUrl = cms.heroVideoUrl ?? `${base}/vid-hero.mp4`;
@@ -24,7 +25,6 @@ const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institu
 const ctaLocation = cms.ctaLocation ?? 'AIR Lab @ WeWork, Suntec Tower 5\nTemasek Boulevard, Singapore 038985';
 const ctaPlatformUrl = cms.ctaPlatformUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title="AIR Lab — Regional Collaboration Platform" description="A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management.">
