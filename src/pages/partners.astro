@@ -77,10 +77,13 @@ const ECOSYSTEM = [
     <!-- Header -->
     <div class="sp-header-row">
       <div>
-        <div class="sp-eyebrow">Startup Programme</div>
+        <div class="sp-eyebrow">AIRspace Hub · Startup Programme</div>
         <h2 class="sp-title">Partnerships<br><strong>with startups</strong></h2>
       </div>
-      <p class="sp-intro">AIR Lab connects innovative startups with the ATM ecosystem — providing access to operational data, technical infrastructure, and a global network of aviation stakeholders.</p>
+      <div>
+        <p class="sp-intro">Advancing global aviation efficiency and sustainability by creating innovative ATM solutions through open technologies and collaboration. AIR Lab connects startups with operational data, technical infrastructure, and a global network of aviation stakeholders.</p>
+        <a href="https://airspace-hub.aero" target="_blank" rel="noopener" class="sp-hub-link">Explore AIRspace Hub →</a>
+      </div>
     </div>
 
     <!-- 01 Mission -->
@@ -93,16 +96,25 @@ const ECOSYSTEM = [
             <div class="mission-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <div class="mission-side">For innovators</div>
             <h4>Build stronger bridges between startups and ATM stakeholders</h4>
-            <p>Identify real-world challenges and explore scalable solutions together.</p>
+            <p>Mentorship from industry experts, enhanced visibility to decision-makers and investors, and direct networking with aviation leaders.</p>
           </div>
           <div class="mission-card">
             <div class="mission-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
-            <h4>Foster innovation in the APAC ATM ecosystem</h4>
-            <p>Support the transition to smarter, more collaborative air traffic systems across the region.</p>
+            <div class="mission-side">For adopters</div>
+            <h4>Access validated solutions for the APAC ATM ecosystem</h4>
+            <p>Curated technologies in AI, meteorology, and emerging fields — proven through real operational data and rigorous testing.</p>
           </div>
+        </div>
+        <div class="mission-tags">
+          <span class="mtag">Artificial Intelligence</span>
+          <span class="mtag">Meteorology</span>
+          <span class="mtag">Blockchain</span>
+          <span class="mtag">Open Technologies</span>
+          <span class="mtag">ATM Innovation</span>
         </div>
       </div>
     </div>
@@ -115,11 +127,11 @@ const ECOSYSTEM = [
         <div class="process-track">
           <div class="process-line"></div>
           {[
-            { title: 'Scouting', desc: 'AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.' },
-            { title: 'Use Case Creation', desc: 'Use case curation and presentation of proposal to a panel from AIR Lab & CAAS.' },
-            { title: 'POC', desc: 'First 3 months: demonstrate integration into the platform through open APIs.' },
-            { title: 'Extended POC', desc: 'Further prove solution accuracy and resolution with additional computing power and real data.' },
-            { title: 'AIRspace Hub', desc: 'Showcase the validated solution to other ATM stakeholders to facilitate further growth.' },
+            { title: 'Scouting', desc: 'Identifying promising technologies across AI, blockchain, and meteorology that address real ATM challenges.' },
+            { title: 'Use Case Development', desc: 'Matching solutions to real-world ATM scenarios, with proposal review by a panel from AIR Lab & CAAS.' },
+            { title: 'Initial POC', desc: 'First 3 months: demonstrating API integration on the AIR Lab platform with open technologies.' },
+            { title: 'Extended Validation', desc: 'Deep-dive testing for accuracy and reliability — requiring additional computing power and real operational data.' },
+            { title: 'AIRspace Hub', desc: 'Showcasing the validated solution to ATM stakeholders worldwide, facilitating adoption and further growth.' },
           ].map((step, i) => (
             <button class={`ps-step ${i === 0 ? 'active' : ''}`} data-idx={i}>
               <div class="ps-dot"></div>
@@ -132,7 +144,7 @@ const ECOSYSTEM = [
           <div class="pd-num">1</div>
           <div>
             <div class="pd-title">Scouting</div>
-            <div class="pd-desc">AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.</div>
+            <div class="pd-desc">Identifying promising technologies across AI, blockchain, and meteorology that address real ATM challenges.</div>
           </div>
         </div>
       </div>
@@ -151,10 +163,11 @@ const ECOSYSTEM = [
               <div class="ex-logo-wrap">
                 <img src={`${base}/images/partners/meteomatics.png`} alt="Meteomatics" class="ex-logo" />
               </div>
-              <span class="ex-tag">Weather & Data</span>
+              <span class="ex-tag">Meteorology · SING1K</span>
             </div>
             <h4 class="ex-name">Meteomatics</h4>
-            <p class="ex-desc">Integration of the high-resolution SING1K weather forecasting model directly into the RCP — improving route planning, reducing fuel consumption, and enhancing situational awareness for APAC ANSPs.</p>
+            <p class="ex-desc">Meteomatics built SING1K — a custom weather forecast model at 1×1 km resolution for Singapore — integrated directly into the RCP. The partnership improves route planning, reduces fuel consumption, and enhances situational awareness for APAC ANSPs.</p>
+            <blockquote class="ex-quote">"This collaboration marks a significant advancement in weather forecasting for ATM in Singapore, using advanced tech to reduce weather risks and improve air traffic safety."<cite>— Arjen Piest, Meteomatics</cite></blockquote>
             <a href={`${base}/news/meteomatics-airlab-weather-forecasting-atm`} class="ex-link">Read the article →</a>
           </div>
 
@@ -219,7 +232,9 @@ const ECOSYSTEM = [
   .sp-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
   .sp-title { font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: #fff; line-height: 1.15; margin: 0; }
   .sp-title strong { font-weight: 700; }
-  .sp-intro { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; align-self: end; margin: 0; }
+  .sp-intro { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75; margin: 0 0 20px; }
+  .sp-hub-link { font-size: 13px; font-weight: 600; color: var(--teal); text-decoration: none; border: 1px solid rgba(6,113,129,0.4); padding: 8px 18px; border-radius: 20px; display: inline-block; transition: all 0.2s; }
+  .sp-hub-link:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
 
   /* Blocks */
   .sp-block { display: grid; grid-template-columns: 80px 1fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 56px; }
@@ -234,6 +249,9 @@ const ECOSYSTEM = [
   .mission-icon svg { width: 20px; height: 20px; stroke: var(--teal); }
   .mission-card h4 { font-size: 15px; font-weight: 600; color: #fff; margin: 0 0 10px; line-height: 1.45; }
   .mission-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
+  .mission-side { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 10px; }
+  .mission-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .mtag { font-size: 12px; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 14px; }
 
   /* Process — interactive tabs */
   .process-track { display: flex; position: relative; margin-bottom: 32px; gap: 0; }
@@ -268,6 +286,8 @@ const ECOSYSTEM = [
   .ex-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; flex: 1; }
   .ex-link { font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 600; align-self: flex-start; }
   .ex-link:hover { color: #fff; }
+  .ex-quote { border-left: 2px solid var(--teal); margin: 0 0 16px; padding: 12px 16px; font-size: 13px; color: rgba(255,255,255,0.5); font-style: italic; line-height: 1.6; }
+  .ex-quote cite { display: block; font-style: normal; font-size: 11px; color: var(--teal); margin-top: 6px; font-weight: 600; }
 </style>
 
 <script>
