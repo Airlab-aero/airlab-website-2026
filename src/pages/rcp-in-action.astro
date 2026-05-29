@@ -114,18 +114,6 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   (ev.photos ?? []).map(photo => ({ photo, ev, evIdx }))
 );
 
-// ─── Section 4: ANSP & Partner Network ────────────────────────────────────────
-// Drop logo files in public/images/logos/ and set the image filename below.
-interface PartnerLogo { name: string; image: string; link?: string; }
-
-const LOGOS: PartnerLogo[] = [
-  { name: '[TO FILL]', image: 'logo-1.png' },
-  { name: '[TO FILL]', image: 'logo-2.png' },
-  { name: '[TO FILL]', image: 'logo-3.png' },
-  { name: '[TO FILL]', image: 'logo-4.png' },
-  { name: '[TO FILL]', image: 'logo-5.png' },
-  { name: '[TO FILL]', image: 'logo-6.png' },
-];
 ---
 
 <Base title="RCP in Action — AIR Lab" description="How AIR Lab drives the Regional Collaboration Platform through workshops, working groups, technical expertise, and a growing ANSP partner network across South East Asia.">
@@ -306,24 +294,6 @@ const LOGOS: PartnerLogo[] = [
     </div>
   </section>
 
-  <!-- ── 4. ANSP & Partner Network ─────────────────────────────────────── -->
-  <section class="ria-section ria-logos-section">
-    <div class="ria-section-head ria-section-head--centered">
-      <div class="section-label">04 ANSP &amp; Partner Network</div>
-      <h2 class="ria-section-title">Our partner<br><strong>ecosystem</strong></h2>
-    </div>
-    <div class="ria-logos-grid">
-      {LOGOS.map(l => (
-        l.link
-          ? <a href={l.link} class="ria-logo-item" target="_blank" rel="noopener noreferrer" title={l.name}>
-              <img src={`${base}/images/logos/${l.image}`} alt={l.name} />
-            </a>
-          : <div class="ria-logo-item" title={l.name}>
-              <img src={`${base}/images/logos/${l.image}`} alt={l.name} />
-            </div>
-      ))}
-    </div>
-  </section>
 
   <!-- CTA -->
   <div class="ria-cta">
