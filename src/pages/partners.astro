@@ -6,7 +6,6 @@ import { client, partnersQuery } from '../lib/sanity';
 
 const partners = await client.fetch(partnersQuery);
 const founding = partners.filter((p: any) => p.order <= 2);
-const local = partners.filter((p: any) => p.order > 2 && p.order <= 6);
 const solutions = partners.filter((p: any) => p.order > 6);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -16,6 +15,7 @@ const LOGOS: Record<string, string> = {
   'sginnovate':  'sginnovate.png',
   'meteomatics': 'meteomatics.png',
   'tomorrow.io': 'tomorrow.png',
+  'icai':        'icai.png',
 };
 
 function logoFor(name: string): string | null {
@@ -23,6 +23,14 @@ function logoFor(name: string): string | null {
   const match = Object.keys(LOGOS).find(k => key.includes(k.replace('.', '')));
   return match ? `${base}/images/partners/${LOGOS[match]}` : null;
 }
+
+// Ecosystem logos for carousel (SGInnovate, Meteomatics, Tomorrow.io + ICAI)
+const ECOSYSTEM = [
+  { name: 'SGInnovate',   logo: `${base}/images/partners/sginnovate.png`,  url: 'https://www.sginnovate.com' },
+  { name: 'Meteomatics',  logo: `${base}/images/partners/meteomatics.png`, url: 'https://www.meteomatics.com' },
+  { name: 'Tomorrow.io',  logo: `${base}/images/partners/tomorrow.png`,    url: 'https://www.tomorrow.io' },
+  { name: 'ICAI',         logo: `${base}/images/partners/icai.png`,        url: 'https://www.icai.aero' },
+];
 ---
 
 <Base title="Partners" description="AIR Lab's ecosystem of founding, local, and solutions partners advancing aviation technology in the Asia-Pacific region.">
@@ -37,12 +45,14 @@ function logoFor(name: string): string | null {
   </div>
 
   <section style="background: var(--off-white);">
+
+    <!-- Founding Partners -->
     <div class="section-header">
       <div class="section-label">Founding Partners</div>
       <h2 class="section-title">Built on a strong<br><strong>foundation</strong></h2>
       <p class="section-intro" style="margin-top: 16px;">AIR Lab was founded through a unique public-private partnership between CAAS and Thales, bringing together regulatory expertise and world-class aviation technology.</p>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 80px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 64px;">
       {founding.map((p: any) => {
         const logo = logoFor(p.name);
         return (
@@ -58,49 +68,50 @@ function logoFor(name: string): string | null {
       })}
     </div>
 
-    <div class="section-header" style="margin-top: 0;">
-      <div class="section-label">Local Partners</div>
-      <h2 class="section-title">Singapore's innovation<br><strong>ecosystem</strong></h2>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 80px;">
-      {local.map((p: any) => {
-        const logo = logoFor(p.name);
-        return (
-          <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
-            <div style="display: flex; align-items: center; gap: 20px;">
-              {logo && <img src={logo} alt={p.name} style="max-height: 36px; max-width: 120px; object-fit: contain;" />}
-              <div>
-                <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
-                <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
-              </div>
-            </div>
-            <div style="font-size: 20px; color: var(--muted);">→</div>
-          </a>
-        );
-      })}
+    <!-- Sub-section: Singapore's innovation ecosystem (carousel) -->
+    <div class="ecosystem-sub">
+      <div class="ecosystem-sub-label">Singapore's innovation ecosystem</div>
+      <div class="ecosystem-carousel">
+        <button class="eco-arrow" id="ecoPrev" aria-label="Previous">&#8592;</button>
+        <div class="eco-track-wrap">
+          <div class="eco-track" id="ecoTrack">
+            {ECOSYSTEM.map(p => (
+              <a href={p.url} target="_blank" rel="noopener" class="eco-cell">
+                <img src={p.logo} alt={p.name} />
+              </a>
+            ))}
+          </div>
+        </div>
+        <button class="eco-arrow" id="ecoNext" aria-label="Next">&#8594;</button>
+      </div>
     </div>
 
-    <div class="section-header" style="margin-top: 0;">
-      <div class="section-label">Solutions Partners</div>
-      <h2 class="section-title">Technology<br><strong>specialists</strong></h2>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-      {solutions.map((p: any) => {
-        const logo = logoFor(p.name);
-        return (
-          <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
-            <div style="display: flex; align-items: center; gap: 20px;">
-              {logo && <img src={logo} alt={p.name} style="max-height: 36px; max-width: 120px; object-fit: contain;" />}
-              <div>
-                <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
-                <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
-              </div>
-            </div>
-            <div style="font-size: 20px; color: var(--muted);">→</div>
-          </a>
-        );
-      })}
-    </div>
+    <!-- Solutions Partners -->
+    {solutions.length > 0 && (
+      <>
+        <div class="section-header" style="margin-top: 80px;">
+          <div class="section-label">Solutions Partners</div>
+          <h2 class="section-title">Technology<br><strong>specialists</strong></h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+          {solutions.map((p: any) => {
+            const logo = logoFor(p.name);
+            return (
+              <a href={p.website} target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; gap: 16px; transition: border-color 0.2s;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                  {logo && <img src={logo} alt={p.name} style="max-height: 36px; max-width: 120px; object-fit: contain;" />}
+                  <div>
+                    <div style="font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px;">{p.name}</div>
+                    <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">{p.category}</div>
+                  </div>
+                </div>
+                <div style="font-size: 20px; color: var(--muted);">→</div>
+              </a>
+            );
+          })}
+        </div>
+      </>
+    )}
   </section>
 
   <section style="background: var(--navy); padding: 100px 80px;">
@@ -114,3 +125,63 @@ function logoFor(name: string): string | null {
 
   <Footer slot="footer" />
 </Base>
+
+<style>
+  .ecosystem-sub {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+  }
+  .ecosystem-sub-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 24px; font-weight: 500;
+  }
+  .ecosystem-carousel {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eco-track-wrap {
+    flex: 1; overflow: hidden;
+  }
+  .eco-track {
+    display: flex; gap: 16px; transition: transform 0.35s ease;
+  }
+  .eco-cell {
+    flex: 0 0 180px; height: 96px;
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px 24px; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .eco-cell:hover { border-color: var(--teal); box-shadow: 0 2px 12px rgba(6,113,129,0.1); }
+  .eco-cell img { max-height: 44px; max-width: 130px; object-fit: contain; }
+  .eco-arrow {
+    flex: 0 0 auto; width: 36px; height: 36px;
+    border: 1px solid var(--border); border-radius: 50%;
+    background: #fff; color: var(--navy); font-size: 16px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .eco-arrow:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .eco-arrow:disabled { opacity: 0.3; cursor: default; }
+</style>
+
+<script>
+  const track = document.getElementById('ecoTrack') as HTMLElement;
+  const prev = document.getElementById('ecoPrev') as HTMLButtonElement;
+  const next = document.getElementById('ecoNext') as HTMLButtonElement;
+
+  if (track && prev && next) {
+    const cells = Array.from(track.children) as HTMLElement[];
+    const cellW = () => (cells[0]?.offsetWidth ?? 180) + 16; // width + gap
+    const visible = () => Math.floor((track.parentElement?.offsetWidth ?? 600) / cellW());
+    let offset = 0;
+
+    function update() {
+      track.style.transform = `translateX(-${offset * cellW()}px)`;
+      prev.disabled = offset === 0;
+      next.disabled = offset >= cells.length - visible();
+    }
+
+    prev.addEventListener('click', () => { offset = Math.max(0, offset - 1); update(); });
+    next.addEventListener('click', () => { offset = Math.min(cells.length - visible(), offset + 1); update(); });
+    update();
+  }
+</script>
