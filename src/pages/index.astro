@@ -11,7 +11,7 @@ const featuredTeam = team.filter((m: any) => imageUrl(m.photo) || m.photoUrl).sl
 const cms = await client.fetch(homePageQuery) ?? {};
 
 const heroSubtitle = cms.heroSubtitle ?? 'A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management. Together.';
-const heroVideoUrl = cms.heroVideoUrl ?? 'https://airlab.aero/wp-content/uploads/2025/05/vid-rcp.mp4';
+const heroVideoUrl = cms.heroVideoUrl ?? `${base}/vid-hero.mp4`;
 const heroPrimaryButtonText = cms.heroPrimaryButtonText ?? 'Access the Platform';
 const heroPrimaryButtonUrl = cms.heroPrimaryButtonUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const stats = cms.stats ?? [
