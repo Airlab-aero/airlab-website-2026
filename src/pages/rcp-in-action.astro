@@ -32,11 +32,7 @@ const PROCESS_STEPS: ProcessStep[] = [
 // Drop photos in public/images/rcp-in-action/workshops/ and update src fields below.
 interface WorkshopPhoto { src: string; caption: string; meta?: string; }
 const PHOTOS: WorkshopPhoto[] = [
-  { src: 'rcp-in-action/events/vatm-workshop.jpg',          caption: 'VATM Workshop',            meta: 'Vietnam · 2025' },
-  { src: 'rcp-in-action/events/asw-hk-2025.jpg',            caption: 'Airspace World Hong Kong',  meta: 'Hong Kong · 2025' },
-  { src: 'rcp-in-action/events/singapore-airshow-2026.jpg',  caption: 'Singapore Airshow',         meta: 'Singapore · Feb 2026' },
-  { src: 'rcp-in-action/events/asw-lisbon-2026.jpg',         caption: 'Airspace World Lisbon',     meta: 'Lisbon · Mar 2026' },
-  { src: 'rcp-in-action/events/aoic-2026.jpg',               caption: 'AOIC 2026',                 meta: '2026' },
+  { src: 'rcp-in-action/events/vatm-workshop.jpg', caption: 'VATM Workshop', meta: 'Vietnam · 2025' },
 ];
 
 // ─── Section 2: Technical Backbone ────────────────────────────────────────────
@@ -123,7 +119,6 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   <div class="ria-hero">
     <div class="ria-hero-tag">Regional Collaboration Platform</div>
     <h1>RCP <strong>in Action</strong></h1>
-    <p>From workshops and working groups to a growing technical backbone. AIR Lab puts the RCP to work across South East Asia.</p>
   </div>
 
   <!-- ── 1. Workshops & Working Groups ────────────────────────────────────── -->
@@ -197,40 +192,29 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
       <!-- Event list -->
       <div>
         <div class="ria-events-scroller">
-        <div class="ria-events-list" id="evListTrack">
-          {EVENTS.map((ev, evIdx) => (
-            <div class={`ria-event ${evIdx === 0 ? 'ria-event--active' : ''}`} data-ev-idx={evIdx}>
-              <div class="ria-event-date">{ev.date}</div>
-              <div class="ria-event-body">
-                <div class="ria-event-name">
-                  {ev.name}
-                  {ev.upcoming && <span class="ria-upcoming-badge">Upcoming</span>}
+          <div class="ria-events-list" id="evListTrack">
+            {EVENTS.map((ev, evIdx) => (
+              <div class={`ria-event ${evIdx === 0 ? 'ria-event--active' : ''}`} data-ev-idx={evIdx}>
+                <div class="ria-event-date">{ev.date}</div>
+                <div class="ria-event-body">
+                  <div class="ria-event-name">
+                    {ev.name}
+                    {ev.upcoming && <span class="ria-upcoming-badge">Upcoming</span>}
+                  </div>
+                  <div class="ria-event-loc">{ev.location}</div>
+                  <p class="ria-event-desc">{ev.description}</p>
                 </div>
-                <div class="ria-event-loc">{ev.location}</div>
-                <p class="ria-event-desc">{ev.description}</p>
+                <div class="ria-event-actions">
+                  <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onclick="event.stopPropagation()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+                  </a>
+                  {ev.link && (
+                    <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Learn more →</a>
+                  )}
+                </div>
               </div>
-              <div class="ria-event-actions">
-                <a href={ev.linkedin ?? 'https://www.linkedin.com/company/airlab-aero/'} class="ria-event-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onclick="event.stopPropagation()">
-                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/>
-                  </svg>
-                </a>
-                {ev.link && (
-                  <a href={ev.link} class="ria-event-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Learn more →</a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-        </div><!-- end ria-events-scroller -->
-        <div class="ria-events-list-nav">
-          <button class="ria-list-nav-btn" id="evListUp" aria-label="Plus récents" disabled>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4-4 4 4"/></svg>
-          </button>
-          <span class="ria-list-nav-counter" id="evListCounter"></span>
-          <button class="ria-list-nav-btn" id="evListDown" aria-label="Plus anciens">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
+            ))}
+          </div>
         </div>
         <div class="ria-events-cta">
           <p>Want to participate in a workshop or working group?</p>
@@ -547,38 +531,12 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   /* ── Events ────────────────────────────────────────────────────────────────── */
   .ria-events-section { background: var(--navy); }
 
-  .ria-events-scroller { overflow: hidden; }
-  .ria-events-list { transition: transform 0.35s ease; margin-bottom: 0; }
+  .ria-events-scroller { overflow-y: auto; max-height: 480px; padding-right: 6px; scrollbar-width: thin; scrollbar-color: rgba(6,113,129,0.4) transparent; }
+  .ria-events-scroller::-webkit-scrollbar { width: 4px; }
+  .ria-events-scroller::-webkit-scrollbar-track { background: transparent; }
+  .ria-events-scroller::-webkit-scrollbar-thumb { background: rgba(6,113,129,0.4); border-radius: 2px; }
+  .ria-events-list { margin-bottom: 0; }
 
-  .ria-events-list-nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 14px 0 0;
-  }
-  .ria-list-nav-btn {
-    width: 32px; height: 32px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.07);
-    color: rgba(255,255,255,0.8);
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
-    flex-shrink: 0;
-  }
-  .ria-list-nav-btn svg { width: 14px; height: 14px; }
-  .ria-list-nav-btn:hover:not(:disabled) {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.3);
-  }
-  .ria-list-nav-btn:disabled { opacity: 0.25; cursor: default; }
-  .ria-list-nav-counter {
-    font-size: 11px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.05em;
-    flex: 1;
-  }
   .ria-events-section .ria-section-label,
   .ria-events-section .section-label { color: var(--teal); }
   .ria-events-section .ria-section-title { color: #fff; }
@@ -790,42 +748,17 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
 
   initCarousel('workshopCarousel', 'carouselPrev', 'carouselNext');
 
-  // ── Events: photo carousel + vertical list navigation ──
+  // ── Events: photo carousel synced with scrollable list ──
   (function() {
     const container = document.getElementById('eventsCarousel');
-    const track     = document.getElementById('evListTrack');
-    const scroller  = track?.parentElement as HTMLElement | null;
-    if (!container || !track || !scroller) return;
+    if (!container) return;
 
-    const VISIBLE   = 3;
-    const slides    = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
-    const dots      = Array.from(container.querySelectorAll<HTMLButtonElement>('[data-ev-dot]'));
-    const cards     = Array.from(document.querySelectorAll<HTMLElement>('.ria-event[data-ev-idx]'));
-    const btnUp     = document.getElementById('evListUp') as HTMLButtonElement;
-    const btnDown   = document.getElementById('evListDown') as HTMLButtonElement;
-    const counter   = document.getElementById('evListCounter');
-
+    const slides = Array.from(container.querySelectorAll<HTMLElement>('.ria-slide'));
+    const dots   = Array.from(container.querySelectorAll<HTMLButtonElement>('[data-ev-dot]'));
+    const cards  = Array.from(document.querySelectorAll<HTMLElement>('.ria-event[data-ev-idx]'));
+    const scroller = document.querySelector<HTMLElement>('.ria-events-scroller');
     let currentSlide = 0;
-    let listOffset   = 0; // which card is first visible
 
-    // ── Vertical list scroll ──────────────────────────────────────────────────
-    function updateList() {
-      const gap = 12;
-      const cardH = (cards[0]?.offsetHeight ?? 110) + gap;
-      const visibleH = Math.min(VISIBLE, cards.length) * cardH - gap;
-      scroller.style.height = `${visibleH}px`;
-      track.style.transform = `translateY(-${listOffset * cardH}px)`;
-
-      btnUp.disabled   = listOffset === 0;
-      btnDown.disabled = listOffset >= cards.length - VISIBLE;
-      if (counter) counter.textContent =
-        `${listOffset + 1}–${Math.min(listOffset + VISIBLE, cards.length)} / ${cards.length}`;
-    }
-
-    btnUp?.addEventListener('click',   () => { listOffset = Math.max(0, listOffset - 1); updateList(); });
-    btnDown?.addEventListener('click', () => { listOffset = Math.min(cards.length - VISIBLE, listOffset + 1); updateList(); });
-
-    // ── Photo carousel ────────────────────────────────────────────────────────
     function activateSlide(idx: number) {
       slides[currentSlide].classList.remove('active');
       currentSlide = (idx + slides.length) % slides.length;
@@ -835,12 +768,16 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
       dots.forEach(d => d.classList.remove('active'));
       dots[evIdx]?.classList.add('active');
       cards.forEach(c => c.classList.remove('ria-event--active'));
-      cards[evIdx]?.classList.add('ria-event--active');
+      const activeCard = cards[evIdx];
+      activeCard?.classList.add('ria-event--active');
 
-      // Scroll list to keep active card visible
-      if (evIdx < listOffset || evIdx >= listOffset + VISIBLE) {
-        listOffset = Math.min(Math.max(0, evIdx - 1), cards.length - VISIBLE);
-        updateList();
+      // Scroll the list to keep active card visible
+      if (activeCard && scroller) {
+        const cardTop = activeCard.offsetTop - scroller.offsetTop;
+        const cardBot = cardTop + activeCard.offsetHeight;
+        if (cardTop < scroller.scrollTop || cardBot > scroller.scrollTop + scroller.clientHeight) {
+          scroller.scrollTo({ top: cardTop - 12, behavior: 'smooth' });
+        }
       }
     }
 
@@ -853,8 +790,5 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
     document.getElementById('evCarouselNext')?.addEventListener('click', () => activateSlide(currentSlide + 1));
     dots.forEach(d => d.addEventListener('click', () => goToEvent(Number(d.dataset.evDot))));
     cards.forEach(c => c.addEventListener('click', () => goToEvent(Number(c.dataset.evIdx))));
-
-    // Init after layout
-    requestAnimationFrame(updateList);
   })();
 </script>
