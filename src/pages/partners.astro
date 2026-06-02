@@ -69,80 +69,6 @@ const ECOSYSTEM = [
       </div>
     </div>
 
-    <!-- 04 ATM Ecosystem -->
-    <div class="sp-block">
-      <div class="sp-block-num">04</div>
-      <div class="sp-block-content">
-        <h3 class="sp-block-title">ATM Ecosystem</h3>
-
-        <div class="hub-layout">
-
-          <!-- Left: circular diagram -->
-          <div class="hub-diagram">
-            <svg class="hub-svg" viewBox="0 0 340 340">
-              <!-- Outer ring dashed -->
-              <circle cx="170" cy="170" r="150" stroke="rgba(6,113,129,0.15)" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
-              <!-- Mid ring -->
-              <circle cx="170" cy="170" r="100" stroke="rgba(6,113,129,0.2)" stroke-width="1" fill="none"/>
-              <!-- Spoke lines -->
-              <line x1="170" y1="170" x2="170" y2="22"  stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="170" y1="170" x2="318" y2="170" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="170" y1="170" x2="170" y2="318" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="170" y1="170" x2="22"  y2="170" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
-              <!-- Center glow -->
-              <circle cx="170" cy="170" r="48" fill="rgba(6,113,129,0.12)" stroke="rgba(6,113,129,0.6)" stroke-width="1.5"/>
-              <circle cx="170" cy="170" r="38" fill="rgba(6,113,129,0.18)" stroke="none"/>
-            </svg>
-
-            <!-- Center label -->
-            <div class="hub-center">
-              <span class="hub-center-air">AIR</span>
-              <span class="hub-center-lab">LAB</span>
-            </div>
-
-            <!-- 4 nodes -->
-            <button class="hub-node hub-node--top"    data-eco="research" title="Research Topics">
-              <div class="hub-node-dot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              </div>
-              <span class="hub-node-label">Research<br/>Topics</span>
-            </button>
-
-            <button class="hub-node hub-node--right"  data-eco="academia" title="Universities">
-              <div class="hub-node-dot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              </div>
-              <span class="hub-node-label">Universities &<br/>Institutes</span>
-            </button>
-
-            <button class="hub-node hub-node--bottom" data-eco="usecases" title="Use Cases">
-              <div class="hub-node-dot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              </div>
-              <span class="hub-node-label">Use<br/>Cases</span>
-            </button>
-
-            <button class="hub-node hub-node--left"   data-eco="industry" title="Industry Partners">
-              <div class="hub-node-dot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-              </div>
-              <span class="hub-node-label">Industry<br/>Partners</span>
-            </button>
-          </div>
-
-          <!-- Right: detail panel -->
-          <div class="hub-detail" id="ecoDetail">
-            <div class="hub-detail-empty">
-              <div class="hub-detail-empty-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <p>Select a category<br/>to explore</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
   </section>
 
@@ -257,6 +183,60 @@ const ECOSYSTEM = [
             <p class="ex-desc">Hela Labs presented their solution at a demo day with AIR Lab and CAAS, exploring how their technology can support ATM operations across the APAC region — from data processing to real-time decision support.</p>
           </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 ATM Ecosystem -->
+    <div class="sp-block">
+      <div class="sp-block-num">04</div>
+      <div class="sp-block-content">
+        <h3 class="sp-block-title">ATM Ecosystem</h3>
+
+        <div class="hub-layout">
+          <!-- Left: circular diagram -->
+          <div class="hub-diagram">
+            <svg class="hub-svg" viewBox="0 0 340 340">
+              <circle cx="170" cy="170" r="150" stroke="rgba(6,113,129,0.15)" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
+              <circle cx="170" cy="170" r="100" stroke="rgba(6,113,129,0.2)" stroke-width="1" fill="none"/>
+              <line x1="170" y1="170" x2="170" y2="22"  stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <line x1="170" y1="170" x2="318" y2="170" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <line x1="170" y1="170" x2="170" y2="318" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <line x1="170" y1="170" x2="22"  y2="170" stroke="rgba(6,113,129,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="170" cy="170" r="48" fill="rgba(6,113,129,0.12)" stroke="rgba(6,113,129,0.6)" stroke-width="1.5"/>
+              <circle cx="170" cy="170" r="38" fill="rgba(6,113,129,0.18)" stroke="none"/>
+            </svg>
+            <div class="hub-center">
+              <span class="hub-center-air">AIR</span>
+              <span class="hub-center-lab">LAB</span>
+            </div>
+            <button class="hub-node hub-node--top"    data-eco="research">
+              <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <span class="hub-node-label">Research<br/>Topics</span>
+            </button>
+            <button class="hub-node hub-node--right"  data-eco="academia">
+              <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+              <span class="hub-node-label">Universities &<br/>Institutes</span>
+            </button>
+            <button class="hub-node hub-node--bottom" data-eco="usecases">
+              <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <span class="hub-node-label">Use<br/>Cases</span>
+            </button>
+            <button class="hub-node hub-node--left"   data-eco="industry">
+              <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+              <span class="hub-node-label">Industry<br/>Partners</span>
+            </button>
+          </div>
+
+          <!-- Right: detail panel -->
+          <div class="hub-detail" id="ecoDetail">
+            <div class="hub-detail-empty">
+              <div class="hub-detail-empty-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <p>Select a category<br/>to explore</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
