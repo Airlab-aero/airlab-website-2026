@@ -159,7 +159,7 @@ const ECOSYSTEM = [
 
           <!-- Meteomatics -->
           <div class="ex-card">
-            <div class="ex-card-top">
+            <div class="ex-logo-section">
               <div class="ex-logo-wrap">
                 <img src={`${base}/images/partners/meteomatics.png`} alt="Meteomatics" class="ex-logo" />
               </div>
@@ -173,13 +173,22 @@ const ECOSYSTEM = [
 
           <!-- Hela Labs -->
           <div class="ex-card">
-            <div class="ex-card-top ex-card-top--photos">
-              <img src={`${base}/images/startups/hela-labs-1.jpg`} alt="Hela Labs" class="ex-photo ex-photo--1" />
-              <img src={`${base}/images/startups/hela-labs-2.jpg`} alt="Hela Labs" class="ex-photo ex-photo--2" />
+            <div class="ex-logo-section ex-logo-section--text">
+              <span class="ex-name-logo">HeLa Labs</span>
+              <span class="ex-tag">Demo Day</span>
             </div>
-            <span class="ex-tag">Demo Day</span>
-            <h4 class="ex-name">Hela Labs</h4>
-            <p class="ex-desc">Hela Labs presented their solution at a demo day with AIR Lab and CAAS, exploring how their technology can support ATM operations across the APAC region, from data processing to real-time decision support.</p>
+            <h4 class="ex-name">HeLa Labs</h4>
+            <p class="ex-desc">HeLa Labs presented their solution at a demo day with AIR Lab and CAAS, exploring how their technology can support ATM operations across the APAC region, from data processing to real-time decision support.</p>
+            <div class="ex-photos-carousel" id="helaCarousel">
+              <div class="ex-photos-track">
+                <img src={`${base}/images/startups/hela-labs-1.jpg`} alt="HeLa Labs" class="ex-carousel-photo active" data-idx="0" />
+                <img src={`${base}/images/startups/hela-labs-2.jpg`} alt="HeLa Labs" class="ex-carousel-photo" data-idx="1" />
+              </div>
+              <div class="ex-photos-nav">
+                <button class="ex-photo-dot active" data-carousel="helaCarousel" data-dot="0"></button>
+                <button class="ex-photo-dot" data-carousel="helaCarousel" data-dot="1"></button>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -349,25 +358,34 @@ const ECOSYSTEM = [
   .pd-title { font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 8px; }
   .pd-desc { font-size: 14px; color: #ffffff; line-height: 1.65; }
 
-  /* Examples */
+  /* Partner Spotlights */
   .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .ex-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px; transition: all 0.25s; }
+  .ex-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: all 0.25s; }
   .ex-card:hover { border-color: rgba(6,113,129,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-  .ex-card-top { height: 100px; display: flex; align-items: center; justify-content: flex-start; }
-  .ex-logo-wrap { background: #fff; border-radius: 10px; padding: 16px 24px; display: inline-flex; }
+  /* Logo section */
+  .ex-logo-section { display: flex; align-items: center; gap: 14px; }
+  .ex-logo-section--text { align-items: center; }
+  .ex-logo-wrap { background: #fff; border-radius: 10px; padding: 12px 20px; display: inline-flex; flex-shrink: 0; }
   .ex-logo { max-height: 64px; max-width: 220px; object-fit: contain; }
-  .ex-card-top--photos { position: relative; border-radius: 10px; overflow: hidden; }
-  .ex-photo { width: 100%; height: auto; display: block; transition: opacity 0.45s; border-radius: 10px; object-fit: contain; }
-  .ex-photo--2 { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
-  .ex-card-top--photos:hover .ex-photo--2 { opacity: 1; }
-  .ex-card-top--photos:hover .ex-photo--1 { opacity: 0; }
+  .ex-name-logo { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
   .ex-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
-  .ex-name { font-size: 20px; font-weight: 700; color: #fff; margin: 0; }
+  /* Content */
+  .ex-name { font-size: 17px; font-weight: 700; color: #fff; margin: 0; }
   .ex-desc { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin: 0; flex: 1; }
+  /* Quote */
+  .ex-quote { border-left: 2px solid var(--teal); margin: 0; padding: 12px 16px; font-size: 13px; color: rgba(255,255,255,0.78); font-style: italic; line-height: 1.6; }
+  .ex-quote cite { display: block; font-style: normal; font-size: 11px; color: var(--teal); margin-top: 6px; font-weight: 600; }
+  /* Link */
   .ex-link { font-size: 13px; color: #fff; text-decoration: none; font-weight: 700; align-self: flex-start; background: rgba(6,113,129,0.5); border: 1px solid var(--teal); padding: 6px 14px; border-radius: 16px; transition: all 0.2s; }
   .ex-link:hover { background: var(--teal); }
-  .ex-quote { border-left: 2px solid var(--teal); margin: 0 0 16px; padding: 12px 16px; font-size: 13px; color: rgba(255,255,255,0.78); font-style: italic; line-height: 1.6; }
-  .ex-quote cite { display: block; font-style: normal; font-size: 11px; color: var(--teal); margin-top: 6px; font-weight: 600; }
+  /* Photos carousel */
+  .ex-photos-carousel { position: relative; border-radius: 10px; overflow: hidden; margin-top: 4px; }
+  .ex-photos-track { position: relative; }
+  .ex-carousel-photo { width: 100%; height: auto; display: none; border-radius: 10px; object-fit: cover; }
+  .ex-carousel-photo.active { display: block; }
+  .ex-photos-nav { display: flex; gap: 6px; justify-content: center; padding: 10px 0 2px; }
+  .ex-photo-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+  .ex-photo-dot.active { background: var(--teal); transform: scale(1.4); }
 </style>
 
 <script>
@@ -379,6 +397,20 @@ const ECOSYSTEM = [
     { title: 'AIRspace Hub', desc: 'To facilitate further growth – showcasing their validated solution to other ATM stakeholders.' },
   ];
   const detail = document.getElementById('processDetail');
+  // ── Partner Spotlights mini carousels ──
+  document.querySelectorAll<HTMLElement>('.ex-photo-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const carouselId = dot.dataset.carousel!;
+      const carousel = document.getElementById(carouselId);
+      if (!carousel) return;
+      const idx = Number(dot.dataset.dot);
+      carousel.querySelectorAll('.ex-carousel-photo').forEach(p => p.classList.remove('active'));
+      carousel.querySelectorAll('.ex-photo-dot').forEach(d => d.classList.remove('active'));
+      carousel.querySelectorAll('.ex-carousel-photo')[idx]?.classList.add('active');
+      carousel.querySelectorAll('.ex-photo-dot')[idx]?.classList.add('active');
+    });
+  });
+
   function showStep(idx: number) {
     if (detail) detail.innerHTML = `<div style="font-size:48px;font-weight:700;color:var(--teal);opacity:0.6;line-height:1;flex-shrink:0">${idx + 1}</div><div><div style="font-size:18px;font-weight:600;color:#ffffff;margin-bottom:8px">${STEPS[idx].title}</div><div style="font-size:14px;color:#ffffff;line-height:1.65">${STEPS[idx].desc}</div></div>`;
   }
