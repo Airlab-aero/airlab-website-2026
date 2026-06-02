@@ -37,7 +37,7 @@ function formatDate(dateStr: string) {
     </div>
     <div class="news-grid" id="news-grid">
       {articles.map((article: any) => (
-        <div class="news-card" data-cat={article.category} style="background: #fff; border-color: var(--border);">
+        <div class="news-card" data-cat={article.category} data-date={article.publishedAt ?? ''} style="background: #fff; border-color: var(--border);">
           {(LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || article.coverImage) && (
             <img
               class="news-img"
@@ -82,15 +82,29 @@ function formatDate(dateStr: string) {
 
 <script>
   const tabs = document.querySelectorAll<HTMLButtonElement>('.filter-tab');
-  const cards = document.querySelectorAll<HTMLElement>('.news-card[data-cat]');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const cat = tab.dataset.cat;
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      cards.forEach(card => {
-        card.style.display = (cat === 'All' || card.dataset.cat === cat) ? '' : 'none';
-      });
+  const grid = document.getElementById('news-grid')!;
+  const allCards = Array.from(document.querySelectorAll<HTMLElement>('.news-card[data-cat]'));
+
+  function applyFilter(cat: string) {
+    tabs.forEach(t => t.classList.remove('active'));
+    document.querySelector<HTMLButtonElement>(`.filter-tab[data-cat="${cat}"]`)?.classList.add('active');
+
+    const visible = allCards.filter(c => cat === 'All' || c.dataset.cat === cat);
+    const hidden  = allCards.filter(c => cat !== 'All' && c.dataset.cat !== cat);
+
+    // Sort visible cards by date descending (date stored in data-date attr)
+    visible.sort((a, b) => {
+      const da = a.dataset.date ?? '';
+      const db = b.dataset.date ?? '';
+      return db.localeCompare(da);
     });
+
+    // Re-append visible cards in sorted order, hide the rest
+    hidden.forEach(c => { c.style.display = 'none'; });
+    visible.forEach(c => { c.style.display = ''; grid.appendChild(c); });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => applyFilter(tab.dataset.cat ?? 'All'));
   });
 </script>
