@@ -69,72 +69,53 @@ const ECOSYSTEM = [
       </div>
     </div>
 
-  </section>
+    <!-- 04 ATM Ecosystem -->
+    <div class="sp-block">
+      <div class="sp-block-num">04</div>
+      <div class="sp-block-content">
+        <h3 class="sp-block-title">ATM Ecosystem</h3>
 
-  <!-- ── AIR Lab's Partnerships with ATM Ecosystem ─────────────────────── -->
-  <section class="atm-ecosystem-section">
-    <div class="atm-eco-header">
-      <div class="section-label" style="color: var(--teal);">Research & Collaboration</div>
-      <h2 class="atm-eco-title">AIR Lab's partnerships with<br><strong>ATM Ecosystem</strong></h2>
+        <div class="eco-wheel-wrap">
+          <!-- Centre -->
+          <div class="eco-center">
+            <svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" stroke="var(--teal)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="30" y="26" text-anchor="middle" font-size="8" fill="#fff" font-weight="700" font-family="system-ui">AIR</text><text x="30" y="36" text-anchor="middle" font-size="8" fill="#fff" font-weight="700" font-family="system-ui">LAB</text></svg>
+          </div>
+
+          <!-- Orbit nodes -->
+          {[
+            { id: 'research',  label: 'Research\nTopics',    icon: 'M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18', angle: 0 },
+            { id: 'academia',  label: 'Universities\n& Institutes', icon: 'M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c3 3 9 3 12 0v-5', angle: 90 },
+            { id: 'usecases',  label: 'Use\nCases',          icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 0 2-2h2a2 2 0 0 0 2 2', angle: 180 },
+            { id: 'industry',  label: 'Industry\nPartners',  icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM16 3.13a4 4 0 0 1 0 7.75', angle: 270 },
+          ].map(node => (
+            <button class="eco-node" data-eco={node.id} style={`--angle: ${node.angle}deg`}>
+              <div class="eco-node-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d={node.icon}/></svg>
+              </div>
+              <div class="eco-node-label">{node.label.split('\n').map(l => <span>{l}</span>)}</div>
+            </button>
+          ))}
+
+          <!-- Connector lines (SVG overlay) -->
+          <svg class="eco-lines" viewBox="0 0 400 400" fill="none">
+            <line x1="200" y1="200" x2="200" y2="60"  stroke="rgba(6,113,129,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="200" y1="200" x2="340" y2="200" stroke="rgba(6,113,129,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="200" y1="200" x2="200" y2="340" stroke="rgba(6,113,129,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="200" y1="200" x2="60"  y2="200" stroke="rgba(6,113,129,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+          </svg>
+        </div>
+
+        <!-- Detail panel -->
+        <div class="eco-detail" id="ecoDetail">
+          <div class="eco-detail-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;height:24px;stroke:var(--teal)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <span>Cliquez sur un segment pour explorer</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="atm-eco-grid">
-
-      <!-- Research Topics -->
-      <div class="atm-eco-card">
-        <div class="atm-eco-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-        </div>
-        <h3 class="atm-eco-card-title">Research Topics</h3>
-        <ul class="atm-eco-list">
-          <li>Enhancing Automatic Speech Recognition (ASR) in Air Traffic Communications</li>
-          <li>Predicting Top-of-Descent for CDO Flights using Machine Learning (ML)</li>
-          <li>Trial regional decentralized FF-ICE optimization model</li>
-        </ul>
-      </div>
-
-      <!-- Universities & Research Institutes -->
-      <div class="atm-eco-card">
-        <div class="atm-eco-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <h3 class="atm-eco-card-title">Universities & Research Institutes</h3>
-        <ul class="atm-eco-list">
-          <li>Institute for Infocomm Research (I2R)</li>
-          <li>Nanyang Technological University — Air Traffic Management Research Institute (ATMRI)</li>
-          <li>Aviation Systems International (ASI)</li>
-        </ul>
-      </div>
-
-      <!-- Use Cases -->
-      <div class="atm-eco-card">
-        <div class="atm-eco-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-        </div>
-        <h3 class="atm-eco-card-title">Use Cases</h3>
-        <ul class="atm-eco-list">
-          <li>Weather Precipitation Forecast — Meteomatics SING1K</li>
-          <li>Data Exchange APIs for pilots & controllers to exchange ETA, trajectory and local information</li>
-          <li>Decentralised user management between ATMs of two regional ANSPs using blockchain technology</li>
-        </ul>
-      </div>
-
-      <!-- Industry Partners / Startups -->
-      <div class="atm-eco-card">
-        <div class="atm-eco-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="atm-eco-card-title">Industry Partners & Startups</h3>
-        <div class="atm-eco-logos">
-          <span class="atm-eco-logo-tag">HeLa</span>
-          <span class="atm-eco-logo-tag">Meteomatics</span>
-          <span class="atm-eco-logo-tag">Skysoft</span>
-          <span class="atm-eco-logo-tag">MITRE</span>
-          <span class="atm-eco-logo-tag">IMDA</span>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <!-- ── Partnerships with Startups ────────────────────────────────────── -->
@@ -290,22 +271,31 @@ const ECOSYSTEM = [
   .eco-cell img { max-height: 64px; max-width: 140px; object-fit: contain; }
   .eco-name { font-size: 13px; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
 
-  /* ── ATM Ecosystem section ── */
-  .atm-ecosystem-section { background: var(--navy); padding: 100px 80px; }
-  .atm-eco-header { margin-bottom: 56px; }
-  .atm-eco-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: #fff; line-height: 1.2; margin: 12px 0 0; }
-  .atm-eco-title strong { font-weight: 700; }
-  .atm-eco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .atm-eco-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px; transition: all 0.25s; }
-  .atm-eco-card:hover { background: rgba(6,113,129,0.1); border-color: rgba(6,113,129,0.4); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
-  .atm-eco-card-icon { width: 44px; height: 44px; background: rgba(6,113,129,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
-  .atm-eco-card-icon svg { width: 22px; height: 22px; stroke: var(--teal); }
-  .atm-eco-card-title { font-size: 17px; font-weight: 700; color: #fff; margin: 0; }
-  .atm-eco-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .atm-eco-list li { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; padding-left: 16px; position: relative; }
-  .atm-eco-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
-  .atm-eco-logos { display: flex; flex-wrap: wrap; gap: 8px; }
-  .atm-eco-logo-tag { font-size: 13px; font-weight: 600; color: #fff; background: rgba(6,113,129,0.2); border: 1px solid rgba(6,113,129,0.4); border-radius: 20px; padding: 6px 16px; }
+  /* ── ATM Ecosystem wheel ── */
+  .eco-wheel-wrap { position: relative; width: 400px; height: 400px; margin: 0 auto 32px; flex-shrink: 0; }
+  .eco-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 80px; height: 80px; background: rgba(6,113,129,0.2); border: 2px solid var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  .eco-center svg { width: 60px; height: 60px; }
+  .eco-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .eco-node { position: absolute; background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; padding: 0; transform: translate(-50%, -50%); transition: all 0.2s; }
+  .eco-node[data-eco="research"]  { top: 15%;  left: 50%; }
+  .eco-node[data-eco="academia"]  { top: 50%;  left: 85%; }
+  .eco-node[data-eco="usecases"]  { top: 85%;  left: 50%; }
+  .eco-node[data-eco="industry"]  { top: 50%;  left: 15%; }
+  .eco-node-inner { width: 52px; height: 52px; border-radius: 50%; background: rgba(6,113,129,0.15); border: 1.5px solid rgba(6,113,129,0.5); display: flex; align-items: center; justify-content: center; transition: all 0.25s; }
+  .eco-node-inner svg { width: 22px; height: 22px; stroke: var(--teal); }
+  .eco-node.active .eco-node-inner, .eco-node:hover .eco-node-inner { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 20px rgba(6,113,129,0.5); }
+  .eco-node.active .eco-node-inner svg, .eco-node:hover .eco-node-inner svg { stroke: #fff; }
+  .eco-node-label { display: flex; flex-direction: column; align-items: center; }
+  .eco-node-label span { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.4; text-align: center; }
+  .eco-node.active .eco-node-label span { color: #fff; }
+  .eco-detail { background: rgba(6,113,129,0.12); border: 1px solid rgba(6,113,129,0.35); border-radius: 14px; padding: 28px 32px; min-height: 120px; display: flex; align-items: flex-start; transition: all 0.3s; }
+  .eco-detail-placeholder { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.4); font-size: 13px; margin: auto; }
+  .eco-detail-title { font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 14px; }
+  .eco-detail-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .eco-detail-list li { font-size: 13px; color: #ffffff; line-height: 1.65; padding-left: 16px; position: relative; }
+  .eco-detail-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+  .eco-detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .eco-detail-tag { font-size: 12px; font-weight: 600; color: #fff; background: rgba(6,113,129,0.3); border: 1px solid rgba(6,113,129,0.5); border-radius: 20px; padding: 5px 14px; }
 
   /* ── Startup section ── */
   .startup-section { background: #0b1622; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
@@ -393,6 +383,66 @@ const ECOSYSTEM = [
       document.querySelectorAll('.ps-step').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       showStep(idx);
+    });
+  });
+
+  // ── Ecosystem wheel ──
+  const ECO_DATA: Record<string, { title: string; items?: string[]; tags?: string[] }> = {
+    research: {
+      title: 'Research Topics',
+      items: [
+        'Enhancing Automatic Speech Recognition (ASR) in Air Traffic Communications',
+        'Predicting Top-of-Descent for CDO Flights using Machine Learning (ML)',
+        'Trial regional decentralized FF-ICE optimization model',
+      ]
+    },
+    academia: {
+      title: 'Universities & Research Institutes',
+      items: [
+        'Institute for Infocomm Research (I2R)',
+        'Nanyang Technological University — Air Traffic Management Research Institute (ATMRI)',
+        'Aviation Systems International (ASI)',
+      ]
+    },
+    usecases: {
+      title: 'Use Cases',
+      items: [
+        'Weather Precipitation Forecast — Meteomatics SING1K',
+        'Data Exchange APIs for pilots & controllers to exchange ETA, trajectory and local information',
+        'Decentralised user management between ATMs of two regional ANSPs using blockchain technology',
+      ]
+    },
+    industry: {
+      title: 'Industry Partners & Startups',
+      tags: ['HeLa', 'Meteomatics', 'Skysoft', 'MITRE', 'IMDA'],
+    }
+  };
+
+  const ecoDetail = document.getElementById('ecoDetail');
+  document.querySelectorAll<HTMLElement>('.eco-node').forEach(node => {
+    node.addEventListener('click', () => {
+      const key = node.dataset.eco!;
+      document.querySelectorAll('.eco-node').forEach(n => n.classList.remove('active'));
+      node.classList.add('active');
+      const d = ECO_DATA[key];
+      if (!ecoDetail) return;
+      let html = `<div><div style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:14px">${d.title}</div>`;
+      if (d.items) {
+        html += `<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">`;
+        d.items.forEach(item => {
+          html += `<li style="font-size:13px;color:#ffffff;line-height:1.65;padding-left:16px;position:relative"><span style="position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--teal);display:inline-block"></span>${item}</li>`;
+        });
+        html += `</ul>`;
+      }
+      if (d.tags) {
+        html += `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">`;
+        d.tags.forEach(tag => {
+          html += `<span style="font-size:12px;font-weight:600;color:#fff;background:rgba(6,113,129,0.3);border:1px solid rgba(6,113,129,0.5);border-radius:20px;padding:5px 14px">${tag}</span>`;
+        });
+        html += `</div>`;
+      }
+      html += `</div>`;
+      ecoDetail.innerHTML = html;
     });
   });
 </script>
