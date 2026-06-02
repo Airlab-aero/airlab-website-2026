@@ -301,7 +301,7 @@ const ECOSYSTEM = [
   ];
   const detail = document.getElementById('processDetail');
   function showStep(idx: number) {
-    if (detail) detail.innerHTML = `<div class="pd-num">${idx + 1}</div><div><div class="pd-title">${STEPS[idx].title}</div><div class="pd-desc">${STEPS[idx].desc}</div></div>`;
+    if (detail) detail.innerHTML = `<div style="font-size:48px;font-weight:700;color:var(--teal);opacity:0.6;line-height:1;flex-shrink:0">${idx + 1}</div><div><div style="font-size:18px;font-weight:600;color:#ffffff;margin-bottom:8px">${STEPS[idx].title}</div><div style="font-size:14px;color:#ffffff;line-height:1.65">${STEPS[idx].desc}</div></div>`;
   }
   showStep(0);
   document.querySelectorAll<HTMLElement>('.ps-step').forEach(btn => {
