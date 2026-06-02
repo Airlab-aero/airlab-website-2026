@@ -71,6 +71,72 @@ const ECOSYSTEM = [
 
   </section>
 
+  <!-- ── AIR Lab's Partnerships with ATM Ecosystem ─────────────────────── -->
+  <section class="atm-ecosystem-section">
+    <div class="atm-eco-header">
+      <div class="section-label" style="color: var(--teal);">Research & Collaboration</div>
+      <h2 class="atm-eco-title">AIR Lab's partnerships with<br><strong>ATM Ecosystem</strong></h2>
+    </div>
+
+    <div class="atm-eco-grid">
+
+      <!-- Research Topics -->
+      <div class="atm-eco-card">
+        <div class="atm-eco-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3 class="atm-eco-card-title">Research Topics</h3>
+        <ul class="atm-eco-list">
+          <li>Enhancing Automatic Speech Recognition (ASR) in Air Traffic Communications</li>
+          <li>Predicting Top-of-Descent for CDO Flights using Machine Learning (ML)</li>
+          <li>Trial regional decentralized FF-ICE optimization model</li>
+        </ul>
+      </div>
+
+      <!-- Universities & Research Institutes -->
+      <div class="atm-eco-card">
+        <div class="atm-eco-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3 class="atm-eco-card-title">Universities & Research Institutes</h3>
+        <ul class="atm-eco-list">
+          <li>Institute for Infocomm Research (I2R)</li>
+          <li>Nanyang Technological University — Air Traffic Management Research Institute (ATMRI)</li>
+          <li>Aviation Systems International (ASI)</li>
+        </ul>
+      </div>
+
+      <!-- Use Cases -->
+      <div class="atm-eco-card">
+        <div class="atm-eco-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h3 class="atm-eco-card-title">Use Cases</h3>
+        <ul class="atm-eco-list">
+          <li>Weather Precipitation Forecast — Meteomatics SING1K</li>
+          <li>Data Exchange APIs for pilots & controllers to exchange ETA, trajectory and local information</li>
+          <li>Decentralised user management between ATMs of two regional ANSPs using blockchain technology</li>
+        </ul>
+      </div>
+
+      <!-- Industry Partners / Startups -->
+      <div class="atm-eco-card">
+        <div class="atm-eco-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="atm-eco-card-title">Industry Partners & Startups</h3>
+        <div class="atm-eco-logos">
+          <span class="atm-eco-logo-tag">HeLa</span>
+          <span class="atm-eco-logo-tag">Meteomatics</span>
+          <span class="atm-eco-logo-tag">Skysoft</span>
+          <span class="atm-eco-logo-tag">MITRE</span>
+          <span class="atm-eco-logo-tag">IMDA</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Partnerships with Startups ────────────────────────────────────── -->
   <section class="startup-section">
 
@@ -223,6 +289,23 @@ const ECOSYSTEM = [
   .eco-cell:hover { border-color: var(--teal); box-shadow: 0 2px 12px rgba(6,113,129,0.1); }
   .eco-cell img { max-height: 64px; max-width: 140px; object-fit: contain; }
   .eco-name { font-size: 13px; font-weight: 600; color: var(--navy); text-align: center; line-height: 1.3; }
+
+  /* ── ATM Ecosystem section ── */
+  .atm-ecosystem-section { background: var(--navy); padding: 100px 80px; }
+  .atm-eco-header { margin-bottom: 56px; }
+  .atm-eco-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: #fff; line-height: 1.2; margin: 12px 0 0; }
+  .atm-eco-title strong { font-weight: 700; }
+  .atm-eco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .atm-eco-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px; transition: all 0.25s; }
+  .atm-eco-card:hover { background: rgba(6,113,129,0.1); border-color: rgba(6,113,129,0.4); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+  .atm-eco-card-icon { width: 44px; height: 44px; background: rgba(6,113,129,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .atm-eco-card-icon svg { width: 22px; height: 22px; stroke: var(--teal); }
+  .atm-eco-card-title { font-size: 17px; font-weight: 700; color: #fff; margin: 0; }
+  .atm-eco-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .atm-eco-list li { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; padding-left: 16px; position: relative; }
+  .atm-eco-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+  .atm-eco-logos { display: flex; flex-wrap: wrap; gap: 8px; }
+  .atm-eco-logo-tag { font-size: 13px; font-weight: 600; color: #fff; background: rgba(6,113,129,0.2); border: 1px solid rgba(6,113,129,0.4); border-radius: 20px; padding: 6px 16px; }
 
   /* ── Startup section ── */
   .startup-section { background: #0b1622; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
