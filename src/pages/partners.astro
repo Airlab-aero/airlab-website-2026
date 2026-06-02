@@ -43,12 +43,12 @@ const ECOSYSTEM = [
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 64px;">
       <a href="https://www.caas.gov.sg/" target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; transition: box-shadow 0.2s;">
-        <img src={`${base}/images/partners/caas.png`} alt="CAAS" style="max-height: 40px; max-width: 140px; object-fit: contain;" />
+        <img src={`${base}/images/partners/caas.png`} alt="CAAS" style="max-height: 70px; max-width: 200px; object-fit: contain;" />
         <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Institutional</div>
         <div style="font-size: 13px; color: var(--teal);">Visit website →</div>
       </a>
       <a href="https://www.thalesgroup.com/en" target="_blank" rel="noopener" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; transition: box-shadow 0.2s;">
-        <img src={`${base}/images/partners/thales.webp`} alt="Thales" style="max-height: 40px; max-width: 140px; object-fit: contain;" />
+        <img src={`${base}/images/partners/thales.webp`} alt="Thales" style="max-height: 70px; max-width: 200px; object-fit: contain;" />
         <div style="font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Industry</div>
         <div style="font-size: 13px; color: var(--teal);">Visit website →</div>
       </a>
@@ -128,10 +128,10 @@ const ECOSYSTEM = [
           <div class="process-line"></div>
           {[
             { title: 'Scouting', desc: 'Identifying promising technologies across AI, blockchain, and meteorology that address real ATM challenges.' },
-            { title: 'Use Case Development', desc: 'Matching solutions to real-world ATM scenarios, with proposal review by a panel from AIR Lab & CAAS.' },
-            { title: 'Initial POC', desc: 'First 3 months: demonstrating API integration on the AIR Lab platform with open technologies.' },
-            { title: 'Extended Validation', desc: 'Deep-dive testing for accuracy and reliability — requiring additional computing power and real operational data.' },
-            { title: 'AIRspace Hub', desc: 'Showcasing the validated solution to ATM stakeholders worldwide, facilitating adoption and further growth.' },
+            { title: 'Use Case Development', desc: 'Use case curation & presentation of proposal to a panel from AIR Lab & CAAS.' },
+            { title: 'Initial POC', desc: 'For 1st 3 months to demonstrate that the solution can integrate to AIR Lab\'s platform through open APIs.' },
+            { title: 'Extended Validation', desc: 'To further prove solution\'s accuracy & resolution; which requires more computing power.' },
+            { title: 'AIRspace Hub', desc: 'To facilitate further growth – showcasing their validated solution to other ATM stakeholders.' },
           ].map((step, i) => (
             <button class={`ps-step ${i === 0 ? 'active' : ''}`} data-idx={i}>
               <div class="ps-dot"></div>
@@ -228,7 +228,7 @@ const ECOSYSTEM = [
   .startup-section { background: #0b1622; padding: 100px 80px; display: flex; flex-direction: column; gap: 80px; }
 
   /* Header */
-  .sp-header-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+  .sp-header-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
   .sp-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
   .sp-title { font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: #fff; line-height: 1.15; margin: 0; }
   .sp-title strong { font-weight: 700; }
@@ -264,10 +264,11 @@ const ECOSYSTEM = [
   .ps-step-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); text-align: center; transition: color 0.2s; line-height: 1.3; }
   .ps-step.active .ps-step-title, .ps-step:hover .ps-step-title { color: #fff; }
 
-  .process-detail { display: flex; gap: 24px; align-items: flex-start; background: rgba(6,113,129,0.08); border: 1px solid rgba(6,113,129,0.25); border-radius: 12px; padding: 28px 32px; }
-  .pd-num { font-size: 48px; font-weight: 700; color: var(--teal); opacity: 0.3; line-height: 1; flex-shrink: 0; }
-  .pd-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-  .pd-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.65; }
+
+  .process-detail { display: flex; gap: 24px; align-items: flex-start; background: rgba(6,113,129,0.18); border: 1px solid rgba(6,113,129,0.5); border-radius: 12px; padding: 28px 32px; }
+  .pd-num { font-size: 48px; font-weight: 700; color: var(--teal); opacity: 0.6; line-height: 1; flex-shrink: 0; }
+  .pd-title { font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 8px; }
+  .pd-desc { font-size: 14px; color: #ffffff; line-height: 1.65; }
 
   /* Examples */
   .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -293,18 +294,22 @@ const ECOSYSTEM = [
 <script>
   const STEPS = [
     { title: 'Scouting', desc: 'AIR Lab identifies high-potential startups with solutions relevant to ATM challenges.' },
-    { title: 'Use Case Creation', desc: 'Use case curation and presentation of proposal to a panel from AIR Lab & CAAS.' },
-    { title: 'POC', desc: 'First 3 months: demonstrate integration into AIR Lab\'s platform through open APIs.' },
-    { title: 'Extended POC', desc: 'Further prove solution accuracy and resolution with additional computing power and real data.' },
-    { title: 'AIRspace Hub', desc: 'Showcase the validated solution to other ATM stakeholders to facilitate further growth.' },
+    { title: 'Use Case Development', desc: 'Use case curation & presentation of proposal to a panel from AIR Lab & CAAS.' },
+    { title: 'Initial POC', desc: 'For 1st 3 months to demonstrate that the solution can integrate to AIR Lab\'s platform through open APIs.' },
+    { title: 'Extended Validation', desc: 'To further prove solution\'s accuracy & resolution; which requires more computing power.' },
+    { title: 'AIRspace Hub', desc: 'To facilitate further growth – showcasing their validated solution to other ATM stakeholders.' },
   ];
   const detail = document.getElementById('processDetail');
+  function showStep(idx: number) {
+    if (detail) detail.innerHTML = `<div class="pd-num">${idx + 1}</div><div><div class="pd-title">${STEPS[idx].title}</div><div class="pd-desc">${STEPS[idx].desc}</div></div>`;
+  }
+  showStep(0);
   document.querySelectorAll<HTMLElement>('.ps-step').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = Number(btn.dataset.idx);
       document.querySelectorAll('.ps-step').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      if (detail) detail.innerHTML = `<div class="pd-num">${idx + 1}</div><div><div class="pd-title">${STEPS[idx].title}</div><div class="pd-desc">${STEPS[idx].desc}</div></div>`;
+      showStep(idx);
     });
   });
 </script>
