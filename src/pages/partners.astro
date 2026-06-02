@@ -25,6 +25,8 @@ const ECOSYSTEM = [
 <Base title="Partners" description="AIR Lab's ecosystem of founding, local, and solutions partners advancing aviation technology in the Asia-Pacific region.">
   <Nav slot="nav" />
 
+  <div data-base={base} style="display:none" id="baseRef"></div>
+
   <div class="page-hero">
     <div class="page-hero-content">
       <div class="section-label">Ecosystem</div>
@@ -391,11 +393,56 @@ const ECOSYSTEM = [
   });
 
   // ── Hub Ecosystem ──
-  const ECO: Record<string, { title: string; color: string; items?: string[]; tags?: string[] }> = {
-    research:  { title: 'Research Topics', color: '#067181', items: ['Enhancing Automatic Speech Recognition (ASR) in Air Traffic Communications', 'Predicting Top-of-Descent for CDO Flights using Machine Learning (ML)', 'Trial regional decentralized FF-ICE optimization model'] },
-    academia:  { title: 'Universities & Research Institutes', color: '#067181', items: ['Institute for Infocomm Research (I2R)', 'Nanyang Technological University — Air Traffic Management Research Institute (ATMRI)', 'Aviation Systems International (ASI)'] },
-    usecases:  { title: 'Use Cases', color: '#067181', items: ['Weather Precipitation Forecast — Meteomatics SING1K', 'Data Exchange APIs for pilots & controllers to exchange ETA, trajectory and local information', 'Decentralised user management between ATMs of two regional ANSPs using blockchain technology'] },
-    industry:  { title: 'Industry Partners & Startups', color: '#067181', tags: ['HeLa', 'Meteomatics', 'Skysoft', 'MITRE', 'IMDA'] },
+  const BASE = (document.getElementById('baseRef') as HTMLElement)?.dataset.base ?? '';
+  interface EcoEntry { title: string; items?: string[]; logos?: { name: string; src?: string }[] }
+  const ECO: Record<string, EcoEntry> = {
+    research: {
+      title: 'Research Topics',
+      items: [
+        'Enhancing Automatic Speech Recognition (ASR) in Air Traffic Communications',
+        'Predicting Top-of-Descent for CDO Flights using Machine Learning (ML)',
+        'Trial regional decentralized FF-ICE optimization model',
+      ],
+    },
+    academia: {
+      title: 'Universities & Research Institutes',
+      logos: [
+        { name: 'ICAI',  src: 'images/partners/icai.png' },
+        { name: 'I2R',   src: undefined },
+        { name: 'ATMRI', src: undefined },
+        { name: 'ASI',   src: undefined },
+      ],
+      items: [
+        'Institute for Infocomm Research (I2R)',
+        'Nanyang Technological University — Air Traffic Management Research Institute (ATMRI)',
+        'Aviation Systems International (ASI)',
+      ],
+    },
+    usecases: {
+      title: 'Use Cases',
+      logos: [
+        { name: 'Meteomatics', src: 'images/partners/meteomatics.png' },
+      ],
+      items: [
+        'Weather Precipitation Forecast — Meteomatics SING1K',
+        'Data Exchange APIs for pilots & controllers to exchange ETA, trajectory and local information',
+        'Decentralised user management between ATMs of two regional ANSPs using blockchain technology',
+      ],
+    },
+    industry: {
+      title: 'Industry Partners & Startups',
+      logos: [
+        { name: 'Meteomatics',        src: 'images/partners/meteomatics.png' },
+        { name: 'SGInnovate',         src: 'images/partners/sginnovate.png' },
+        { name: 'Starburst Aerospace',src: 'images/partners/starburst.png' },
+        { name: 'Tomorrow.io',        src: 'images/partners/tomorrow.png' },
+        { name: 'Thales Digital Factory', src: 'images/partners/tdf.png' },
+        { name: 'HeLa',    src: undefined },
+        { name: 'Skysoft', src: undefined },
+        { name: 'MITRE',   src: undefined },
+        { name: 'IMDA',    src: undefined },
+      ],
+    },
   };
 
   const ecoDetail = document.getElementById('ecoDetail');
@@ -407,26 +454,40 @@ const ECOSYSTEM = [
       if (!ecoDetail) return;
       const d = ECO[key];
       ecoDetail.classList.add('has-content');
+
       let inner = `<div style="width:100%">
         <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:12px">AIR Lab Ecosystem</div>
-        <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:24px;line-height:1.3">${d.title}</div>`;
+        <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:20px;line-height:1.3">${d.title}</div>`;
+
+      // Logos row
+      if (d.logos?.length) {
+        inner += `<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px">`;
+        d.logos.forEach(logo => {
+          if (logo.src) {
+            inner += `<div style="background:#fff;border-radius:8px;padding:8px 14px;display:flex;align-items:center;justify-content:center;height:48px">
+              <img src="${BASE}/${logo.src}" alt="${logo.name}" style="max-height:32px;max-width:100px;object-fit:contain" />
+            </div>`;
+          } else {
+            inner += `<div style="background:rgba(6,113,129,0.2);border:1px solid rgba(6,113,129,0.4);border-radius:8px;padding:8px 14px;display:flex;align-items:center;height:48px">
+              <span style="font-size:12px;font-weight:600;color:#fff">${logo.name}</span>
+            </div>`;
+          }
+        });
+        inner += `</div>`;
+      }
+
+      // Items list
       if (d.items) {
-        inner += `<div style="display:flex;flex-direction:column;gap:12px">`;
+        inner += `<div style="display:flex;flex-direction:column;gap:10px">`;
         d.items.forEach((item, i) => {
-          inner += `<div style="display:flex;gap:14px;align-items:flex-start">
-            <div style="min-width:24px;height:24px;border-radius:50%;background:rgba(6,113,129,0.2);border:1px solid rgba(6,113,129,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:700;color:var(--teal)">${i+1}</div>
-            <span style="font-size:14px;color:#fff;line-height:1.65">${item}</span>
+          inner += `<div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="min-width:22px;height:22px;border-radius:50%;background:rgba(6,113,129,0.2);border:1px solid rgba(6,113,129,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:700;color:var(--teal)">${i+1}</div>
+            <span style="font-size:13px;color:#fff;line-height:1.65">${item}</span>
           </div>`;
         });
         inner += `</div>`;
       }
-      if (d.tags) {
-        inner += `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">`;
-        d.tags.forEach(tag => {
-          inner += `<span style="font-size:12px;font-weight:600;color:#fff;background:rgba(6,113,129,0.25);border:1px solid rgba(6,113,129,0.45);border-radius:20px;padding:6px 16px">${tag}</span>`;
-        });
-        inner += `</div>`;
-      }
+
       inner += `</div>`;
       ecoDetail.innerHTML = inner;
     });
