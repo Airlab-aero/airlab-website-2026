@@ -526,4 +526,7 @@ const ECOSYSTEM = [
       ecoDetail.innerHTML = inner;
     });
   });
+
+  // Auto-select Research Topics on load
+  document.querySelector<HTMLElement>('.hub-node[data-eco="research"]')?.click();
 </script>
