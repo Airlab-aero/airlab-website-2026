@@ -318,8 +318,8 @@ const ECOSYSTEM = [
   .hub-node-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.5; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.3s; white-space: nowrap; }
   .hub-node:hover .hub-node-label, .hub-node.active .hub-node-label { color: #00d4f0; }
   /* Detail panel */
-  .hub-detail { width: 100%; background: rgba(0,212,240,0.04); border: 1px solid rgba(0,212,240,0.15); border-radius: 20px; padding: 36px 40px; min-height: 160px; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, background 0.3s; }
-  .hub-detail.has-content { border-color: rgba(0,212,240,0.4); background: rgba(0,212,240,0.06); align-items: flex-start; justify-content: flex-start; }
+  .hub-detail { width: 100%; background: rgba(0,0,0,0.35); border: 1.5px solid rgba(0,212,240,0.2); border-radius: 20px; padding: 40px 44px; min-height: 160px; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, background 0.3s; }
+  .hub-detail.has-content { border-color: #00d4f0; background: #071a2b; box-shadow: 0 0 40px rgba(0,212,240,0.1), inset 0 0 60px rgba(0,212,240,0.04); align-items: flex-start; justify-content: flex-start; }
   .hub-detail-empty { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
   .hub-detail-empty-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(0,212,240,0.08); border: 1px solid rgba(0,212,240,0.3); display: flex; align-items: center; justify-content: center; }
   .hub-detail-empty-icon svg { width: 20px; height: 20px; stroke: #00d4f0; }
@@ -511,7 +511,7 @@ const ECOSYSTEM = [
 
       let inner = `<div style="width:100%">
         <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#00d4f0;font-weight:700;margin-bottom:12px">AIR Lab Ecosystem</div>
-        <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:24px;line-height:1.3">${d.title}</div>`;
+        <div style="font-size:24px;font-weight:800;color:#fff;margin-bottom:28px;line-height:1.3;letter-spacing:-0.01em">${d.title}</div>`;
 
       // Logos row
       if (d.logos?.length) {
