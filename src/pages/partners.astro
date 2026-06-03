@@ -346,10 +346,11 @@ const ECOSYSTEM = [
     inset: 0;
     background: linear-gradient(180deg, rgba(6,13,24,0.6) 0%, transparent 30%, transparent 70%, rgba(6,13,24,0.6) 100%);
     pointer-events: none;
+    z-index: 0;
   }
 
   /* Header */
-  .sp-header-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+  .sp-header-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; position: relative; z-index: 1; }
   .sp-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
   .sp-title { font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: #fff; line-height: 1.15; margin: 0; }
   .sp-title strong { font-weight: 700; }
@@ -358,7 +359,7 @@ const ECOSYSTEM = [
   .sp-hub-link:hover { background: #048a9a; color: #fff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(6,113,129,0.35); }
 
   /* Blocks */
-  .sp-block { display: block; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 56px; }
+  .sp-block { display: block; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 56px; position: relative; z-index: 1; }
   .sp-block-title { font-size: 26px; font-weight: 600; color: #fff; margin: 0 0 32px; }
 
   /* Mission */
