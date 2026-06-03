@@ -393,7 +393,7 @@ const ECOSYSTEM = [
 
   /* Partner Spotlights */
   .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .ex-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: all 0.25s; }
+  .ex-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: all 0.25s; position: relative; z-index: 1; }
   .ex-card:hover { border-color: rgba(6,113,129,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
   /* Logo section */
   .ex-logo-section { display: flex; align-items: center; gap: 14px; }
@@ -414,7 +414,7 @@ const ECOSYSTEM = [
   /* Photos carousel */
   .ex-photos-carousel { position: relative; border-radius: 10px; overflow: hidden; margin-top: 4px; }
   .ex-photos-track { position: relative; }
-  .ex-carousel-photo { width: 100%; height: 180px; display: none; border-radius: 10px; object-fit: cover; }
+  .ex-carousel-photo { width: 100%; height: 180px; display: none; border-radius: 10px; object-fit: cover; position: relative; z-index: 1; }
   .ex-carousel-photo.active { display: block; }
   .ex-photos-nav { display: flex; gap: 6px; justify-content: center; padding: 10px 0 2px; }
   .ex-photo-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
