@@ -211,12 +211,14 @@ const ECOSYSTEM = [
 
           <!-- SWITCH 2025 -->
           <div class="meetus-card">
-            <div class="meetus-photos">
+            <div class="meetus-photos" data-total="2">
               <img src={`${base}/images/events/switch-1.jpg`} alt="SWITCH 2025 — AIR Lab" class="meetus-photo active" data-idx="0" />
               <img src={`${base}/images/events/switch-2.gif`} alt="SWITCH 2025 — AIR Lab panel" class="meetus-photo" data-idx="1" />
+              <button class="meetus-arrow meetus-arrow--prev">‹</button>
+              <button class="meetus-arrow meetus-arrow--next">›</button>
               <div class="meetus-nav">
-                <button class="meetus-dot active" data-dot="0"></button>
-                <button class="meetus-dot" data-dot="1"></button>
+                <span class="meetus-dot active" data-dot="0"></span>
+                <span class="meetus-dot" data-dot="1"></span>
               </div>
             </div>
             <div class="meetus-info">
@@ -413,8 +415,12 @@ const ECOSYSTEM = [
   .meetus-photos { position: relative; }
   .meetus-photo { width: 100%; height: 220px; object-fit: cover; display: none; }
   .meetus-photo.active { display: block; }
-  .meetus-nav { display: flex; gap: 6px; justify-content: center; padding: 10px 0; position: absolute; bottom: 0; width: 100%; }
-  .meetus-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+  .meetus-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45); border: none; color: #fff; font-size: 28px; line-height: 1; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 0.2s; }
+  .meetus-arrow:hover { background: var(--teal); }
+  .meetus-arrow--prev { left: 10px; }
+  .meetus-arrow--next { right: 10px; }
+  .meetus-nav { display: flex; gap: 6px; justify-content: center; padding: 8px 0; position: absolute; bottom: 6px; width: 100%; z-index: 2; }
+  .meetus-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.4); display: inline-block; cursor: pointer; transition: background 0.2s, transform 0.2s; }
   .meetus-dot.active { background: var(--teal); transform: scale(1.4); }
   .meetus-info { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
   .meetus-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
@@ -461,14 +467,34 @@ const ECOSYSTEM = [
   });
 
   // ── Meet Us carousels ──
-  document.querySelectorAll<HTMLElement>('.meetus-dot').forEach(dot => {
-    dot.addEventListener('click', () => {
-      const card = dot.closest('.meetus-card')!;
-      const idx = Number(dot.dataset.dot);
-      card.querySelectorAll('.meetus-photo').forEach(p => p.classList.remove('active'));
-      card.querySelectorAll('.meetus-dot').forEach(d => d.classList.remove('active'));
-      card.querySelectorAll('.meetus-photo')[idx]?.classList.add('active');
-      card.querySelectorAll('.meetus-dot')[idx]?.classList.add('active');
+  function meetusGoTo(photos: NodeListOf<Element>, dots: NodeListOf<Element>, idx: number) {
+    photos.forEach(p => p.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    photos[idx]?.classList.add('active');
+    dots[idx]?.classList.add('active');
+  }
+
+  document.querySelectorAll<HTMLElement>('.meetus-photos').forEach(wrap => {
+    const photos = wrap.querySelectorAll('.meetus-photo');
+    const dots = wrap.querySelectorAll('.meetus-dot');
+    const total = photos.length;
+    let current = 0;
+
+    wrap.querySelectorAll<HTMLElement>('.meetus-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        current = Number(dot.dataset.dot);
+        meetusGoTo(photos, dots, current);
+      });
+    });
+
+    wrap.querySelector('.meetus-arrow--prev')?.addEventListener('click', () => {
+      current = (current - 1 + total) % total;
+      meetusGoTo(photos, dots, current);
+    });
+
+    wrap.querySelector('.meetus-arrow--next')?.addEventListener('click', () => {
+      current = (current + 1) % total;
+      meetusGoTo(photos, dots, current);
     });
   });
 
