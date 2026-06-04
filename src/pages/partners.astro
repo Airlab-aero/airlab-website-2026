@@ -203,57 +203,43 @@ const ECOSYSTEM = [
       </div>
     </div>
 
-    <!-- ATM Ecosystem -->
+    <!-- News / Meet Us -->
     <div class="sp-block">
       <div class="sp-block-content">
-        <h3 class="sp-block-title">ATM Ecosystem</h3>
+        <h3 class="sp-block-title">Meet us</h3>
+        <div class="meetus-grid">
 
-        <div class="hub-layout">
-          <!-- Center: circular diagram -->
-          <div class="hub-diagram-wrap">
-            <div class="hub-diagram">
-              <svg class="hub-svg" viewBox="0 0 340 340">
-                <circle cx="170" cy="170" r="150" stroke="rgba(6,200,220,0.12)" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
-                <circle cx="170" cy="170" r="100" stroke="rgba(6,200,220,0.2)" stroke-width="1" fill="none"/>
-                <line x1="170" y1="170" x2="170" y2="22"  stroke="rgba(6,200,220,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="170" y1="170" x2="318" y2="170" stroke="rgba(6,200,220,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="170" y1="170" x2="170" y2="318" stroke="rgba(6,200,220,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-                <line x1="170" y1="170" x2="22"  y2="170" stroke="rgba(6,200,220,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-                <circle cx="170" cy="170" r="48" fill="rgba(6,113,129,0.25)" stroke="rgba(6,200,220,0.8)" stroke-width="1.5"/>
-                <circle cx="170" cy="170" r="38" fill="rgba(6,113,129,0.35)" stroke="none"/>
-              </svg>
-              <div class="hub-center">
-                <span class="hub-center-air">AIR</span>
-                <span class="hub-center-lab">LAB</span>
+          <!-- SWITCH 2025 -->
+          <div class="meetus-card">
+            <div class="meetus-photos">
+              <img src={`${base}/images/startups/hela-labs-1.jpg`} alt="SWITCH 2025 — AIR Lab" class="meetus-photo active" data-idx="0" />
+              <img src={`${base}/images/startups/hela-labs-2.jpg`} alt="SWITCH 2025 — AIR Lab" class="meetus-photo" data-idx="1" />
+              <div class="meetus-nav">
+                <button class="meetus-dot active" data-carousel="switchCarousel" data-dot="0"></button>
+                <button class="meetus-dot" data-carousel="switchCarousel" data-dot="1"></button>
               </div>
-              <button class="hub-node hub-node--top"    data-eco="research">
-                <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-                <span class="hub-node-label">Research<br/>Topics</span>
-              </button>
-              <button class="hub-node hub-node--right"  data-eco="academia">
-                <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-                <span class="hub-node-label">Universities &<br/>Institutes</span>
-              </button>
-              <button class="hub-node hub-node--bottom" data-eco="usecases">
-                <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-                <span class="hub-node-label">Use<br/>Cases</span>
-              </button>
-              <button class="hub-node hub-node--left"   data-eco="industry">
-                <div class="hub-node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-                <span class="hub-node-label">Industry<br/>Partners</span>
-              </button>
+            </div>
+            <div class="meetus-info">
+              <div class="meetus-tag">Event · 2025</div>
+              <h4 class="meetus-title">SWITCH 2025</h4>
+              <p class="meetus-desc">AIR Lab took part in Singapore Week of Innovation and Technology (SWITCH), joining a Lab Crawl and moderating a panel discussion on <em>"Navigating the Future of Air Traffic Management – Startups, Talent & Industry Collaboration"</em>. The session brought together voices from Accumulus, Starburst, HeLa Labs and more to explore cross-sector innovation pathways for ATM.</p>
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7392032845638242304" target="_blank" rel="noopener" class="meetus-link">View on LinkedIn →</a>
             </div>
           </div>
 
-          <!-- Below: detail panel -->
-          <div class="hub-detail" id="ecoDetail">
-            <div class="hub-detail-empty">
-              <div class="hub-detail-empty-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <p>Select a category<br/>to explore</p>
+          <!-- IMDA Open Innovation Platform -->
+          <div class="meetus-card">
+            <div class="meetus-photos">
+              <img src={`${base}/team-photo.jpg`} alt="IMDA Open Innovation Platform" class="meetus-photo active" data-idx="0" />
+            </div>
+            <div class="meetus-info">
+              <div class="meetus-tag">Initiative · Singapore</div>
+              <h4 class="meetus-title">IMDA Open Innovation Platform</h4>
+              <p class="meetus-desc">AIR Lab joined IMDA's Open Innovation Platform (OIP) call, opening the door for tech solvers to tackle real Air Traffic Management challenges. With over S$2 million in award monies, the initiative invited startups and innovators to bring their solutions to aviation — and beyond.</p>
+              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7348953728944652288" target="_blank" rel="noopener" class="meetus-link">View on LinkedIn →</a>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -418,6 +404,25 @@ const ECOSYSTEM = [
   .ex-photos-nav { display: flex; gap: 6px; justify-content: center; padding: 10px 0 2px; }
   .ex-photo-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
   .ex-photo-dot.active { background: var(--teal); transform: scale(1.4); }
+
+  /* Meet Us */
+  .meetus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 768px) { .meetus-grid { grid-template-columns: 1fr; } }
+  .meetus-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.25s; }
+  .meetus-card:hover { border-color: rgba(6,113,129,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .meetus-photos { position: relative; }
+  .meetus-photo { width: 100%; height: 220px; object-fit: cover; display: none; }
+  .meetus-photo.active { display: block; }
+  .meetus-nav { display: flex; gap: 6px; justify-content: center; padding: 10px 0; position: absolute; bottom: 0; width: 100%; }
+  .meetus-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+  .meetus-dot.active { background: var(--teal); transform: scale(1.4); }
+  .meetus-info { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .meetus-tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  .meetus-title { font-size: 20px; font-weight: 700; color: #fff; margin: 0; }
+  .meetus-desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0; flex: 1; }
+  .meetus-desc em { color: rgba(255,255,255,0.9); font-style: italic; }
+  .meetus-link { font-size: 13px; color: #fff; text-decoration: none; font-weight: 700; align-self: flex-start; background: rgba(6,113,129,0.5); border: 1px solid var(--teal); padding: 6px 14px; border-radius: 16px; transition: all 0.2s; }
+  .meetus-link:hover { background: var(--teal); }
 </style>
 
 <script>
@@ -455,7 +460,19 @@ const ECOSYSTEM = [
     });
   });
 
-  // ── Hub Ecosystem ──
+  // ── Meet Us carousels ──
+  document.querySelectorAll<HTMLElement>('.meetus-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const card = dot.closest('.meetus-card')!;
+      const idx = Number(dot.dataset.dot);
+      card.querySelectorAll('.meetus-photo').forEach(p => p.classList.remove('active'));
+      card.querySelectorAll('.meetus-dot').forEach(d => d.classList.remove('active'));
+      card.querySelectorAll('.meetus-photo')[idx]?.classList.add('active');
+      card.querySelectorAll('.meetus-dot')[idx]?.classList.add('active');
+    });
+  });
+
+  // ── Hub Ecosystem (kept for reference, section removed) ──
   const BASE = (document.getElementById('baseRef') as HTMLElement)?.dataset.base ?? '';
   interface EcoEntry { title: string; items?: string[]; logos?: { name: string; src?: string }[] }
   const ECO: Record<string, EcoEntry> = {
@@ -546,6 +563,4 @@ const ECOSYSTEM = [
     });
   });
 
-  // Auto-select Research Topics on load
-  document.querySelector<HTMLElement>('.hub-node[data-eco="research"]')?.click();
 </script>
