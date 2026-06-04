@@ -231,14 +231,40 @@ const ECOSYSTEM = [
 
           <!-- IMDA Open Innovation Platform -->
           <div class="meetus-card">
-            <div class="meetus-photos">
-              <img src={`${base}/images/events/aoic-challenge.jpg`} alt="IMDA Open Innovation Platform" class="meetus-photo active" data-idx="0" />
+            <div class="meetus-photos" data-total="2">
+              <img src={`${base}/images/events/imda-event.png`} alt="IMDA Open Innovation Platform" class="meetus-photo active" data-idx="0" />
+              <img src={`${base}/images/events/aoic-challenge.jpg`} alt="IMDA Open Innovation Platform" class="meetus-photo" data-idx="1" />
+              <button class="meetus-arrow meetus-arrow--prev">‹</button>
+              <button class="meetus-arrow meetus-arrow--next">›</button>
+              <div class="meetus-nav">
+                <span class="meetus-dot active" data-dot="0"></span>
+                <span class="meetus-dot" data-dot="1"></span>
+              </div>
             </div>
             <div class="meetus-info">
               <div class="meetus-tag">Initiative · Singapore</div>
               <h4 class="meetus-title">IMDA Open Innovation Platform</h4>
               <p class="meetus-desc">AIR Lab joined IMDA's Open Innovation Platform (OIP) call, opening the door for tech solvers to tackle real Air Traffic Management challenges. With over S$2 million in award monies, the initiative invited startups and innovators to bring their solutions to aviation — and beyond.</p>
               <a href="https://www.linkedin.com/feed/update/urn:li:activity:7348953728944652288" target="_blank" rel="noopener" class="meetus-link">View on LinkedIn →</a>
+            </div>
+          </div>
+
+          <!-- Aerospace Open Innovation Challenge -->
+          <div class="meetus-card">
+            <div class="meetus-photos" data-total="2">
+              <img src={`${base}/images/events/aoic-2026.jpg`} alt="Aerospace Open Innovation Challenge" class="meetus-photo active" data-idx="0" />
+              <img src={`${base}/images/rcp-in-action/events/aoic-2026.jpg`} alt="Aerospace Open Innovation Challenge" class="meetus-photo" data-idx="1" />
+              <button class="meetus-arrow meetus-arrow--prev">‹</button>
+              <button class="meetus-arrow meetus-arrow--next">›</button>
+              <div class="meetus-nav">
+                <span class="meetus-dot active" data-dot="0"></span>
+                <span class="meetus-dot" data-dot="1"></span>
+              </div>
+            </div>
+            <div class="meetus-info">
+              <div class="meetus-tag">Challenge · February 2026</div>
+              <h4 class="meetus-title">Aerospace Open Innovation Challenge</h4>
+              <p class="meetus-desc">AIR Lab hosted the Aerospace Open Innovation Challenge in Singapore, bringing together startups and aviation innovators to develop solutions for real ATM challenges. Teams competed to demonstrate how emerging technologies can integrate with live operational infrastructure.</p>
             </div>
           </div>
 
@@ -408,7 +434,7 @@ const ECOSYSTEM = [
   .ex-photo-dot.active { background: var(--teal); transform: scale(1.4); }
 
   /* Meet Us */
-  .meetus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .meetus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
   @media (max-width: 768px) { .meetus-grid { grid-template-columns: 1fr; } }
   .meetus-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.25s; }
   .meetus-card:hover { border-color: rgba(6,113,129,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
