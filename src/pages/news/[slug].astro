@@ -23,7 +23,7 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<Base title={article.title} description={article.excerpt}>
+<Base title={article.title} description={article.excerpt} ogImage={article.coverImageUrl || (article.coverImage ? imageUrl(article.coverImage, 1200) : undefined)}>
   <Nav slot="nav" />
 
   <div class="page-hero" style={(article.coverImageUrl || article.coverImage) ? `background-image: url('${article.coverImageUrl || imageUrl(article.coverImage, 1600)}'); background-size: cover; background-position: center;` : ''}>
