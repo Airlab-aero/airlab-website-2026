@@ -510,6 +510,9 @@ footer {
   background: none; border: none; cursor: pointer; padding: 8px;
   z-index: 101; position: relative;
 }
+@media (max-width: 900px) {
+  .nav-burger { display: flex !important; }
+}
 .nav-burger span {
   display: block; width: 22px; height: 1.5px; background: rgba(255,255,255,0.85);
   border-radius: 2px;
