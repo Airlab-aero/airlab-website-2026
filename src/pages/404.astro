@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base title="Page not found" description="The page you are looking for does not exist.">
+  <Nav slot="nav" />
+
+  <section style="min-height: 80vh; display: flex; align-items: center; justify-content: center; background: var(--navy); text-align: center; padding: 80px 24px;">
+    <div>
+      <div style="font-size: 96px; font-weight: 800; color: var(--teal); line-height: 1; margin-bottom: 16px; opacity: 0.6;">404</div>
+      <h1 style="font-size: 32px; font-weight: 300; color: #fff; margin-bottom: 16px; letter-spacing: -0.02em;">
+        Page <strong>not found</strong>
+      </h1>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); max-width: 400px; margin: 0 auto 40px; line-height: 1.7;">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href={`${base}/`} style="background: var(--teal); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 4px; font-size: 15px; font-weight: 500; transition: opacity 0.2s;">
+          Back to Home
+        </a>
+        <a href={`${base}/news`} style="background: transparent; color: rgba(255,255,255,0.7); text-decoration: none; padding: 12px 28px; border-radius: 4px; font-size: 15px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;">
+          Browse News
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
