@@ -484,6 +484,16 @@ footer {
   .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  /* Timeline — single column on mobile */
+  .timeline { flex-direction: column; overflow-x: visible; }
+  .timeline-item { min-width: unset; padding: 0 0 32px 0; }
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  /* Contact page — stack location + form */
+  .contact-two-col { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .contact-name-row { grid-template-columns: 1fr !important; }
 }
 
 /* ── SCROLL-REVEAL SYSTEM ── */

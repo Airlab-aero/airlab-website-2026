@@ -372,6 +372,7 @@ const ECOSYSTEM = [
 
   /* Header */
   .sp-header-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; position: relative; z-index: 1; }
+  @media (max-width: 600px) { .sp-header-row { grid-template-columns: 1fr; gap: 20px; } }
   .sp-eyebrow { font-size: 16px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); font-weight: 800; margin-bottom: 16px; }
   .sp-title { font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: #fff; line-height: 1.15; margin: 0; }
   .sp-title strong { font-weight: 700; }
