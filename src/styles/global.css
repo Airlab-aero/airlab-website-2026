@@ -150,8 +150,14 @@ section { padding: 100px 80px; }
 }
 .hero h1 strong { font-weight: 600; }
 .hero-sub {
-  font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.72);
-  font-weight: 300; max-width: 580px; margin-bottom: 40px;
+  font-size: 22px; line-height: 1.7; color: #ffffff;
+  font-weight: 300; max-width: 600px; margin-bottom: 40px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  padding: 16px 24px;
+  border-radius: 8px;
+  border-left: 3px solid var(--teal);
+  white-space: pre-line;
 }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero-scroll {

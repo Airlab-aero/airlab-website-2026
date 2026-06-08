@@ -11,14 +11,14 @@ const featuredTeam = team.filter((m: any) => imageUrl(m.photo) || m.photoUrl).sl
 const cms = await client.fetch(homePageQuery) ?? {};
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const heroSubtitle = cms.heroSubtitle ?? 'A free, open-access cloud sandbox where air navigation service providers co-develop, test, and shape the next generation of air traffic management. Together.';
+const heroSubtitle = cms.heroSubtitle ?? 'A free, open-access cloud sandbox where Asia-Pacific aviation stakeholders can co-develop, test, and shape the next generation of air traffic management.';
 const heroVideoUrl = cms.heroVideoUrl ?? `${base}/vid-hero.mp4`;
 const heroPrimaryButtonText = cms.heroPrimaryButtonText ?? 'Access the Platform';
 const heroPrimaryButtonUrl = cms.heroPrimaryButtonUrl ?? 'https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/';
 const stats = cms.stats ?? [
-  { number: '2019', suffix: '', label: 'Founded by Thales & CAAS\nSingapore' },
+  { number: '2019', suffix: '', label: 'Founded by CAAS & Thales\nSingapore' },
   { number: '10', suffix: '+', label: 'APAC ANSPs actively\nengaged on the platform' },
-  { number: '100', suffix: '%', label: 'Free access for regional ANSPs,\ncloud-based open-source stack' },
+  { number: '100', suffix: '%', label: 'Free access,\ncloud-based and open-source stack' },
 ];
 const ctaTitle = cms.ctaTitle ?? 'Ready to join the collaboration?';
 const ctaSubtitle = cms.ctaSubtitle ?? "Whether you're an ANSP, research institution, or technology provider: the RCP is open for collaboration.";
@@ -40,7 +40,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
     <div class="hero-content">
       <div class="hero-tag">By AIR Lab</div>
       <h1>The <strong>Regional Collaboration<br>Platform</strong></h1>
-      <p class="hero-sub">{heroSubtitle}</p>
+      <p class="hero-sub">{heroSubtitle}<br/>Together.</p>
       <div class="hero-actions">
         <a href={heroPrimaryButtonUrl} class="btn-primary" target="_blank">{heroPrimaryButtonText}</a>
         <a href="#platform" class="btn-ghost">Explore the RCP ↓</a>
@@ -142,10 +142,6 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       <div class="pillar-detail" id="pillarDetail"></div>
     </div>
 
-    <div class="uc-actions">
-      <a href={`${base}/contact`} class="btn-navy">Request Platform Access</a>
-      <a href="https://airspace-hub.aero" class="btn-outline-navy" target="_blank">Open AIR Space Platform →</a>
-    </div>
   </section>
 
   <!-- JOURNEY TIMELINE -->
@@ -191,7 +187,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
         <img class="fm-bot" src={`${base}/face-6.jpg`} alt="AIR Lab team" />
       </div>
       <div class="faces-text">
-        <p class="faces-body">Engineers, developers, ATM specialists, ATCOs, and researchers from Thales and CAAS working side by side to advance aviation across the Asia-Pacific region.</p>
+        <p class="faces-body">Engineers, developers, ATM specialists, ATCOs, and researchers from CAAS and Thales working side by side to advance aviation across the Asia-Pacific region.</p>
         <div class="faces-chips">
           <span class="face-chip">Engineering</span>
           <span class="face-chip">ATM Operations</span>
@@ -239,7 +235,7 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       <div class="team-intro-text" data-reveal data-reveal-delay="120">
         <div class="section-label">Our team</div>
         <h2 class="section-title">A team built on<br><strong>shared ambition.</strong></h2>
-        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from Thales and CAAS, working side by side to advance aviation in the Asia-Pacific region.</p>
+        <p class="section-intro">Engineers, ATM specialists, researchers, and operators from CAAS and Thales, working side by side to advance aviation in the Asia-Pacific region.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;">
           <a href={`${base}/team`} class="btn-white">Meet the full team</a>
           <a href={`${base}/contact`} class="btn-outline-white">Contact AIR Lab</a>
@@ -295,12 +291,6 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       <div class="contact-item">
         <span class="contact-item-label">Location</span>
         <span class="contact-item-value" set:html={ctaLocation.replace(/\n/g, '<br>')}></span>
-      </div>
-      <div class="contact-item">
-        <span class="contact-item-label">Platform access</span>
-        <span class="contact-item-value">
-          <a href={ctaPlatformUrl} target="_blank">Log in to the RCP →</a>
-        </span>
       </div>
     </div>
   </div>
