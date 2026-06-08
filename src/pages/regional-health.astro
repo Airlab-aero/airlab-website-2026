@@ -9,151 +9,143 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <Nav slot="nav" />
 
   <!-- HERO -->
-  <div class="rh-hero">
+  <div class="page-hero">
     <div class="rh-tag">Regional Collaboration Platform</div>
-    <h1>Regional <strong>Health</strong></h1>
-    <p class="rh-subtitle">Understanding the Pulse of Southeast Asia's Airspace</p>
-    <p class="rh-intro">Air traffic is a highly interconnected system. Every day, thousands of flights, airports and air navigation service providers influence each other's performance across the region.<br/><br/>AIR Lab transforms operational data into a shared regional picture, helping stakeholders understand traffic flows, identify bottlenecks and support collaborative decision-making.</p>
+    <h1 class="hero-title">Regional <strong>insights</strong></h1>
+    <p class="hero-subtitle">Understanding the pulse of Southeast Asia's airspace</p>
+    <p class="hero-body">Air traffic is a highly interconnected system. Every day, thousands of flights, airports and air navigation service providers influence each other's performance across the region.<br/><br/>AIR Lab transforms operational data into a shared regional picture, to understand traffic flows, identify bottlenecks and support collaborative decision-making.</p>
   </div>
 
   <!-- WHY IT MATTERS -->
-  <div class="rh-why">
-    <div class="rh-why-inner">
-      <div class="rh-why-left">
-        <div class="section-label">Context</div>
-        <h2 class="rh-why-title">Why It <strong>Matters</strong></h2>
-        <p class="rh-why-lead">As traffic continues to grow, airspace complexity grows with it.</p>
-        <p class="rh-why-text">Traditional operational views are often limited to a single airport, airline or country. Regional challenges require regional visibility.</p>
+  <section style="background: var(--off-white);">
+    <div class="section-header">
+      <div class="section-label">Context</div>
+      <h2 class="section-title">Why it <strong>matters</strong></h2>
+      <p class="section-intro">As traffic continues to grow, airspace complexity grows with it.</p>
+    </div>
+    <div class="rh-stats">
+      <div class="rh-stat">
+        <div class="rh-stat-tag">Today</div>
+        <div class="rh-stat-num">34<span>%</span></div>
+        <div class="rh-stat-lbl">of global passenger traffic is in Asia-Pacific</div>
       </div>
-      <div class="rh-why-right">
-        <p class="rh-with-label">With shared data and analytics :</p>
-        <ul class="rh-bullets">
-          <li>Detect emerging congestion hotspots</li>
-          <li>Understand traffic dependencies between airports and airspaces</li>
-          <li>Identify opportunities for collaboration</li>
-          <li>Improve network resilience</li>
-          <li>Support more informed operational and strategic decisions</li>
-        </ul>
+      <div class="rh-stat">
+        <div class="rh-stat-tag">By 2043</div>
+        <div class="rh-stat-num">46<span>%</span></div>
+        <div class="rh-stat-lbl">of global passenger traffic will be in Asia-Pacific</div>
+      </div>
+      <div class="rh-stat">
+        <div class="rh-stat-tag">Growth</div>
+        <div class="rh-stat-num">+2.75<span>B</span></div>
+        <div class="rh-stat-lbl">additional passengers expected in the region</div>
       </div>
     </div>
-  </div>
+    <p class="rh-stat-source">Source: IATA 20-Year Passenger Forecast</p>
+  </section>
 
   <!-- MAP -->
-  <div class="rh-map-section">
-    <div class="rh-map-header">
-      <div class="section-label">Live Data</div>
-      <h2 class="rh-map-title">Regional Insights <strong>at a Glance</strong></h2>
-      <p class="rh-map-desc">This visualization highlights the busiest airports, major traffic flows and key city pairs across Southeast Asia, revealing how interconnected the regional aviation network has become.</p>
+  <section style="background: var(--navy); padding-bottom: 0;">
+    <div class="section-header">
+      <div class="section-label">Monthly snapshot</div>
+      <h2 class="section-title" style="color:#fff;">Regional insights <strong>at a glance</strong></h2>
+      <p class="section-intro" style="color:rgba(255,255,255,0.55);">This visualization highlights the busiest airports, major traffic flows and key city pairs across Southeast Asia, revealing how interconnected the regional aviation network has become.</p>
     </div>
     <div class="rh-map">
       <img src={`${base}/regional-health-map.png`} alt="Regional air traffic situational awareness — Southeast Asia" />
       <span class="rh-map-caption">Live regional situational awareness, South East Asia airspace</span>
     </div>
-  </div>
+  </section>
 
   <!-- FROM DATA TO INTELLIGENCE -->
-  <div class="rh-data">
-    <div class="rh-data-inner">
-      <div class="rh-data-header">
-        <div class="section-label">Analytics</div>
-        <h2 class="rh-data-title">From Data <strong>to Intelligence</strong></h2>
-        <p class="rh-data-lead">Data alone does not improve performance.<br/>AIR Lab combines operational, traffic and network data to generate actionable insights that help stakeholders understand:</p>
+  <section>
+    <div class="section-header">
+      <div class="section-label">Analytics</div>
+      <h2 class="section-title">From data <strong>to intelligence</strong></h2>
+      <p class="section-intro">Data alone does not improve performance. AIR Lab combines operational, traffic and network data to generate actionable insights.</p>
+    </div>
+    <div class="rh-data-grid">
+      <div class="rh-data-card">
+        <div class="rh-data-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6l9-3 9 3M3 18l9 3 9-3"/></svg>
+        </div>
+        <h3>Traffic flows</h3>
+        <p>Where traffic is concentrated and how it evolves.</p>
       </div>
-      <div class="rh-data-grid">
-        <div class="rh-data-card">
-          <div class="rh-data-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6l9-3 9 3M3 18l9 3 9-3"/></svg>
-          </div>
-          <h3>Traffic Flows</h3>
-          <p>Where traffic is concentrated and how it evolves.</p>
+      <div class="rh-data-card">
+        <div class="rh-data-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
         </div>
-        <div class="rh-data-card">
-          <div class="rh-data-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-          </div>
-          <h3>Network Dependencies</h3>
-          <p>How disruptions in one location can impact the wider region.</p>
+        <h3>Network dependencies</h3>
+        <p>How disruptions in one location can impact the wider region.</p>
+      </div>
+      <div class="rh-data-card">
+        <div class="rh-data-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
-        <div class="rh-data-card">
-          <div class="rh-data-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-          <h3>Capacity and Demand</h3>
-          <p>Where pressure points are emerging and where additional coordination may be needed.</p>
+        <h3>Capacity and demand</h3>
+        <p>Where pressure points are emerging and where additional coordination may be needed.</p>
+      </div>
+      <div class="rh-data-card">
+        <div class="rh-data-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
-        <div class="rh-data-card">
-          <div class="rh-data-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          </div>
-          <h3>Performance Trends</h3>
-          <p>How the network changes over time and what this means for future operations.</p>
-        </div>
+        <h3>Performance trends</h3>
+        <p>How the network changes over time and what this means for future operations.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- LOOKING BEYOND -->
-  <div class="rh-beyond">
-    <div class="rh-beyond-inner">
+  <section style="background: var(--navy);">
+    <div class="section-header">
       <div class="section-label">Perspective</div>
-      <h2 class="rh-beyond-title">Looking Beyond <strong>Today's Operations</strong></h2>
-      <p class="rh-beyond-text">The real value of regional data lies not only in understanding what happened, but also in preparing for what comes next.</p>
+      <h2 class="section-title" style="color:#fff;">Looking beyond <strong>today's operations</strong></h2>
+      <p class="section-intro" style="color:rgba(255,255,255,0.55);">The real value of regional data lies not only in understanding what happened, but also in preparing for what comes next.</p>
     </div>
-  </div>
+  </section>
 
   <!-- JOIN THE CONVERSATION -->
-  <div class="rh-cta">
-    <div class="section-label">Get Involved</div>
-    <h2 class="section-title" style="color:#fff; margin-top: 8px;">Join the <strong>Conversation</strong></h2>
-    <p>Regional challenges cannot be solved by a single stakeholder.<br/>AIR Lab brings together ANSPs, airports, airlines and industry partners to explore how data and innovation can help shape the future of airspace management.</p>
-    <p class="rh-cta-sub">Interested in contributing or learning more?</p>
-    <div class="rh-cta-btns">
-      <a href={`${base}/contact`} class="btn-primary">Contact us</a>
-      <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="btn-ghost">Log in to RCP</a>
+  <section style="background: var(--navy); padding-top: 0;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <div class="section-label">Get involved</div>
+      <h2 class="section-title" style="color:#fff; margin-bottom: 20px;">Join the <strong>conversation</strong></h2>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 12px;">Regional challenges cannot be solved by a single stakeholder. AIR Lab brings together ANSPs, airports, airlines and industry partners to explore how data and innovation can help shape the future of airspace management.</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 36px;">Interested in contributing or learning more?</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href={`${base}/contact`} class="btn-airlab">Contact us</a>
+        <a href="https://rcp-landing-page.rcp.pub.airlab.thalesdigital.io/" target="_blank" class="btn-ghost-dark">Log in to RCP</a>
+      </div>
     </div>
-  </div>
+  </section>
 
   <Footer slot="footer" />
 </Base>
 
 <style>
   /* HERO */
-  .rh-hero { background: var(--navy); padding: 100px 80px 80px; position: relative; overflow: hidden; }
-  .rh-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(0,210,180,0.04), transparent 60%); }
+  .page-hero { background: var(--navy); padding: 120px 80px 80px; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(0,210,180,0.04), transparent 60%); }
   .rh-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(0,210,180,0.3); padding: 3px 10px; border-radius: 4px; margin-bottom: 20px; }
-  .rh-hero h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 16px; }
-  .rh-hero h1 strong { font-weight: 700; }
-  .rh-subtitle { font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 24px; max-width: 560px; }
-  .rh-intro { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.75; }
+  .hero-title { font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 16px; max-width: 800px; }
+  .hero-title strong { font-weight: 700; }
+  .hero-subtitle { font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 24px; max-width: 600px; }
+  .hero-body { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.75; }
 
-  /* WHY IT MATTERS */
-  .rh-why { background: var(--off-white); padding: 80px; }
-  .rh-why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; align-items: start; }
-  .rh-why-title { font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: var(--navy); margin: 8px 0 20px; line-height: 1.2; }
-  .rh-why-title strong { font-weight: 700; }
-  .rh-why-lead { font-size: 17px; color: var(--navy); font-weight: 500; margin-bottom: 12px; }
-  .rh-why-text { font-size: 15px; color: var(--muted); line-height: 1.7; }
-  .rh-with-label { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 16px; }
-  .rh-bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-  .rh-bullets li { font-size: 15px; color: var(--text); line-height: 1.55; padding-left: 20px; position: relative; }
-  .rh-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 13px; top: 1px; }
+  /* STATS */
+  .rh-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 800px; margin: 0 auto; }
+  .rh-stat { text-align: center; }
+  .rh-stat-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 8px; }
+  .rh-stat-num { font-size: 48px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 10px; }
+  .rh-stat-num span { font-size: 24px; color: var(--teal); }
+  .rh-stat-lbl { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .rh-stat-source { font-size: 11px; color: #aaa; margin-top: 32px; font-style: italic; text-align: center; }
 
   /* MAP */
-  .rh-map-section { background: var(--navy); }
-  .rh-map-header { padding: 64px 80px 40px; }
-  .rh-map-title { font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: #fff; margin: 8px 0 16px; line-height: 1.2; }
-  .rh-map-title strong { font-weight: 700; }
-  .rh-map-desc { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 640px; line-height: 1.7; }
-  .rh-map { position: relative; line-height: 0; }
+  .rh-map { position: relative; line-height: 0; margin-top: 40px; }
   .rh-map img { width: 100%; display: block; }
   .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
-  /* FROM DATA TO INTELLIGENCE */
-  .rh-data { background: #fff; padding: 80px; }
-  .rh-data-inner { max-width: 1200px; }
-  .rh-data-title { font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: var(--navy); margin: 8px 0 20px; }
-  .rh-data-title strong { font-weight: 700; }
-  .rh-data-lead { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 600px; margin-bottom: 48px; }
+  /* DATA CARDS */
   .rh-data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .rh-data-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: all 0.25s; }
   .rh-data-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
@@ -162,25 +154,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .rh-data-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
   .rh-data-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin: 0; }
 
-  /* LOOKING BEYOND */
-  .rh-beyond { background: var(--navy); padding: 80px; }
-  .rh-beyond-inner { max-width: 700px; }
-  .rh-beyond-title { font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: #fff; margin: 8px 0 20px; line-height: 1.2; }
-  .rh-beyond-title strong { font-weight: 700; }
-  .rh-beyond-text { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7; }
-
-  /* CTA */
-  .rh-cta { background: var(--teal-dark, #06323a); padding: 80px; text-align: center; background: linear-gradient(135deg, var(--navy) 0%, rgba(6,113,129,0.3) 100%); }
-  .rh-cta p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 16px; line-height: 1.7; }
-  .rh-cta-sub { font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 32px !important; }
-  .rh-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  /* BUTTONS */
+  .btn-ghost-dark { display: inline-block; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; font-weight: 400; transition: all 0.2s; }
+  .btn-ghost-dark:hover { border-color: #fff; color: #fff; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .rh-hero, .rh-why, .rh-map-header, .rh-data, .rh-beyond, .rh-cta { padding-left: 24px; padding-right: 24px; }
-    .rh-why-inner { grid-template-columns: 1fr; gap: 40px; }
+    .page-hero { padding: 100px 24px 60px; }
     .rh-data-grid { grid-template-columns: 1fr 1fr; }
     .rh-map-caption { left: 24px; }
+  }
+  @media (max-width: 600px) {
+    .rh-stats { grid-template-columns: 1fr; max-width: 300px; }
+    .rh-data-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .rh-data-grid { grid-template-columns: 1fr; }

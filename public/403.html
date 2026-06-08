@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access restricted — AIR Lab RCP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0b1a2f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    /* Background subtle grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(6,200,220,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,200,220,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 56px 64px;
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 40px;
+    }
+
+    .logo img {
+      height: 52px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #06c8dc;
+      border: 1px solid rgba(6,200,220,0.35);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 strong {
+      font-weight: 700;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #06c8dc;
+      margin: 0 auto 24px;
+      border-radius: 2px;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .body-text strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+
+    .contact-box {
+      margin-top: 36px;
+      background: rgba(6,113,129,0.15);
+      border: 1px solid rgba(6,200,220,0.2);
+      border-radius: 12px;
+      padding: 24px 32px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #06c8dc;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .contact-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(6,200,220,0.5);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email:hover {
+      border-color: #06c8dc;
+      color: #06c8dc;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    .footer-note a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      color: rgba(255,255,255,0.6);
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 40px 28px; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <h1>Access restricted</h1>
+
+    <div class="divider"></div>
+
+    <p class="body-text">
+      The RCP is currently available to aviation stakeholders within the
+      <strong>Asia-Pacific region</strong>.
+    </p>
+
+    <p class="body-text">
+      As an initiative built for and with the Asia-Pacific aviation ecosystem,
+      the platform operates within a defined geographic scope.
+    </p>
+
+    <div class="contact-box">
+      <div class="contact-label">Interested in learning more?</div>
+      <p class="contact-text">
+        If you would like to find out more about the RCP, explore a potential
+        collaboration, or understand how the platform could support your operations,
+        we'd love to hear from you.
+      </p>
+      <a href="mailto:airlab@thalesgroup.com" class="contact-email">airlab@thalesgroup.com</a>
+    </div>
+
+  </div>
+
+  <p class="footer-note">
+    &copy; AIR Lab Singapore &nbsp;·&nbsp;
+    <a href="https://airlab.aero">airlab.aero</a>
+  </p>
+
+</body>
+</html>
