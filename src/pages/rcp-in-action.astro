@@ -103,7 +103,8 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   <!-- HERO -->
   <div class="ria-hero">
     <div class="ria-hero-tag">Regional Collaboration Platform</div>
-    <h1>RCP <strong>in Action</strong></h1>
+    <h1>Regional Collaboration Platform <strong>in Action</strong></h1>
+    <p class="ria-hero-intro">All developments are customer-centric, in collaboration with the ANSPs. Taking into account current and future challenges to develop concepts and features that correspond to ANSPs' operational needs.</p>
   </div>
 
   <!-- ── 1. Workshops & Working Groups ────────────────────────────────────── -->
@@ -270,6 +271,14 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 75% 50%, rgba(6,113,129,0.08), transparent 60%);
+  }
+  .ria-hero-intro {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-top: 20px;
+    font-weight: 300;
   }
   .ria-hero-tag {
     display: inline-block;
