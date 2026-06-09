@@ -1,0 +1,137 @@
+<style>
+  .q-title { font-size: 18px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .q-sub { font-size: 13px; color: #666; margin-bottom: 28px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .2s, box-shadow .2s; background: #fff; }
+  .card:hover { border-color: #067181; box-shadow: 0 4px 20px rgba(6,113,129,0.12); }
+  .card.selected { border-color: #067181; box-shadow: 0 0 0 3px rgba(6,113,129,0.18); }
+  .card-label { background: #0b1a2f; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; display: flex; align-items: center; gap: 8px; }
+  .card-label span.tag { background: #067181; border-radius: 3px; padding: 2px 7px; }
+  .card-preview { padding: 16px; }
+  .card-body { padding: 0 16px 16px; }
+  .card-body h3 { font-size: 15px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .card-body p { font-size: 12px; color: #666; line-height: 1.55; margin: 0; }
+
+  /* Option A — Horizontal tabs */
+  .mock-tabs { display: flex; border-bottom: 2px solid #e0e0e0; margin-bottom: 10px; gap: 0; }
+  .mock-tab { padding: 7px 12px; font-size: 10px; font-weight: 700; color: #999; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; }
+  .mock-tab.active { color: #067181; border-bottom-color: #067181; }
+  .mock-content-area { display: flex; gap: 10px; height: 90px; }
+  .mock-features { width: 38%; display: flex; flex-direction: column; gap: 5px; }
+  .mock-feat { background: #f5f5f5; border-left: 3px solid #e0e0e0; border-radius: 3px; padding: 5px 8px; font-size: 9px; color: #888; }
+  .mock-feat.active { background: #e8f4f5; border-left-color: #067181; color: #067181; font-weight: 700; }
+  .mock-media { flex: 1; background: #0b1a2f; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .mock-media-label { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+
+  /* Option B — Left sidebar */
+  .mock-sidebar-layout { display: flex; gap: 8px; height: 120px; }
+  .mock-sidebar { width: 70px; background: #0b1a2f; border-radius: 6px; display: flex; flex-direction: column; padding: 6px; gap: 3px; }
+  .mock-sitem { font-size: 8px; color: rgba(255,255,255,0.4); padding: 5px 6px; border-radius: 3px; font-weight: 600; letter-spacing: .5px; }
+  .mock-sitem.active { color: #fff; background: rgba(6,113,129,0.4); border-left: 2px solid #067181; }
+  .mock-center { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .mock-center-feat { background: #f5f5f5; border-radius: 4px; padding: 5px 8px; font-size: 8px; color: #888; border-left: 2px solid #e0e0e0; }
+  .mock-center-feat.active { background: #e8f4f5; border-left-color: #067181; color: #0b1a2f; font-weight: 700; }
+  .mock-right { width: 80px; background: #0b1a2f; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .mock-right-lbl { font-size: 8px; color: rgba(255,255,255,0.3); text-align: center; }
+
+  /* Option C — Accordion */
+  .mock-accordion { display: flex; flex-direction: column; gap: 5px; }
+  .mock-acc-item { border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden; }
+  .mock-acc-head { background: #f5f5f5; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; }
+  .mock-acc-head.active { background: #0b1a2f; color: #fff; }
+  .mock-acc-name { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .mock-acc-icon { font-size: 12px; color: #067181; }
+  .mock-acc-body { padding: 8px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: #fafafa; }
+  .mock-acc-feat { background: #fff; border: 1px solid #e8e8e8; border-radius: 3px; padding: 4px 6px; font-size: 8px; color: #888; }
+</style>
+
+<p class="q-title">Quelle structure pour la section "Platform Capabilities" ?</p>
+<p class="q-sub">Les 5 piliers (Observe, Understand, Simulate, Collaborate, What If) avec leurs features. Clique pour sélectionner.</p>
+
+<div class="cards">
+
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-label">Option A <span class="tag">Tabs</span></div>
+    <div class="card-preview">
+      <div class="mock-tabs">
+        <div class="mock-tab active">Observe</div>
+        <div class="mock-tab">Understand</div>
+        <div class="mock-tab">Simulate</div>
+        <div class="mock-tab">…</div>
+      </div>
+      <div class="mock-content-area">
+        <div class="mock-features">
+          <div class="mock-feat active">Live air situation</div>
+          <div class="mock-feat">Hybrid / replay</div>
+          <div class="mock-feat">Flight plan gen.</div>
+          <div class="mock-feat">SIGMET</div>
+        </div>
+        <div class="mock-media"><span class="mock-media-label">Visual / demo</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Onglets horizontaux</h3>
+      <p>Catégories en haut comme des onglets. Click → features à gauche, visuel à droite. Familier, compact, bon sur mobile.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-label">Option B <span class="tag">Sidebar</span></div>
+    <div class="card-preview" style="padding-bottom: 12px;">
+      <div class="mock-sidebar-layout">
+        <div class="mock-sidebar">
+          <div class="mock-sitem active">Observe</div>
+          <div class="mock-sitem">Understand</div>
+          <div class="mock-sitem">Simulate</div>
+          <div class="mock-sitem">Collaborate</div>
+          <div class="mock-sitem">What if</div>
+        </div>
+        <div class="mock-center">
+          <div class="mock-center-feat active">Live air situation</div>
+          <div class="mock-center-feat">Hybrid / replay</div>
+          <div class="mock-center-feat">Flight plan gen.</div>
+          <div class="mock-center-feat">SIGMET</div>
+        </div>
+        <div class="mock-right"><span class="mock-right-lbl">Media /<br>detail</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Sidebar + 3 colonnes</h3>
+      <p>Inspiré de ton fichier ASW. Catégories à gauche (dark), features au centre, visuel/détail à droite. Plus dense, desktop-first.</p>
+    </div>
+  </div>
+
+  <!-- Option C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-label">Option C <span class="tag">Accordéon</span></div>
+    <div class="card-preview">
+      <div class="mock-accordion">
+        <div class="mock-acc-item">
+          <div class="mock-acc-head active">
+            <span class="mock-acc-name">Observe</span>
+            <span class="mock-acc-icon" style="color:rgba(255,255,255,0.6)">−</span>
+          </div>
+          <div class="mock-acc-body">
+            <div class="mock-acc-feat">Live air situation</div>
+            <div class="mock-acc-feat">Hybrid / replay</div>
+            <div class="mock-acc-feat">Flight plan gen.</div>
+            <div class="mock-acc-feat">SIGMET</div>
+          </div>
+        </div>
+        <div class="mock-acc-item">
+          <div class="mock-acc-head"><span class="mock-acc-name">Understand</span><span class="mock-acc-icon">+</span></div>
+        </div>
+        <div class="mock-acc-item">
+          <div class="mock-acc-head"><span class="mock-acc-name">Simulate</span><span class="mock-acc-icon">+</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Accordéon vertical</h3>
+      <p>Chaque pilier est un tiroir qu'on ouvre. Grille de features apparaît. Simple, très lisible sur mobile. Moins d'impact visuel.</p>
+    </div>
+  </div>
+
+</div>

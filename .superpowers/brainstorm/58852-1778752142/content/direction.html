@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AIR Lab — Design Direction</title>
+<script src="../../../../../../../.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/helper.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Inter', 'DM Sans', sans-serif; background: #0f0f12; color: #fff; padding: 40px 32px; min-height: 100vh; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .subtitle { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 36px; line-height: 1.5; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s, transform 0.15s;
+  }
+  .card:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+  .card.selected { border-color: #067181; box-shadow: 0 0 0 2px rgba(6,113,129,0.35); }
+
+  .preview { height: 320px; position: relative; overflow: hidden; }
+  .card-body { padding: 20px; background: #1a1a20; }
+  .card-body h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .card-body p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+
+  /* ── OPTION A: EVOLUTION (light body, elevated dark sections) ── */
+  .preview-a { background: #fafaf8; }
+  .a-nav { background: rgba(11,26,47,0.97); height: 44px; display: flex; align-items: center; padding: 0 16px; gap: 12px; }
+  .a-logo { width: 22px; height: 22px; background: #067181; border-radius: 3px; }
+  .a-nav-links { display: flex; gap: 10px; margin-left: auto; }
+  .a-nav-link { width: 28px; height: 5px; background: rgba(255,255,255,0.2); border-radius: 2px; }
+  .a-nav-cta { width: 40px; height: 22px; background: #067181; border-radius: 3px; }
+  .a-hero { background: linear-gradient(160deg, #0b1a2f 0%, #1e3a5f 55%, #067181 100%); padding: 18px 16px; height: 110px; position: relative; overflow: hidden; }
+  .a-hero::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='60' r='80' fill='rgba(6,113,129,0.08)'/%3E%3C/svg%3E") no-repeat right top; }
+  .a-h1 { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 6px; }
+  .a-sub { font-size: 9px; color: rgba(255,255,255,0.55); max-width: 160px; line-height: 1.5; }
+  .a-stats { background: #f0ede8; padding: 10px 16px; display: flex; gap: 20px; border-bottom: 1px solid rgba(11,26,47,0.08); }
+  .a-stat { display: flex; flex-direction: column; gap: 2px; }
+  .a-stat-n { font-size: 16px; font-weight: 700; color: #0b1a2f; letter-spacing: -0.02em; }
+  .a-stat-n span { color: #067181; }
+  .a-stat-l { font-size: 7px; color: #6b7a8d; }
+  .a-cards { padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .a-cap { background: #fff; border: 1px solid rgba(11,26,47,0.08); border-radius: 5px; padding: 8px; }
+  .a-cap-dot { width: 14px; height: 14px; background: rgba(6,113,129,0.15); border-radius: 3px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; }
+  .a-cap-dot::after { content: ''; width: 6px; height: 6px; background: #067181; border-radius: 1px; }
+  .a-cap-t { font-size: 7px; font-weight: 600; color: #0b1a2f; line-height: 1.3; }
+  .a-cap-p { font-size: 6px; color: #6b7a8d; margin-top: 2px; line-height: 1.4; }
+  .a-badge { display: inline-block; background: rgba(6,113,129,0.1); color: #067181; font-size: 6px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 5px; border-radius: 2px; margin-top: 4px; }
+  .a-anim-hint { position: absolute; bottom: 8px; right: 10px; font-size: 7px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── OPTION B: CONTRAST ZONES (strong light/dark alternation) ── */
+  .preview-b { background: #0b1a2f; }
+  .b-nav { background: rgba(11,26,47,0); backdrop-filter: blur(8px); height: 44px; display: flex; align-items: center; padding: 0 16px; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .b-logo { width: 22px; height: 22px; background: #067181; border-radius: 3px; }
+  .b-nav-links { display: flex; gap: 10px; margin-left: auto; }
+  .b-nav-link { width: 28px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 2px; }
+  .b-nav-cta { width: 40px; height: 22px; background: #067181; border-radius: 3px; }
+  .b-hero { padding: 18px 16px; height: 100px; position: relative; overflow: hidden; }
+  .b-tag { display: inline-block; border: 1px solid rgba(6,113,129,0.5); border-radius: 20px; padding: 2px 8px; font-size: 7px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .b-h1 { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 6px; }
+  .b-h1 span { color: #067181; }
+  .b-btns { display: flex; gap: 6px; }
+  .b-btn1 { background: #067181; padding: 4px 10px; border-radius: 3px; font-size: 7px; color: #fff; font-weight: 600; }
+  .b-btn2 { border: 1px solid rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 3px; font-size: 7px; color: rgba(255,255,255,0.6); }
+  .b-grid-line { height: 1px; background: rgba(255,255,255,0.06); margin: 0; }
+  .b-light { background: #fafaf8; padding: 12px 16px; }
+  .b-light-label { font-size: 7px; color: #067181; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+  .b-light-title { font-size: 13px; font-weight: 700; color: #0b1a2f; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .b-cap-row { display: flex; gap: 6px; }
+  .b-cap { background: #fff; border: 1px solid rgba(11,26,47,0.1); border-radius: 5px; padding: 8px; flex: 1; }
+  .b-cap-icon { width: 12px; height: 12px; border: 1.5px solid #067181; border-radius: 2px; margin-bottom: 4px; }
+  .b-cap-t { font-size: 7px; font-weight: 600; color: #0b1a2f; }
+  .b-cap-p { font-size: 6px; color: #6b7a8d; margin-top: 2px; line-height: 1.3; }
+  .b-dark2 { background: #0b1a2f; padding: 10px 16px; }
+  .b-timeline { display: flex; gap: 0; position: relative; }
+  .b-timeline::before { content: ''; position: absolute; top: 4px; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.1); }
+  .b-t-item { flex: 1; padding-top: 10px; }
+  .b-t-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.15); margin-bottom: 5px; position: relative; top: -13px; }
+  .b-t-item.active .b-t-dot { background: #067181; border-color: #067181; }
+  .b-t-year { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.25); }
+  .b-t-item.active .b-t-year { color: #fff; }
+  .b-t-lbl { font-size: 6px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+  /* ── OPTION C: FULL DARK (deep navy everywhere, Linear-closest) ── */
+  .preview-c { background: #070d18; }
+  .c-nav { height: 44px; display: flex; align-items: center; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .c-logo { width: 22px; height: 22px; background: linear-gradient(135deg,#067181,#0a8fa0); border-radius: 3px; }
+  .c-nav-links { display: flex; gap: 10px; margin-left: auto; }
+  .c-nav-link { width: 28px; height: 5px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .c-nav-cta { width: 40px; height: 22px; border: 1px solid rgba(6,113,129,0.5); border-radius: 3px; }
+  .c-hero { padding: 18px 16px; height: 100px; position: relative; overflow: hidden; }
+  .c-hero::before { content: ''; position: absolute; right: -20px; top: -20px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(6,113,129,0.18) 0%, transparent 70%); }
+  .c-pill { display: inline-flex; align-items: center; gap: 4px; background: rgba(6,113,129,0.12); border: 1px solid rgba(6,113,129,0.25); border-radius: 20px; padding: 2px 8px; font-size: 7px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .c-dot { width: 5px; height: 5px; border-radius: 50%; background: #067181; }
+  .c-h1 { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 6px; }
+  .c-h1 em { font-style: normal; background: linear-gradient(90deg, #067181, #0a8fa0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .c-sub { font-size: 8px; color: rgba(255,255,255,0.35); line-height: 1.5; max-width: 180px; }
+  .c-sep { height: 1px; background: linear-gradient(90deg, rgba(6,113,129,0.3), transparent); margin: 0 16px; }
+  .c-cards { padding: 10px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .c-cap { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 8px; transition: border-color 0.2s; }
+  .c-cap-line { width: 14px; height: 1.5px; background: #067181; margin-bottom: 6px; }
+  .c-cap-t { font-size: 7px; font-weight: 600; color: rgba(255,255,255,0.85); }
+  .c-cap-p { font-size: 6px; color: rgba(255,255,255,0.3); margin-top: 2px; line-height: 1.4; }
+  .c-stats { padding: 8px 16px; display: flex; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .c-stat-n { font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+  .c-stat-n span { color: #067181; }
+  .c-stat-l { font-size: 6px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+
+  .selected-indicator {
+    margin-top: 28px; padding: 14px 20px;
+    background: rgba(6,113,129,0.1); border: 1px solid rgba(6,113,129,0.25);
+    border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.6);
+    display: none;
+  }
+  .selected-indicator.visible { display: block; }
+</style>
+</head>
+<body>
+<h1>Which design direction for the AIR Lab redesign?</h1>
+<p class="subtitle">All three preserve your brand colors (navy, teal, off-white) and add scroll animations + micro-interactions.<br>The difference is the overall background tone and contrast rhythm.</p>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="preview preview-a">
+      <div class="a-nav">
+        <div class="a-logo"></div>
+        <div class="a-nav-links">
+          <div class="a-nav-link"></div>
+          <div class="a-nav-link"></div>
+          <div class="a-nav-link"></div>
+          <div class="a-nav-link"></div>
+          <div class="a-nav-cta"></div>
+        </div>
+      </div>
+      <div class="a-hero">
+        <div class="a-h1">The Regional<br>Collaboration Platform</div>
+        <div class="a-sub">Open-access cloud sandbox for ANSPs across APAC</div>
+        <div class="a-anim-hint">↓ sections fade in</div>
+      </div>
+      <div class="a-stats">
+        <div class="a-stat"><div class="a-stat-n">2019<span>–</span></div><div class="a-stat-l">Founded by Thales & CAAS</div></div>
+        <div class="a-stat"><div class="a-stat-n">10<span>+</span></div><div class="a-stat-l">APAC ANSPs engaged</div></div>
+        <div class="a-stat"><div class="a-stat-n">100<span>%</span></div><div class="a-stat-l">Free access</div></div>
+      </div>
+      <div class="a-cards">
+        <div class="a-cap"><div class="a-cap-dot"></div><div class="a-cap-t">4D Trajectory</div><div class="a-cap-p">Real-time flight data fusion</div><div class="a-badge">Live Data</div></div>
+        <div class="a-cap"><div class="a-cap-dot"></div><div class="a-cap-t">FF-ICE Suite</div><div class="a-cap-p">Collaborative flight planning</div><div class="a-badge">ICAO</div></div>
+        <div class="a-cap"><div class="a-cap-dot"></div><div class="a-cap-t">Open ATM</div><div class="a-cap-p">Open-source architecture</div><div class="a-badge">Open</div></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Evolution</h3>
+      <p>Light off-white body, dark hero + nav. Add motion and polish without disrupting the brand. Lowest risk, most professional. Closest to what you have, elevated.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="preview preview-b">
+      <div class="b-nav">
+        <div class="b-logo"></div>
+        <div class="b-nav-links">
+          <div class="b-nav-link"></div>
+          <div class="b-nav-link"></div>
+          <div class="b-nav-link"></div>
+          <div class="b-nav-link"></div>
+          <div class="b-nav-cta"></div>
+        </div>
+      </div>
+      <div class="b-hero">
+        <div class="b-tag">By AIR Lab</div>
+        <div class="b-h1">The <span>Regional</span><br>Collaboration<br>Platform</div>
+      </div>
+      <div class="b-grid-line"></div>
+      <div class="b-light">
+        <div class="b-light-label">Regional Collaboration Platform</div>
+        <div class="b-light-title">An open sandbox for ATM innovation</div>
+        <div class="b-cap-row">
+          <div class="b-cap"><div class="b-cap-icon"></div><div class="b-cap-t">4D Trajectory</div><div class="b-cap-p">Real-time fusion for APAC airspace</div></div>
+          <div class="b-cap"><div class="b-cap-icon"></div><div class="b-cap-t">FF-ICE Suite</div><div class="b-cap-p">Full ICAO R1 stack</div></div>
+          <div class="b-cap"><div class="b-cap-icon"></div><div class="b-cap-t">Open ATM</div><div class="b-cap-p">Open-source architecture</div></div>
+        </div>
+      </div>
+      <div class="b-dark2">
+        <div style="font-size:7px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Platform Journey</div>
+        <div class="b-timeline">
+          <div class="b-t-item"><div class="b-t-dot"></div><div class="b-t-year">2019</div><div class="b-t-lbl">Founded</div></div>
+          <div class="b-t-item"><div class="b-t-dot"></div><div class="b-t-year">2024</div><div class="b-t-lbl">Live data</div></div>
+          <div class="b-t-item active"><div class="b-t-dot"></div><div class="b-t-year">2025</div><div class="b-t-lbl">FF-ICE</div></div>
+          <div class="b-t-item"><div class="b-t-dot"></div><div class="b-t-year">2026</div><div class="b-t-lbl">Collab</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Contrast Zones</h3>
+      <p>Dark hero, light content sections, dark timeline — strong rhythm between zones. Linear-inspired contrast without going full-dark. Dynamic and editorial.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="preview preview-c">
+      <div class="c-nav">
+        <div class="c-logo"></div>
+        <div class="c-nav-links">
+          <div class="c-nav-link"></div>
+          <div class="c-nav-link"></div>
+          <div class="c-nav-link"></div>
+          <div class="c-nav-link"></div>
+          <div class="c-nav-cta"></div>
+        </div>
+      </div>
+      <div class="c-hero">
+        <div class="c-pill"><div class="c-dot"></div>By AIR Lab · Singapore</div>
+        <div class="c-h1">The <em>Regional</em><br>Collaboration<br>Platform</div>
+        <div class="c-sub">Open-access cloud sandbox for ANSPs across APAC — free, open-source, built together.</div>
+      </div>
+      <div class="c-sep"></div>
+      <div class="c-cards">
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">4D Trajectory</div><div class="c-cap-p">Real-time APAC fusion</div></div>
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">FF-ICE Suite</div><div class="c-cap-p">Full ICAO R1 stack</div></div>
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">Fast-Time Sim</div><div class="c-cap-p">ATM at scale</div></div>
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">Weather AI</div><div class="c-cap-p">Meteomatics data</div></div>
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">Open ATM</div><div class="c-cap-p">Open-source arch</div></div>
+        <div class="c-cap"><div class="c-cap-line"></div><div class="c-cap-t">ML & Prediction</div><div class="c-cap-p">AI across the stack</div></div>
+      </div>
+      <div class="c-stats">
+        <div><div class="c-stat-n">2019<span>–</span></div><div class="c-stat-l">Founded</div></div>
+        <div><div class="c-stat-n">10<span>+</span></div><div class="c-stat-l">ANSPs</div></div>
+        <div><div class="c-stat-n">100<span>%</span></div><div class="c-stat-l">Free</div></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Full Dark</h3>
+      <p>Deep navy everywhere, teal as the only accent. Closest to Linear's aesthetic. Sleek, tech-forward. Biggest departure from current brand — needs careful review.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleSelect(el) {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  if (window.recordChoice) window.recordChoice(el.dataset.choice, el.querySelector('h3').textContent);
+}
+</script>
+</body>
+</html>

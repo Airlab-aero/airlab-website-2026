@@ -1,0 +1,136 @@
+<style>
+  .q-title { font-size: 18px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .q-sub { font-size: 13px; color: #666; margin-bottom: 28px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .2s, box-shadow .2s; background: #fff; }
+  .card:hover { border-color: #067181; box-shadow: 0 4px 20px rgba(6,113,129,0.12); }
+  .card.selected { border-color: #067181; box-shadow: 0 0 0 3px rgba(6,113,129,0.18); }
+  .card-label { background: #0b1a2f; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; display: flex; align-items: center; gap: 8px; }
+  .card-label span.tag { background: #067181; border-radius: 3px; padding: 2px 7px; }
+  .card-body { padding: 14px 16px 16px; }
+  .card-body h3 { font-size: 14px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .card-body p { font-size: 12px; color: #666; line-height: 1.55; margin: 0; }
+  .preview { padding: 14px 16px 4px; }
+
+  /* Tab rows */
+  .tab-row { display: flex; gap: 0; border-bottom: 1px solid #e8e8e8; margin-bottom: 12px; }
+  .t { padding: 6px 10px; font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: #bbb; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .t.on { color: var(--c); border-bottom-color: var(--c); }
+
+  /* Mini right panel preview */
+  .mini-shell { border: 1px solid #e8e8e8; border-radius: 6px; overflow: hidden; }
+  .mini-body { display: flex; height: 90px; }
+  .feat-col { width: 38%; border-right: 1px solid #e8e8e8; display: flex; flex-direction: column; }
+  .fi { padding: 6px 9px; font-size: 8px; color: #ccc; border-left: 2px solid transparent; }
+  .fi.on { color: #0b1a2f; font-weight: 700; border-left-color: var(--c); background: rgba(0,0,0,0.03); }
+  .detail { flex: 1; display: flex; flex-direction: column; gap: 5px; padding: 8px 10px; }
+  .img-block { flex: 1; background: #0b1a2f; border-radius: 3px; display: flex; align-items: center; justify-content: center; }
+  .img-lbl { font-size: 7px; color: rgba(255,255,255,.3); letter-spacing: 1px; }
+  .desc-line { font-size: 8px; color: #999; }
+  .accent-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c); display: inline-block; margin-right: 4px; }
+</style>
+
+<p class="q-title">Identité couleur par pilier ?</p>
+<p class="q-sub">Ton fichier ASW donne une couleur à chaque section. Sur le site, quelle approche ?</p>
+
+<div class="cards">
+
+  <!-- A — Tout teal brand -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-label">Option A <span class="tag">Brand only</span></div>
+    <div class="preview">
+      <div class="tab-row">
+        <div class="t on" style="--c:#067181">Observe</div>
+        <div class="t on" style="--c:#067181">Understand</div>
+        <div class="t on" style="--c:#067181">Simulate</div>
+        <div class="t on" style="--c:#067181">…</div>
+      </div>
+      <div class="mini-shell">
+        <div class="mini-body">
+          <div class="feat-col">
+            <div class="fi on" style="--c:#067181">Live air situation</div>
+            <div class="fi">Hybrid / replay</div>
+            <div class="fi">Flight plan gen.</div>
+          </div>
+          <div class="detail">
+            <div class="img-block"><span class="img-lbl">Screenshot</span></div>
+            <div class="desc-line"><span class="accent-dot" style="--c:#067181"></span>Live Air Situation Display</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Tout en teal AIR Lab</h3>
+      <p>Un seul accent — le teal de la marque. Cohérent avec le reste du site, sobre. Chaque pilier se différencie par son nom, pas sa couleur.</p>
+    </div>
+  </div>
+
+  <!-- B — Couleurs par pilier -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-label">Option B <span class="tag">Couleurs</span></div>
+    <div class="preview">
+      <div class="tab-row">
+        <div class="t on" style="--c:#1ABCB0">Observe</div>
+        <div class="t" style="--c:#00B894; color:#00B894">Understand</div>
+        <div class="t" style="--c:#F59E0B; color:#F59E0B">Simulate</div>
+        <div class="t" style="--c:#60A5FA; color:#60A5FA">…</div>
+      </div>
+      <div class="mini-shell">
+        <div class="mini-body">
+          <div class="feat-col">
+            <div class="fi on" style="--c:#1ABCB0">Live air situation</div>
+            <div class="fi">Hybrid / replay</div>
+            <div class="fi">Flight plan gen.</div>
+          </div>
+          <div class="detail">
+            <div class="img-block" style="border-top: 2px solid #1ABCB0;"><span class="img-lbl">Screenshot</span></div>
+            <div class="desc-line"><span class="accent-dot" style="--c:#1ABCB0"></span>Live Air Situation Display</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Couleur par pilier</h3>
+      <p>Comme dans l'ASW : Observe = teal, Understand = vert, Simulate = amber, Collaborate = bleu, What If = violet. Plus riche visuellement, s'éloigne un peu de la charte du site.</p>
+    </div>
+  </div>
+
+  <!-- C — Navy + teal subtil -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-label">Option C <span class="tag">Numérotés</span></div>
+    <div class="preview">
+      <div class="tab-row" style="gap: 8px; border-bottom: none; margin-bottom: 10px;">
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#0b1a2f;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;flex-shrink:0;">1</div>
+          <span style="font-size:9px;font-weight:700;color:#0b1a2f;">Observe</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#999;flex-shrink:0;">2</div>
+          <span style="font-size:9px;font-weight:600;color:#aaa;">Understand</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#999;flex-shrink:0;">3</div>
+          <span style="font-size:9px;font-weight:600;color:#aaa;">Simulate</span>
+        </div>
+      </div>
+      <div class="mini-shell">
+        <div class="mini-body">
+          <div class="feat-col">
+            <div class="fi on" style="--c:#0b1a2f">Live air situation</div>
+            <div class="fi">Hybrid / replay</div>
+            <div class="fi">Flight plan gen.</div>
+          </div>
+          <div class="detail">
+            <div class="img-block"><span class="img-lbl">Screenshot</span></div>
+            <div class="desc-line"><span class="accent-dot" style="--c:#067181"></span>Live Air Situation Display</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Navy numéroté + teal accent</h3>
+      <p>Piliers numérotés (01 → 05) en navy. Uniquement l'élément actif prend le teal. Très propre, fidèle à la charte, différenciation par numéro.</p>
+    </div>
+  </div>
+
+</div>

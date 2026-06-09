@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Section Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: #f7f6f3; color: #0b1a2f; }
+
+/* ── Simulated page context ── */
+.page-bar { background: #0b1a2f; height: 52px; display: flex; align-items: center; padding: 0 40px; gap: 32px; }
+.page-bar-logo { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 2px; }
+.page-bar-links { display: flex; gap: 24px; }
+.page-bar-links a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; }
+.page-bar-links a.active { color: #fff; }
+.page-note { background: #e8f4f5; border-left: 3px solid #067181; padding: 10px 20px; font-size: 12px; color: #067181; font-weight: 600; }
+
+/* ── Section ── */
+.use-cases { background: #f7f6f3; padding: 80px 80px 60px; }
+.uc-header { margin-bottom: 40px; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #067181; margin-bottom: 10px; }
+.section-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 300; color: #0b1a2f; line-height: 1.15; }
+.section-title strong { font-weight: 700; }
+
+/* ── Pillar tabs ── */
+.pillar-tabs { display: flex; gap: 0; border-bottom: 2px solid #e0e0e0; margin-bottom: 0; }
+.pillar-tab { flex: 1; display: flex; flex-direction: column; align-items: flex-start; padding: 20px 24px 18px; background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; text-align: left; transition: all .2s; gap: 5px; margin-bottom: -2px; }
+.pillar-tab:hover { background: rgba(6,113,129,0.04); }
+.pillar-tab.active { border-bottom-color: #067181; background: rgba(6,113,129,0.03); }
+.pillar-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #bbb; }
+.pillar-tab.active .pillar-num { color: #067181; }
+.pillar-name { font-size: 17px; font-weight: 700; color: #0b1a2f; line-height: 1.1; }
+.pillar-tab.active .pillar-name { color: #067181; }
+.pillar-desc { font-size: 12px; color: #aaa; line-height: 1.3; font-weight: 400; }
+.pillar-tab.active .pillar-desc { color: rgba(6,113,129,0.7); }
+
+/* ── Content stage ── */
+.pillar-stage { display: grid; grid-template-columns: 300px 1fr; min-height: 420px; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px; overflow: hidden; background: #fff; }
+
+/* Left: feature list */
+.pillar-features { border-right: 1px solid #e0e0e0; display: flex; flex-direction: column; padding: 16px 0; background: #fafafa; }
+.feat-btn { display: flex; align-items: flex-start; gap: 14px; padding: 16px 22px; cursor: pointer; border: none; background: none; text-align: left; border-left: 3px solid transparent; transition: all .18s; width: 100%; }
+.feat-btn:hover { background: rgba(6,113,129,0.05); border-left-color: rgba(6,113,129,0.3); }
+.feat-btn.active { background: #fff; border-left-color: #067181; }
+.feat-dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; margin-top: 7px; flex-shrink: 0; transition: background .18s; }
+.feat-btn.active .feat-dot { background: #067181; }
+.feat-text h4 { font-size: 14px; font-weight: 700; color: #0b1a2f; margin-bottom: 4px; line-height: 1.3; }
+.feat-btn.active h4 { color: #067181; }
+.feat-text p { font-size: 12px; color: #aaa; line-height: 1.45; }
+
+/* Right: detail */
+.pillar-detail { display: flex; flex-direction: column; }
+.detail-img { height: 240px; overflow: hidden; position: relative; background: #0b1a2f; flex-shrink: 0; }
+.detail-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.detail-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.detail-img-placeholder span { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 2px; text-transform: uppercase; }
+.detail-body { padding: 28px 36px; flex: 1; }
+.detail-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #067181; border: 1px solid rgba(6,113,129,0.3); border-radius: 3px; padding: 4px 10px; margin-bottom: 14px; background: rgba(6,113,129,0.05); }
+.detail-title { font-size: 22px; font-weight: 700; color: #0b1a2f; margin-bottom: 12px; line-height: 1.2; }
+.detail-desc { font-size: 15px; color: #555; line-height: 1.7; }
+
+/* ── Actions ── */
+.uc-actions { display: flex; gap: 16px; margin-top: 36px; }
+.btn-navy { background: #0b1a2f; color: #fff; padding: 14px 32px; border-radius: 5px; font-size: 14px; font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+.btn-outline { border: 1.5px solid #0b1a2f; color: #0b1a2f; padding: 14px 32px; border-radius: 5px; font-size: 14px; font-weight: 700; text-decoration: none; }
+
+/* ── Pillar panels (hidden by default) ── */
+.pillar-panel { display: none; }
+.pillar-panel.active { display: contents; }
+</style>
+</head>
+<body>
+
+<div class="page-bar">
+  <div class="page-bar-logo">AIR Lab</div>
+  <div class="page-bar-links">
+    <a href="#">RCP Platform</a>
+    <a href="#" class="active">Use Cases</a>
+    <a href="#">Team</a>
+    <a href="#">News</a>
+  </div>
+</div>
+
+<div class="page-note">↓ Mockup : section "What you can do on the platform" — remplace l'actuelle</div>
+
+<section class="use-cases">
+  <div class="uc-header">
+    <div class="section-label">Regional Collaboration Platform</div>
+    <h2 class="section-title">What you can do<br><strong>on the platform</strong></h2>
+  </div>
+
+  <!-- Pillar tabs -->
+  <div class="pillar-tabs" id="pillarTabs">
+    <button class="pillar-tab active" data-pillar="observe" onclick="switchPillar('observe', this)">
+      <span class="pillar-num">01</span>
+      <span class="pillar-name">Observe</span>
+      <span class="pillar-desc">Live situational awareness</span>
+    </button>
+    <button class="pillar-tab" data-pillar="understand" onclick="switchPillar('understand', this)">
+      <span class="pillar-num">02</span>
+      <span class="pillar-name">Understand</span>
+      <span class="pillar-desc">Data into insight</span>
+    </button>
+    <button class="pillar-tab" data-pillar="simulate" onclick="switchPillar('simulate', this)">
+      <span class="pillar-num">03</span>
+      <span class="pillar-name">Simulate</span>
+      <span class="pillar-desc">Model futures</span>
+    </button>
+    <button class="pillar-tab" data-pillar="collaborate" onclick="switchPillar('collaborate', this)">
+      <span class="pillar-num">04</span>
+      <span class="pillar-name">Collaborate</span>
+      <span class="pillar-desc">Coordinate across borders</span>
+    </button>
+    <button class="pillar-tab" data-pillar="whatif" onclick="switchPillar('whatif', this)">
+      <span class="pillar-num">05</span>
+      <span class="pillar-name">Explore</span>
+      <span class="pillar-desc">What if scenarios</span>
+    </button>
+  </div>
+
+  <!-- Stage -->
+  <div class="pillar-stage" id="pillarStage">
+    <!-- Features col -->
+    <div class="pillar-features" id="featureList"></div>
+    <!-- Detail col -->
+    <div class="pillar-detail" id="featureDetail"></div>
+  </div>
+
+  <div class="uc-actions">
+    <a href="#" class="btn-navy">Request Platform Access</a>
+    <a href="#" class="btn-outline">Open AIR Space Platform →</a>
+  </div>
+</section>
+
+<script>
+const BASE = 'http://localhost:8765';
+
+const PILLARS = {
+  observe: {
+    features: [
+      { id: 'lasd', title: 'Live Air Situation Display', desc: 'Global surveillance air-situation picture from different sources (track fusion), providing a comprehensive and increasingly stable view of regional air traffic.', tag: 'Real-time', src: BASE+'/observe-asd.png', type: 'img' },
+      { id: 'hybrid', title: 'Hybrid Mode & Replay', desc: 'Blend live and historical data with simulated traffic. Replay any past traffic scenario for analysis or training.', tag: 'Analysis', src: BASE+'/observe-hybrid.png', type: 'img' },
+      { id: 'fpg', title: 'Flight Plan & Trajectory Generator', desc: 'AI-driven generator creating optimised 4D trajectories using ML models to balance efficiency, operational constraints, and dynamic factors such as weather.', tag: 'AI', src: BASE+'/observe-fpg.mp4', type: 'video' },
+      { id: 'sigmet', title: 'SIGMET', desc: 'Weather-related information, including SIGMET-based constraints, integrated into the RCP environment to improve shared situational awareness and support weather-aware traffic assessment.', tag: 'Weather', src: BASE+'/observe-sigmet.mp4', type: 'video' },
+    ]
+  },
+  understand: {
+    features: [
+      { id: 'hotspot', title: 'Hotspots & Demand Forecasting', desc: 'Predict saturation points and capacity bottlenecks under different traffic growth scenarios across the SEA region.', tag: 'Forecasting', src: BASE+'/understand-hotspots.mp4', type: 'video' },
+      { id: 'kpi', title: 'KPIs & Regional Indicators', desc: 'Capacity, punctuality, and efficiency across your region at a glance — dashboards built for ANSP operational needs.', tag: 'Analytics', src: BASE+'/understand-kpi.png', type: 'img' },
+      { id: 'rh', title: 'Regional Health', desc: 'A monthly snapshot of South East Asian airspace — routes, airports, flight levels, and peak traffic trends.', tag: 'Monthly', src: BASE+'/understand-regional-health.png', type: 'img' },
+    ]
+  },
+  simulate: {
+    features: [
+      { id: 'scenario', title: 'Scenario Editor', desc: 'Build any traffic or airspace scenario in minutes — modify traffic density, routes, sector boundaries, and weather constraints.', tag: 'Editor', src: BASE+'/simulate-scenario.mp4', type: 'video' },
+      { id: 'fts', title: 'Fast-time Simulation', desc: 'Run a full day of traffic in seconds. Compare outcomes side by side across multiple scenarios to validate ATM concepts.', tag: 'Research', src: BASE+'/simulate-fts.mp4', type: 'video' },
+      { id: 'area', title: 'Area Avoidance Model + CDR', desc: 'Define exclusion zones and watch the network automatically re-route around them — conflict detection and resolution built in.', tag: 'Safety', src: BASE+'/simulate-cdr.mp4', type: 'video' },
+    ]
+  },
+  collaborate: {
+    features: [
+      { id: 'ffice', title: 'FF-ICE Trajectory Negotiation', desc: 'eAU and eASP services. FF-ICE/R1 flight plans integrated into the RCP — agreed trajectories available for collaborative awareness and trajectory forecast between ANSPs and airlines.', tag: 'ICAO Standard', src: BASE+'/collaborate-ffice.mp4', type: 'video' },
+    ]
+  },
+  whatif: {
+    features: [
+      { id: 'explorer', title: 'What-if Explorer', desc: 'Toggle constraints on and off — runway closures, sector redesigns, demand surges — and instantly see the downstream impact on the regional network.', tag: 'Simulation', src: BASE+'/explore-whatif.mp4', type: 'video' },
+    ]
+  }
+};
+
+let currentPillar = 'observe';
+let currentFeat = 0;
+
+function renderFeatures(pillar) {
+  const list = document.getElementById('featureList');
+  const feats = PILLARS[pillar].features;
+  list.innerHTML = feats.map((f, i) => `
+    <button class="feat-btn ${i === 0 ? 'active' : ''}" onclick="switchFeature('${pillar}', ${i}, this)">
+      <div class="feat-dot"></div>
+      <div class="feat-text">
+        <h4>${f.title}</h4>
+        <p>${f.desc.substring(0, 55)}…</p>
+      </div>
+    </button>
+  `).join('');
+}
+
+function renderDetail(pillar, idx) {
+  const f = PILLARS[pillar].features[idx];
+  const detail = document.getElementById('featureDetail');
+  const media = f.type === 'video'
+    ? `<video src="${f.src}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
+    : `<img src="${f.src}" style="width:100%;height:100%;object-fit:cover;display:block;" alt="${f.title}">`;
+  detail.innerHTML = `
+    <div class="detail-img">${media}</div>
+    <div class="detail-body">
+      <span class="detail-tag">${f.tag}</span>
+      <div class="detail-title">${f.title}</div>
+      <div class="detail-desc">${f.desc}</div>
+    </div>
+  `;
+}
+
+function switchPillar(pillar, btn) {
+  currentPillar = pillar;
+  currentFeat = 0;
+  document.querySelectorAll('.pillar-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderFeatures(pillar);
+  renderDetail(pillar, 0);
+}
+
+function switchFeature(pillar, idx, btn) {
+  currentFeat = idx;
+  document.querySelectorAll('.feat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDetail(pillar, idx);
+}
+
+// Init
+renderFeatures('observe');
+renderDetail('observe', 0);
+</script>
+</body>
+</html>

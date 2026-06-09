@@ -1,0 +1,138 @@
+<style>
+  .q-title { font-size: 18px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .q-sub { font-size: 13px; color: #666; margin-bottom: 28px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 2px solid #e0e0e0; border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .2s, box-shadow .2s; background: #fff; }
+  .card:hover { border-color: #067181; box-shadow: 0 4px 20px rgba(6,113,129,0.12); }
+  .card.selected { border-color: #067181; box-shadow: 0 0 0 3px rgba(6,113,129,0.18); }
+  .card-label { background: #0b1a2f; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; display: flex; align-items: center; gap: 8px; }
+  .card-label span.tag { background: #067181; border-radius: 3px; padding: 2px 7px; }
+  .card-body { padding: 14px 16px 16px; }
+  .card-body h3 { font-size: 14px; font-weight: 700; color: #0b1a2f; margin-bottom: 6px; }
+  .card-body p { font-size: 12px; color: #666; line-height: 1.55; margin: 0; }
+
+  /* shared shell */
+  .shell { border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; margin: 16px 16px 0; }
+  .shell-tabs { display: flex; border-bottom: 1px solid #e0e0e0; background: #fafafa; }
+  .shell-tab { padding: 6px 10px; font-size: 9px; font-weight: 700; color: #bbb; letter-spacing: .5px; text-transform: uppercase; }
+  .shell-tab.active { color: #067181; border-bottom: 2px solid #067181; }
+  .shell-body { display: flex; height: 110px; }
+  .feat-list { width: 38%; border-right: 1px solid #e8e8e8; display: flex; flex-direction: column; }
+  .feat-item { padding: 7px 10px; font-size: 9px; color: #aaa; border-left: 2px solid transparent; }
+  .feat-item.active { color: #0b1a2f; font-weight: 700; border-left-color: #067181; background: #f0f8f9; }
+  .right-panel { flex: 1; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+
+  /* A — text only */
+  .rp-title { font-size: 10px; font-weight: 700; color: #0b1a2f; }
+  .rp-desc { font-size: 9px; color: #888; line-height: 1.5; }
+  .rp-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .rp-tag { font-size: 8px; background: #e8f4f5; color: #067181; border-radius: 10px; padding: 2px 7px; font-weight: 600; }
+
+  /* B — image */
+  .rp-img { flex: 1; background: #0b1a2f; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .rp-img-lbl { font-size: 8px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+  .rp-img-caption { font-size: 8px; color: #aaa; margin-top: 4px; }
+
+  /* C — split */
+  .rp-split { display: flex; flex-direction: column; gap: 6px; height: 100%; }
+  .rp-img-sm { height: 54px; background: #0b1a2f; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .rp-desc-sm { font-size: 8px; color: #888; line-height: 1.4; }
+</style>
+
+<p class="q-title">Que voit-on dans le panneau de droite ?</p>
+<p class="q-sub">Quand on clique sur "Live air situation display" dans Observe — qu'est-ce qui s'affiche à droite ?</p>
+
+<div class="cards">
+
+  <!-- Option A — Text + tags -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-label">Option A <span class="tag">Texte</span></div>
+    <div class="shell">
+      <div class="shell-tabs">
+        <div class="shell-tab active">Observe</div>
+        <div class="shell-tab">Understand</div>
+      </div>
+      <div class="shell-body">
+        <div class="feat-list">
+          <div class="feat-item active">Live air situation</div>
+          <div class="feat-item">Hybrid / replay</div>
+          <div class="feat-item">Flight plan gen.</div>
+          <div class="feat-item">SIGMET</div>
+        </div>
+        <div class="right-panel">
+          <div class="rp-title">Live Air Situation Display</div>
+          <div class="rp-desc">Real-time radar feed covering the full South East Asia FIR, updated every 4 seconds with conflict alerts.</div>
+          <div class="rp-tags">
+            <span class="rp-tag">Real-time</span>
+            <span class="rp-tag">SEA region</span>
+            <span class="rp-tag">4s refresh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Description + tags</h3>
+      <p>Titre, 2 lignes de description, chips de capabilities. Léger, facile à maintenir dans Sanity. Pas d'image requise.</p>
+    </div>
+  </div>
+
+  <!-- Option B — Image/screenshot -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-label">Option B <span class="tag">Screenshot</span></div>
+    <div class="shell">
+      <div class="shell-tabs">
+        <div class="shell-tab active">Observe</div>
+        <div class="shell-tab">Understand</div>
+      </div>
+      <div class="shell-body">
+        <div class="feat-list">
+          <div class="feat-item active">Live air situation</div>
+          <div class="feat-item">Hybrid / replay</div>
+          <div class="feat-item">Flight plan gen.</div>
+          <div class="feat-item">SIGMET</div>
+        </div>
+        <div class="right-panel" style="padding: 8px;">
+          <div class="rp-img" style="flex:1"><span class="rp-img-lbl">Screenshot RCP</span></div>
+          <div class="rp-img-caption">Vue radar temps réel — SEA FIR</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Screenshot plein panneau</h3>
+      <p>Une image par feature, affichée en grand. Fort impact visuel. Nécessite une image par feature (géré dans Sanity).</p>
+    </div>
+  </div>
+
+  <!-- Option C — Image + text -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-label">Option C <span class="tag">Image + texte</span></div>
+    <div class="shell">
+      <div class="shell-tabs">
+        <div class="shell-tab active">Observe</div>
+        <div class="shell-tab">Understand</div>
+      </div>
+      <div class="shell-body">
+        <div class="feat-list">
+          <div class="feat-item active">Live air situation</div>
+          <div class="feat-item">Hybrid / replay</div>
+          <div class="feat-item">Flight plan gen.</div>
+          <div class="feat-item">SIGMET</div>
+        </div>
+        <div class="right-panel" style="padding: 8px;">
+          <div class="rp-split">
+            <div class="rp-img-sm"><span class="rp-img-lbl" style="font-size:7px;">Screenshot</span></div>
+            <div>
+              <div class="rp-title">Live Air Situation Display</div>
+              <div class="rp-desc-sm">Real-time radar feed, SEA FIR, 4s refresh.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Image + description</h3>
+      <p>Image en haut (petite), titre + description courte en dessous. Équilibre visuel et info. Recommandé si tu as des screenshots.</p>
+    </div>
+  </div>
+
+</div>

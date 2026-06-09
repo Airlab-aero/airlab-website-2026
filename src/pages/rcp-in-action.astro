@@ -267,7 +267,7 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   /* ── Hero ──────────────────────────────────────────────────────────────────── */
   .ria-hero {
     background: var(--navy);
-    padding: 80px 80px 72px;
+    padding: 80px max(80px, calc((100vw - 1400px) / 2)) 72px;
     position: relative;
     overflow: hidden;
   }
@@ -313,7 +313,7 @@ const EVENT_SLIDES = EVENTS.flatMap((ev, evIdx) =>
   }
 
   /* ── Shared section layout ─────────────────────────────────────────────────── */
-  .ria-section { padding: 80px 80px; }
+  .ria-section { padding: 80px max(80px, calc((100vw - 1400px) / 2)); }
   .ria-section-head { margin-bottom: 48px; }
   .ria-section-head--centered { text-align: center; }
   .ria-section-title {

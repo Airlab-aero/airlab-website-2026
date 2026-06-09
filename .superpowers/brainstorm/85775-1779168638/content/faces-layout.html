@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Faces of AIR Lab — Layout Options</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Inter', sans-serif; background: #0f0f12; color: #fff; padding: 36px 28px 60px; }
+  h1 { font-size: 20px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.02em; }
+  .sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 32px; line-height: 1.5; }
+
+  .options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .option { border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.15s; }
+  .option:hover { border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+  .option.selected { border-color: #067181; box-shadow: 0 0 0 3px rgba(6,113,129,0.25); }
+  .preview { background: #1a1a22; }
+  .label { padding: 18px 20px; background: #1a1a22; border-top: 1px solid rgba(255,255,255,0.07); }
+  .label h3 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  .label p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* ─── NAVY brand colors ─── */
+  --navy: #0b1a2f; --teal: #067181; --cream: #f7f6f3; --muted: #6b7a8d;
+
+  /* ══ OPTION A — Masonry collage + quote ══ */
+  .a-wrap { padding: 0; }
+  .a-top { display: grid; grid-template-columns: 1fr 1fr; height: 200px; }
+  .a-img { background: #2a3040; overflow: hidden; }
+  .a-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .a-quote { background: #0b1a2f; padding: 24px 20px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+  .a-quote-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; font-style: italic; }
+  .a-quote-name { font-size: 11px; color: #067181; font-weight: 600; letter-spacing: 0.06em; }
+  .a-bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 110px; }
+  .a-bottom .a-img { border-top: 2px solid #1a1a22; }
+  .a-tag { background: #067181; padding: 10px 20px; display: flex; align-items: center; }
+  .a-tag span { font-size: 11px; color: #fff; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ══ OPTION B — Full-width cinematic strip ══ */
+  .b-wrap { position: relative; }
+  .b-strip { display: flex; height: 180px; overflow: hidden; }
+  .b-photo { flex: 1; overflow: hidden; position: relative; }
+  .b-photo img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; }
+  .b-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(11,26,47,0.7)); }
+  .b-overlay { background: #0b1a2f; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .b-headline { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+  .b-headline span { color: #067181; }
+  .b-stats { display: flex; gap: 16px; }
+  .b-stat-n { font-size: 18px; font-weight: 700; color: #fff; }
+  .b-stat-n em { color: #067181; font-style: normal; font-size: 12px; }
+  .b-stat-l { font-size: 9px; color: rgba(255,255,255,0.4); }
+  .b-sub { padding: 12px 20px; background: rgba(6,113,129,0.08); border-top: 1px solid rgba(6,113,129,0.2); }
+  .b-sub p { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .b-avatars { display: flex; margin-top: 6px; gap: 3px; }
+  .b-av { width: 22px; height: 22px; border-radius: 50%; background: #2a3a50; border: 1.5px solid #0b1a2f; overflow: hidden; }
+  .b-av img { width: 100%; height: 100%; object-fit: cover; }
+  .b-more { font-size: 9px; color: #067181; margin-left: 6px; align-self: center; font-weight: 600; }
+
+  /* ══ OPTION C — Grid mosaic + side text ══ */
+  .c-wrap { display: grid; grid-template-columns: 3fr 2fr; min-height: 310px; }
+  .c-mosaic { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; }
+  .c-cell { background: #2a3040; overflow: hidden; }
+  .c-cell img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; }
+  .c-cell.large { grid-row: span 2; }
+  .c-side { background: #0b1a2f; padding: 28px 22px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .c-label { font-size: 10px; color: #067181; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+  .c-title { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.2; }
+  .c-title strong { color: #067181; font-weight: 800; }
+  .c-body { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .c-btn { display: inline-block; background: #067181; color: #fff; font-size: 10px; font-weight: 600; padding: 7px 14px; border-radius: 3px; text-decoration: none; align-self: flex-start; letter-spacing: 0.04em; }
+  .c-names { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .c-name-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3px 9px; font-size: 9px; color: rgba(255,255,255,0.5); }
+
+  .sel-bar { margin-top: 28px; padding: 14px 20px; background: rgba(6,113,129,0.1); border: 1px solid rgba(6,113,129,0.25); border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; display: none; }
+  .sel-bar.visible { display: block; }
+</style>
+</head>
+<body>
+<h1>The human side of AIR Lab — which layout?</h1>
+<p class="sub">7 photos from "Faces of AIR Lab" (April 2026). Each option shows a different way to integrate them into the homepage.<br>Click to select your favourite, or tell me in the terminal what you like/dislike.</p>
+
+<div class="options">
+
+  <!-- OPTION A -->
+  <div class="option" data-choice="a" onclick="pick(this)">
+    <div class="preview a-wrap">
+      <div class="a-top">
+        <div class="a-img" style="background:linear-gradient(135deg,#1e3a5f,#2a4a6f);">
+          <div style="width:100%;height:100%;background:linear-gradient(160deg,#1e3a5f 0%,#0b2a40 100%);display:flex;align-items:center;justify-content:center;">
+            <div style="width:60px;height:80px;background:rgba(255,255,255,0.08);border-radius:4px;"></div>
+          </div>
+        </div>
+        <div class="a-quote">
+          <div style="width:20px;height:2px;background:#067181;margin-bottom:2px;"></div>
+          <div class="a-quote-text">"We don't just build tools — we build trust between ANSPs."</div>
+          <div class="a-quote-name">— AIR Lab team member</div>
+        </div>
+      </div>
+      <div class="a-bottom">
+        <div class="a-img" style="background:linear-gradient(135deg,#2a3a55,#1a2a40);"></div>
+        <div class="a-img" style="background:linear-gradient(135deg,#1a3050,#0f2035);"></div>
+        <div class="a-tag"><span>Meet the team →</span></div>
+      </div>
+    </div>
+    <div class="label">
+      <h3>A — Collage + Quote</h3>
+      <p>Photo grid with a team member quote overlay. Emotional, editorial. Puts a voice and face to the brand.</p>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option" data-choice="b" onclick="pick(this)">
+    <div class="preview b-wrap">
+      <div class="b-strip">
+        <div class="b-photo" style="background:linear-gradient(135deg,#1e3a5f,#2d4a6a);"></div>
+        <div class="b-photo" style="background:linear-gradient(135deg,#2a4060,#1a3050);"></div>
+        <div class="b-photo" style="background:linear-gradient(135deg,#152535,#243550);"></div>
+        <div class="b-photo" style="background:linear-gradient(135deg,#1e3555,#0f2035);"></div>
+        <div class="b-photo" style="background:linear-gradient(135deg,#253a58,#162840);"></div>
+      </div>
+      <div class="b-overlay">
+        <div>
+          <div class="b-headline">The people behind <span>AIR Lab</span></div>
+          <div class="b-avatars">
+            <div class="b-av" style="background:#1e3a5f;"></div>
+            <div class="b-av" style="background:#2a4060;"></div>
+            <div class="b-av" style="background:#152535;"></div>
+            <div class="b-av" style="background:#243550;"></div>
+            <div class="b-av" style="background:#1e3555;"></div>
+            <span class="b-more">+15 more →</span>
+          </div>
+        </div>
+        <div class="b-stats">
+          <div><div class="b-stat-n">20<em>+</em></div><div class="b-stat-l">Team members</div></div>
+          <div><div class="b-stat-n">8<em>+</em></div><div class="b-stat-l">Nationalities</div></div>
+        </div>
+      </div>
+      <div class="b-sub"><p>Engineers, ATM specialists, researchers and operators from Thales and CAAS — working side by side.</p></div>
+    </div>
+    <div class="label">
+      <h3>B — Cinematic strip + stats</h3>
+      <p>Horizontal photo film strip with team stats. Modern, high-impact. Scrolling animation possible on hover.</p>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option" data-choice="c" onclick="pick(this)">
+    <div class="preview">
+      <div class="c-wrap">
+        <div class="c-mosaic">
+          <div class="c-cell large" style="background:linear-gradient(145deg,#1e3a5f,#2d4a70);grid-row:span 2;"></div>
+          <div class="c-cell" style="background:linear-gradient(145deg,#2a4060,#1a3050);"></div>
+          <div class="c-cell" style="background:linear-gradient(145deg,#152535,#243550);"></div>
+        </div>
+        <div class="c-side">
+          <div class="c-label">Faces of AIR Lab</div>
+          <div class="c-title">Built by people.<br><strong>For people.</strong></div>
+          <div class="c-body">Engineers, ATM specialists, researchers and operators from across the Asia-Pacific region.</div>
+          <div class="c-names">
+            <span class="c-name-chip">Engineering</span>
+            <span class="c-name-chip">Research</span>
+            <span class="c-name-chip">ATM Ops</span>
+            <span class="c-name-chip">Data Science</span>
+          </div>
+          <a class="c-btn" href="#">Meet the team →</a>
+        </div>
+      </div>
+    </div>
+    <div class="label">
+      <h3>C — Mosaic + side text</h3>
+      <p>Photo mosaic on the left, bold statement on the right. Clean, structured. Works great between sections.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="sel-bar" id="sel-bar">Selection recorded — tell me in the terminal if you want to refine it.</div>
+
+<script>
+function pick(el) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('sel-bar').classList.add('visible');
+  if (window.recordChoice) window.recordChoice(el.dataset.choice, el.querySelector('h3').textContent.trim());
+}
+</script>
+</body>
+</html>

@@ -173,7 +173,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 
 /* ── ABOUT STRIP ── */
 .about-strip {
-  background: var(--cream); padding: 64px 80px;
+  background: var(--cream); padding: 64px max(80px, calc((100vw - 1400px) / 2));
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
   border-top: 1px solid var(--border);
 }
@@ -262,7 +262,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 .timeline-item.active .timeline-body { color: rgba(255,255,255,0.65); }
 
 /* ── USE CASES ── */
-.use-cases { background: var(--cream); padding: 100px 80px 60px; }
+.use-cases { background: var(--cream); padding: 100px max(80px, calc((100vw - 1400px) / 2)) 60px; }
 .uc-header { margin-bottom: 48px; }
 
 /* ── Pillar tabs ── */
@@ -323,7 +323,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 .face-chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: rgba(255,255,255,0.45); }
 
 /* ── TEAM ── */
-.team { background: var(--teal); padding: 100px 80px; }
+.team { background: var(--teal); padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 .team .section-label { color: rgba(255,255,255,0.6); }
 .team .section-title { color: #fff; }
 .team .section-intro { color: rgba(255,255,255,0.82); }
@@ -402,7 +402,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 
 /* ── CONTACT CTA ── */
 .contact-cta {
-  background: var(--teal); padding: 100px 80px;
+  background: var(--teal); padding: 100px max(80px, calc((100vw - 1400px) / 2));
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
   border-top: 1px solid rgba(255,255,255,0.1);
 }
@@ -422,7 +422,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--navy); padding: 48px 80px;
+  background: var(--navy); padding: 48px max(80px, calc((100vw - 1400px) / 2));
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
@@ -433,7 +433,7 @@ footer {
 .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
 .footer-col a:hover { color: rgba(255,255,255,0.9); }
 .footer-bottom {
-  background: rgba(0,0,0,0.3); padding: 20px 80px;
+  background: rgba(0,0,0,0.3); padding: 20px max(80px, calc((100vw - 1400px) / 2));
   display: flex; justify-content: space-between; align-items: center;
 }
 .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
