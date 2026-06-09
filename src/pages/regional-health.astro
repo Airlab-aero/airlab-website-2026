@@ -102,12 +102,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div><!-- end rh-flip-inner -->
       </div>
 
-      <div class="rh-data-card">
-        <div class="rh-data-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
+        <!-- ghost -->
+        <div class="rh-flip-ghost" aria-hidden="true">
+          <h3>Network dependencies</h3>
+          <ul class="rh-flip-stats">
+            <li><strong>1 critical bottleneck</strong> identified as having the highest influence on regional connectivity.</li>
+            <li>Connectivity mapping reveals where disruptions may propagate across multiple sectors and neighbouring airspaces.</li>
+            <li><strong>Top 5 Most Connected Airports</strong> highlights the network's most influential traffic hubs.</li>
+          </ul>
+          <p class="rh-flip-conclusion">Understand how traffic flows are interconnected and identify the routes, sectors and nodes that have the greatest influence on network performance.</p>
+          <span class="rh-flip-hint">Click to go back ←</span>
         </div>
-        <h3>Network dependencies</h3>
-        <p>How disruptions in one location can impact the wider region.</p>
+        <div class="rh-flip-inner">
+          <!-- FRONT -->
+          <div class="rh-flip-front">
+            <div class="rh-data-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            </div>
+            <h3>Network dependencies</h3>
+            <p>How disruptions in one location can impact the wider region.</p>
+            <span class="rh-flip-hint">Click to explore →</span>
+          </div>
+          <!-- BACK -->
+          <div class="rh-flip-back">
+            <h3>Network dependencies</h3>
+            <ul class="rh-flip-stats">
+              <li><strong>1 critical bottleneck</strong> identified as having the highest influence on regional connectivity.</li>
+              <li>Connectivity mapping reveals where disruptions may propagate across multiple sectors and neighbouring airspaces.</li>
+              <li><strong>Top 5 Most Connected Airports</strong> highlights the network's most influential traffic hubs.</li>
+            </ul>
+            <p class="rh-flip-conclusion">Understand how traffic flows are interconnected and identify the routes, sectors and nodes that have the greatest influence on network performance.</p>
+            <span class="rh-flip-hint">Click to go back ←</span>
+          </div>
+        </div>
       </div>
 
       <div class="rh-data-card">
