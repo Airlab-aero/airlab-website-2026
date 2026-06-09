@@ -160,7 +160,7 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 .hero-sub-title {
   font-size: clamp(14px, 1.4vw, 20px);
   font-weight: 300; color: #fff;
-  font-style: italic;
+  font-style: normal;
   display: flex; align-items: center; gap: 16px;
   letter-spacing: 0.04em;
   margin-top: 14px;
