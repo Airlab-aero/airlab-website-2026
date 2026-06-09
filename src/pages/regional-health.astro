@@ -138,12 +138,44 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
       </div>
 
-      <div class="rh-data-card">
-        <div class="rh-data-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
+        <!-- ghost -->
+        <div class="rh-flip-ghost" aria-hidden="true">
+          <h3>Capacity &amp; demand</h3>
+          <ul class="rh-flip-stats">
+            <li>Capacity hotspots across the network.</li>
+            <li>Airspace utilisation and demand pressure trends.</li>
+            <li>Peak demand periods and congestion patterns.</li>
+            <li>Emerging bottlenecks and future constraints.</li>
+            <li>Demand-to-capacity balance across routes and sectors.</li>
+          </ul>
+          <p class="rh-flip-conclusion">Identify where demand is approaching operational limits and where future constraints may emerge.</p>
+          <span class="rh-flip-hint">Click to go back ←</span>
         </div>
-        <h3>Capacity and demand</h3>
-        <p>Where pressure points are emerging and where additional coordination may be needed.</p>
+        <div class="rh-flip-inner">
+          <!-- FRONT -->
+          <div class="rh-flip-front">
+            <div class="rh-data-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Capacity &amp; demand</h3>
+            <p>Where pressure points are emerging and where additional coordination may be needed.</p>
+            <span class="rh-flip-hint">Click to explore →</span>
+          </div>
+          <!-- BACK -->
+          <div class="rh-flip-back">
+            <h3>Capacity &amp; demand</h3>
+            <ul class="rh-flip-stats">
+              <li>Capacity hotspots across the network.</li>
+              <li>Airspace utilisation and demand pressure trends.</li>
+              <li>Peak demand periods and congestion patterns.</li>
+              <li>Emerging bottlenecks and future constraints.</li>
+              <li>Demand-to-capacity balance across routes and sectors.</li>
+            </ul>
+            <p class="rh-flip-conclusion">Identify where demand is approaching operational limits and where future constraints may emerge.</p>
+            <span class="rh-flip-hint">Click to go back ←</span>
+          </div>
+        </div>
       </div>
 
     </div>
