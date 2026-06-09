@@ -89,8 +89,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- FOCUS AREA -->
   <section>
     <div class="section-header" data-reveal>
-      <h2 class="section-title">Asia-Pacific<br><strong>the world's fastest-growing aviation region</strong></h2>
-      <p style="font-size: 15px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Asia-Pacific already accounts for 34% of global passenger traffic. By 2043, that share will grow to 46%. AIR Lab is here to help the region's aviation ecosystem scale safely, efficiently, and collaboratively.</p>
+      <h2 class="section-title">Where we <strong>focus</strong></h2>
+      <p style="font-size: 15px; color: var(--muted);">AIR Lab focuses on the capabilities that matter most for the region's aviation future.</p>
     </div>
     <div class="focus-grid" data-reveal>
       <div class="focus-item">
@@ -124,12 +124,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h2 class="section-title">The people behind<br><strong>the innovation</strong></h2>
     </div>
     <div class="faces-mosaic" data-reveal>
-      <div class="fm-item fm-tall">
-        <img src={`${base}/images/about/faces-1.jpg`} alt="AIR Lab team" loading="lazy" />
-      </div>
-      <div class="fm-item">
-        <img src={`${base}/images/about/faces-2.jpg`} alt="AIR Lab team" loading="lazy" />
-      </div>
       <div class="fm-item">
         <img src={`${base}/images/about/faces-5.jpg`} alt="AIR Lab team" loading="lazy" />
       </div>
@@ -184,23 +178,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .faces-section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); background: var(--off-white); }
   .faces-mosaic {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 260px 260px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px 300px;
     gap: 12px;
     margin-top: 48px;
   }
   .fm-item { overflow: hidden; border-radius: 12px; }
   .fm-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
   .fm-item:hover img { transform: scale(1.04); }
-  /* Layout: row 1 = tall(rows 1-2 col1) | normal col2 | normal col3 | tall(rows 1-2 col4) */
-  /*         row 2 = (spanned)           | wide(col2-3)              | (spanned)           */
+  /* Row 1: meeting | monitors | portrait */
+  /* Row 2: workshop(wide) | | tall(portrait) */
   .fm-item:nth-child(1) { grid-column: 1; grid-row: 1; }
   .fm-item:nth-child(2) { grid-column: 2; grid-row: 1; }
   .fm-item:nth-child(3) { grid-column: 3; grid-row: 1; }
-  .fm-item:nth-child(4) { grid-column: 4; grid-row: 1; }
-  .fm-item:nth-child(5) { grid-column: 1; grid-row: 2; }
-  .fm-item:nth-child(6) { grid-column: 2 / 4; grid-row: 2; }
-  .fm-item:nth-child(7) { grid-column: 4; grid-row: 2; }
+  .fm-item:nth-child(4) { grid-column: 1 / 3; grid-row: 2; }
+  .fm-item:nth-child(5) { grid-column: 3; grid-row: 2; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -208,14 +200,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     .glance-grid { grid-template-columns: 1fr 1fr; }
     .fp-grid { grid-template-columns: 1fr; }
     .focus-grid { grid-template-columns: 1fr 1fr; }
-    .faces-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 200px); }
+    .faces-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 200px); }
     .fm-item:nth-child(1) { grid-column: 1; grid-row: 1; }
     .fm-item:nth-child(2) { grid-column: 2; grid-row: 1; }
     .fm-item:nth-child(3) { grid-column: 1; grid-row: 2; }
     .fm-item:nth-child(4) { grid-column: 2; grid-row: 2; }
-    .fm-item:nth-child(5) { grid-column: 1; grid-row: 3; }
-    .fm-item:nth-child(6) { grid-column: 2; grid-row: 3; }
-    .fm-item:nth-child(7) { grid-column: 1 / 3; grid-row: 4; }
+    .fm-item:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
   }
   @media (max-width: 600px) {
     .glance-grid { grid-template-columns: 1fr 1fr; }
