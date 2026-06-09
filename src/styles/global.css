@@ -159,10 +159,12 @@ section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 }
 .hero-sub-title {
   font-size: clamp(14px, 1.4vw, 20px);
-  font-weight: 300; color: rgba(255,255,255,0.75);
+  font-weight: 300; color: #fff;
+  font-style: italic;
   display: flex; align-items: center; gap: 16px;
-  letter-spacing: 0.12em; text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin-top: 14px;
+  text-transform: none;
 }
 .hero-sub-title::before {
   content: ''; display: block; width: 24px; height: 1px;
