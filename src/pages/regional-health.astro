@@ -65,13 +65,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="section-intro">Data alone does not improve performance. AIR Lab combines operational, traffic and network data to generate actionable insights.</p>
     </div>
     <div class="rh-data-grid">
-      <div class="rh-data-card">
-        <div class="rh-data-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6l9-3 9 3M3 18l9 3 9-3"/></svg>
+
+      <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
+        <div class="rh-flip-inner">
+          <!-- FRONT -->
+          <div class="rh-flip-front rh-data-card">
+            <div class="rh-data-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6l9-3 9 3M3 18l9 3 9-3"/></svg>
+            </div>
+            <h3>Traffic flows</h3>
+            <p>Where traffic is concentrated and how it evolves.</p>
+            <span class="rh-flip-hint">Click to explore →</span>
+          </div>
+          <!-- BACK -->
+          <div class="rh-flip-back rh-data-card">
+            <h3>Traffic flows</h3>
+            <ul class="rh-flip-stats">
+              <li><strong>6.25M+</strong> aircraft traversals analysed across the APAC network.</li>
+              <li><strong>~30,000</strong> aircraft movements at the busiest airport during the analysis period.</li>
+              <li><strong>3,800+</strong> flights on the busiest city-pair corridor in a single month.</li>
+            </ul>
+            <p class="rh-flip-conclusion">Traffic analysis reveals where demand concentrates and how flows evolve across the network.</p>
+            <span class="rh-flip-hint">Click to go back ←</span>
+          </div>
         </div>
-        <h3>Traffic flows</h3>
-        <p>Where traffic is concentrated and how it evolves.</p>
       </div>
+
       <div class="rh-data-card">
         <div class="rh-data-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
@@ -79,6 +98,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h3>Network dependencies</h3>
         <p>How disruptions in one location can impact the wider region.</p>
       </div>
+
       <div class="rh-data-card">
         <div class="rh-data-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -86,6 +106,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h3>Capacity and demand</h3>
         <p>Where pressure points are emerging and where additional coordination may be needed.</p>
       </div>
+
       <div class="rh-data-card">
         <div class="rh-data-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
@@ -93,6 +114,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h3>Performance trends</h3>
         <p>How the network changes over time and what this means for future operations.</p>
       </div>
+
     </div>
   </section>
 
@@ -122,6 +144,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <Footer slot="footer" />
 </Base>
 
+
 <style>
   /* HERO */
   .page-hero-content { max-width: 900px; }
@@ -141,13 +164,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
   /* DATA CARDS */
-  .rh-data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .rh-data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: start; }
   .rh-data-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: all 0.25s; }
   .rh-data-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
   .rh-data-icon { width: 44px; height: 44px; background: rgba(6,113,129,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
   .rh-data-icon svg { width: 22px; height: 22px; stroke: var(--teal); }
   .rh-data-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
   .rh-data-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin: 0; }
+
+  /* FLIP CARD */
+  .rh-flip-wrapper { perspective: 1000px; cursor: pointer; }
+  .rh-flip-inner { position: relative; width: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1); }
+  .rh-flip-wrapper.flipped .rh-flip-inner { transform: rotateY(180deg); }
+  .rh-flip-front, .rh-flip-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .rh-flip-back { position: absolute; top: 0; left: 0; width: 100%; transform: rotateY(180deg); background: var(--navy); border-color: var(--teal); }
+  .rh-flip-back h3 { color: #fff; }
+  .rh-flip-stats { list-style: none; padding: 0; margin: 14px 0 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .rh-flip-stats li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; padding-left: 14px; position: relative; }
+  .rh-flip-stats li::before { content: '—'; position: absolute; left: 0; color: var(--teal); }
+  .rh-flip-stats li strong { color: #fff; font-weight: 700; font-size: 15px; }
+  .rh-flip-conclusion { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; margin-top: 14px; line-height: 1.6; }
+  .rh-flip-hint { display: block; margin-top: 16px; font-size: 11px; letter-spacing: 0.08em; color: var(--teal); text-transform: uppercase; }
 
   /* BUTTONS */
   .btn-ghost-dark { display: inline-block; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; font-weight: 400; transition: all 0.2s; }
