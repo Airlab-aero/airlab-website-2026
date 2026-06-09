@@ -10,10 +10,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <!-- HERO -->
   <div class="page-hero">
-    <div class="rh-tag">Regional Collaboration Platform</div>
-    <h1 class="hero-title">Regional <strong>insights</strong></h1>
-    <p class="hero-subtitle">Understanding the pulse of Southeast Asia's airspace</p>
-    <p class="hero-body">Air traffic is a highly interconnected system. Every day, thousands of flights, airports and air navigation service providers influence each other's performance across the region.<br/><br/>AIR Lab transforms operational data into a shared regional picture, to understand traffic flows, identify bottlenecks and support collaborative decision-making.</p>
+    <div class="page-hero-content">
+      <h1>Regional <strong>insights</strong></h1>
+      <p style="color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 28px;">Understanding the pulse of Southeast Asia's airspace</p>
+      <p>Air traffic is a highly interconnected system. Every day, thousands of flights, airports and air navigation service providers influence each other's performance across the region.<br/><br/>AIR Lab transforms operational data into a shared regional picture, to understand traffic flows, identify bottlenecks and support collaborative decision-making.</p>
+    </div>
   </div>
 
   <!-- WHY IT MATTERS -->
@@ -123,13 +124,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <style>
   /* HERO */
-  .page-hero { background: var(--navy); padding: 120px 80px 80px; position: relative; overflow: hidden; }
-  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(0,210,180,0.04), transparent 60%); }
-  .rh-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); border: 1px solid rgba(0,210,180,0.3); padding: 3px 10px; border-radius: 4px; margin-bottom: 20px; }
-  .hero-title { font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 16px; max-width: 800px; }
-  .hero-title strong { font-weight: 700; }
-  .hero-subtitle { font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 24px; max-width: 600px; }
-  .hero-body { font-size: 15px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.75; }
+  .page-hero-content { max-width: 900px; }
 
   /* STATS */
   .rh-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 800px; margin: 0 auto; }

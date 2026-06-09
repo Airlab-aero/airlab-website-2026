@@ -51,7 +51,7 @@ nav.nav-scrolled {
 .nav-cta:hover { background: var(--red-light) !important; }
 
 /* ── SECTION CHROME ── */
-section { padding: 100px 80px; }
+section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
 .section-label {
   font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--red); font-weight: 500; margin-bottom: 12px;
@@ -389,7 +389,7 @@ section { padding: 100px 80px; }
 /* ── PARTNERS ── */
 .partners { background: var(--cream); }
 .partners-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
-.partners-grid { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.partners-grid { display: flex; flex-wrap: nowrap; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .partner-cell {
   flex: 0 0 20%; display: flex; align-items: center; justify-content: center;
   padding: 32px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -442,7 +442,7 @@ footer {
 
 /* ── PAGE HERO (inner pages) ── */
 .page-hero {
-  background: var(--navy); padding: 140px 80px 80px;
+  background: var(--navy); padding: 140px max(80px, calc((100vw - 1400px) / 2)) 80px;
   position: relative; overflow: hidden;
 }
 .page-hero::after {
