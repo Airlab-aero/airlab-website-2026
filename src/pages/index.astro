@@ -38,15 +38,23 @@ const ctaApiUrl = cms.ctaApiUrl ?? 'https://open-atms.airlab.aero/public-api/';
       </video>
     </div>
     <div class="hero-content">
-      <div class="hero-tag">By AIR Lab</div>
-      <h1>The <strong>Regional Collaboration<br>Platform</strong></h1>
-      <p class="hero-sub">{heroSubtitle}<br/>Together.</p>
-      <div class="hero-actions">
-        <a href={heroPrimaryButtonUrl} class="btn-primary" target="_blank">{heroPrimaryButtonText}</a>
-        <a href="#platform" class="btn-ghost">Explore the RCP ↓</a>
-      </div>
+      <h1><span class="hero-brand">AIR Lab</span><span class="hero-sub-title">Aviation Innovation Research Lab</span></h1>
     </div>
-    <div class="hero-scroll">Scroll to explore</div>
+    <!-- GLASS CARDS overlaid on video -->
+    <div class="hero-glass-cards">
+      <a href={`${base}/about`} class="hgc hgc--airlab">
+        <div class="hgc-label">Who we are</div>
+        <div class="hgc-title">AIR Lab</div>
+        <p class="hgc-text">A joint innovation laboratory by CAAS and Thales, advancing air traffic management across Asia-Pacific.</p>
+        <span class="hgc-arrow">Discover AIR Lab →</span>
+      </a>
+      <a href="#platform" class="hgc hgc--rcp">
+        <div class="hgc-label">Our platform</div>
+        <div class="hgc-title">Regional Collaboration Platform</div>
+        <p class="hgc-text">A free, open-access cloud sandbox where Asia-Pacific aviation stakeholders can co-develop, test, and shape the next generation of air traffic management. Together.</p>
+        <span class="hgc-arrow">Explore the RCP ↓</span>
+      </a>
+    </div>
   </section>
 
   <!-- STATS STRIP -->

@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Base title="About AIR Lab" description="AIR Lab is a joint innovation laboratory by CAAS and Thales, advancing air traffic management in Asia-Pacific through open collaboration and technology.">
+  <Nav slot="nav" />
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">About us</div>
+      <h1>Advancing <strong>aviation</strong><br>across Asia-Pacific</h1>
+      <p>AIR Lab is a joint innovation laboratory established by the Civil Aviation Authority of Singapore (CAAS) and Thales,bringing together the region's leading aviation stakeholders to shape the future of air traffic management.</p>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="about-mission">
+    <div class="am-grid" data-reveal>
+      <div class="am-left">
+        <div class="section-label">Our mission</div>
+        <h2 class="section-title">Building the tools<br><strong>aviation needs tomorrow</strong></h2>
+      </div>
+      <div class="am-right">
+        <p class="am-intro">We believe that the future of air traffic management can only be built collaboratively. AIR Lab exists to bridge the gap between operational expertise and technological innovation,creating an open, neutral space where ANSPs, researchers, and technology providers can work together.</p>
+        <p class="am-body">Our focus is Asia-Pacific, the world's fastest-growing aviation region. By connecting stakeholders across borders and disciplines, we accelerate the development and deployment of next-generation ATM solutions that are grounded in operational reality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AT A GLANCE -->
+  <section style="background: var(--navy);">
+    <div class="section-header" data-reveal>
+    </div>
+    <div class="glance-grid" data-reveal>
+      <div class="glance-card">
+        <div class="glance-num">2019</div>
+        <div class="glance-lbl">Founded in Singapore by CAAS & Thales</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-num">10<span>+</span></div>
+        <div class="glance-lbl">APAC air navigation service providers engaged</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-num">100<span>%</span></div>
+        <div class="glance-lbl">Free, open-access platform,no licences required</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-num">1</div>
+        <div class="glance-lbl">Shared regional sandbox for ATM innovation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING PARTNERS -->
+  <section style="background: var(--off-white);">
+    <div class="section-header" data-reveal>
+      <div class="section-label">Founding partners</div>
+      <h2 class="section-title">Built on a strong<br><strong>foundation</strong></h2>
+      <p class="section-intro">AIR Lab was established through a partnership between the Singapore's air navigation expertise with world-class aviation technology.</p>
+    </div>
+    <div class="fp-grid" data-reveal>
+      <div class="fp-card">
+        <img src={`${base}/images/partners/caas.png`} alt="CAAS" />
+        <h3>Civil Aviation Authority of Singapore</h3>
+        <p>CAAS oversees the development of Singapore's civil aviation sector and is one of Asia-Pacific's leading air navigation service providers. As a founding partner, CAAS brings decades of operational expertise and a deep commitment to regional aviation excellence.</p>
+      </div>
+      <div class="fp-card">
+        <img src={`${base}/images/partners/thales.webp`} alt="Thales" />
+        <h3>Thales</h3>
+        <p>Thales is a global leader in aerospace, defence, and digital security. As a founding partner of AIR Lab, Thales provides world-class engineering capabilities, advanced ATM technologies, and a global network of aviation innovation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCUS AREA -->
+  <section>
+    <div class="section-header" data-reveal>
+      <h2 class="section-title">Asia-Pacific<br><strong>the world's fastest-growing aviation region</strong></h2>
+      <p class="section-intro">Asia-Pacific already accounts for 34% of global passenger traffic. By 2043, that share will grow to 46%. AIR Lab is here to help the region's aviation ecosystem scale safely, efficiently, and collaboratively.</p>
+    </div>
+    <div class="focus-grid" data-reveal>
+      <div class="focus-item">
+        <div class="focus-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Trajectory-Based Operations</h3>
+        <p>Enabling FF-ICE and TBO across the region through shared data infrastructure and collaborative testing environments.</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Regional Situational Awareness</h3>
+        <p>Providing ANSPs with a shared operational picture of traffic flows, network dependencies, and capacity across Southeast Asia.</p>
+      </div>
+      <div class="focus-item">
+        <div class="focus-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Open Collaboration</h3>
+        <p>Creating a neutral, open-access space where ANSPs, universities, startups, and established players can innovate together without barriers.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  /* MISSION */
+  .about-mission { padding: 100px max(80px, calc((100vw - 1400px) / 2)); }
+  .am-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .am-intro { font-size: 18px; line-height: 1.7; color: var(--text); font-weight: 300; margin-bottom: 20px; }
+  .am-body { font-size: 15px; line-height: 1.75; color: var(--muted); }
+
+  /* GLANCE */
+  .glance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+  .glance-card { border-top: 2px solid rgba(0,210,180,0.3); padding-top: 24px; }
+  .glance-num { font-size: 48px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 10px; }
+  .glance-num span { font-size: 24px; color: var(--teal); }
+  .glance-lbl { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* FOUNDING PARTNERS */
+  .fp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+  .fp-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
+  .fp-card img { max-height: 48px; max-width: 160px; object-fit: contain; margin-bottom: 24px; }
+  .fp-card h3 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .fp-card p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+  /* FOCUS */
+  .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  .focus-item { padding: 32px; background: var(--off-white); border: 1px solid var(--border); border-radius: 16px; }
+  .focus-icon { width: 48px; height: 48px; background: rgba(6,113,129,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .focus-icon svg { width: 24px; height: 24px; stroke: var(--teal); }
+  .focus-item h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .focus-item p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .am-grid { grid-template-columns: 1fr; gap: 40px; }
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+    .fp-grid { grid-template-columns: 1fr; }
+    .focus-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+    .focus-grid { grid-template-columns: 1fr; }
+  }
+</style>
