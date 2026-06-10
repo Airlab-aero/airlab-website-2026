@@ -44,66 +44,46 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <p class="rh-stat-source">Source: IATA 20-Year Passenger Forecast</p>
   </section>
 
-  <!-- MAP -->
-  <section style="background: var(--navy); padding-bottom: 0;">
+  <!-- TRAFFIC FLOWS + MAP -->
+  <section style="background: var(--navy);">
     <div class="section-header">
-      <div class="section-label">Monthly snapshot</div>
-      <h2 class="section-title" style="color:#fff;">Regional insights <strong>at a glance</strong></h2>
+      <div class="section-label" style="color: var(--teal);">Traffic flows</div>
+      <h2 class="section-title" style="color:#fff;">Where traffic <strong>concentrates</strong></h2>
       <p class="section-intro" style="color:rgba(255,255,255,0.55);">This visualization highlights the busiest airports, major traffic flows and key city pairs across Southeast Asia, revealing how interconnected the regional aviation network has become.</p>
     </div>
-    <div class="rh-map">
-      <img src={`${base}/regional-health-map.png`} alt="Regional air traffic situational awareness — Southeast Asia" />
-      <span class="rh-map-caption">Live regional situational awareness, South East Asia airspace</span>
+    <div class="rh-traffic-grid">
+      <div class="rh-traffic-stats">
+        <div class="rh-tstat">
+          <div class="rh-tstat-num">6.25M<span>+</span></div>
+          <div class="rh-tstat-lbl">aircraft traversals analysed across the APAC network</div>
+        </div>
+        <div class="rh-tstat">
+          <div class="rh-tstat-num">~30K</div>
+          <div class="rh-tstat-lbl">movements at the busiest airport during the analysis period</div>
+        </div>
+        <div class="rh-tstat">
+          <div class="rh-tstat-num">3,800<span>+</span></div>
+          <div class="rh-tstat-lbl">flights on the busiest city-pair corridor in a single month</div>
+        </div>
+        <p class="rh-tstat-conclusion">Traffic analysis reveals where demand concentrates and how flows evolve across the network.</p>
+      </div>
+      <div class="rh-map">
+        <img src={`${base}/regional-health-map.png`} alt="Regional air traffic situational awareness — Southeast Asia" />
+        <span class="rh-map-caption">Live regional situational awareness, South East Asia airspace</span>
+      </div>
     </div>
   </section>
 
-  <!-- FROM DATA TO INTELLIGENCE -->
+  <!-- IN-DEPTH ANALYSES -->
   <section>
     <div class="section-header">
-      <div class="section-label">Analytics</div>
+      <div class="section-label">In-depth analyses</div>
       <h2 class="section-title">From data <strong>to intelligence</strong></h2>
       <p class="section-intro">Data alone does not improve performance. AIR Lab combines operational, traffic and network data to generate actionable insights.</p>
     </div>
     <div class="rh-data-grid">
 
       <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
-        <!-- ghost: invisible copy of back content to size the wrapper correctly -->
-        <div class="rh-flip-ghost" aria-hidden="true">
-          <h3>Traffic flows</h3>
-          <ul class="rh-flip-stats">
-            <li><strong>6.25M+</strong> aircraft traversals analysed across the APAC network.</li>
-            <li><strong>~30,000</strong> aircraft movements at the busiest airport during the analysis period.</li>
-            <li><strong>3,800+</strong> flights on the busiest city-pair corridor in a single month.</li>
-          </ul>
-          <p class="rh-flip-conclusion">Traffic analysis reveals where demand concentrates and how flows evolve across the network.</p>
-          <span class="rh-flip-hint">Click to go back ←</span>
-        </div>
-        <div class="rh-flip-inner">
-          <!-- FRONT -->
-          <div class="rh-flip-front">
-            <div class="rh-data-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M3 6l9-3 9 3M3 18l9 3 9-3"/></svg>
-            </div>
-            <h3>Traffic flows</h3>
-            <p>Where traffic is concentrated and how it evolves.</p>
-            <span class="rh-flip-hint">Click to explore →</span>
-          </div>
-          <!-- BACK -->
-          <div class="rh-flip-back">
-            <h3>Traffic flows</h3>
-            <ul class="rh-flip-stats">
-              <li><strong>6.25M+</strong> aircraft traversals analysed across the APAC network.</li>
-              <li><strong>~30,000</strong> aircraft movements at the busiest airport during the analysis period.</li>
-              <li><strong>3,800+</strong> flights on the busiest city-pair corridor in a single month.</li>
-            </ul>
-            <p class="rh-flip-conclusion">Traffic analysis reveals where demand concentrates and how flows evolve across the network.</p>
-            <span class="rh-flip-hint">Click to go back ←</span>
-          </div>
-        </div><!-- end rh-flip-inner -->
-      </div>
-
-      <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
-        <!-- ghost -->
         <div class="rh-flip-ghost" aria-hidden="true">
           <h3>Network dependencies</h3>
           <ul class="rh-flip-stats">
@@ -115,7 +95,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <span class="rh-flip-hint">Click to go back ←</span>
         </div>
         <div class="rh-flip-inner">
-          <!-- FRONT -->
           <div class="rh-flip-front">
             <div class="rh-data-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
@@ -124,7 +103,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <p>How disruptions in one location can impact the wider region.</p>
             <span class="rh-flip-hint">Click to explore →</span>
           </div>
-          <!-- BACK -->
           <div class="rh-flip-back">
             <h3>Network dependencies</h3>
             <ul class="rh-flip-stats">
@@ -139,7 +117,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <div class="rh-flip-wrapper" onclick="this.classList.toggle('flipped')">
-        <!-- ghost -->
         <div class="rh-flip-ghost" aria-hidden="true">
           <h3>Capacity &amp; demand</h3>
           <ul class="rh-flip-stats">
@@ -153,7 +130,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <span class="rh-flip-hint">Click to go back ←</span>
         </div>
         <div class="rh-flip-inner">
-          <!-- FRONT -->
           <div class="rh-flip-front">
             <div class="rh-data-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
@@ -162,7 +138,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <p>Where pressure points are emerging and where additional coordination may be needed.</p>
             <span class="rh-flip-hint">Click to explore →</span>
           </div>
-          <!-- BACK -->
           <div class="rh-flip-back">
             <h3>Capacity &amp; demand</h3>
             <ul class="rh-flip-stats">
@@ -221,13 +196,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .rh-stat-lbl { font-size: 14px; color: var(--muted); line-height: 1.5; }
   .rh-stat-source { font-size: 11px; color: #aaa; margin-top: 32px; font-style: italic; text-align: center; }
 
+  /* TRAFFIC FLOWS */
+  .rh-traffic-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; margin-top: 48px; }
+  .rh-traffic-stats { display: flex; flex-direction: column; gap: 32px; }
+  .rh-tstat-num { font-size: 40px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px; }
+  .rh-tstat-num span { font-size: 22px; color: var(--teal); }
+  .rh-tstat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .rh-tstat-conclusion { font-size: 13px; color: #F97316; font-style: italic; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; margin-top: 8px; }
+
   /* MAP */
-  .rh-map { position: relative; line-height: 0; margin-top: 40px; }
+  .rh-map { position: relative; line-height: 0; border-radius: 12px; overflow: hidden; }
   .rh-map img { width: 100%; display: block; }
-  .rh-map-caption { position: absolute; bottom: 16px; left: 80px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .rh-map-caption { position: absolute; bottom: 16px; left: 24px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
 
   /* DATA CARDS */
-  .rh-data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+  .rh-data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; max-width: 900px; margin: 0 auto; }
   .rh-data-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: all 0.25s; }
   .rh-data-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
   .rh-data-icon { width: 44px; height: 44px; background: rgba(6,113,129,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
@@ -260,14 +243,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .page-hero { padding: 100px 24px 60px; }
+    .rh-traffic-grid { grid-template-columns: 1fr; }
     .rh-data-grid { grid-template-columns: 1fr 1fr; }
-    .rh-map-caption { left: 24px; }
   }
   @media (max-width: 600px) {
     .rh-stats { grid-template-columns: 1fr; max-width: 300px; }
-    .rh-data-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
     .rh-data-grid { grid-template-columns: 1fr; }
   }
 </style>
