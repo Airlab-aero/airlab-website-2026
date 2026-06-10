@@ -36,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="ts-grid" data-reveal>
       <div class="ts-stat">
         <div class="ts-num">60<span>+</span></div>
-        <div class="ts-lbl">Experts from Thales & CAAS</div>
+        <div class="ts-lbl">Experts from CAAS & Thales</div>
       </div>
       <div class="ts-stat">
         <div class="ts-num">10<span>+</span></div>
@@ -122,34 +122,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <!-- COLLABORATION -->
   <section class="collab-section">
-    <div class="section-header" data-reveal>
-      <div class="section-label">Collaboration</div>
-      <h2 class="section-title">Collaborating across<br><strong>the ATM ecosystem</strong></h2>
-      <p style="font-size: 15px; color: var(--muted); max-width: 600px; margin: 0 auto;">Leveraging Thales expertise in digital transformation and AI, to foster collaboration with universities and startups, and accelerate ATM innovation.</p>
-    </div>
-    <div class="collab-grid" data-reveal>
-      <div class="collab-card">
-        <div class="collab-card-label">Thales Ecosystem</div>
-        <ul>
-          <li>Thales Digital Factory</li>
-          <li>Thales R&amp;T</li>
-          <li>CortAIx</li>
-        </ul>
+    <div class="collab-inner" data-reveal>
+      <div class="collab-left">
+        <div class="section-label">Collaboration</div>
+        <h2 class="section-title">Collaborating across<br><strong>the ATM ecosystem</strong></h2>
+        <p class="collab-intro">Leveraging Thales expertise in digital transformation and AI, to foster collaboration with universities and startups, and accelerate ATM innovation.</p>
+        <div class="collab-cards">
+          <div class="collab-card">
+            <div class="collab-card-label">Thales Ecosystem</div>
+            <ul>
+              <li>Thales Digital Factory</li>
+              <li>Thales R&amp;T</li>
+              <li>CortAIx</li>
+            </ul>
+          </div>
+          <div class="collab-card">
+            <div class="collab-card-label">ATM Ecosystem</div>
+            <ul>
+              <li>ATM Research Institutes</li>
+              <li>Local Startups</li>
+              <li>NRF Singapore</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="collab-card">
-        <div class="collab-card-label">ATM Ecosystem</div>
-        <ul>
-          <li>ATM Research Institutes</li>
-          <li>Local Startups</li>
-          <li>NRF Singapore</li>
-        </ul>
+      <div class="collab-right">
+        <div class="collab-logos">
+          <img src={`${base}/images/partners/icai.png`} alt="ICAI" />
+          <img src={`${base}/images/partners/cortaix.jpg`} alt="CortAIx" />
+          <img src={`${base}/images/partners/starburst.png`} alt="Starburst" />
+          <img src={`${base}/images/partners/ntu.png`} alt="NTU" />
+          <img src={`${base}/images/partners/astar.png`} alt="A*STAR" />
+          <img src={`${base}/images/partners/canso.png`} alt="CANSO" />
+        </div>
       </div>
-    </div>
-    <div class="collab-logos" data-reveal>
-      <img src={`${base}/images/partners/icai.png`} alt="ICAI" />
-      <img src={`${base}/images/partners/cortaix.jpg`} alt="CortAIx" />
-      <img src={`${base}/images/partners/starburst.png`} alt="Starburst" />
-      <img src={`${base}/images/partners/ntu.png`} alt="NTU" />
     </div>
   </section>
 
@@ -239,15 +245,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   /* COLLABORATION */
   .collab-section { padding: 100px max(80px, calc((100vw - 1400px) / 2)); background: var(--off-white); }
-  .collab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; max-width: 800px; margin-left: auto; margin-right: auto; }
-  .collab-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+  .collab-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .collab-intro { font-size: 15px; color: var(--muted); line-height: 1.75; margin: 20px 0 32px; }
+  .collab-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .collab-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
   .collab-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
   .collab-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-  .collab-card li { font-size: 15px; color: var(--navy); font-weight: 500; padding-left: 16px; position: relative; }
+  .collab-card li { font-size: 14px; color: var(--navy); font-weight: 500; padding-left: 16px; position: relative; }
   .collab-card li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
-  .collab-logos { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 56px; }
-  .collab-logos img { max-height: 40px; max-width: 120px; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity 0.2s, filter 0.2s; }
-  .collab-logos img:hover { filter: grayscale(0); opacity: 1; }
+  .collab-right { display: flex; align-items: center; justify-content: center; }
+  .collab-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; justify-items: center; }
+  .collab-logos img { max-height: 70px; max-width: 180px; object-fit: contain; }
 
   /* FOCUS */
   .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
@@ -280,7 +288,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     .am-grid { grid-template-columns: 1fr; gap: 40px; }
     .ts-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .fp-grid { grid-template-columns: 1fr; }
-    .collab-grid { grid-template-columns: 1fr; }
+    .collab-inner { grid-template-columns: 1fr; }
+    .collab-cards { grid-template-columns: 1fr 1fr; }
     .focus-grid { grid-template-columns: 1fr 1fr; }
     .faces-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 200px); }
     .fm-item:nth-child(1) { grid-column: 1; grid-row: 1; }
