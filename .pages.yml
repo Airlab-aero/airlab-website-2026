@@ -1,0 +1,56 @@
+media:
+  input: public/images/news
+  output: /images/news
+
+content:
+  - name: news
+    label: News Articles
+    path: src/content/news
+    type: collection
+    view:
+      fields: [title, date, category, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: date
+        label: Date
+        type: date
+        required: true
+
+      - name: category
+        label: Category
+        type: select
+        options:
+          values:
+            - Partnership
+            - Research
+            - Event
+            - Award
+            - Team
+            - News
+
+      - name: summary
+        label: Summary
+        type: string
+        description: Short description shown on the news listing page
+
+      - name: image
+        label: Cover Image
+        type: image
+
+      - name: author
+        label: Author
+        type: string
+        default: AIR Lab
+
+      - name: draft
+        label: Draft (hide from site)
+        type: boolean
+        default: false
+
+      - name: body
+        label: Content
+        type: rich-text
