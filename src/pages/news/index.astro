@@ -3,8 +3,27 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { client, newsListQuery, imageUrl } from '../../lib/sanity';
+import { getCollection } from 'astro:content';
 
-const articles = await client.fetch(newsListQuery);
+// Articles Sanity (existants)
+const sanityArticles = await client.fetch(newsListQuery);
+
+// Articles Markdown (nouveaux)
+const mdArticles = await getCollection('news', ({ data }) => !data.draft);
+const mdFormatted = mdArticles.map(a => ({
+  _id: a.id,
+  title: a.data.title,
+  publishedAt: a.data.date,
+  category: a.data.category ?? 'News',
+  summary: a.data.summary ?? '',
+  slug: { current: a.id },
+  mainImage: a.data.image ? { asset: { url: a.data.image } } : null,
+  _source: 'markdown',
+}));
+
+// Fusion et tri par date
+const articles = [...sanityArticles, ...mdFormatted]
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 const categories = ['All', ...Array.from(new Set(articles.map((a: any) => a.category).filter(Boolean)))];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 

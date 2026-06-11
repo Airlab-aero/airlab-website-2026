@@ -3,18 +3,33 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { client, newsAllQuery, imageUrl } from '../../lib/sanity';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const articles = await client.fetch(newsAllQuery);
-  return articles
+  // Sanity articles
+  const sanityArticles = await client.fetch(newsAllQuery);
+  const sanityPaths = sanityArticles
     .filter((a: any) => !a.externalUrl && a.slug?.current)
-    .map((a: any) => ({ params: { slug: a.slug.current }, props: { article: a } }));
+    .map((a: any) => ({ params: { slug: a.slug.current }, props: { article: a, mdArticle: null } }));
+
+  // Markdown articles
+  const mdArticles = await getCollection('news', ({ data }) => !data.draft);
+  const mdPaths = mdArticles.map(a => ({
+    params: { slug: a.id },
+    props: { article: null, mdArticle: a },
+  }));
+
+  return [...sanityPaths, ...mdPaths];
 }
 
-const { article } = Astro.props;
+const { article, mdArticle } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-if (!article) {
+// Render markdown si c'est un article MD
+const rendered = mdArticle ? await render(mdArticle) : null;
+const Content = rendered?.Content;
+
+if (!article && !mdArticle) {
   return Astro.redirect(`${base}/news`);
 }
 
@@ -23,41 +38,70 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<Base title={article.title} description={article.excerpt} ogImage={article.coverImageUrl || (article.coverImage ? imageUrl(article.coverImage, 1200) : undefined)}>
+<Base
+  title={mdArticle ? mdArticle.data.title : article.title}
+  description={mdArticle ? (mdArticle.data.summary ?? '') : article.excerpt}
+  ogImage={!mdArticle && (article.coverImageUrl || (article.coverImage ? imageUrl(article.coverImage, 1200) : undefined))}
+>
   <Nav slot="nav" />
 
-  <div class="page-hero" style={(article.coverImageUrl || article.coverImage) ? `background-image: url('${article.coverImageUrl || imageUrl(article.coverImage, 1600)}'); background-size: cover; background-position: center;` : ''}>
-    {(article.coverImageUrl || article.coverImage) && <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,26,47,0.82) 0%,rgba(6,113,129,0.5) 100%);"></div>}
+  <div class="page-hero" style={(!mdArticle && (article.coverImageUrl || article.coverImage)) ? `background-image: url('${article.coverImageUrl || imageUrl(article.coverImage, 1600)}'); background-size: cover; background-position: center;` : ''}>
+    {(!mdArticle && (article.coverImageUrl || article.coverImage)) && <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,26,47,0.82) 0%,rgba(6,113,129,0.5) 100%);"></div>}
     <div class="page-hero-content" style="max-width: 800px; position: relative; z-index: 1;">
-      <div class="section-label">{article.category}</div>
-      <h1 style="font-size: clamp(28px, 4vw, 52px);">{article.title}</h1>
-      <p style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 16px;">{formatDate(article.publishedAt)}</p>
+      <div class="section-label">{mdArticle ? (mdArticle.data.category ?? 'News') : article.category}</div>
+      <h1 style="font-size: clamp(28px, 4vw, 52px);">{mdArticle ? mdArticle.data.title : article.title}</h1>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 16px;">{formatDate(mdArticle ? mdArticle.data.date : article.publishedAt)}</p>
     </div>
   </div>
 
   <section style="background: #fff; padding: 80px;">
     <div style="max-width: 760px; margin: 0 auto;">
-      {article.excerpt && (
-        <p style="font-size: 20px; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 48px; border-left: 3px solid var(--teal); padding-left: 24px;">
-          {article.excerpt}
-        </p>
+
+      {/* Rendu Markdown */}
+      {mdArticle && Content && (
+        <div class="md-body">
+          <Content />
+        </div>
       )}
-      {article.body?.map((block: any) => {
-        if (block._type === 'block') {
-          const style = block.style;
-          const text = block.children?.map((c: any) => c.text).join('') || '';
-          if (style === 'h2') return <h2 style="font-size: 24px; font-weight: 600; color: var(--navy); margin: 40px 0 16px; line-height: 1.3;">{text}</h2>;
-          if (style === 'h3') return <h3 style="font-size: 19px; font-weight: 600; color: var(--navy); margin: 32px 0 12px;">{text}</h3>;
-          if (!text) return null;
-          return <p style="font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 24px; font-weight: 300;">{text}</p>;
-        }
-        return null;
-      })}
+
+      {/* Rendu Sanity */}
+      {!mdArticle && article && (
+        <>
+          {article.excerpt && (
+            <p style="font-size: 20px; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 48px; border-left: 3px solid var(--teal); padding-left: 24px;">
+              {article.excerpt}
+            </p>
+          )}
+          {article.body?.map((block: any) => {
+            if (block._type === 'block') {
+              const style = block.style;
+              const text = block.children?.map((c: any) => c.text).join('') || '';
+              if (style === 'h2') return <h2 style="font-size: 24px; font-weight: 600; color: var(--navy); margin: 40px 0 16px; line-height: 1.3;">{text}</h2>;
+              if (style === 'h3') return <h3 style="font-size: 19px; font-weight: 600; color: var(--navy); margin: 32px 0 12px;">{text}</h3>;
+              if (!text) return null;
+              return <p style="font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 24px; font-weight: 300;">{text}</p>;
+            }
+            return null;
+          })}
+        </>
+      )}
+
       <div style="margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);">
         <a href={`${base}/news`} class="btn-outline-navy">← Back to News</a>
       </div>
     </div>
   </section>
+
+  <style>
+    .md-body { font-size: 16px; line-height: 1.8; color: var(--text); }
+    .md-body h2 { font-size: 24px; font-weight: 600; color: var(--navy); margin: 40px 0 16px; }
+    .md-body h3 { font-size: 19px; font-weight: 600; color: var(--navy); margin: 32px 0 12px; }
+    .md-body p { margin-bottom: 24px; font-weight: 300; }
+    .md-body ul, .md-body ol { padding-left: 24px; margin-bottom: 20px; }
+    .md-body li { margin-bottom: 8px; }
+    .md-body blockquote { border-left: 3px solid var(--teal); padding: 16px 24px; margin: 32px 0; background: var(--off-white); border-radius: 0 8px 8px 0; font-style: italic; color: var(--muted); }
+    .md-body strong { color: var(--navy); font-weight: 700; }
+  </style>
 
   <Footer slot="footer" />
 </Base>
