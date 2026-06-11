@@ -2,9 +2,10 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { client, teamQuery, imageUrl } from '../lib/sanity';
+import { parse } from 'yaml';
+import teamRaw from '../data/team.yaml?raw';
 
-const allMembers = (await client.fetch(teamQuery)).filter((m: any) => imageUrl(m.photo) || m.photoUrl);
+const { members: allMembers } = parse(teamRaw);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -22,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section style="background: var(--off-white); padding: 80px;">
     <div class="team-grid">
       {allMembers.map((member: any) => {
-        const photo = imageUrl(member.photo) || member.photoUrl;
+        const photo = member.photo || null;
         return (
           <div class="team-card">
             {photo ? (

@@ -1,0 +1,322 @@
+members:
+  - name: Chris Lee
+    role: AIR Lab Director
+    order: 1
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Francois Balland
+    role: AIR Lab CPO
+    order: 2
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Jean-Philippe Mota
+    role: Operations Director
+    order: 3
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Este Ehara
+    role: Head of Partnerships
+    order: 6
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Chin Lin Kwek
+    role: ATC Specialist, Systems Development
+    order: 7
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Mohamed Ruzaini Ismail
+    role: Senior ATC Manager, Operations Technology Development
+    order: 8
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Victoria Tan
+    role: ATC Manager, Operations Technology Development
+    order: 9
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Rick Lye
+    role: ATM Operations Expert
+    order: 10
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Mark O'Flynn
+    role: ATM Operational Expert
+    order: 11
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Nazreen Rahim
+    role: Community Manager
+    order: 12
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Anna Celma
+    role: Marketing Lead
+    order: 13
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Florent Madiot
+    role: Lead Architect & ATM System Expert
+    order: 15
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Andrian Nazaroi
+    role: Product Owner, Regional Collaborative Platform
+    order: 16
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Romain Pontida
+    role: Product Owner, Trajectory Based Operations
+    order: 17
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Cyril Martin
+    role: Product Owner, Green Aviation and AI
+    order: 18
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Sze Ping Ching
+    role: Scrum Master
+    order: 20
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Dionne Chua
+    role: Scrum Master
+    order: 21
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Bertrand N'goy
+    role: Safe Platform Architect
+    order: 22
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Rhonda Toh
+    role: Software Engineer
+    order: 23
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Salvare Zhi Jian Heng
+    role: Platform Engineer
+    order: 24
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Dexter De Vera
+    role: DevOps Engineer
+    order: 25
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Tah Jian Yeong
+    role: Software Engineer
+    order: 26
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Nicholas Lee
+    role: DevOps Platform Engineer
+    order: 27
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Mohd Izzat Khair
+    role: Software Engineer
+    order: 28
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Vincent Goh
+    role: Software Engineer
+    order: 29
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Willy Chua
+    role: Software Engineer
+    order: 32
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Akila Gunaratne
+    role: Software Engineer
+    order: 33
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Jonathan Wong
+    role: Software Engineer, UI/UX Designer
+    order: 34
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Yen Yoong Chua Chia
+    role: Software Engineer
+    order: 35
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Evan Leong
+    role: Software Engineer
+    order: 36
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Cheng Guan Poh
+    role: Software Engineer
+    order: 37
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Kelvin Neo
+    role: Software Engineer
+    order: 39
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Nazryl Lim
+    role: Software Engineer
+    order: 41
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Bryan Leong
+    role: DevOps Engineer
+    order: 42
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Yan Shen Lee
+    role: Software Engineer
+    order: 43
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Iwan Nugraha
+    role: Software Engineer
+    order: 44
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Putu Mas Mertayasa
+    role: Software Engineer
+    order: 45
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Kefen He
+    role: Software Engineer
+    order: 46
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Hazel Toh
+    role: Software Engineer
+    order: 47
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Junting Ma
+    role: Software Engineer
+    order: 48
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Lois Ngm
+    role: Software Engineer
+    order: 49
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Christabel Teo
+    role: Data Engineer
+    order: 50
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Wee Jiann Cho
+    role: Cybersecurity Engineer
+    order: 51
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Jerome Martin
+    role: Software Engineer
+    order: 52
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Karthik Murugesan
+    role: Software Engineer
+    order: 55
+    photo: ""
+    linkedin: ""
+    bio: ""
+
+  - name: Fu Chuanyi
+    role: Software Engineer
+    order: 56
+    photo: ""
+    linkedin: ""
+    bio: ""
