@@ -3,9 +3,12 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { parse } from 'yaml';
-import teamRaw from '../data/team.yaml?raw';
 
-const { members: allMembers } = parse(teamRaw);
+const yamlFiles = import.meta.glob('../data/team/*.yaml', { as: 'raw', eager: true });
+const allMembers = Object.values(yamlFiles)
+  .map((raw: any) => parse(raw))
+  .sort((a: any, b: any) => (a.order ?? 99) - (b.order ?? 99));
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 

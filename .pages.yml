@@ -57,36 +57,36 @@ content:
 
   - name: team
     label: Team Members
-    path: src/data/team.yaml
-    type: file
+    path: src/data/team
+    type: collection
+    format: yaml
+    extension: yaml
+    view:
+      fields: [name, role, order]
     fields:
-      - name: members
-        label: Members
-        type: list
-        fields:
-          - name: name
-            label: Full Name
-            type: string
-            required: true
+      - name: name
+        label: Full Name
+        type: string
+        required: true
 
-          - name: role
-            label: Role / Title
-            type: string
-            required: true
+      - name: role
+        label: Role / Title
+        type: string
+        required: true
 
-          - name: order
-            label: Display Order
-            type: number
-            default: 99
+      - name: order
+        label: Display Order
+        type: number
+        default: 99
 
-          - name: photo
-            label: Photo
-            type: image
+      - name: photo
+        label: Photo
+        type: image
 
-          - name: linkedin
-            label: LinkedIn URL
-            type: string
+      - name: linkedin
+        label: LinkedIn URL
+        type: string
 
-          - name: bio
-            label: Short Bio
-            type: string
+      - name: bio
+        label: Short Bio
+        type: string
