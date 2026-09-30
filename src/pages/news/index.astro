@@ -57,10 +57,10 @@ function formatDate(dateStr: string) {
     <div class="news-grid" id="news-grid">
       {articles.map((article: any) => (
         <div class="news-card" data-cat={article.category} data-date={article.publishedAt ?? ''} style="background: #fff; border-color: var(--border);">
-          {(LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || article.coverImage) && (
+          {(LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || article.coverImage || article.mainImage?.asset?.url) && (
             <img
               class="news-img"
-              src={LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || imageUrl(article.coverImage, 600)}
+              src={LOCAL_COVERS[article.slug?.current] || article.coverImageUrl || article.mainImage?.asset?.url || imageUrl(article.coverImage, 600)}
               alt={article.title}
               loading="lazy"
             />

@@ -41,12 +41,12 @@ function formatDate(dateStr: string) {
 <Base
   title={mdArticle ? mdArticle.data.title : article.title}
   description={mdArticle ? (mdArticle.data.summary ?? '') : article.excerpt}
-  ogImage={!mdArticle && (article.coverImageUrl || (article.coverImage ? imageUrl(article.coverImage, 1200) : undefined))}
+  ogImage={mdArticle ? (mdArticle.data.image || undefined) : (article.coverImageUrl || (article.coverImage ? imageUrl(article.coverImage, 1200) : undefined))}
 >
   <Nav slot="nav" />
 
-  <div class="page-hero" style={(!mdArticle && (article.coverImageUrl || article.coverImage)) ? `background-image: url('${article.coverImageUrl || imageUrl(article.coverImage, 1600)}'); background-size: cover; background-position: center;` : ''}>
-    {(!mdArticle && (article.coverImageUrl || article.coverImage)) && <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,26,47,0.82) 0%,rgba(6,113,129,0.5) 100%);"></div>}
+  <div class="page-hero" style={mdArticle ? (mdArticle.data.image ? `background-image: url('${mdArticle.data.image}'); background-size: cover; background-position: center;` : '') : ((article.coverImageUrl || article.coverImage) ? `background-image: url('${article.coverImageUrl || imageUrl(article.coverImage, 1600)}'); background-size: cover; background-position: center;` : '')}>
+    {(mdArticle ? mdArticle.data.image : (article.coverImageUrl || article.coverImage)) && <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,26,47,0.82) 0%,rgba(6,113,129,0.5) 100%);"></div>}
     <div class="page-hero-content" style="max-width: 800px; position: relative; z-index: 1;">
       <div class="section-label">{mdArticle ? (mdArticle.data.category ?? 'News') : article.category}</div>
       <h1 style="font-size: clamp(28px, 4vw, 52px);">{mdArticle ? mdArticle.data.title : article.title}</h1>
@@ -92,14 +92,52 @@ function formatDate(dateStr: string) {
     </div>
   </section>
 
-  <style>
+  <style is:global>
     .md-body { font-size: 16px; line-height: 1.8; color: var(--text); }
     .md-body h2 { font-size: 24px; font-weight: 600; color: var(--navy); margin: 40px 0 16px; }
     .md-body h3 { font-size: 19px; font-weight: 600; color: var(--navy); margin: 32px 0 12px; }
     .md-body p { margin-bottom: 24px; font-weight: 300; }
     .md-body ul, .md-body ol { padding-left: 24px; margin-bottom: 20px; }
     .md-body li { margin-bottom: 8px; }
-    .md-body blockquote { border-left: 3px solid var(--teal); padding: 16px 24px; margin: 32px 0; background: var(--off-white); border-radius: 0 8px 8px 0; font-style: italic; color: var(--muted); }
+    .md-body blockquote {
+      position: relative;
+      margin: 48px 0;
+      padding: 40px 44px 32px 68px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 4px 14px 14px 4px;
+      color: var(--navy);
+    }
+    .md-body blockquote::before {
+      content: '\201C';
+      position: absolute;
+      top: 6px;
+      left: 20px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--teal);
+      opacity: 0.3;
+    }
+    .md-body blockquote p {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.55;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .md-body blockquote p:last-child {
+      font-family: var(--font);
+      font-style: normal;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0;
+    }
+    .md-body blockquote strong { font-weight: 600; }
     .md-body strong { color: var(--navy); font-weight: 700; }
   </style>
 
